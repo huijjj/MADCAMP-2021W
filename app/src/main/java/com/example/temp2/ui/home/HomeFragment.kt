@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
             Profiles("침착맨", "010-1234-5678"),
         )
 
-        binding.rvProfile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvProfile.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvProfile.setHasFixedSize(true)
 
         binding.rvProfile.adapter = ProfileAdapter(profileList)
