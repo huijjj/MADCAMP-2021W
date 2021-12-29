@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.temp2.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.temp2.Profiles
 import com.example.temp2.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -31,10 +30,23 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
+        val profileList = arrayListOf(
+            Profiles("홍길동", "010-1111-2222"),
+            Profiles("신짱구", "010-1234-5678"),
+            Profiles("훈이", "010-1111-2222"),
+            Profiles("맹구", "010-1234-5678"),
+            Profiles("유리", "010-1111-2222"),
+            Profiles("철수", "010-1234-5678"),
+            Profiles("짱아", "010-1234-5678"),
+            Profiles("흰둥이", "010-1111-2222"),
+            Profiles("침착맨", "010-1234-5678"),
+        )
+
+        binding.rvProfile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvProfile.setHasFixedSize(true)
+
+        binding.rvProfile.adapter = ProfileAdapter(profileList)
+
         return root
     }
 
