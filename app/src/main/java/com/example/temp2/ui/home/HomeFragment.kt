@@ -31,15 +31,15 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val profileList = arrayListOf(
-            Profiles("홍길동", "010-1111-2222"),
-            Profiles("신짱구", "010-1234-5678"),
-            Profiles("훈이", "010-1111-2222"),
-            Profiles("맹구", "010-1234-5678"),
-            Profiles("유리", "010-1111-2222"),
-            Profiles("철수", "010-1234-5678"),
-            Profiles("짱아", "010-1234-5678"),
-            Profiles("흰둥이", "010-1111-2222"),
-            Profiles("침착맨", "010-1234-5678"),
+            Profiles(Profiles.USER_TYPE,"홍길동", "010-1111-2222"),
+            Profiles(Profiles.PEOPLE_TYPE,"신짱구", "010-1234-5678"),
+            Profiles(Profiles.PEOPLE_TYPE,"훈이", "010-1111-2222"),
+            Profiles(Profiles.PEOPLE_TYPE,"맹구", "010-1234-5678"),
+            Profiles(Profiles.PEOPLE_TYPE,"유리", "010-1111-2222"),
+            Profiles(Profiles.PEOPLE_TYPE,"철수", "010-1234-5678"),
+            Profiles(Profiles.PEOPLE_TYPE,"짱아", "010-1234-5678"),
+            Profiles(Profiles.PEOPLE_TYPE,"흰둥이", "010-1111-2222"),
+            Profiles(Profiles.PEOPLE_TYPE,"침착맨", "010-1234-5678"),
         )
 
         binding.rvProfile.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
