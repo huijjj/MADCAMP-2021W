@@ -53,11 +53,12 @@ class HomeFragment : Fragment() {
         val profileList: ArrayList<Profiles> = arrayListOf()
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("contacts")
+        profileList.add(Profiles(Profiles.USER_TYPE, "김민희", "010-1234-5678"))
         for(i in 0 until jArray.length()) {
             val obj = jArray.getJSONObject(i)
             val name = obj.getString("name")
             val number = obj.getString("number")
-            profileList.add(Profiles(name, number))
+            profileList.add(Profiles(Profiles.PEOPLE_TYPE, name, number))
         }
 
         binding.rvProfile.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
