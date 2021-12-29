@@ -1,5 +1,6 @@
 package com.example.temp2.ui.home
 
+import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.temp2.Profiles
 import com.example.temp2.databinding.FragmentHomeBinding
+import org.json.JSONObject
 
 class HomeFragment : Fragment() {
 
@@ -30,17 +32,33 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val profileList = arrayListOf(
-            Profiles("홍길동", "010-1111-2222"),
-            Profiles("신짱구", "010-1234-5678"),
-            Profiles("훈이", "010-1111-2222"),
-            Profiles("맹구", "010-1234-5678"),
-            Profiles("유리", "010-1111-2222"),
-            Profiles("철수", "010-1234-5678"),
-            Profiles("짱아", "010-1234-5678"),
-            Profiles("흰둥이", "010-1111-2222"),
-            Profiles("침착맨", "010-1234-5678"),
-        )
+//        val profileList = arrayListOf(
+//            Profiles("홍길동", "010-1111-2222"),
+//            Profiles("신짱구", "010-1234-5678"),
+//            Profiles("훈이", "010-1111-2222"),
+//            Profiles("맹구", "010-1234-5678"),
+//            Profiles("유리", "010-1111-2222"),
+//            Profiles("철수", "010-1234-5678"),
+//            Profiles("짱아", "010-1234-5678"),
+//            Profiles("흰둥이", "010-1111-2222"),
+//            Profiles("침착맨", "010-1234-5678"),
+//        )
+
+        // reading contact.json
+        val assets = resources.assets
+        val inputStream = assets.open("contacts.json")
+        val jsonString = inputStream.bufferedReader().use{ it.readText() }
+
+        // parsing json file
+        val profileList: ArrayList<Profiles> = arrayListOf()
+        val jObject = JSONObject(jsonString)
+        val jArray = jObject.getJSONArray("contacts")
+        for(i in 0 until jArray.length()) {
+            val obj = jArray.getJSONObject(i)
+            val name = obj.getString("name")
+            val number = obj.getString("number")
+            profileList.add(Profiles(name, number))
+        }
 
         binding.rvProfile.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvProfile.setHasFixedSize(true)
