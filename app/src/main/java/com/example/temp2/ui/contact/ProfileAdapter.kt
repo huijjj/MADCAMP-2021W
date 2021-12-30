@@ -1,4 +1,4 @@
-package com.example.temp2.ui.home
+package com.example.temp2.ui.contact
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +16,11 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapte
         val view: View?
         return when (viewType) {
             Profiles.USER_TYPE -> {
-                view = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)  //kt과 xml을 연결하기 위함. context는 activity에서 담고 있는 모든 정보
+                view = LayoutInflater.from(parent.context).inflate(R.layout.contact_user_item, parent, false)  //kt과 xml을 연결하기 위함. context는 activity에서 담고 있는 모든 정보
                 CustomViewHolder(view)
             }
             Profiles.PEOPLE_TYPE -> {
-                view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)  //kt과 xml을 연결하기 위함. context는 activity에서 담고 있는 모든 정보
+                view = LayoutInflater.from(parent.context).inflate(R.layout.contact_list_item, parent, false)
                 CustomViewHolder(view)
             }
             else -> throw RuntimeException("Incorrect view type!!")
