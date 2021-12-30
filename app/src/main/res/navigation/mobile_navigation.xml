@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.temp2.ui.interaction.InteractionFragment"
+        android:name="com.example.temp2.ui.calendar.CalendarFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_interaction" />
+        tools:layout="@layout/fragment_calendar" />
 </navigation>
