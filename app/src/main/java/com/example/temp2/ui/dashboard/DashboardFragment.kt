@@ -1,18 +1,13 @@
 package com.example.temp2.ui.dashboard
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.temp2.MainActivity
 import com.example.temp2.Photos
-import com.example.temp2.Profiles
 import com.example.temp2.databinding.FragmentDashboardBinding
 import org.json.JSONObject
 
@@ -35,13 +30,13 @@ class DashboardFragment : Fragment() {
 
         // reading ~~.json
         val assets = resources.assets
-        val inputStream = assets.open("images.json")
+        val inputStream = assets.open("photos.json")
         val jsonString = inputStream.bufferedReader().use{ it.readText() }
 
         // parsing json file
         val photoList: ArrayList<Photos> = arrayListOf()
         val jObject = JSONObject(jsonString)
-        val jArray = jObject.getJSONArray("images")
+        val jArray = jObject.getJSONArray("photos")
         Log.d("BasicSyntax", "${jArray.length()}")
         for(i in 0 until jArray.length()) {
             val obj = jArray.getJSONObject(i)
