@@ -23,6 +23,7 @@
             android:background="@drawable/tree"
             android:orientation="vertical">
 
+
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="167dp"
@@ -32,7 +33,12 @@
                 android:src="@drawable/ic_notifications_black_24dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
+
+
         </LinearLayout>
     </ScrollView>
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
