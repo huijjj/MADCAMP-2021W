@@ -39,49 +39,6 @@
         {
             "name": "photo_10",
             "date": "2021-12-27"
-        }
-    ],
-
-    "real_photos" : [
-        {
-            "name": "photo_1",
-            "date": "2021-08-01"
-        },
-        {
-            "name": "photo_2",
-            "date": "2021-08-01"
-        },
-        {
-            "name": "photo_3",
-            "date": "2021-09-02"
-        },
-        {
-            "name": "photo_4",
-            "date": "2021-08-10"
-        },
-        {
-            "name": "photo_5",
-            "date": "2021-08-10"
-        },
-        {
-            "name": "photo_6",
-            "date": "2021-12-25"
-        },
-        {
-            "name": "photo_7",
-            "date": "2021-12-25"
-        },
-        {
-            "name": "photo_8",
-            "date": "2021-12-27"
-        },
-        {
-            "name": "photo_9",
-            "date": "2021-12-28"
-        },
-        {
-            "name": "photo_10",
-            "date": "2021-12-27"
         },
         {
             "name": "photo_11",

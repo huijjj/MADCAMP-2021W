@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.temp2.Photos
 import com.example.temp2.R
 import kotlin.collections.ArrayList
+import com.bumptech.glide.Glide
 
 class PhotoAdapter (val photoList: ArrayList<Photos>) : RecyclerView.Adapter<PhotoAdapter.CustomViewHolder> ()
 {
@@ -21,8 +22,8 @@ class PhotoAdapter (val photoList: ArrayList<Photos>) : RecyclerView.Adapter<Pho
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val rscId = context.resources.getIdentifier(photoList[position].name, "drawable", context.packageName)
-        holder.photo.setImageResource(rscId)
+        val rscId = context.resources.getIdentifier(photoList[position].name, "drawable", context.packageName) //uri
+        Glide.with(context).load(rscId).into(holder.photo)
     }
 
     override fun getItemCount(): Int {
