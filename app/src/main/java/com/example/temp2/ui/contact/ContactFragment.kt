@@ -1,21 +1,18 @@
-package com.example.temp2.ui.home
+package com.example.temp2.ui.contact
 
-import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.temp2.Profiles
-import com.example.temp2.databinding.FragmentHomeBinding
+import com.example.temp2.databinding.FragmentContactBinding
 import org.json.JSONObject
 
-class HomeFragment : Fragment() {
+class ContactFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentContactBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,23 +23,9 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentContactBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-//        val profileList = arrayListOf(
-//            Profiles("홍길동", "010-1111-2222"),
-//            Profiles("신짱구", "010-1234-5678"),
-//            Profiles("훈이", "010-1111-2222"),
-//            Profiles("맹구", "010-1234-5678"),
-//            Profiles("유리", "010-1111-2222"),
-//            Profiles("철수", "010-1234-5678"),
-//            Profiles("짱아", "010-1234-5678"),
-//            Profiles("흰둥이", "010-1111-2222"),
-//            Profiles("침착맨", "010-1234-5678"),
-//        )
 
         // reading contact.json
         val assets = resources.assets

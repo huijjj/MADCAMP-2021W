@@ -1,4 +1,4 @@
-package com.example.temp2.ui.dashboard
+package com.example.temp2.ui.gallery
 
 import android.os.Bundle
 import android.util.Log
@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.temp2.Photos
-import com.example.temp2.databinding.FragmentDashboardBinding
+import com.example.temp2.databinding.FragmentGalleryBinding
 import org.json.JSONObject
 
-class DashboardFragment : Fragment() {
+class GalleryFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentGalleryBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,11 +24,11 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
 
-        // reading ~~.json
+        // reading photos.json
         val assets = resources.assets
         val inputStream = assets.open("photos.json")
         val jsonString = inputStream.bufferedReader().use{ it.readText() }
@@ -45,7 +45,6 @@ class DashboardFragment : Fragment() {
             photoList.add(Photos(name, date))
         }
 
-//        binding.rvPhotos.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvPhotos.layoutManager = GridLayoutManager(this.context, 3)
         binding.rvPhotos.setHasFixedSize(true)
 
