@@ -7,11 +7,11 @@
     tools:context=".ui.calendar.CalendarFragment">
 
     <ScrollView
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -20,22 +20,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/christmas_tree">
+            android:background="@drawable/tree"
+            android:orientation="vertical">
 
-            <FrameLayout
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="85dp"
+                android:layout_height="116dp"
+                android:layout_gravity="center_horizontal"
+                tools:src="@tools:sample/avatars" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                tools:src="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/iv_tree"
-                    android:layout_width="800dp"
-                    android:layout_height="1500dp"
-                    android:layout_marginTop="0"
-                    android:src="@drawable/christmas_tree" />
-            </FrameLayout>
-
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:src="@tools:sample/avatars" />
         </LinearLayout>
     </ScrollView>
 
