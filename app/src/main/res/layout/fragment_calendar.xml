@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageButton
                     android:id="@+id/deco_button_4"
@@ -92,6 +92,16 @@
                     android:src="@drawable/deco_4"
                     tools:ignore="SpeakableTextPresentCheck"
                     android:layout_marginRight="10dp"/>
+                    <ImageButton
+                        android:id="@+id/deco_button_18"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_18"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
 
@@ -148,14 +158,32 @@
                 android:orientation="horizontal"
                 android:gravity="center">
 
-                <ImageButton
-                    android:id="@+id/deco_button_12"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_12"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_9"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_9"
+                        android:layout_marginRight="20dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_12"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_12"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -180,14 +208,30 @@
                         android:src="@drawable/deco_3"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/deco_button_20"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_20"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_20"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_20"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_8"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_8"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -233,6 +277,7 @@
                         android:layout_height="85dp"
                         android:background="@android:color/transparent"
                         android:scaleType="fitCenter"
+                        android:layout_marginRight="5dp"
                         android:src="@drawable/deco_19"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -242,7 +287,7 @@
                         android:layout_height="65dp"
                         android:background="@android:color/transparent"
                         android:scaleType="fitCenter"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="40dp"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/deco_16"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -271,19 +316,35 @@
                         android:background="@android:color/transparent"
                         android:scaleType="fitCenter"
                         android:src="@drawable/deco_14"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginRight="20dp"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                 </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/deco_button_5"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_5"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_5"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_5"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_6"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_6"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -297,7 +358,7 @@
                         android:background="@android:color/transparent"
                         android:scaleType="fitCenter"
                         android:src="@drawable/deco_21"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="0dp"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
@@ -312,49 +373,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <ImageButton
-                    android:id="@+id/deco_button_6"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_6"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <ImageButton
-                    android:id="@+id/deco_button_18"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_18"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-                <ImageButton
-                    android:id="@+id/deco_button_9"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_9"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-                <ImageButton
-                    android:id="@+id/deco_button_8"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/deco_8"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </LinearLayout>
 
         </LinearLayout>
 
