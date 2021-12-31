@@ -1,6 +1,7 @@
 package com.example.temp2.ui.calendar
 
 import android.app.AlertDialog
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.temp2.databinding.FragmentCalendarBinding
 class CalendarFragment : Fragment() {
 
     private var _binding: FragmentCalendarBinding? = null
+    private lateinit var mediaPlayer: MediaPlayer
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,17 +48,19 @@ class CalendarFragment : Fragment() {
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        mediaPlayer = MediaPlayer.create(context, R.raw.bgm)
+        mediaPlayer.isLooping = true
+        mediaPlayer.start()
 
         binding.decoButton24.setOnClickListener {
             showModal(inflater)
-
         }
 
         return root
     }
 
     override fun onDestroyView() {
+        mediaPlayer.stop()
         super.onDestroyView()
         _binding = null
     }
