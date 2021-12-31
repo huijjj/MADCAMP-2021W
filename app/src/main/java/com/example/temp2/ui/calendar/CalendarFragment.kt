@@ -157,8 +157,8 @@ class CalendarFragment : Fragment() {
             else -> null
         }
 
-        val alertDialog = AlertDialog.Builder(context).setTitle("Day " + day.toString()).setPositiveButton("확인") { dialog, which ->
-            Toast.makeText(context, "열었습니다", Toast.LENGTH_SHORT).show()
+        val alertDialog = AlertDialog.Builder(context).setTitle("Day " + day.toString()).setPositiveButton("선물열기") { _, _ ->
+            Toast.makeText(context, "짜잔!", Toast.LENGTH_SHORT).show()
 
             when(day) {
                 1 -> binding.decoButton1.setImageResource(R.drawable.deco_open_1)
@@ -187,7 +187,7 @@ class CalendarFragment : Fragment() {
                 24 -> binding.decoButton24.setImageResource(R.drawable.deco_open_24)
                 else -> null
             }
-        }.setNegativeButton("취소", null).create()
+        }.setNegativeButton("열지않기", null).create()
 
         alertDialog.setView(view)
         alertDialog.show()

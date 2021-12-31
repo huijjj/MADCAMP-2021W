@@ -377,7 +377,9 @@
         </LinearLayout>
 
 
+
     </ScrollView>
+
     <com.jetradarmobile.snowfall.SnowfallView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -391,4 +393,22 @@
         app:snowflakesAlreadyFalling="false"
         app:snowflakesFadingEnabled="false"
         app:snowflakesNum="150" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:paddingTop="20dp"-->
+    <!--                android:paddingRight="40dp"-->
+    <!--                android:gravity="right">-->
+
+    <!--                <ImageButton-->
+    <!--                    android:id="@+id/muteButton"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:background="@android:color/transparent"-->
+    <!--                    android:padding="10dp"-->
+    <!--                    android:src="@drawable/ic_baseline_volume_off_24" />-->
+    <!--            </LinearLayout>-->
