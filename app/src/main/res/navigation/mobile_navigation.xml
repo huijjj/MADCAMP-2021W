@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.temp2.ui.contact.ContactFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_contact"
         tools:layout="@layout/fragment_contact" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.temp2.ui.gallery.GalleryFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.temp2.ui.calendar.CalendarFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_calendar"
         tools:layout="@layout/fragment_calendar" />
 </navigation>
