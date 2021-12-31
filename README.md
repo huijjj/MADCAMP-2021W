@@ -30,3 +30,22 @@ Please refer to src/main/java/ui/gallery and src/main/res/layout/fragment_galler
 두 번째 탭은 갤러리를 구현하였습니다. 연락처와 마찬가지로 fragment와 recycler view를 사용했으며 추가로, 빠른 이미지 로딩을 위해 adapter에서 Glide 라이브러리를 사용하였습니다.
 이미지 추가의 확장성과 관리의 편의성을 위해 파일명을 비롯한 이미지의 metadata를 별개의 json 파일로 저장합니다.
 추가적인 정보는 src/main/java/ui/gallery와 src/main/res/layout/fragment_gallery.xml, contact_gallery_list_item.xml를 참고 바랍니다.
+
+### Tab 3. Advent calendar(이벤트 달력)
+***
+Last but not least, out final third tab is advent calendar!
+An Advent calendar is a special calendar used to count the days of Advent in anticipation of Christmas.
+You can open up the ornaments one at a time, one for each day to recieve small but pleasing presents.
+You can also enjoy the joyful carol and feel the vibe of christmas.
+Checkout the codes at src/main/java/ui/calendar and src/main/res/layout/fragment_calendar.xml to see how this is done.
+Every ornament images used are carefully hand-drawn by talented artist **Minhee Kim** a.k.a. **minizzang**.
+
+마지막 자유 주제 탭은 재림절 달력을 만들어보았습니다. 재림절 달력은 크리스마스를 기다리며 하루에 하나씩 작은 선물을 열어볼 수 있는 달력입니다.
+또한, 이 탭에서는 즐거운 캐럴을 들으며 연말 분위기에 흠뻑 취할 수 있습니다. 
+자세한 구현은 src/main/java/ui/calendar와 src/main/res/layout/fragment_calendar.xml의 코드를 참고해주시길 바랍니다.
+사용된 모든 장식품 이미지는 아티스트 **김민희(minizzang)** 께서 손수 그리신 이미지입니다.
+
+
+# Credit
++ Minhee Kim(minizzang): minizzang@kaist.ac.kr
++ Huijong Jeong(huijjj): hui0213@postech.ac.kr
