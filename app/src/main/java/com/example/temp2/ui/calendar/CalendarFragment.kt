@@ -201,6 +201,8 @@ class CalendarFragment : Fragment() {
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        Glide.with(requireContext()).load(R.drawable.bottom_snow).into(binding.bottomSnow)
         mediaPlayer = MediaPlayer.create(context, R.raw.bgm)
         mediaPlayer.isLooping = true
         mediaPlayer.start()
