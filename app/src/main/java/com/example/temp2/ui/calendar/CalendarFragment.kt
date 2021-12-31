@@ -96,7 +96,7 @@ class CalendarFragment : Fragment() {
 
             13 -> {
                 modalIv.setImageResource(R.drawable.day13)
-                modalTv.text = "\n“제 이름은 외자예요. 외자여서 외로움을 많이 타죠.\n하지만 걱정하지 말아요. 사랑에는 공격적이니까”\n"
+                modalTv.text = "\n“제 이름은 외자예요.\n외자여서 외로움을\n많이 타죠.\n하지만 걱정하지 말아요. 사랑에는 공격적이니까”\n"
             }
 
             14 -> {
