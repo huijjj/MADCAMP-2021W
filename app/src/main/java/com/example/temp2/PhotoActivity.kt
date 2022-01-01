@@ -1,9 +1,12 @@
 package com.example.temp2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -22,8 +25,7 @@ class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPag
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         // Glide.with(parent.context).load().into
-        Glide.with(holder.photo).load(item[position]).override(1000, 1000).into(holder.photo)
-        info.text =
+        Glide.with(holder.photo).load(item[position]).override(1200, 1200).into(holder.photo)
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.photo_detail, parent, false)){
@@ -44,10 +46,16 @@ class PhotoActivity : AppCompatActivity() {
         val date = intent.getStringExtra("photo_date")
 
         val vp_photo_detail = findViewById<ViewPager2>(R.id.vp_photo_detail)
+        val btn_close = findViewById<ImageButton>(R.id.closeButton)
 
         vp_photo_detail.adapter = ViewPagerAdapter(getPhotoList())
         vp_photo_detail.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         vp_photo_detail.setCurrentItem(i, false) // index in photo list
+
+        btn_close.setOnClickListener(View.OnClickListener() {
+            finish()
+            }
+        )
     }
 
     private fun getPhotoList(): ArrayList<Int> {
