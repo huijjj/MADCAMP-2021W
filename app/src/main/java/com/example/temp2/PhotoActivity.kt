@@ -3,6 +3,7 @@ package com.example.temp2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
+import org.json.JSONObject
 import org.w3c.dom.Text
 
 class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
@@ -27,6 +29,7 @@ class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPag
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         // Glide.with(parent.context).load().into
         Glide.with(holder.photo).load(item[position]).override(1200, 1200).into(holder.photo)
+         holder.info.text = photoList[position].date
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.photo_detail, parent, false)){
@@ -34,6 +37,8 @@ class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPag
         val info = itemView.findViewById<TextView>(R.id.tv_date)
     }
 }
+
+lateinit var photoList: ArrayList<Photos>
 
 class PhotoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +49,6 @@ class PhotoActivity : AppCompatActivity() {
         actionBar?.hide()
 
         val i = intent.getIntExtra("photo_index", 123) // resource id
-        val date = intent.getStringExtra("photo_date")
 
         val vp_photo_detail = findViewById<ViewPager2>(R.id.vp_photo_detail)
         val btn_close = findViewById<ImageButton>(R.id.closeButton)
@@ -53,8 +57,25 @@ class PhotoActivity : AppCompatActivity() {
         vp_photo_detail.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         vp_photo_detail.setCurrentItem(i, false) // index in photo list
 
+        // reading photos.json
+        photoList = arrayListOf()
+        val assets = resources.assets
+        val inputStream = assets.open("photos.json")
+        val jsonString = inputStream.bufferedReader().use{ it.readText() }
+
+        // parsing json file
+        val jObject = JSONObject(jsonString)
+        val jArray = jObject.getJSONArray("photos")
+        Log.d("BasicSyntax", "${jArray.length()}")
+        for(i in 0 until jArray.length()) {
+            val obj = jArray.getJSONObject(i)
+            val name = obj.getString("name")
+            val date = obj.getString("date")
+            photoList.add(Photos(name, date))
+        }
+
         btn_close.setOnClickListener(View.OnClickListener() {
-            finish()
+                finish()
             }
         )
     }
