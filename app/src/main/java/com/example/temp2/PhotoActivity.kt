@@ -13,6 +13,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.github.chrisbanes.photoview.PhotoView
 import org.w3c.dom.Text
 
 class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
@@ -29,7 +30,7 @@ class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPag
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.photo_detail, parent, false)){
-        val photo = itemView.findViewById<ImageView>(R.id.iv_photoDetail)
+        val photo = itemView.findViewById<PhotoView>(R.id.iv_photoDetail)
         val info = itemView.findViewById<TextView>(R.id.tv_date)
     }
 }

@@ -22,7 +22,6 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_photo_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="66dp"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
