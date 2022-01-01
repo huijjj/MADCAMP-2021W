@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import org.w3c.dom.Text
 
 class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
     var item = photoList
@@ -21,12 +22,13 @@ class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPag
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         // Glide.with(parent.context).load().into
-        Glide.with(holder.photo).load(item[position]).into(holder.photo)
-
+        Glide.with(holder.photo).load(item[position]).override(1000, 1000).into(holder.photo)
+        info.text =
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.photo_detail, parent, false)){
         val photo = itemView.findViewById<ImageView>(R.id.iv_photoDetail)
+        val info = itemView.findViewById<TextView>(R.id.tv_date)
     }
 }
 
@@ -35,7 +37,7 @@ class PhotoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo)
         var actionBar : ActionBar?
-        actionBar = supportActionBar;
+        actionBar = supportActionBar
         actionBar?.hide()
 
         val i = intent.getIntExtra("photo_index", 123) // resource id
