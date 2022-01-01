@@ -29,7 +29,7 @@ class PhotoAdapter (val photoList: ArrayList<Photos>) : RecyclerView.Adapter<Pho
 
         holder.itemView.setOnClickListener(View.OnClickListener() {
             val intent = Intent(this.context, PhotoActivity::class.java).apply {
-                putExtra("photo_id", rscId)     //Photos item을 한번에 넘기는 방법?
+                putExtra("photo_index", position)     //Photos item을 한번에 넘기는 방법?
                 putExtra("photo_name", photoList[position].name)
                 putExtra("photo_date", photoList[position].date)
             }.run{

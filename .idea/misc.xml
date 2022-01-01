@@ -7,10 +7,14 @@
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/activity_add_number.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/activity_photo.xml" value="0.1828125" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/fragment_gallery.xml" value="0.1828125" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/fragment_home.xml" value="0.152" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/gallery_item.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/list_item.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/photo_detail.xml" value="0.1828125" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/photo_detail_item.xml" value="0.1828125" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/photo_item.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/user_item.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
@@ -21,8 +25,6 @@
         <entry key="..\:/madcamp_week1/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.31666666666666665" />
         <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_add_number.xml" value="0.2625" />
         <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_photo.xml" value="0.21041666666666667" />
-        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_start.xml" value="0.3515625" />
         <entry key="..\:/madcamp_week1/app/src/main/res/layout/contact_list_item.xml" value="0.1921875" />
         <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_calendar.xml" value="0.264" />
         <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_contact.xml" value="0.1921875" />
