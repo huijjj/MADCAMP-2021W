@@ -21,7 +21,8 @@ class ViewPagerAdapter(photoList: ArrayList<Int>) : RecyclerView.Adapter<ViewPag
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         // Glide.with(parent.context).load().into
-        holder.photo.setImageResource(item[position])
+        Glide.with(holder.photo).load(item[position]).into(holder.photo)
+
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.photo_detail, parent, false)){
@@ -44,7 +45,7 @@ class PhotoActivity : AppCompatActivity() {
 
         vp_photo_detail.adapter = ViewPagerAdapter(getPhotoList())
         vp_photo_detail.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        vp_photo_detail.setCurrentItem(i) // index in photo list
+        vp_photo_detail.setCurrentItem(i, false) // index in photo list
     }
 
     private fun getPhotoList(): ArrayList<Int> {
