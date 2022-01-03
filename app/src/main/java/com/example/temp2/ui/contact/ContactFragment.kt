@@ -32,11 +32,8 @@ class ContactFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Log.d("test", "loglog")
         _binding = FragmentContactBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
 
         return root
     }
@@ -50,7 +47,6 @@ class ContactFragment : Fragment() {
         super.onResume()
         // 여기서 파일 읽기
         profileList.clear()
-        Log.d("test", "resumed")
 
         // reading contact.json
         val assets = resources.assets
@@ -64,7 +60,6 @@ class ContactFragment : Fragment() {
         // 유저 파일 읽기
         val userFile = requireContext().getFileStreamPath("user.txt")
         if(userFile.exists()) {
-            Log.d("test", "user data file found")
             val fileReader = FileReader(userFile)
             val bufferedReader = BufferedReader(fileReader)
             val temp = arrayListOf<String>()
@@ -79,7 +74,6 @@ class ContactFragment : Fragment() {
             }
         }
         else {
-            Log.d("test", "user data file NOT found")
             profileList.add(Profiles(Profiles.USER_TYPE, "김민희", "010-1234-5678"))
         }
 

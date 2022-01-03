@@ -3,6 +3,7 @@ package com.example.temp2
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             bufferedWriter.append(data!!.getStringExtra("user_number").toString())
             bufferedWriter.newLine()
             bufferedWriter.close()
+            Toast.makeText(this, "수정 완료", Toast.LENGTH_SHORT).show()
             // contact fragment 다시 어떻게 하기
         }
     }

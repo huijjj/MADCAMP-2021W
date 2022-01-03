@@ -41,7 +41,7 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapte
         holder.phoneNum.text = profileList.get(position).number
         holder.btnEdit?.setOnClickListener(View.OnClickListener() {
             val intent = Intent(context, UserContactEditActivity::class.java).apply {
-                putExtra("user_name", "wjdgmlwhd")
+                putExtra("user_name", profileList.get(position).name)
                 putExtra("user_number", profileList.get(position).number)
             }
             startActivityForResult(holder.itemView.context as Activity, intent, 101, null)
