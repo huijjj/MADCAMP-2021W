@@ -1,5 +1,6 @@
 package com.example.temp2.ui.contact
 
+import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,7 +22,11 @@ class UserContactEditActivity : AppCompatActivity() {
         userNumber.setText(intent.getStringExtra("user_number"))
 
         btn_editComplete.setOnClickListener(View.OnClickListener() {
-            //file에 정보 write
+
+            val intent = Intent()
+            intent.putExtra("user_name", userName.text.toString())
+            intent.putExtra("user_number", userNumber.text.toString())
+            setResult(RESULT_OK, intent)
             finish()
         })
     }

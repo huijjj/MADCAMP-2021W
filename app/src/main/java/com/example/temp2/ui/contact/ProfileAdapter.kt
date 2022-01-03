@@ -1,5 +1,6 @@
 package com.example.temp2.ui.contact
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.media.Image
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.recyclerview.widget.RecyclerView
 import com.example.temp2.PhotoActivity
 import com.example.temp2.Profiles
@@ -39,11 +41,10 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapte
         holder.phoneNum.text = profileList.get(position).number
         holder.btnEdit?.setOnClickListener(View.OnClickListener() {
             val intent = Intent(context, UserContactEditActivity::class.java).apply {
-                putExtra("user_name", profileList.get(position).name)
+                putExtra("user_name", "wjdgmlwhd")
                 putExtra("user_number", profileList.get(position).number)
-            }.run{
-                context.startActivity(this)
             }
+            startActivityForResult(holder.itemView.context as Activity, intent, 101, null)
         })
     }
 

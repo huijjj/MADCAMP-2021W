@@ -1,18 +1,26 @@
 package com.example.temp2.ui.contact
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.temp2.Profiles
 import com.example.temp2.databinding.FragmentContactBinding
 import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
 
 class ContactFragment : Fragment() {
 
     private var _binding: FragmentContactBinding? = null
+    private var profileList: ArrayList<Profiles> = arrayListOf()
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,8 +32,25 @@ class ContactFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        Log.d("test", "loglog")
         _binding = FragmentContactBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 여기서 파일 읽기
+        profileList.clear()
+        Log.d("test", "resumed")
 
         // reading contact.json
         val assets = resources.assets
@@ -33,10 +58,31 @@ class ContactFragment : Fragment() {
         val jsonString = inputStream.bufferedReader().use{ it.readText() }
 
         // parsing json file
-        val profileList: ArrayList<Profiles> = arrayListOf()
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("contacts")
-        profileList.add(Profiles(Profiles.USER_TYPE, "김민희", "010-1234-5678"))
+
+        // 유저 파일 읽기
+        val userFile = requireContext().getFileStreamPath("user.txt")
+        if(userFile.exists()) {
+            Log.d("test", "user data file found")
+            val fileReader = FileReader(userFile)
+            val bufferedReader = BufferedReader(fileReader)
+            val temp = arrayListOf<String>()
+            bufferedReader.readLines().forEach {
+                temp.add(it)
+            }
+            if(temp.size < 2) {
+                profileList.add(Profiles(Profiles.USER_TYPE, "김민희", "010-1234-5678"))
+            }
+            else {
+                profileList.add(Profiles(Profiles.USER_TYPE, temp[0], temp[1]))
+            }
+        }
+        else {
+            Log.d("test", "user data file NOT found")
+            profileList.add(Profiles(Profiles.USER_TYPE, "김민희", "010-1234-5678"))
+        }
+
 
 
         for(i in 0 until jArray.length()) {
@@ -48,14 +94,7 @@ class ContactFragment : Fragment() {
 
         binding.rvProfile.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvProfile.setHasFixedSize(true)
-
         binding.rvProfile.adapter = ProfileAdapter(profileList)
-
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        ProfileAdapter(profileList).notifyDataSetChanged()
     }
 }

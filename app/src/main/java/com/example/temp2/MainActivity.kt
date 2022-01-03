@@ -1,6 +1,8 @@
 package com.example.temp2
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,6 +10,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.temp2.databinding.ActivityMainBinding
+import java.io.BufferedWriter
+import java.io.FileWriter
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,5 +37,21 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == RESULT_OK) {
+            // 파일 쓰기
+            val userFile = this.getFileStreamPath("user.txt")
+            val fileWriter = FileWriter(userFile, false)
+            val bufferedWriter = BufferedWriter(fileWriter)
+            bufferedWriter.append(data!!.getStringExtra("user_name").toString())
+            bufferedWriter.newLine()
+            bufferedWriter.append(data!!.getStringExtra("user_number").toString())
+            bufferedWriter.newLine()
+            bufferedWriter.close()
+            // contact fragment 다시 어떻게 하기
+        }
     }
 }
