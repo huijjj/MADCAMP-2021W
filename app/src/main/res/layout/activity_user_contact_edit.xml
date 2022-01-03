@@ -6,53 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".ui.contact.UserContactEditActivity">
 
-    <EditText
-        android:id="@+id/tv_editName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="116dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="121dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_editName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857"
+        app:srcCompat="@drawable/user_profile" />
 
     <EditText
         android:id="@+id/tv_editNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
+        android:layout_marginStart="128dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="73dp"
         android:layout_marginBottom="508dp"
         android:ems="10"
+        android:hint="전화번호를 입력하세요."
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_editName"
         app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/btn_editComplete"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_done_24" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="252dp"
         android:layout_marginEnd="24dp"
         android:text="이름"
         app:layout_constraintEnd_toStartOf="@+id/tv_editName"
-        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tv_editName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="73dp"
+        android:ems="10"
+        android:hint="이름을 입력하세요."
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,11 +71,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="31dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
         android:text="전화번호"
         app:layout_constraintEnd_toStartOf="@+id/tv_editNumber"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/btn_editComplete"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_done_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
