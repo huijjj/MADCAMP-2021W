@@ -3,7 +3,7 @@
 We made an single activity application with 3 tabs with Kotlin and android studio for the first week common project.
 3 tabs are like below.
 
-첫 주 과제로 android studio와 Kotlin을 사용하여 3개의 tab으로 구성된 응용프로그램을 제작하였습니다.
+첫 주 과제로 android studio와 Kotlin을 사용하여 3개의 탭으로 구성된 응용프로그램을 제작하였습니다.
 각 탭의 구성은 아래와 같습니다.
 
 - Contacts (연락처)
@@ -13,11 +13,15 @@ We made an single activity application with 3 tabs with Kotlin and android studi
 ### Tab 1. Contacts (연락처)
 ***
 To meet the projects requirements, our first tab is contacts. This tab is implemented with fragment and recycler view for efficient screen rendering.
-Please refer to src/main/java/ui/contact and src/main/res/layout/fragment_contact.xml, contact_list_item.xml, contact_user_item.xml for detailed information.
 Contacts shown are read from assets/contacts.json using asset manager and inserted in to list by recycler view's adapter.
+At the top of the contact list, information of user is shown. User information can be edited by clicking the edit icon at the right top.
+Changes in user data is stored in application's data file, so that the changes can remain after application resart.
+Please refer to src/main/java/ui/contact and src/main/res/layout/fragment_contact.xml, contact_list_item.xml, contact_user_item.xml for detailed information.
 
 프로젝트의 요구 사항에 맞춰, 첫 번째 탭으로 연락처를 구현하였습니다. 효율적인 화면 구성을 위해 fragment와 recycler view를 사용하였습니다. 
 보여지는 연락처는 assets/contacts.json에 저장되어 있으며 asset manager를 사용해 읽어와 adapter를 통해 리스트에 삽입됩니다.
+연락처 리스트의 최상단에는 사용자의 정보가 있으며, 우상단의 수정 아이콘을 클릭하여 사용자 정보를 수정할 수 있습니다.
+수정된 사용자 정보는 앱의 data file에 저장되어, 앱 재시작시에도 반영됩니다.
 자세한 정보는 src/main/java/ui/contact와 src/main/res/layout/fragment_contact.xml, contact_list_item.xml, contact_user_item.xml를 참고 바랍니다.
 
 ### Tab 2. Gallery (갤러리)
