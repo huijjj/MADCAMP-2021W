@@ -37,6 +37,8 @@ class ContactFragment : Fragment() {
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("contacts")
         profileList.add(Profiles(Profiles.USER_TYPE, "김민희", "010-1234-5678"))
+
+
         for(i in 0 until jArray.length()) {
             val obj = jArray.getJSONObject(i)
             val name = obj.getString("name")
