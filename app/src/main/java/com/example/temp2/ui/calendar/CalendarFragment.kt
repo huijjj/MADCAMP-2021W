@@ -1,6 +1,7 @@
 package com.example.temp2.ui.calendar
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,12 +14,16 @@ import androidx.fragment.app.Fragment
 import com.example.temp2.R
 import com.example.temp2.databinding.FragmentCalendarBinding
 import com.bumptech.glide.Glide
+import com.example.temp2.SurpriseActivity
+import com.example.temp2.SurpriseSadActivity
 
 
 class CalendarFragment : Fragment() {
 
     private var _binding: FragmentCalendarBinding? = null
     private lateinit var mediaPlayer: MediaPlayer
+    var count : Int = 0
+    var correct_count : Int = 0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -187,6 +192,20 @@ class CalendarFragment : Fragment() {
                 24 -> Glide.with(requireContext()).load(R.drawable.deco_open_24).into(binding.decoButton24)
                 else -> null
             }
+
+            count ++
+            if (correct_count+1 == day) {
+                correct_count ++
+            }
+            if (correct_count == 24) {
+                val intent = Intent(context, SurpriseActivity::class.java)
+                startActivity(intent)
+            }
+            else if (count == 24) {
+                val intent = Intent(context, SurpriseSadActivity::class.java)
+                startActivity(intent)
+            }
+
         }.setNegativeButton("열지않기", null).create()
 
         alertDialog.setView(view)
