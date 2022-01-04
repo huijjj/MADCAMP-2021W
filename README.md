@@ -1,4 +1,4 @@
-# Mad Camp Week1
+# 산타의 선물(Present of Santa)
 
 We made an single activity application with 3 tabs with Kotlin and android studio for the first week common project.
 3 tabs are like below.
