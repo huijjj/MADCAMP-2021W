@@ -10,6 +10,12 @@ We made an single activity application with 3 tabs with Kotlin and android studi
 - Gallery (갤러리)
 - Advent calendar (이벤트 달력)
 
+
+
+<p align="center">
+  <img width="20%" src="https://user-images.githubusercontent.com/64083281/147923580-bf94fa43-a64d-4c2d-a444-f7f30b380d88.gif" />
+</p>
+
 ### Tab 1. Contacts (연락처)
 ***
 To meet the projects requirements, our first tab is contacts. This tab is implemented with fragment and recycler view for efficient screen rendering.
@@ -23,6 +29,12 @@ Please refer to src/main/java/ui/contact and src/main/res/layout/fragment_contac
 연락처 리스트의 최상단에는 사용자의 정보가 있으며, 우상단의 수정 아이콘을 클릭하여 사용자 정보를 수정할 수 있습니다.
 수정된 사용자 정보는 앱의 data file에 저장되어, 앱 재시작시에도 반영됩니다.
 자세한 정보는 src/main/java/ui/contact와 src/main/res/layout/fragment_contact.xml, contact_list_item.xml, contact_user_item.xml를 참고 바랍니다.
+
+
+<p align="center">
+  <img width="20%" src="https://user-images.githubusercontent.com/64083281/147923726-425695e4-06a3-473b-9142-a108f252904e.gif" />
+  <img width="20%" src="https://user-images.githubusercontent.com/64083281/147923890-ac9e4d1a-91c5-4bff-9034-1aa6f21afff3.gif" />
+</p>
 
 ### Tab 2. Gallery (갤러리)
 ***
