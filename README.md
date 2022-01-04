@@ -62,12 +62,38 @@ An Advent calendar is a special calendar used to count the days of Advent in ant
 You can open up the ornaments one at a time, one for each day to recieve small but pleasing presents.
 You can also enjoy the joyful carol and feel the vibe of christmas.
 Checkout the codes at src/main/java/ui/calendar and src/main/res/layout/fragment_calendar.xml to see how this is done.
-Every ornament images used are carefully hand-drawn by talented artist **Minhee Kim** a.k.a. **minizzang**.
+Every ornament images used are carefully hand-drawn by **Minhee Kim** a.k.a. **minizzang**.
+You can get a pleasant gift if you open the presents in right order.
+```
+You better watch out!
+You better not cry!
+You better not pout!
+I'm telling you why,
+Santa Claus is coming to town
+He's making a list!
+He's checking it twice!
+He's gonna find out who's naughty or nice
+Santa Claus is coming to town
+```
 
 마지막 자유 주제 탭은 재림절 달력을 만들어보았습니다. 재림절 달력은 크리스마스를 기다리며 하루에 하나씩 작은 선물을 열어볼 수 있는 달력입니다.
 또한, 이 탭에서는 즐거운 캐럴을 들으며 연말 분위기에 흠뻑 취할 수 있습니다. 
 자세한 구현은 src/main/java/ui/calendar와 src/main/res/layout/fragment_calendar.xml의 코드를 참고해주시길 바랍니다.
-사용된 모든 장식품 이미지는 아티스트 **김민희(minizzang)** 께서 손수 그리신 이미지입니다.
+사용된 모든 장식품 이미지는 **김민희(minizzang)** 께서 손수 그리신 이미지입니다.
+나쁜 아이는 선물을 받을 수 없어용~
+```
+울면 안 돼!
+울면 안 돼!
+산타할아버지는 우는 아이에겐
+선물을 안 주신대
+산타할아버지는 알고 계신대
+누가 착한 앤지 나쁜 앤지
+오늘밤에 다녀가신대
+잠 잘 때나 일어날 때
+짜증날 때 장난할 때도
+산타할아버지는
+모든 것을 알고 계신대
+```
 
 <p align="center">
   <img width="20%" src="https://user-images.githubusercontent.com/64083281/147918646-ff2b80be-012d-47e2-b896-f93a1d6e0557.gif" />
