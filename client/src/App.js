@@ -9,13 +9,19 @@ const socket = io.connect('http://172.10.5.112:443');
 
 function App() {
   const scrollRef = useRef();
+  const [ room, setRoom ] = useState('');
   const [ chats, setChates ] = useState([]);
   
   useEffect(() => {
+    const temp = prompt("Enter room name");
+    setRoom(temp ? temp : "test");
+    console.log("selected room: ", temp ? temp : "test");
+    socket.emit('join', temp);
+
     socket.on('message', ({ name, msg }) => {
       console.log(name, msg);
       setChates(chats => chats.concat({name, msg}));
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      scrollRef?.current?.scrollIntoView({ behavior: "smooth" });
     });
   }, []);
 
@@ -26,7 +32,7 @@ function App() {
     // console.log(name);
     // console.log(msg);
     e.target.msg.value = "";
-    socket.emit('message', { name, msg });
+    socket.emit('message', { room, name, msg });
   }
 
   return (

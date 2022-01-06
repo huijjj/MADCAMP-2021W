@@ -12,9 +12,13 @@ const io = require('socket.io')(http, {
 io.on('connection', (socket) => {
     console.log("connection established");
 
-    socket.on('message', ({ name, msg }) => {
-        console.log(name, msg);
-        io.emit('message', ({ name, msg }));
+    socket.on('join', (room) => {
+        socket.join(room);
+    });
+
+    socket.on('message', ({ room, name, msg }) => {
+        console.log(room, name, msg);
+        io.to(room).emit('message', ({ name, msg }));
     });
     
     socket.on('disconnect', async () => {
