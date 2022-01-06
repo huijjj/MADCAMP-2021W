@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect, useRef } from 'react';
+import io from 'socket.io-client';
+import ChatLog from './ChatLog';
+import ChatInput from './ChatInput';
+
+
+const socket = io.connect('http://172.10.5.112:443');
 
 function App() {
+  const scrollRef = useRef();
+  const [ chats, setChates ] = useState([]);
+  
+  useEffect(() => {
+    socket.on('message', ({ name, msg }) => {
+      console.log(name, msg);
+      setChates(chats => chats.concat({name, msg}));
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    });
+  }, []);
+
+  const onMsgSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const msg = e.target.msg.value;
+    // console.log(name);
+    // console.log(msg);
+    socket.emit('message', { name, msg });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChatLog chats={chats} scrollRef={scrollRef} />
+      <ChatInput onMsgSubmit={onMsgSubmit} />
     </div>
   );
 }
