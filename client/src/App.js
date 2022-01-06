@@ -14,9 +14,9 @@ function App() {
   
   useEffect(() => {
     const temp = prompt("Enter room name");
-    setRoom(temp ? temp : "test");
-    console.log("selected room: ", temp ? temp : "test");
-    socket.emit('join', temp);
+    setRoom(temp ? temp : "default");
+    console.log("selected room: ", temp ? temp : "default");
+    socket.emit('join', temp ? temp : "default");
 
     socket.on('message', ({ name, msg }) => {
       console.log(name, msg);
@@ -35,10 +35,19 @@ function App() {
     socket.emit('message', { room, name, msg });
   }
 
+  const onChangeRoom = (e) => {
+    e.preventDefault();
+    const temp = prompt("Enter room name");
+    socket.emit('leave', room);
+    setRoom(temp ? temp : "default");
+    console.log("selected room: ", temp ? temp : "default");
+    socket.emit('join', temp ? temp : "default");
+  }
+
   return (
     <div className="App">
       <ChatLog chats={chats} scrollRef={scrollRef} />
-      <ChatInput onMsgSubmit={onMsgSubmit} />
+      <ChatInput onMsgSubmit={onMsgSubmit} onChangeRoom={onChangeRoom}/>
     </div>
   );
 }

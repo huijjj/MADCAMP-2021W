@@ -10,19 +10,25 @@ const io = require('socket.io')(http, {
 
 
 io.on('connection', (socket) => {
-    console.log("connection established");
+    console.log("connection established, id: ", socket.id);
 
     socket.on('join', (room) => {
+        console.log(socket.id, "(join)", room);
         socket.join(room);
+    });
+    
+    socket.on('leave', (room) => {
+        console.log(socket.id, "(leave)", room);
+        socket.leave(room);
     });
 
     socket.on('message', ({ room, name, msg }) => {
-        console.log(room, name, msg);
+        console.log(socket.id, "(message)", room, name, msg);
         io.to(room).emit('message', ({ name, msg }));
     });
     
     socket.on('disconnect', async () => {
-        console.log('user disconnected');
+        console.log(socket.id, "(disconnect)");
     });
 });
 
