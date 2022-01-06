@@ -3,9 +3,9 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/index.html');
+// });
 
 io.on('connection', (socket) => {
     socket.on('request_message', (msg) => {
@@ -17,6 +17,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(80, () => {
-    console.log('connected at 80');
+http.listen(443, () => {
+    console.log('connected at 443');
 })
