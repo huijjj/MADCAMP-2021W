@@ -25,6 +25,7 @@ function App() {
     const msg = e.target.msg.value;
     // console.log(name);
     // console.log(msg);
+    e.target.msg.value = "";
     socket.emit('message', { name, msg });
   }
 
