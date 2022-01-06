@@ -40,5 +40,20 @@
             <div class="col-lg-8"></div>
         </div>
         <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            $(() => {
+                const socket = io();
+                $('#msg-send').click(() => {
+                    socket.emit('request_message', $('#m').val());
+                    $('#m').val('');
+                    return false;
+                });
+    
+                socket.on('response_message', (res) => {
+                    $('#messages').prepend($('<li>').text(res));
+                });
+            });
+        </script>
     </body>
 </html>
