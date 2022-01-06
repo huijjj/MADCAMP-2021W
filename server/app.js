@@ -8,7 +8,6 @@ const io = require('socket.io')(http, {
     }
 });
 
-
 io.on('connection', (socket) => {
     console.log("connection established, id: ", socket.id);
 
@@ -27,6 +26,26 @@ io.on('connection', (socket) => {
         io.to(room).emit('message', ({ name, msg }));
     });
     
+    socket.on('rooms', () => {
+        console.log(socket.id, "(rooms)");
+        const rooms = io.sockets.adapter.rooms;
+        let available = [];
+
+        if(rooms) {
+            // console.log(rooms);
+            rooms.forEach((element, key) => {
+                // console.log(key, element);
+                if(!(element.has(key))) {
+                    const participants = element.size;
+                    available.push({ key, participants });
+                }
+            });
+        }
+
+        console.log("room list", available);
+        io.to(socket.id).emit('rooms', available);
+    });
+
     socket.on('disconnect', async () => {
         console.log(socket.id, "(disconnect)");
     });

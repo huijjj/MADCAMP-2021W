@@ -10,9 +10,7 @@ function ChatLog({ chats, scrollRef }) {
     return (
         <div className="ChatLog">
             {renderChat()}
-            <div style={{ float: "left", clear: "both" }} ref={scrollRef}>
-
-            </div>
+            <div style={{ float: "left", clear: "both" }} ref={scrollRef} />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 
-export default function ChatInput({ onMsgSubmit, onChangeRoom }) {
+export default function ChatInput({ onMsgSubmit, onLeave }) {
     return (
         <div className="chat_form">
             <form className="chat_form" onSubmit={onMsgSubmit}>
@@ -18,7 +18,7 @@ export default function ChatInput({ onMsgSubmit, onChangeRoom }) {
                 </div>
                 <button>Send</button>
             </form>
-            <button style={{ margin: "0 0 0 0.5rem" }} onClick={onChangeRoom}>ChangeRoom</button>
+            <button onClick={onLeave}>Leave</button>
         </div>
     );
 }
