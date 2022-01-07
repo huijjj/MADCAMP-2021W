@@ -19,10 +19,9 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on('set go', ({ color, X, Y }) => {
-        // sending message to clients in the room
+    socket.on('set go', (color, X, Y) => {
         console.log("(set go)", color, X, Y);
-        io.emit('set go', ({ color, X, Y }));
+        io.emit('set go', color, X, Y);
     });
 
     socket.on('disconnect', async () => {
