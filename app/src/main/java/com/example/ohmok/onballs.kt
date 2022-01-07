@@ -55,11 +55,10 @@ class onballs: View {
             canvas.drawCircle(b.get_x()*distance, b.get_y()*distance, 30F, ball_white_paint)
         }
         var check = check_win_or_fall()
-        if (check!=0){
-
-            turn=false
+        Log.v("winner",check.toString())
+        if(check==1){
+            mSocket.emit("game end",my_color)
         }
-
         turn = !turn
         //random_loc()
 

@@ -15,11 +15,12 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     var turn = true
     lateinit var ball_Board:onballs
+    var color = "black"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val board = findViewById<Go_board>(R.id.Go_board)
-        var color = intent.getStringExtra("color");
+        color = intent.getStringExtra("color").toString();
         turn = color =="black"
         Log.v("h1",turn.toString())
         setContentView(R.layout.activity_main)
@@ -40,14 +41,19 @@ class MainActivity : AppCompatActivity() {
         x = args[1].toString().toInt()
         y = args[2].toString().toInt()
         var setball = ball(x,y)
-        Log.v("send hihi","jojo")
+        //Log.v("send hihi","jojo")
         ball_Board.add_ball(setball,args[0].toString()=="black")
 
     }
 
     var open_popup = Emitter.Listener { args ->
         var winner = args[0].toString()
+        ball_Board.turn = false
+        Log.v("winner",winner)
         var win_text = "WIN"
+        if(winner!=color){
+            win_text = "LOSE"
+        }
         findViewById<FrameLayout>(R.id.win_pop).visibility = View.VISIBLE
         findViewById<TextView>(R.id.win_or_lose).text = win_text
     }
