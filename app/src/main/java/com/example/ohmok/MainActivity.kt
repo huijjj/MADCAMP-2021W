@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         x = args[1].toString().toInt()
         y = args[2].toString().toInt()
         var setball = ball(x,y)
+        ball_Board.add_ball(setball,args[0].toString()=="black")
+
 
 
 
