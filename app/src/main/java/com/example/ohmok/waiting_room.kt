@@ -13,7 +13,10 @@ class waiting_room : AppCompatActivity() {
     lateinit var mSocket: io.socket.client.Socket
     var room_name = ""
     var ready_num = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.v("2nd","create")
         super.onCreate(savedInstanceState)
         val ma = main_room()
         //mSocket= ma.mSocket
@@ -60,6 +63,7 @@ class waiting_room : AppCompatActivity() {
         room_intent.putExtra("color",color)
         mSocket.close()
         startActivity(room_intent)
+        //finish();
     }
 
 }

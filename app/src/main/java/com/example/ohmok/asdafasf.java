@@ -1,5 +1,7 @@
 package com.example.ohmok;
 
-public class asdafasf {
+import java.io.Serializable;
+
+public class asdafasf implements Serializable {
 
 }

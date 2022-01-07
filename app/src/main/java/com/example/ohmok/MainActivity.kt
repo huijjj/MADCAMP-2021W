@@ -7,8 +7,11 @@ import android.view.View
 import io.socket.emitter.Emitter
 import kotlin.concurrent.timer
 import android.util.Half.toFloat
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import java.lang.reflect.Constructor
 import java.util.*
 
 
@@ -33,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         mSocket.on("set go", send_balls)
         mSocket.on("game result",open_popup)
 
+        findViewById<Button>(R.id.main).setOnClickListener{view ->
+            finish();
+        }
+
     }
     var send_balls = Emitter.Listener { args->
         //받아온 것을 ball로 바꿔서 만들어두고 add_ball을 하자
@@ -54,7 +61,16 @@ class MainActivity : AppCompatActivity() {
         if(winner!=color){
             win_text = "LOSE"
         }
-        findViewById<FrameLayout>(R.id.win_pop).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.win_or_lose).text = win_text
+        Thread(object : Runnable{
+            override fun run() {
+                runOnUiThread(Runnable {
+                    kotlin.run {
+                        findViewById<ConstraintLayout>(R.id.win_pop).visibility = View.VISIBLE
+                        findViewById<TextView>(R.id.win_or_lose).text = win_text
+                    }
+                })
+            }
+        }).start()
+
     }
 }

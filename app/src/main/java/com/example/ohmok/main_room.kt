@@ -28,17 +28,21 @@ class main_room : AppCompatActivity() {
 
     //lateinit var mSocket: Socket// oncreate될 때, 소켓을 만들어서 받아온다.
     var room_name = ""
+    //var mSocket = SocketApplication.get()
 
 
     var roomInfo = listOf<room_info>(room_info("a1",setOf("b","c")),room_info("a2",setOf("a")),room_info("a3",setOf("d")))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Log.v("2nd","create")
 
         binding = ActivityMainRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMainRoom.toolbar)
+        //mSocket = SocketApplication.get()
+        //mSocket.connect()
 
         //방 정보 들어오는 과정 -> 새로 고침 버튼으로 업데이트 하던지
         //Log.v("hi1","hihi")
@@ -78,6 +82,7 @@ class main_room : AppCompatActivity() {
             //소켓에 새로운 방 집어넣기
             room_name = findViewById<TextInputEditText>(R.id.room_name).text.toString()
             val room_intent = Intent(this, waiting_room::class.java)
+            room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             room_intent.putExtra("room_name",room_name)
             var par_num = "";
             //par_num = args[0].toString()
@@ -96,6 +101,7 @@ class main_room : AppCompatActivity() {
     var open_room = Emitter.Listener { args ->
         val room_intent = Intent(this, waiting_room::class.java)
         Log.v("open room",args[0].toString())
+        room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         room_intent.putExtra("room_name",room_name)
         var par_num = "";
         par_num = args[0].toString()
