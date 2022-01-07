@@ -7,6 +7,8 @@ import android.view.View
 import io.socket.emitter.Emitter
 import kotlin.concurrent.timer
 import android.util.Half.toFloat
+import android.widget.FrameLayout
+import android.widget.TextView
 import java.util.*
 
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         ball_Board.setSocket(mSocket)
         mSocket.on("set go", send_balls)
+        mSocket.on("game result",open_popup)
 
     }
     var send_balls = Emitter.Listener { args->
@@ -40,8 +43,12 @@ class MainActivity : AppCompatActivity() {
         Log.v("send hihi","jojo")
         ball_Board.add_ball(setball,args[0].toString()=="black")
 
+    }
 
-
-
+    var open_popup = Emitter.Listener { args ->
+        var winner = args[0].toString()
+        var win_text = "WIN"
+        findViewById<FrameLayout>(R.id.win_pop).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.win_or_lose).text = win_text
     }
 }

@@ -56,10 +56,7 @@ class onballs: View {
         }
         var check = check_win_or_fall()
         if (check!=0){
-            var win_text = "WIN"
-            if(check==-1){win_text="LOSE"}
-            findViewById<TextView>(R.id.win_or_lose).text = win_text
-            findViewById<FrameLayout>(R.id.win_pop).visibility = VISIBLE
+
             turn=false
         }
 
@@ -152,7 +149,7 @@ class onballs: View {
             ball_array[one_ball.get_x()-1][one_ball.get_y()-1]=getter
         }
         Log.v("ball",color_is_black.toString())
-        turn = !turn
+        //turn = !turn
         invalidate()
 
     }
