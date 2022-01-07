@@ -8,6 +8,7 @@ io.on('connection', (socket) => {
     console.log('(connection) ', socket.id);
     
     socket.on('join', (room) => {
+        console.log("(join)", socket.id, "cur waiting: ", waiting.length ? "true" : "false");
         socket.join("test");
         waiting.push(socket.id);
 
