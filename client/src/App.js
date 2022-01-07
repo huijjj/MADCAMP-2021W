@@ -42,8 +42,11 @@ function App() {
     socket.emit('message', { room, name, msg });
   }
 
-  const onRoomJoin = (name) => {
-
+  const onRoomSelect = (roomName) => {
+    console.log("selected room: ", roomName);
+    setRoom(roomName);
+    socket.emit('join', roomName);
+    setJoined(true);
   }
 
   const onRoomCreate = (e) => {
@@ -76,8 +79,8 @@ function App() {
           <ChatInput onMsgSubmit={onMsgSubmit} onLeave={onLeave}/>
         </> :
         <>
-          <RoomList roomList={roomList} />
-          <RoomInput onRoomJoin={onRoomJoin} onRoomCreate={onRoomCreate} />
+          <RoomList onRoomSelect={onRoomSelect} roomList={roomList} />
+          <RoomInput onRoomCreate={onRoomCreate} />
         </>
     }</div>
   );

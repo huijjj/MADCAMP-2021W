@@ -13,7 +13,13 @@ io.on('connection', (socket) => {
 
     socket.on('join', (room) => {
         console.log(socket.id, "(join)", room);
-        socket.join(room);
+        const rooms = io.sockets.adapter.rooms;
+        if(rooms[room]?.has(socket.id)) {
+            console.log(socket.id, " already joined ", room);
+        }
+        else {
+            socket.join(room);
+        }
     });
     
     socket.on('leave', (room) => {
