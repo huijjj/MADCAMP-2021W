@@ -10,7 +10,7 @@ io.on('connection', (socket) => {
     console.log('(connection) ', socket.id);
     
     socket.on('join', (room) => {
-        console.log("(join)", socket.id, "cur waiting: ", waiting.length ? "true" : "false");
+        console.log("(join)", socket.id);
         
         if(roomSet.has(room)) { // this room already exist
             if(roomSet.get(room).length == 1) { // able to join
@@ -37,6 +37,11 @@ io.on('connection', (socket) => {
     socket.on('set go', (room, color, X, Y) => {
         console.log("(set go)", room, color, X, Y);
         io.to(room).emit('set go', color, X, Y);
+    });
+
+    socket.on('game end',(room, winner)=>{
+        console.log("(game end)", room, winner);
+        io.to(room).emit('game result', winner);
     });
 
     socket.on('disconnect', async () => {
