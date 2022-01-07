@@ -61,6 +61,7 @@ class waiting_room : AppCompatActivity() {
         color = args.toString()
         Log.v("start",color)
         room_intent.putExtra("color",color)
+        room_intent.putExtra("room_name",room_name)
         mSocket.close()
         startActivity(room_intent)
         //finish();
