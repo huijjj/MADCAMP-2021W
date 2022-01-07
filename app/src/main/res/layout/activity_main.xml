@@ -20,14 +20,14 @@
 
     </com.example.ohmok.Go_board>
 
-    <com.example.ohmok.balls
-        android:id="@+id/view2"
+    <com.example.ohmok.onballs
+        android:id="@+id/balls"
         android:layout_width="409dp"
         android:layout_height="409dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </com.example.ohmok.balls>
+    </com.example.ohmok.onballs>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

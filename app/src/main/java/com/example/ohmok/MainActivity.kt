@@ -15,7 +15,12 @@ class MainActivity : AppCompatActivity() {
         val board = findViewById<Go_board>(R.id.Go_board)
         var color = intent.getStringExtra("color");
         turn = color =="black"
+        Log.v("h1",turn.toString())
+        val ball_Board = findViewById<onballs>(R.id.balls)
+        ball_Board.turn = turn
+
         setContentView(R.layout.activity_main)
+
 
 
 

@@ -12,7 +12,7 @@ import androidx.annotation.AttrRes
 import java.util.*
 import kotlin.math.round
 
-class balls: View {
+class onballs: View {
     val for_black = mutableListOf<ball>()
     val for_white = mutableListOf<ball>()
     var distance :Float = 0.toFloat()
@@ -28,13 +28,9 @@ class balls: View {
 
 
     override fun onDraw(canvas: Canvas) {
-        while(!signal){
-            //이걸 소켓 시그널로 바꾸어서 한다.
-
-        }
         //val ma = MainActivity()
         //turn = ma.turn
-        //Log.v("test",turn.toString())
+        Log.v("h2",turn.toString())
 
         signal = false
         distance = canvas.width.toFloat()/17
