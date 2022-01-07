@@ -30,7 +30,12 @@ class balls: View {
     override fun onDraw(canvas: Canvas) {
         while(!signal){
             //이걸 소켓 시그널로 바꾸어서 한다.
+
         }
+        //val ma = MainActivity()
+        //turn = ma.turn
+        //Log.v("test",turn.toString())
+
         signal = false
         distance = canvas.width.toFloat()/17
         super.onDraw(canvas)

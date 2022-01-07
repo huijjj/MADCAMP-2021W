@@ -33,6 +33,7 @@ class Go_board: View{
         distance = canvas.width.toFloat() / 17
         super.onDraw(canvas)
 
+
         val paint = Paint()
         paint.color = Color.BLACK
         paint.setStrokeWidth(8F)
