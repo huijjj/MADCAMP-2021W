@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_main_room.xml" value="0.1" />
         <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_waiting_room.xml" value="0.25" />
         <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/app_bar_main_room.xml" value="0.18" />
@@ -13,7 +13,7 @@
         <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/room_element.xml" value="0.22" />
         <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/user_info.xml" value="0.22" />
         <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/waiting_room.xml" value="0.33" />
-        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/winner_popup.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/winner_popup.xml" value="0.21" />
       </map>
     </option>
   </component>

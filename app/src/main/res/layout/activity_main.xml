@@ -30,4 +30,25 @@
         app:layout_constraintTop_toTopOf="parent">
     </com.example.ohmok.onballs>
 
+    <FrameLayout
+        android:id="@+id/win_pop"
+        android:layout_width="338dp"
+        android:layout_height="163dp"
+        android:background="#FFFFFF"
+        android:foregroundGravity="center|center_horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/win_or_lose"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|center_vertical"
+            android:textSize="20sp" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

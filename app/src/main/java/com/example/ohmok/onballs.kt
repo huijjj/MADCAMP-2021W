@@ -8,7 +8,10 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.annotation.AttrRes
+import org.w3c.dom.Text
 import java.util.*
 import kotlin.math.round
 
@@ -51,8 +54,15 @@ class onballs: View {
         for (b in for_white) {
             canvas.drawCircle(b.get_x()*distance, b.get_y()*distance, 30F, ball_white_paint)
         }
+        var check = check_win_or_fall()
+        if (check!=0){
+            var win_text = "WIN"
+            if(check==-1){win_text="LOSE"}
+            findViewById<TextView>(R.id.win_or_lose).text = win_text
+            findViewById<FrameLayout>(R.id.win_pop).visibility = VISIBLE
+            turn=false
+        }
 
-        Log.e("winner",check_win_or_fall().toString())
         turn = !turn
         //random_loc()
 
@@ -107,7 +117,7 @@ class onballs: View {
                         //for_black.add(setball)
                         //var args = arrayListOf<String>(my_color, xAxis.toString(), yAxis.toString())
                         mSocket.emit("set go",my_color, xAxis.toString(), yAxis.toString())
-                        turn = false
+                        //turn = false
                         //signal = true
 
                         //소켓 쓰면 소켓에다가 send 후 onDraw에 리스너 열어두기
@@ -128,10 +138,21 @@ class onballs: View {
     fun add_ball(one_ball:ball,color_is_black:Boolean){
         if(color_is_black){
             for_black.add(one_ball)
+            var getter = -1
+            if(my_color=="black"){
+                getter = 1
+            }
+            ball_array[one_ball.get_x()-1][one_ball.get_y()-1]=getter
         }else{
             for_white.add(one_ball)
+            var getter = -1
+            if(my_color=="white"){
+                getter = 1
+            }
+            ball_array[one_ball.get_x()-1][one_ball.get_y()-1]=getter
         }
         Log.v("ball",color_is_black.toString())
+        turn = !turn
         invalidate()
 
     }
