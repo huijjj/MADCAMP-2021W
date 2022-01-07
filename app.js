@@ -25,8 +25,8 @@ io.on('connection', (socket) => {
         console.log("(join)", socket.id, room);
         socket.join(room);
         const _room = io.sockets.adapter.rooms[room];
-        const players = Array.from(_room);
-        io.to(socket.id).emit('participant count', _room?.size);
+        const players = Array.from(_room ? _room : []);
+        io.to(socket.id).emit('participant count', _room ? 2 : 1);
         if(_room?.size === 2) {
             if(players[0] == socket.id) {
                 io.to(players[1]).emit('opponent join');
@@ -75,6 +75,6 @@ io.on('connection', (socket) => {
 });
 
 
-http.listen(80, () => {
-    console.log('listening to port 80');
+http.listen(443, () => {
+    console.log('listening to port 443');
 });
