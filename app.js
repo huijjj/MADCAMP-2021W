@@ -1,27 +1,42 @@
+const { request } = require('http');
+
 const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-let waiting = new Array();
+let roomSet = new Map();
 
 io.on('connection', (socket) => {
     console.log('(connection) ', socket.id);
     
     socket.on('join', (room) => {
         console.log("(join)", socket.id, "cur waiting: ", waiting.length ? "true" : "false");
-        socket.join("test");
-        waiting.push(socket.id);
-
-        if(waiting.length == 2) {
-            io.to(waiting[0]).emit('start', "white");
-            io.to(waiting[1]).emit('start', "black");
-            waiting = [];
+        
+        if(roomSet.has(room)) { // this room already exist
+            if(roomSet.get(room).length == 1) { // able to join
+                roomSet.set(room, [ roomSet.get(room)[0], socket.id ]);
+                socket.join(room);
+                io.to(roomSet.get(room)[0]).emit('start', "white");
+                io.to(roomSet.get(room)[1]).emit('start', "black");
+            }
+            else { // room already occupied
+                // send error msg
+            }
+        }
+        else {  // room does not exist
+            // create and join
+            socket.join(room);
+            roomSet.set(room, [ socket.id ]);
         }
     });
 
-    socket.on('set go', (color, X, Y) => {
-        console.log("(set go)", color, X, Y);
-        io.emit('set go', color, X, Y);
+    socket.on('rejoin', (room) => {
+        socket.join(room);
+    });
+
+    socket.on('set go', (room, color, X, Y) => {
+        console.log("(set go)", room, color, X, Y);
+        io.to(room).emit('set go', color, X, Y);
     });
 
     socket.on('disconnect', async () => {
