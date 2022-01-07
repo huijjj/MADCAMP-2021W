@@ -28,6 +28,7 @@ class onballs: View {
     lateinit var mSocket: io.socket.client.Socket;
 
     var my_color = "black"
+    var my_room = ""
     //mSocket.connect() // close 되면 새 소켓 열기
 
     constructor(context: Context) : super(context)
@@ -57,7 +58,7 @@ class onballs: View {
         var check = check_win_or_fall()
         Log.v("winner",check.toString())
         if(check==1){
-            mSocket.emit("game end",my_color)
+            mSocket.emit("game end", my_room, my_color)
         }
         turn = !turn
         //random_loc()
@@ -112,7 +113,7 @@ class onballs: View {
                         //ball_array[xAxis-1][yAxis-1]=1
                         //for_black.add(setball)
                         //var args = arrayListOf<String>(my_color, xAxis.toString(), yAxis.toString())
-                        mSocket.emit("set go",my_color, xAxis.toString(), yAxis.toString())
+                        mSocket.emit("set go", my_room, my_color, xAxis.toString(), yAxis.toString())
                         //turn = false
                         //signal = true
 
@@ -218,8 +219,9 @@ class onballs: View {
         return winner
     }
     @JvmName("setTurn1")
-    fun setTurn(t:Boolean){
+    fun setTurn(t:Boolean, room_name:String){
         turn = t
+        my_room = room_name
         if (t!=true){
             my_color ="white"
         }
