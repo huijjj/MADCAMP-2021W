@@ -130,6 +130,8 @@ class onballs: View {
         }else{
             for_white.add(one_ball)
         }
+        Log.v("ball",color_is_black.toString())
+        turn = !turn
         invalidate()
 
     }

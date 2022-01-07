@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         mSocket.connect()
 
         ball_Board.setSocket(mSocket)
-        mSocket.on("set_go", send_balls)
+        mSocket.on("set go", send_balls)
 
     }
     var send_balls = Emitter.Listener { args->
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         x = args[1].toString().toInt()
         y = args[2].toString().toInt()
         var setball = ball(x,y)
+        Log.v("send hihi","jojo")
         ball_Board.add_ball(setball,args[0].toString()=="black")
 
 
