@@ -1,17 +1,18 @@
 package com.example.ohmok
 
-class ball (pos_x:Float, pos_y:Float){
-    var x:Float
-    var y:Float
+class ball (pos_x:Int, pos_y:Int){
+    var x:Int
+    var y:Int
+    var color = "black"
 
     init{
         this.x = pos_x
         this.y = pos_y
     }
-    fun get_x(): Float {
+    fun get_x(): Int {
         return this.x
     }
-    fun get_y(): Float {
+    fun get_y(): Int {
         return this.y
     }
 

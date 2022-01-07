@@ -46,10 +46,10 @@ class onballs: View {
         ball_white_paint.color = Color.WHITE
 
         for (b in for_black) {
-            canvas.drawCircle(b.get_x(), b.get_y(), 30F, ball_black_paint)
+            canvas.drawCircle(b.get_x()*distance, b.get_y()*distance, 30F, ball_black_paint)
         }
         for (b in for_white) {
-            canvas.drawCircle(b.get_x(), b.get_y(), 30F, ball_white_paint)
+            canvas.drawCircle(b.get_x()*distance, b.get_y()*distance, 30F, ball_white_paint)
         }
 
         Log.e("winner",check_win_or_fall().toString())
@@ -58,7 +58,7 @@ class onballs: View {
         var sec = 0
     }
 
-    fun random_loc(){
+    /*fun random_loc(){
         val random = Random()
         var x = random.nextInt(16)
         var y = random.nextInt(16)
@@ -78,7 +78,7 @@ class onballs: View {
         }
 
 
-    }
+    }*/
     //서버 요청 받고 white를 채우는 코드 추가, 이때, while을 통해 터치 이벤트 작동을 막아둔다.
     //소켓 받는건 이 위치에서 실행
     //시간 설정 후 턴 돌리는건 어케 하지?
@@ -90,8 +90,8 @@ class onballs: View {
 
         }else{
             //터치 가능 위치 재설정(이상하게 밀려서 클릭이 안되는 문제 발생
-            var xAxis : Float? = null
-            var yAxis : Float? = null
+            var xAxis : Int =0
+            var yAxis : Int = 0
             when(event?.action) {
                 MotionEvent.ACTION_DOWN -> {
                     //Log.v("click",for_black.size.toString())
@@ -99,15 +99,15 @@ class onballs: View {
                         return false
                     }
                     if(ball_array[round(event.x/distance).toInt()-1][ round(event.y/distance).toInt()-1]==0){
-                        xAxis = round(event.x/distance) *distance
-                        yAxis = round(event.y/distance) *distance
+                        xAxis = round(event.x/distance).toInt()
+                        yAxis = round(event.y/distance).toInt()
                         var setball = ball(xAxis,yAxis)
-                        ball_array[round(event.x/distance).toInt()-1][ round(event.y/distance).toInt()-1]=1
+                        //ball_array[xAxis-1][yAxis-1]=1
                         //for_black.add(setball)
-                        var args = arrayListOf<String>(my_color, xAxis.toString(), yAxis.toString())
-                        mSocket.emit("set go",args)
+                        //var args = arrayListOf<String>(my_color, xAxis.toString(), yAxis.toString())
+                        mSocket.emit("set go",my_color, xAxis.toString(), yAxis.toString())
                         turn = false
-                        signal = true
+                        //signal = true
 
                         //소켓 쓰면 소켓에다가 send 후 onDraw에 리스너 열어두기
                         //invalidate()
