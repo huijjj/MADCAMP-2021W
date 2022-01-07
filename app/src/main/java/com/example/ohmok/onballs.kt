@@ -22,6 +22,11 @@ class onballs: View {
 
     var signal = true;
 
+    lateinit var mSocket: io.socket.client.Socket;
+
+    var my_color = "black"
+    //mSocket.connect() // close 되면 새 소켓 열기
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyleAttr: Int) : super(context, attrs, defStyleAttr)
@@ -98,12 +103,14 @@ class onballs: View {
                         yAxis = round(event.y/distance) *distance
                         var setball = ball(xAxis,yAxis)
                         ball_array[round(event.x/distance).toInt()-1][ round(event.y/distance).toInt()-1]=1
-                        for_black.add(setball)
+                        //for_black.add(setball)
+                        var args = arrayListOf<String>(my_color, xAxis.toString(), yAxis.toString())
+                        mSocket.emit("set go",args)
                         turn = false
                         signal = true
 
                         //소켓 쓰면 소켓에다가 send 후 onDraw에 리스너 열어두기
-                        invalidate()
+                        //invalidate()
                         
                         //소켓으로 전송하고 동시에 받아와보자
                     }
@@ -114,6 +121,17 @@ class onballs: View {
         }
 
         return true
+    }
+
+
+    fun add_ball(one_ball:ball,color_is_black:Boolean){
+        if(color_is_black){
+            for_black.add(one_ball)
+        }else{
+            for_white.add(one_ball)
+        }
+        invalidate()
+
     }
 
     fun check_win_or_fall():Int{
@@ -180,7 +198,16 @@ class onballs: View {
         }
         return winner
     }
-
+    @JvmName("setTurn1")
+    fun setTurn(t:Boolean){
+        turn = t
+        if (t!=true){
+            my_color ="white"
+        }
+    }
+    fun setSocket(soc:io.socket.client.Socket){
+        mSocket = soc
+    }
 
 
 }

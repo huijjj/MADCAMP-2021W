@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import io.socket.emitter.Emitter
 import kotlin.concurrent.timer
 
 
@@ -16,10 +17,16 @@ class MainActivity : AppCompatActivity() {
         var color = intent.getStringExtra("color");
         turn = color =="black"
         Log.v("h1",turn.toString())
-        val ball_Board = findViewById<onballs>(R.id.balls)
-        ball_Board.turn = turn
-
         setContentView(R.layout.activity_main)
+        val ball_Board = findViewById<onballs>(R.id.balls)
+        ball_Board.setTurn(turn)
+        var mSocket = SocketApplication.get()
+        mSocket.connect()
+
+        ball_Board.setSocket(mSocket)
+        mSocket.on("set_go", Emitter.Listener { (args) ->  })
+
+
 
 
 
