@@ -53,6 +53,7 @@ class onballs: View {
         }
 
         Log.e("winner",check_win_or_fall().toString())
+        turn = !turn
         //random_loc()
 
         var sec = 0
@@ -131,7 +132,6 @@ class onballs: View {
             for_white.add(one_ball)
         }
         Log.v("ball",color_is_black.toString())
-        turn = !turn
         invalidate()
 
     }
