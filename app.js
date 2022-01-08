@@ -47,6 +47,17 @@ io.on('connection', (socket) => {
         roomSet.delete(room);
     });
 
+    socket.on('rooms', () => {
+        console.log("(rooms)", socket.id);
+        const ret = []
+        roomSet.forEach((v, k, _) => {
+            if(v.size === 1) {
+                ret.push(k);
+            }
+        })
+        io.to(socket.id).emit('rooms', ret);
+    });
+
     socket.on('disconnect', async () => {
         console.log(socket.id, "(disconnect)");
     });
