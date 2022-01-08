@@ -7,7 +7,7 @@ import RoomList from './RoomList';
 import RoomInput from './RoomInput'
 
 
-const socket = io.connect('http://172.10.5.112:443');
+const socket = io.connect('http://192.249.18.162:443');
 
 function App() {
   const scrollRef = useRef();
