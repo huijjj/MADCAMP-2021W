@@ -230,5 +230,11 @@ class onballs: View {
         mSocket = soc
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val size = MeasureSpec.getSize(widthMeasureSpec)
+        setMeasuredDimension(size, size)
+    }
+
 
 }

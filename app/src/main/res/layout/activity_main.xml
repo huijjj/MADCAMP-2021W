@@ -22,13 +22,12 @@
 
     <com.example.ohmok.onballs
         android:id="@+id/balls"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="409dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </com.example.ohmok.onballs>
+        app:layout_constraintTop_toTopOf="parent"></com.example.ohmok.onballs>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/win_pop"

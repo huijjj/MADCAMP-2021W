@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.MeasureSpec
 import androidx.annotation.AttrRes
 import kotlin.math.round
 import java.util.Random
@@ -52,6 +53,12 @@ class Go_board: View{
         }
         canvas.drawLines(line_x.toFloatArray(), paint);
         canvas.drawLines(line_y.toFloatArray(), paint);
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val size = MeasureSpec.getSize(widthMeasureSpec)
+        setMeasuredDimension(size, size)
     }
 
 }
