@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ohmok.databinding.ActivityMainRoomBinding
 import com.example.ohmok.SocketApplication
@@ -32,8 +33,8 @@ class main_room : AppCompatActivity() {
 
     //lateinit var mSocket: Socket// oncreate될 때, 소켓을 만들어서 받아온다.
     var room_name = ""
-    //var mSocket = SocketApplication.get()
     //var user_name = ""
+    lateinit var rooms : List<String>
 
 
     var roomInfo = listOf<room_info>(room_info("a1",setOf("b","c")),room_info("a2",setOf("a")),room_info("a3",setOf("d")))
@@ -41,20 +42,20 @@ class main_room : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Log.v("2nd","create")
+        var mSocket = SocketApplication.get()
+        mSocket.connect()
+        mSocket.emit("rooms")
+        mSocket.on("rooms", Emitter.Listener { args ->
+            var size = args[0].toString().length
+            rooms = args[0].toString().substring(1,size-1).split(',')
+        })
 
         binding = ActivityMainRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMainRoom.toolbar)
         //mSocket = SocketApplication.get()
-        //mSocket.connect()
 
-        //방 정보 들어오는 과정 -> 새로 고침 버튼으로 업데이트 하던지
-        //Log.v("hi1","hihi")
-        //mSocket = SocketApplication.get()
-        //mSocket.connect() // close 되면 새 소켓 열기
-        //Log.v("s0c", mSocket.isActive.toString())
-        //Log.v("hi3","hihi")
 
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -121,6 +122,11 @@ class main_room : AppCompatActivity() {
 
         }
 
+        var rooms_list = findViewById<RecyclerView>(R.id.room_list)
+        var adapter = RoomAdapter(rooms)
+        rooms_list.adapter = adapter
+
+
 
 
 
@@ -146,6 +152,9 @@ class main_room : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main_room)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+    fun set_Rooms(_rooms:List<String>){
+        rooms = _rooms
     }
 }
 

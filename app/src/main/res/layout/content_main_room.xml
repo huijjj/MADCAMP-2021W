@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/room_list"
         android:layout_width="312dp"
         android:layout_height="210dp"
         app:layout_constraintBottom_toBottomOf="parent"

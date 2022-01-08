@@ -11,14 +11,16 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.common.model.AuthErrorCause.*
 import com.kakao.sdk.user.UserApiClient
+import io.socket.emitter.Emitter
 
 class Login_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+
         //val keyHash = Utility.getKeyHash(this)
         //Log.v("Hash", keyHash)
 
+        setContentView(R.layout.activity_login)
         // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
@@ -91,6 +93,9 @@ class Login_activity : AppCompatActivity() {
 //                UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
 //            }
 //        }
+    }
+    fun Go_Next(){
+
     }
 
 }

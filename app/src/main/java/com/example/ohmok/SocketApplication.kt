@@ -13,7 +13,7 @@ class SocketApplication {
             try {
                 Log.v("hi2","hihi")
                 // [uri]부분은 "http://X.X.X.X:3000" 꼴로 넣어주는 게 좋다.
-                socket = IO.socket("http://192.249.18.162:443")
+                socket = IO.socket("http://192.249.18.167:443")
             } catch (e: URISyntaxException) {
                 e.printStackTrace()
             }
