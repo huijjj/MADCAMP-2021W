@@ -112,7 +112,7 @@ class Main_room : AppCompatActivity() {
             val room_intent = Intent(this, waiting_room::class.java)
             room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             room_intent.putExtra("room_name",room_name)
-            room_intent.putExtra("my_name",user_name)
+            room_intent.putExtra("user_name",user_name) // my_name이라 돼있어서 user_name으로 바꿈
             var par_num = "";
             //par_num = args[0].toString()
             //room_intent.putExtra("par_num",par_num)
@@ -123,11 +123,7 @@ class Main_room : AppCompatActivity() {
 
         }
 
-
-
-
-
-
+        // db api
 
     }
 

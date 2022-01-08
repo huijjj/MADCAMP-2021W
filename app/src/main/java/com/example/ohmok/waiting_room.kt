@@ -33,12 +33,11 @@ class waiting_room : AppCompatActivity() {
         mSocket.on("start",Start_game)//Emitter.Listener { (args) -> Start_game(args[0].toString)})
         mSocket.on("invalid room name", Go_back)
 
-
         setContentView(R.layout.activity_waiting_room)
         room_name = intent.getStringExtra("room_name").toString()
         user_name = intent.getStringExtra("user_name").toString()
 
-        mSocket.emit("join",room_name,user_name,) //
+        mSocket.emit("join",room_name, user_name) // user_name으로 null 옴
 
         findViewById<TextView>(R.id.name).text = room_name
         //소켓에서 방 실행 전 정보를 모두 들고 있어야 한다.
