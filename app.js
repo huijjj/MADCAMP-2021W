@@ -10,7 +10,7 @@ io.on('connection', (socket) => {
     console.log('(connection) ', socket.id);
     
     socket.on('join', (room) => {
-        console.log("(join)", socket.id);
+        console.log("(join)", room, socket.id);
         
         if(roomSet.has(room)) { // this room already exist
             if(roomSet.get(room).length == 1) { // able to join
@@ -21,6 +21,7 @@ io.on('connection', (socket) => {
             }
             else { // room already occupied
                 // send error msg
+                io.to(socket.id).emit('invalid room name'); // client should handle this error event
             }
         }
         else {  // room does not exist
@@ -31,6 +32,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('rejoin', (room) => {
+        // client re-joins the room after activity change
         socket.join(room);
     });
 
@@ -42,6 +44,7 @@ io.on('connection', (socket) => {
     socket.on('game end',(room, winner)=>{
         console.log("(game end)", room, winner);
         io.to(room).emit('game result', winner);
+        roomSet.delete(room);
     });
 
     socket.on('disconnect', async () => {
