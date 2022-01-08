@@ -9,15 +9,15 @@ let roomSet = new Map();
 io.on('connection', (socket) => {
     console.log('(connection) ', socket.id);
     
-    socket.on('join', (room) => {
+    socket.on('join', (room, name) => {
         console.log("(join)", room, socket.id);
         
         if(roomSet.has(room)) { // this room already exist
             if(roomSet.get(room).length == 1) { // able to join
-                roomSet.set(room, [ roomSet.get(room)[0], socket.id ]);
+                roomSet.set(room, [ roomSet.get(room)[0], { id: socket.id, name: name} ]);
                 socket.join(room);
-                io.to(roomSet.get(room)[0]).emit('start', "white");
-                io.to(roomSet.get(room)[1]).emit('start', "black");
+                io.to(roomSet.get(room)[0].id).emit('start', "white", roomSet.get(room)[1].name); // color, opponent name
+                io.to(roomSet.get(room)[1].id).emit('start', "black", roomSet.get(room)[0].name);
             }
             else { // room already occupied
                 // send error msg
@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
         else {  // room does not exist
             // create and join
             socket.join(room);
-            roomSet.set(room, [ socket.id ]);
+            roomSet.set(room, [{ id: socket.id, name: name }]);
         }
     });
 
