@@ -143,10 +143,12 @@ io.on('connection', (socket) => {
         console.log("(rooms)", socket.id);
         const ret = []
         roomSet.forEach((v, k, _) => {
-            if(v.size === 1) {
+            if(v.length === 1) {
                 ret.push(k);
             }
-        })
+        });
+        // console.log("room set", roomSet);
+        // console.log("room list", ret);
         io.to(socket.id).emit('rooms', ret);
     });
 
