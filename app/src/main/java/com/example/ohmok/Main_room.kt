@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,6 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ohmok.databinding.ActivityMainRoomBinding
@@ -26,14 +28,15 @@ import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import java.util.zip.Inflater
 
-class main_room : AppCompatActivity() {
+class Main_room : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainRoomBinding
 
     //lateinit var mSocket: Socket// oncreate될 때, 소켓을 만들어서 받아온다.
     var room_name = ""
-    //var user_name = ""
+    var mSocket = SocketApplication.get()
+    var user_name = ""
     lateinit var rooms : List<String>
 
 
@@ -42,18 +45,13 @@ class main_room : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Log.v("2nd","create")
-        var mSocket = SocketApplication.get()
-        mSocket.connect()
-        mSocket.emit("rooms")
-        mSocket.on("rooms", Emitter.Listener { args ->
-            var size = args[0].toString().length
-            rooms = args[0].toString().substring(1,size-1).split(',')
-        })
+
+
 
         binding = ActivityMainRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appBarMainRoom.toolbar)
+        setSupportActionBar(binding.appBarMainRoom.toolbar) //이 에러는 빌딩 문제이니 무시
         //mSocket = SocketApplication.get()
 
 
@@ -70,7 +68,9 @@ class main_room : AppCompatActivity() {
                 Log.e("nav", "사용자 정보 요청 실패", error)
             }
             else if (user != null) {
-                navView.findViewById<TextView>(R.id.user_name).text =  "${user.kakaoAccount?.profile?.nickname}"
+                user_name = "${user.kakaoAccount?.profile?.nickname}"
+                var user_name_ =  navView.findViewById<TextView>(R.id.user_name)
+                user_name_.text =  user_name
                 var profile_image = navView.findViewById<ImageView>(R.id.profile_image)
 
                 var imageUrl = "${user.kakaoAccount?.profile?.thumbnailImageUrl}"
@@ -112,6 +112,7 @@ class main_room : AppCompatActivity() {
             val room_intent = Intent(this, waiting_room::class.java)
             room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             room_intent.putExtra("room_name",room_name)
+            room_intent.putExtra("my_name",user_name)
             var par_num = "";
             //par_num = args[0].toString()
             //room_intent.putExtra("par_num",par_num)
@@ -122,26 +123,14 @@ class main_room : AppCompatActivity() {
 
         }
 
-        var rooms_list = findViewById<RecyclerView>(R.id.room_list)
-        var adapter = RoomAdapter(rooms)
-        rooms_list.adapter = adapter
+
 
 
 
 
 
     }
-    var open_room = Emitter.Listener { args ->
-        val room_intent = Intent(this, waiting_room::class.java)
-        Log.v("open room",args[0].toString())
-        room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        room_intent.putExtra("room_name",room_name)
-        var par_num = "";
-        par_num = args[0].toString()
-        room_intent.putExtra("par_num",par_num)
-        //mSocket.close()
-        startActivity(room_intent)
-     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -155,6 +144,49 @@ class main_room : AppCompatActivity() {
     }
     fun set_Rooms(_rooms:List<String>){
         rooms = _rooms
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mSocket.close()
+    }
+    override fun onPause(){
+        super.onPause()
+        Log.v("life","pause")
+        mSocket.close()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.v("life","resume")
+        mSocket.connect()
+        mSocket.emit("rooms")
+        mSocket.on("rooms", Emitter.Listener { args ->
+
+            Thread(object : Runnable{
+                override fun run() {
+                    runOnUiThread(Runnable {
+                        kotlin.run {
+                            var size = args[0].toString().length
+                            rooms = args[0].toString().substring(1,size-1).split(',')
+                            Log.v("whtlyl",rooms.toString())
+                            if(rooms.toString() == "[]"){
+                                rooms = emptyList<String>()
+                            }
+                            var rooms_list = findViewById<RecyclerView>(R.id.room_list)
+                            var _adapter = RoomAdapter(rooms)
+                            rooms_list.setAdapter(_adapter)
+
+
+
+                            //findViewById<Button>(R.id.test_B).visibility = View.VISIBL
+                        }
+                    })
+                }
+            }).start()
+
+
+        })
     }
 }
 

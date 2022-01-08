@@ -30,7 +30,7 @@ class Go_board: View{
 
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawColor(Color.LTGRAY)
+        canvas.drawColor(Color.rgb(242,201,130))
         distance = canvas.width.toFloat() / 17
         super.onDraw(canvas)
 

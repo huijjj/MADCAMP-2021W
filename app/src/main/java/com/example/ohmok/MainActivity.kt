@@ -20,12 +20,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var ball_Board:onballs
     var color = "black"
     var room_name = ""
+    var my_name =""
+    var op_name = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val board = findViewById<Go_board>(R.id.Go_board)
         room_name = intent.getStringExtra("room_name").toString();
         color = intent.getStringExtra("color").toString();
+        my_name = intent.getStringExtra("user_name").toString()
+        op_name = intent.getStringExtra("op_name").toString()
+
         turn = color =="black"
         Log.v("h1",turn.toString())
         setContentView(R.layout.activity_main)
@@ -39,9 +44,14 @@ class MainActivity : AppCompatActivity() {
         mSocket.on("set go", send_balls)
         mSocket.on("game result",open_popup)
 
+
+        ///mark name and color ==>{Next}
+
+
+
         findViewById<Button>(R.id.main).setOnClickListener{view ->
-            finish()
             mSocket.close()
+            finish()
         }
 
     }

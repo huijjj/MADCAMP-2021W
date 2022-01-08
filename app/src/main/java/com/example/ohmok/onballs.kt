@@ -60,7 +60,7 @@ class onballs: View {
         if(check==1){
             mSocket.emit("game end", my_room, my_color)
         }
-        turn = !turn
+        //turn = !turn
         //random_loc()
 
         var sec = 0
@@ -149,7 +149,7 @@ class onballs: View {
             ball_array[one_ball.get_x()-1][one_ball.get_y()-1]=getter
         }
         Log.v("ball",color_is_black.toString())
-        //turn = !turn
+        turn = !turn
         invalidate()
 
     }

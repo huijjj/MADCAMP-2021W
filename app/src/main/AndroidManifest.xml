@@ -39,7 +39,7 @@
             android:name=".waiting_room"
             android:exported="false" />
         <activity
-            android:name=".main_room"
+            android:name=".Main_room"
             android:exported="true"
             android:label="@string/title_activity_main_room"
             android:theme="@style/Theme.Ohmok.NoActionBar" >
