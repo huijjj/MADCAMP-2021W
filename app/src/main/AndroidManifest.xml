@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -30,7 +31,7 @@
 
                 <data
                     android:host="oauth"
-                    android:scheme="kakao22b13f03ae9ccd9813bf810bc2dc47f4" />
+                    android:scheme="kakao9f9345bf29987da815aef9ed7df70b4e" />
             </intent-filter>
         </activity>
 
