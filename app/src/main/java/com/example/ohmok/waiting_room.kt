@@ -3,10 +3,12 @@ package com.example.ohmok
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.HandlerCompat.postDelayed
 import io.socket.emitter.Emitter
 import java.net.Socket
 
@@ -71,9 +73,12 @@ class waiting_room : AppCompatActivity() {
     }
 
     var Go_back = Emitter.Listener{ (_) ->
-        mSocket.close()
+
         Toast.makeText(this, "이 방은 현재 참여가 불가능합니다.", Toast.LENGTH_SHORT).show();
+
         finish();
+
+
     }
 
 }

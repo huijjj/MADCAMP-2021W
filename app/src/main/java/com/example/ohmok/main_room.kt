@@ -109,7 +109,7 @@ class main_room : AppCompatActivity() {
             //소켓에 새로운 방 집어넣기
             room_name = findViewById<TextInputEditText>(R.id.room_name).text.toString()
             val room_intent = Intent(this, waiting_room::class.java)
-            //room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             room_intent.putExtra("room_name",room_name)
             var par_num = "";
             //par_num = args[0].toString()

@@ -8,10 +8,8 @@
 
     <com.example.ohmok.Go_board
         android:id="@+id/Go_board"
-        android:layout_width="409dp"
-        android:layout_height="409dp"
-        android:layout_marginTop="161dp"
-        android:layout_marginBottom="161dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="#CB7D65"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +21,7 @@
     <com.example.ohmok.onballs
         android:id="@+id/balls"
         android:layout_width="0dp"
-        android:layout_height="409dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
