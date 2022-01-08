@@ -16,6 +16,8 @@ class Login_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        //val keyHash = Utility.getKeyHash(this)
+        //Log.v("Hash", keyHash)
 
         // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
@@ -30,9 +32,6 @@ class Login_activity : AppCompatActivity() {
             }
         }
 
-
-//        val keyHash = Utility.getKeyHash(this)
-//        Log.d("Hash", keyHash)
 
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->

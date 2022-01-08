@@ -51,6 +51,9 @@ dependencies {
     implementation "com.kakao.sdk:v2-user:2.8.4" // 카카오 로그인
     implementation "com.kakao.sdk:v2-talk:2.8.4" // 친구, 메시지(카카오톡)
 
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
     implementation ('io.socket:socket.io-client:2.0.0') {
         // excluding org.json which is provided by Android
         exclude group: 'org.json', module: 'json'

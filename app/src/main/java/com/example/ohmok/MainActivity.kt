@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         mSocket.on("game result",open_popup)
 
         findViewById<Button>(R.id.main).setOnClickListener{view ->
-            finish();
+            finish()
+            mSocket.close()
         }
 
     }
