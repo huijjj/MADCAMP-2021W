@@ -17,8 +17,7 @@ class waiting_room : AppCompatActivity() {
     var room_name = ""
     var ready_num = 0
     var user_name = ""
-    var email = ""
-
+    var kid = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.v("2nd","create")
@@ -37,9 +36,9 @@ class waiting_room : AppCompatActivity() {
         setContentView(R.layout.activity_waiting_room)
         room_name = intent.getStringExtra("room_name").toString()
         user_name = intent.getStringExtra("user_name").toString()
-//        email = intent.getStringExtra("email").toString()
+        kid = intent.getStringExtra("kid").toString()
 
-        mSocket.emit("join",room_name, user_name, "") // 이메일 고쳐서 마지막에 이메일 넣어야함 
+        mSocket.emit("join",room_name, user_name, kid)
 
         findViewById<TextView>(R.id.name).text = room_name
         //소켓에서 방 실행 전 정보를 모두 들고 있어야 한다.
@@ -65,6 +64,7 @@ class waiting_room : AppCompatActivity() {
         room_intent.putExtra("room_name",room_name)
         room_intent.putExtra("my_name",user_name)
         room_intent.putExtra("op_name",args[1].toString())
+        room_intent.putExtra("kid", kid.toString())
         mSocket.close()
         startActivity(room_intent)
         this.finish()

@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     var my_name =""
     var op_name = ""
     val mSocket = SocketApplication.get()
+    var kid = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         color = intent.getStringExtra("color").toString();
         my_name = intent.getStringExtra("my_name").toString()
         op_name = intent.getStringExtra("op_name").toString()
+        kid = intent.getStringExtra("kid").toString()
 
         Log.d("name test", my_name);
         Log.d("name test", op_name);
@@ -77,6 +79,10 @@ class MainActivity : AppCompatActivity() {
         var win_text = "WIN"
         if(winner!=color){
             win_text = "LOSE"
+            mSocket.emit("lose", kid)
+        }
+        else {
+            mSocket.emit("win", kid)
         }
         Thread(object : Runnable{
             override fun run() {
@@ -100,6 +106,7 @@ class MainActivity : AppCompatActivity() {
             winner = "black"
         }
 
+        mSocket.emit("lose", kid)
         mSocket.emit("game end", room_name, winner)
         super.onBackPressed()
     }
