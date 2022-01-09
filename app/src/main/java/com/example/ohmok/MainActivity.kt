@@ -28,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         val board = findViewById<Go_board>(R.id.Go_board)
         room_name = intent.getStringExtra("room_name").toString();
         color = intent.getStringExtra("color").toString();
-        my_name = intent.getStringExtra("user_name").toString()
+        my_name = intent.getStringExtra("my_name").toString()
         op_name = intent.getStringExtra("op_name").toString()
+
+        Log.d("name test", my_name);
+        Log.d("name test", op_name);
 
         turn = color =="black"
         Log.v("h1",turn.toString())
