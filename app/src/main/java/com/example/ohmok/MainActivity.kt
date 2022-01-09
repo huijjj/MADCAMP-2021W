@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     var room_name = ""
     var my_name =""
     var op_name = ""
+    val mSocket = SocketApplication.get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         ball_Board = findViewById<onballs>(R.id.balls)
         ball_Board.setTurn(turn, room_name)
-        var mSocket = SocketApplication.get()
         mSocket.connect()
         mSocket.emit("rejoin", room_name)
 
@@ -89,5 +89,18 @@ class MainActivity : AppCompatActivity() {
             }
         }).start()
 
+    }
+
+    // 게임 도중 나가는 경우
+    override fun onBackPressed() {
+        var winner = ""
+        if (color == "black") {
+            winner = "white"
+        } else {
+            winner = "black"
+        }
+
+        mSocket.emit("game end", room_name, winner)
+        super.onBackPressed()
     }
 }
