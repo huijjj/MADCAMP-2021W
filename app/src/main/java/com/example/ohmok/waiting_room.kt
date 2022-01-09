@@ -16,7 +16,8 @@ class waiting_room : AppCompatActivity() {
     lateinit var mSocket: io.socket.client.Socket
     var room_name = ""
     var ready_num = 0
-    var user_name=""
+    var user_name = ""
+    var email = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +37,9 @@ class waiting_room : AppCompatActivity() {
         setContentView(R.layout.activity_waiting_room)
         room_name = intent.getStringExtra("room_name").toString()
         user_name = intent.getStringExtra("user_name").toString()
+//        email = intent.getStringExtra("email").toString()
 
-        mSocket.emit("join",room_name, user_name) // user_name으로 null 옴
+        mSocket.emit("join",room_name, user_name, "") // 이메일 고쳐서 마지막에 이메일 넣어야함 
 
         findViewById<TextView>(R.id.name).text = room_name
         //소켓에서 방 실행 전 정보를 모두 들고 있어야 한다.
@@ -71,11 +73,16 @@ class waiting_room : AppCompatActivity() {
 
     var Go_back = Emitter.Listener{ (_) ->
 
-        Toast.makeText(this, "이 방은 현재 참여가 불가능합니다.", Toast.LENGTH_SHORT).show();
+        // 이거 방 유효하지 않다고 하는 거 추가 해야함
+//        Toast.makeText(this, "이 방은 현재 참여가 불가능합니다.", Toast.LENGTH_SHORT).show();
 
         finish();
-
-
     }
 
+    override fun onBackPressed() {
+        // 방을 떠난다고 서버에 전송
+        mSocket.emit("leave", room_name)
+        mSocket.close()
+        super.onBackPressed()
+    }
 }

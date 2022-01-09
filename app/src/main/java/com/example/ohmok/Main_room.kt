@@ -37,6 +37,7 @@ class Main_room : AppCompatActivity() {
     var room_name = ""
     var mSocket = SocketApplication.get()
     var user_name = ""
+//    var email = ""
     lateinit var rooms : List<String>
 
 
@@ -69,6 +70,8 @@ class Main_room : AppCompatActivity() {
             }
             else if (user != null) {
                 user_name = "${user.kakaoAccount?.profile?.nickname}"
+//                email = "${user.kakaoAccount?.email}" // 이메일 왜 안됨?
+
                 var user_name_ =  navView.findViewById<TextView>(R.id.user_name)
                 user_name_.text =  user_name
                 var profile_image = navView.findViewById<ImageView>(R.id.profile_image)
@@ -78,7 +81,7 @@ class Main_room : AppCompatActivity() {
                 Glide.with(navView).load(imageUrl).into(profile_image);
                 Log.i("nav", "사용자 정보 요청 성공" +
                         //"\n회원번호: ${user.id}" +
-                        //"\n이메일: ${user.kakaoAccount?.email}" +
+//                        "\n이메일: ${user.kakaoAccount?.email}" +
                         "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
                         "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
             }
@@ -113,6 +116,7 @@ class Main_room : AppCompatActivity() {
             room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             room_intent.putExtra("room_name",room_name)
             room_intent.putExtra("user_name",user_name) // my_name이라 돼있어서 user_name으로 바꿈
+//            room_intent.putExtra("user_name",email) // email 왜 안되냐고
             var par_num = "";
             //par_num = args[0].toString()
             //room_intent.putExtra("par_num",par_num)
