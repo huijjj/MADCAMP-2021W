@@ -138,8 +138,8 @@ io.on('connection', (socket) => {
                 throw err;
             }
             if(result.length == 1) {
-                const win = Number(result[0].win);
-                const patch_sql = `UPDATE users SET win=${win + 1} WHERE id='${kid}'`;
+                const win = Number(result[0].win) + 1;
+                const patch_sql = `UPDATE users SET win=${win} WHERE id='${kid}'`;
                 con.query(patch_sql, function(err, _) {
                     if(err) {
                         throw err;
@@ -158,8 +158,8 @@ io.on('connection', (socket) => {
                 throw err;
             }
             if(result.length == 1) {
-                const lose = Number(result[0].lose);
-                const patch_sql = `UPDATE users SET lose=${lose + 1} WHERE id='${kid}'`;
+                const lose = Number(result[0].lose) + 1;
+                const patch_sql = `UPDATE users SET lose=${lose} WHERE id='${kid}'`;
                 con.query(patch_sql, function(err, _) {
                     if(err) {
                         throw err;
