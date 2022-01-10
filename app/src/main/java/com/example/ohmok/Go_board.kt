@@ -31,7 +31,7 @@ class Go_board: View{
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawColor(Color.rgb(242,201,130))
-        distance = canvas.width.toFloat() / 17
+        distance = canvas.width.toFloat() / 16
         super.onDraw(canvas)
 
 
@@ -41,15 +41,15 @@ class Go_board: View{
         val line_x = mutableListOf<Float>()
         val line_y = mutableListOf<Float>()
         for (i in 1..16) {
-            line_x.add(canvas.width * i.toFloat() / 17)
-            line_x.add(canvas.width.toFloat() / 17)
-            line_x.add(canvas.width * i.toFloat() / 17)
-            line_x.add(canvas.width * 16.toFloat() / 17)
+            line_x.add(canvas.width * i.toFloat() / 16)
+            line_x.add(canvas.width.toFloat() / 16)
+            line_x.add(canvas.width * i.toFloat() / 16)
+            line_x.add(canvas.width * 15.toFloat() / 16)
 
-            line_y.add(canvas.width.toFloat() / 17)
-            line_y.add(canvas.width * i.toFloat() / 17)
-            line_y.add(canvas.width * 16.toFloat() / 17)
-            line_y.add(canvas.width * i.toFloat() / 17)
+            line_y.add(canvas.width.toFloat() / 16)
+            line_y.add(canvas.width * i.toFloat() / 16)
+            line_y.add(canvas.width * 15.toFloat() / 16)
+            line_y.add(canvas.width * i.toFloat() / 16)
         }
         canvas.drawLines(line_x.toFloatArray(), paint);
         canvas.drawLines(line_y.toFloatArray(), paint);

@@ -4,11 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,9 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -27,15 +24,10 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.example.ohmok.databinding.ActivityMainRoomBinding
-import com.example.ohmok.SocketApplication
 import com.google.android.material.textfield.TextInputEditText
 import com.kakao.sdk.user.UserApiClient
-import io.socket.client.Socket
 import io.socket.emitter.Emitter
-import org.json.JSONArray
 import org.json.JSONObject
-import java.io.StringReader
-import java.util.zip.Inflater
 
 class Main_room : AppCompatActivity() {
 
@@ -56,6 +48,7 @@ class Main_room : AppCompatActivity() {
 
 
     lateinit var rooms : List<String>
+    lateinit var names : List<String>
 
     // db 통신
      companion object {
@@ -91,19 +84,26 @@ class Main_room : AppCompatActivity() {
         //new room: 새로운 방 파서 들어가 있기
         findViewById<Button>(R.id.new_room).setOnClickListener{view ->
             //소켓에 새로운 방 집어넣기
-            room_name = findViewById<TextInputEditText>(R.id.room_name).text.toString()
-            val room_intent = Intent(this, waiting_room::class.java)
-            room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            room_intent.putExtra("room_name", room_name)
-            room_intent.putExtra("user_name", user_name) // my_name이라 돼있어서 user_name으로 바꿈
-            room_intent.putExtra("kid", kid) // email 대신 카카오 user 사용하도록 수정
-            var par_num = "";
-            //par_num = args[0].toString()
-            //room_intent.putExtra("par_num",par_num)
-            //mSocket.close()
-            startActivity(room_intent)
-            //소켓 크리에이트 전송
-            //mSocket.emit("join",room_name)
+            room_name = findViewById<TextInputEditText>(R.id.room_name).text.toString().trim()
+            if (room_name.length<=0){
+                Toast.makeText(getApplicationContext(), "방 이름을 제대로 입력하세요.", Toast.LENGTH_SHORT).show()
+            }else{
+                findViewById<TextInputEditText>(R.id.room_name).text = null
+                val room_intent = Intent(this, waiting_room::class.java)
+                room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                room_intent.putExtra("room_name", room_name)
+                room_intent.putExtra("user_name", user_name) // my_name이라 돼있어서 user_name으로 바꿈
+                room_intent.putExtra("kid", kid) // email 대신 카카오 user 사용하도록 수정
+                var par_num = "";
+                //par_num = args[0].toString()
+                //room_intent.putExtra("par_num",par_num)
+                //mSocket.close()
+                startActivity(room_intent)
+                //소켓 크리에이트 전송
+                //mSocket.emit("join",room_name)
+            }
+
+
 
         }
         findViewById<Button>(R.id.refresh).setOnClickListener{view ->
@@ -150,12 +150,17 @@ class Main_room : AppCompatActivity() {
                         kotlin.run {
                             var size = args[0].toString().length
                             rooms = args[0].toString().substring(1,size-1).split(',')
+                            Log.v("tag",args[1].toString())
+                            var size_name = args[1].toString().length
+                            names = args[1].toString().substring(1,size_name-1).split(',')
+
                             Log.v("whtlyl",rooms.toString())
                             if(rooms.toString() == "[]"){
                                 rooms = emptyList<String>()
+                                names = emptyList<String>()
                             }
                             var rooms_list = findViewById<RecyclerView>(R.id.room_list)
-                            var _adapter = RoomAdapter(rooms)
+                            var _adapter = RoomAdapter(rooms,names,user_name,kid)
                             rooms_list.setAdapter(_adapter)
 
                             //findViewById<Button>(R.id.test_B).visibility = View.VISIBL

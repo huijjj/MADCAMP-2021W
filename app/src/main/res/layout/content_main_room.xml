@@ -19,12 +19,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="328dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/room_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
         android:background="#FFFFFF"
@@ -33,36 +43,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/type" />
+        app:layout_constraintTop_toBottomOf="@+id/type">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/new_room"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="50dp"
-        android:text="New Room"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:drawable/ic_media_play"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/type"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/type"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toStartOf="@+id/new_room"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/view2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/room_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="room name" />
+            android:background="#FFFFFF"
+            android:hint=" 방 이름"
+            android:singleLine="true" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -74,6 +89,14 @@
         android:text="refresh"
         app:layout_constraintBottom_toBottomOf="@+id/room_list"
         app:layout_constraintEnd_toEndOf="@+id/room_list" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/room_list"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        tools:layout_editor_absoluteX="52dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

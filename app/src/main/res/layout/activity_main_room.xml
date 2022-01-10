@@ -27,7 +27,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/win"
+                android:id="@+id/lose"
                 android:layout_width="109dp"
                 android:layout_height="98dp"
                 android:layout_marginStart="8dp"
@@ -38,11 +38,11 @@
                 android:text="TextView"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/lose"
+                app:layout_constraintStart_toEndOf="@+id/win"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
-                android:id="@+id/lose"
+                android:id="@+id/win"
                 android:layout_width="109dp"
                 android:layout_height="98dp"
                 android:layout_marginStart="16dp"
@@ -52,7 +52,7 @@
                 android:gravity="center"
                 android:text="TextView"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/win"
+                app:layout_constraintEnd_toStartOf="@+id/lose"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 

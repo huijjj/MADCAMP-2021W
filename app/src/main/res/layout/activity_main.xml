@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"></com.example.ohmok.onballs>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/win_pop"
+        android:id="@+id/win_or_lose"
         android:layout_width="338dp"
         android:layout_height="163dp"
         android:background="#FFFFFF"
@@ -51,7 +51,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/win_or_lose"
+            android:id="@+id/win_text"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:gravity="center|center_vertical"

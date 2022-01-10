@@ -19,7 +19,7 @@ class onballs: View {
     val for_black = mutableListOf<ball>()
     val for_white = mutableListOf<ball>()
     var distance :Float = 0.toFloat()
-    var ball_array = Array<IntArray>(16, {IntArray(16)})
+    var ball_array = Array<IntArray>(15, {IntArray(15)})
 
     var turn = true;
 
@@ -42,7 +42,7 @@ class onballs: View {
         Log.v("h2",turn.toString())
 
         signal = false
-        distance = canvas.width.toFloat()/17
+        distance = canvas.width.toFloat()/16
         super.onDraw(canvas)
         val ball_black_paint = Paint()
         ball_black_paint.color = Color.BLACK
@@ -103,7 +103,7 @@ class onballs: View {
             when(event?.action) {
                 MotionEvent.ACTION_DOWN -> {
                     //Log.v("click",for_black.size.toString())
-                    if (round(event.x/distance).toInt()<1 || round(event.x/distance).toInt()>17|| round(event.y/distance).toInt()<1 || round(event.y/distance).toInt()>17){
+                    if (round(event.x/distance).toInt()<1 || round(event.x/distance).toInt()>16|| round(event.y/distance).toInt()<1 || round(event.y/distance).toInt()>17){
                         return false
                     }
                     if(ball_array[round(event.x/distance).toInt()-1][ round(event.y/distance).toInt()-1]==0){
@@ -157,8 +157,8 @@ class onballs: View {
     fun check_win_or_fall():Int{
         //세로
         var winner = 0;
-        for(i in 0..15){
-            for(j in 0..10){
+        for(i in 0..14){
+            for(j in 0..9){
                 if(ball_array[i][j]==1){
                     if(ball_array[i][j+1]==1&&ball_array[i][j+2]==1&&ball_array[i][j+3]==1&&ball_array[i][j+4]==1){
                         winner = 1
@@ -172,8 +172,8 @@ class onballs: View {
             }
         }
         //가로
-        for(i in 0..10){
-            for(j in 0..15){
+        for(i in 0..9){
+            for(j in 0..14){
                 if(ball_array[i][j]==1){
                     if(ball_array[i+1][j]==1&&ball_array[i+2][j]==1&&ball_array[i+3][j]==1&&ball_array[i+4][j]==1){
                         winner = 1
@@ -187,8 +187,8 @@ class onballs: View {
             }
         }
         //왼쪽 대각
-        for(i in 0..10){
-            for(j in 0..10){
+        for(i in 0..9){
+            for(j in 0..9){
                 if(ball_array[i][j]==1){
                     if(ball_array[i+1][j+1]==1&&ball_array[i+2][j+2]==1&&ball_array[i+3][j+3]==1&&ball_array[i+4][j+4]==1){
                         winner = 1
@@ -202,8 +202,8 @@ class onballs: View {
             }
         }
         ///오른쪽 대각
-        for(i in 5..15){
-            for(j in 0..10){
+        for(i in 5..14){
+            for(j in 0..9){
                 if(ball_array[i][j]==1){
                     if(ball_array[i-1][j+1]==1&&ball_array[i-2][j+2]==1&&ball_array[i-3][j+3]==1&&ball_array[i-4][j+4]==1){
                         winner = 1

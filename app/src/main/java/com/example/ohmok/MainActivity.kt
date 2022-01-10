@@ -5,13 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import io.socket.emitter.Emitter
-import kotlin.concurrent.timer
-import android.util.Half.toFloat
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import java.lang.reflect.Constructor
 import java.util.*
 
 
@@ -88,8 +84,8 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 runOnUiThread(Runnable {
                     kotlin.run {
-                        findViewById<ConstraintLayout>(R.id.win_pop).visibility = View.VISIBLE
-                        findViewById<TextView>(R.id.win_or_lose).text = win_text
+                        findViewById<ConstraintLayout>(R.id.win_or_lose).visibility = View.VISIBLE
+                        findViewById<TextView>(R.id.win_text).text = win_text
                     }
                 })
             }
