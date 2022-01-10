@@ -26,6 +26,7 @@ class onballs: View {
     var signal = true;
 
     var chating =false
+    var count = 0;
 
     lateinit var mSocket: io.socket.client.Socket;
 
@@ -62,6 +63,9 @@ class onballs: View {
         if(check==1){
             mSocket.emit("game end", my_room, my_color)
         }
+        else if(check == 2) { // if draw
+            mSocket.emit("game end", my_room, "draw")
+        }
         //turn = !turn
         //random_loc()
 
@@ -95,6 +99,7 @@ class onballs: View {
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         //Log.v("click0",for_black.size.toString())
+        Log.d("test", chating.toString())
         if (!turn || chating){
             return false
 
@@ -135,6 +140,8 @@ class onballs: View {
 
 
     fun add_ball(one_ball:ball,color_is_black:Boolean){
+        count++;
+        Log.d("test1", count.toString())
         if(color_is_black){
             for_black.add(one_ball)
             var getter = -1
@@ -158,6 +165,9 @@ class onballs: View {
 
     fun check_win_or_fall():Int{
         //세로
+        if(count == 255) {
+            return 2;
+        }
         var winner = 0;
         for(i in 0..14){
             for(j in 0..10){

@@ -136,7 +136,10 @@ class MainActivity : AppCompatActivity() {
         ball_Board.turn = false
         Log.v("winner",winner)
         var win_text = "WIN"
-        if(winner!=color){
+        if(winner == "draw") {
+            win_text == "DRAW"
+        }
+        else if(winner!=color){
             win_text = "LOSE"
             mSocket.emit("lose", kid)
         }
@@ -181,12 +184,19 @@ class MainActivity : AppCompatActivity() {
 
     // 게임 도중 나가는 경우
     override fun onBackPressed() {
-        var winner = ""
-        if (color == "black") {
-            winner = "white"
-        } else {
-            winner = "black"
+        if(chating) { // 채팅창에서 뒤로가기 누르면 채팅창 꺼지게 수정
+            chating = false
+            ball_Board.chating = chating
+            findViewById<ConstraintLayout>(R.id.chatting).visibility = View.INVISIBLE;
         }
-        mSocket.emit("game end", room_name, winner)
+        else {
+            var winner = ""
+            if (color == "black") {
+                winner = "white"
+            } else {
+                winner = "black"
+            }
+            mSocket.emit("game end", room_name, winner)
+        }
     }
 }
