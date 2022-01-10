@@ -20,6 +20,72 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main_room"
-        app:menu="@menu/activity_main_drawer" />
+        app:headerLayout="@layout/nav_header_main_room">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/win"
+                android:layout_width="109dp"
+                android:layout_height="98dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lose"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/lose"
+                android:layout_width="109dp"
+                android:layout_height="98dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/round_border"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/win"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="8dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="WIN"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="16dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="LOSE"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

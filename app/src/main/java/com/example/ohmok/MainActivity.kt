@@ -99,7 +99,6 @@ class MainActivity : AppCompatActivity() {
 
     // 게임 도중 나가는 경우
     override fun onBackPressed() {
-        mSocket.emit("lose", kid)
         var winner = ""
         if (color == "black") {
             winner = "white"
@@ -107,6 +106,5 @@ class MainActivity : AppCompatActivity() {
             winner = "black"
         }
         mSocket.emit("game end", room_name, winner)
-        super.onBackPressed()
     }
 }

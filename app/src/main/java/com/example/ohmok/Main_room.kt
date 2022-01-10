@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -105,6 +106,10 @@ class Main_room : AppCompatActivity() {
             //mSocket.emit("join",room_name)
 
         }
+        findViewById<Button>(R.id.refresh).setOnClickListener{view ->
+            mSocket.emit("rooms")//아마 resume의 리스너에서 처리 될꺼임
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -224,13 +229,18 @@ class Main_room : AppCompatActivity() {
                             // get win lose count
                             win = userObject.getInt("win");
                             lose = userObject.getInt("lose");
+
                         }
+                        navView.findViewById<TextView>(R.id.win).text = win.toString()
+                        navView.findViewById<TextView>(R.id.lose).text =lose.toString()
                     },
                     Response.ErrorListener {
                         Log.d("serverresponse", it.toString());
                     }
+
                 ){}
                 requestQueue?.add(get_request);
+
             }
         }
     }

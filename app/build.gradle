@@ -62,4 +62,8 @@ dependencies {
     }
 
     implementation 'com.android.volley:volley:1.1.1'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    //gradle에 추가
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
 }
