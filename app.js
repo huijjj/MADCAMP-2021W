@@ -78,7 +78,7 @@ app.get('/rank', (_, res) => {
         });
         const ret = rank.slice(0, 5);
         console.log(ret);
-        res.json(rank);
+        res.json({ rank : rank });
     });
 });
 
