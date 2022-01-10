@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.MeasureSpec
 import androidx.annotation.AttrRes
 import kotlin.math.round
 import java.util.Random
@@ -29,28 +30,35 @@ class Go_board: View{
 
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawColor(Color.LTGRAY)
-        distance = canvas.width.toFloat() / 17
+        //canvas.drawColor(Color.rgb(242,201,130))
+        distance = canvas.width.toFloat() / 16
         super.onDraw(canvas)
+
 
         val paint = Paint()
         paint.color = Color.BLACK
         paint.setStrokeWidth(8F)
         val line_x = mutableListOf<Float>()
         val line_y = mutableListOf<Float>()
-        for (i in 1..16) {
-            line_x.add(canvas.width * i.toFloat() / 17)
-            line_x.add(canvas.width.toFloat() / 17)
-            line_x.add(canvas.width * i.toFloat() / 17)
-            line_x.add(canvas.width * 16.toFloat() / 17)
+        for (i in 1..15) {
+            line_x.add(canvas.width * i.toFloat() / 16)
+            line_x.add(canvas.width.toFloat() / 16)
+            line_x.add(canvas.width * i.toFloat() / 16)
+            line_x.add(canvas.width * 15.toFloat() / 16)
 
-            line_y.add(canvas.width.toFloat() / 17)
-            line_y.add(canvas.width * i.toFloat() / 17)
-            line_y.add(canvas.width * 16.toFloat() / 17)
-            line_y.add(canvas.width * i.toFloat() / 17)
+            line_y.add(canvas.width.toFloat() / 16)
+            line_y.add(canvas.width * i.toFloat() / 16)
+            line_y.add(canvas.width * 15.toFloat() / 16)
+            line_y.add(canvas.width * i.toFloat() / 16)
         }
         canvas.drawLines(line_x.toFloatArray(), paint);
         canvas.drawLines(line_y.toFloatArray(), paint);
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val size = MeasureSpec.getSize(widthMeasureSpec)
+        setMeasuredDimension(size, size)
     }
 
 }

@@ -6,35 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".waiting_room">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/start_image" />
+
+    <ImageView
+        android:id="@+id/title_view"
+        android:layout_width="333dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title" />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_height="45dp"
+        android:background="#99FFFFFF"
         android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/title_view"
+        app:layout_constraintEnd_toEndOf="@+id/title_view"
+        app:layout_constraintStart_toStartOf="@+id/title_view"
+        app:layout_constraintTop_toTopOf="@+id/title_view" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
-        android:text="상대를 기다리는 중입니다"
+        android:layout_height="22dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="100dp"
+        android:text="접신 준비중입니다..."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="201dp"
-        android:text="Ready"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/poppop"
+        android:layout_width="338dp"
+        android:layout_height="163dp"
+        android:background="#FFFFFF"
+        android:foregroundGravity="center|center_horizontal"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/text_vv"
+            android:layout_width="338dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:text="현재 참여하실 수 없는 방입니다."
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
