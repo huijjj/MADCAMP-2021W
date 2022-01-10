@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         val board = findViewById<Go_board>(R.id.Go_board)
         room_name = intent.getStringExtra("room_name").toString();
@@ -32,15 +33,21 @@ class MainActivity : AppCompatActivity() {
         op_name = intent.getStringExtra("op_name").toString()
         kid = intent.getStringExtra("kid").toString()
 
-        findViewById<>().findViewById<TextView>(R.id.my_name).text = my_name
-        findViewById<TextView>(R.id.op_name).text = op_name
+        var my_name_part =findViewById<TextView>(R.id.my_name)
+        var op_name_part = findViewById<TextView>(R.id.op_name)
+
+        var my_color_part = findViewById<ImageView>(R.id.my_color)
+        var op_color_part = findViewById<ImageView>(R.id.op_color)
+
+        my_name_part.text = my_name
+        op_name_part.text = op_name
 
         if (color=="black"){
-            findViewById<ImageView>(R.id.my_color).setImageResource(R.drawable.black_ball)
-            findViewById<ImageView>(R.id.op_color).setImageResource(R.drawable.white_ball)
+            my_color_part.setImageResource(R.drawable.black_ball)
+            op_color_part.setImageResource(R.drawable.white_ball)
         }else{
-            findViewById<ImageView>(R.id.op_color).setImageResource(R.drawable.black_ball)
-            findViewById<ImageView>(R.id.my_color).setImageResource(R.drawable.white_ball)
+            op_color_part.setImageResource(R.drawable.black_ball)
+            my_color_part.setImageResource(R.drawable.white_ball)
         }
 
 
@@ -49,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         turn = color =="black"
         Log.v("h1",turn.toString())
-        setContentView(R.layout.activity_main)
+
         ball_Board = findViewById<onballs>(R.id.balls)
         ball_Board.setTurn(turn, room_name)
         mSocket.connect()
