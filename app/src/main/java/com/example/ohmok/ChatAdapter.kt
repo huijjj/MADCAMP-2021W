@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView;
 
 class ChatAdapter (
     private val chat: MutableList<String>,
@@ -30,7 +30,7 @@ class ChatAdapter (
 
         val item = chat[position]
         Log.v("chat???",item)
-        holder.idView.text = item
+        holder.idView.text = "  "+item+"  "
 
 
     }
@@ -53,11 +53,4 @@ class ChatAdapter (
         }
     }
 
-    fun addItem(msg:String,user:String){
-        Log.v("chat!>>>",msg)
-        chat.add(msg)
-        users.add(user)
-        notifyDataSetChanged()
-
-    }
 }

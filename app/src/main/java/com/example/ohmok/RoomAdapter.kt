@@ -19,6 +19,7 @@ class RoomAdapter(
 ) : RecyclerView.Adapter<RoomAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Log.v("room???_create",viewType.toString())
         val view = LayoutInflater.from(parent.context).inflate(R.layout.room_element,parent,false)
         view.setOnClickListener{v ->
             val room_name = v.findViewById<TextView>(R.id.roomy).text
