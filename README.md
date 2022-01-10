@@ -262,3 +262,7 @@ http.listen(PORT, () => {
     console.log(`listening to port ${PORT}`);
 });
 ```
+
+# Credit
++ 박도윤(victoria0406): victoria0406@kaist.ac.kr
++ 정희종(huijjj): hui0213@postech.ac.kr
