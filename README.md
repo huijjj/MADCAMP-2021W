@@ -8,6 +8,9 @@ We used android studio and Kotlin for making client application, and Node.js and
 MySQL and socket.io are additionally used for real time communication and storing data.
 Kakao SDK is used for user log-in.
 
+# Credit
++ 박도윤(victoria0406): victoria0406@kaist.ac.kr
++ 정희종(huijjj): hui0213@postech.ac.kr
 
 # Front-End (android studio, Kotlin)
 사용자 응용 프로그램은 크게 3개의 화면으로 구성되어 있으며 구성은 아래와 같습니다.
@@ -262,7 +265,3 @@ http.listen(PORT, () => {
     console.log(`listening to port ${PORT}`);
 });
 ```
-
-# Credit
-+ 박도윤(victoria0406): victoria0406@kaist.ac.kr
-+ 정희종(huijjj): hui0213@postech.ac.kr
