@@ -13,6 +13,7 @@ let roomSet = new Map();
 
 // db setting
 const mysql = require('mysql');
+const { threadId } = require('worker_threads');
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -58,6 +59,26 @@ app.get('/users/:kid', (req, res) => {
         }
         console.log(result);
         res.json({ user : result }); // sends empty list if user is not a member [] [{id: 1, name: "정희종", ... }]
+    });
+});
+
+// get best 5 winrate users
+app.get('/rank', (_, res) => {
+    console.log("GET /rank");
+    const sql = "SELECT * FROM users";
+    con.query(sql, function(err, result) {
+        if (err) {
+            throw err;
+        }
+        const rank = result;
+        rank.sort((a, b) => {
+            const a_winrate = (a.win + a.lose) === 0 ? -1 : a.win / (a.win + a.lose);
+            const b_winrbte = (b.win + b.lose) === 0 ? -1 : b.win / (b.win + b.lose);
+            return a_winrate == b_winrbte ? (a.win > b.win ? -1 : 1) : (a_winrate > b_winrbte ? -1 : 1);
+        });
+        const ret = rank.slice(0, 5);
+        console.log(ret);
+        res.json(rank);
     });
 });
 
@@ -175,14 +196,16 @@ io.on('connection', (socket) => {
     socket.on('rooms', () => {
         console.log("(rooms)", socket.id);
         const ret = []
+        const nameRet = []
         roomSet.forEach((v, k, _) => {
             if(v.length === 1) {
                 ret.push(k);
+                nameRet.push(v[0].name);
             }
         });
         // console.log("room set", roomSet);
         // console.log("room list", ret);
-        io.to(socket.id).emit('rooms', ret);
+        io.to(socket.id).emit('rooms', ret, nameRet);
     });
 
     socket.on('disconnect', async () => {
