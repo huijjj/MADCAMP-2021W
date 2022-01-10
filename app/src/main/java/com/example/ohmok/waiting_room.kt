@@ -28,6 +28,7 @@ class waiting_room : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val ma = Main_room()
         //mSocket= ma.mSocket
+        supportActionBar?.hide()
         mSocket = SocketApplication.get()
         mSocket.connect() // close 되면 새 소켓 열기
 

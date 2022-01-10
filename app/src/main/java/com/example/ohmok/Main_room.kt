@@ -249,13 +249,16 @@ class Main_room : AppCompatActivity() {
                 
                 val get_rank_request = object : StringRequest(
                     Request.Method.GET,
-                    url ,
+                    url_rank ,
                     Response.Listener {
                         val rank = JSONObject(it).getJSONArray("rank")
                         //kid, name, win, lose 찾기
-                        for (i in 0..4){
-                            var person = rank.getJSONObject(i);
-                        }
+                        var person = rank.getJSONObject(0)
+                        findViewById<TextView>(R.id.name_1st).text = person.getString("name")
+                        person = rank.getJSONObject(1)
+                        findViewById<TextView>(R.id.name_2nd).text = person.getString("name")
+                        person = rank.getJSONObject(2)
+                        findViewById<TextView>(R.id.name_3rd).text = person.getString("name")
 
                         //리사이클러뷰 어뎁터 만들자
                     },

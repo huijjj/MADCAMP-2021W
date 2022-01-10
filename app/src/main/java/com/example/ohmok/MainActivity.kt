@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import io.socket.emitter.Emitter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import java.util.*
@@ -23,12 +24,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         val board = findViewById<Go_board>(R.id.Go_board)
         room_name = intent.getStringExtra("room_name").toString();
         color = intent.getStringExtra("color").toString();
         my_name = intent.getStringExtra("my_name").toString()
         op_name = intent.getStringExtra("op_name").toString()
         kid = intent.getStringExtra("kid").toString()
+
+        findViewById<>().findViewById<TextView>(R.id.my_name).text = my_name
+        findViewById<TextView>(R.id.op_name).text = op_name
+
+        if (color=="black"){
+            findViewById<ImageView>(R.id.my_color).setImageResource(R.drawable.black_ball)
+            findViewById<ImageView>(R.id.op_color).setImageResource(R.drawable.white_ball)
+        }else{
+            findViewById<ImageView>(R.id.op_color).setImageResource(R.drawable.black_ball)
+            findViewById<ImageView>(R.id.my_color).setImageResource(R.drawable.white_ball)
+        }
+
 
         Log.d("name test", my_name);
         Log.d("name test", op_name);
