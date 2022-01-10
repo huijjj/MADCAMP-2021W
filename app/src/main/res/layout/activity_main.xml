@@ -123,13 +123,14 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/chat_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/send"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="14dp"
@@ -141,6 +142,7 @@
             app:layout_constraintStart_toEndOf="@+id/textInputLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_list"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

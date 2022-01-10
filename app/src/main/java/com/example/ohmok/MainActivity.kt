@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 
@@ -21,6 +23,9 @@ class MainActivity : AppCompatActivity() {
     var op_name = ""
     val mSocket = SocketApplication.get()
     var kid = ""
+    var msgs = mutableListOf<String>()
+    var users =  mutableListOf<String>()
+    var chatAdapter = ChatAdapter(msgs,users,my_name)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,13 @@ class MainActivity : AppCompatActivity() {
         my_name = intent.getStringExtra("my_name").toString()
         op_name = intent.getStringExtra("op_name").toString()
         kid = intent.getStringExtra("kid").toString()
+
+        findViewById<Button>(R.id.send).setOnClickListener{view ->
+            var message = findViewById<TextInputEditText>(R.id.chat_msg).text.toString()
+            mSocket.emit("msg",room_name,my_name,message)//아마 resume의 리스너에서 처리 될꺼임
+        }
+
+
 
         var my_name_part =findViewById<TextView>(R.id.my_name)
         var op_name_part = findViewById<TextView>(R.id.op_name)
@@ -65,6 +77,11 @@ class MainActivity : AppCompatActivity() {
         ball_Board.setSocket(mSocket)
         mSocket.on("set go", send_balls)
         mSocket.on("game result",open_popup)
+        mSocket.on("msg",chat_update)
+
+
+
+
 
 
         ///mark name and color ==>{Next}
@@ -112,6 +129,27 @@ class MainActivity : AppCompatActivity() {
             }
         }).start()
 
+    }
+
+    var chat_update = Emitter.Listener { args ->
+        Thread(object : Runnable{
+            override fun run() {
+                runOnUiThread(Runnable {
+                    kotlin.run {
+                        Log.v("get???",args[0].toString())
+                        //msgs.add(args[1].toString())
+                        //users.add(args[0].toString())
+                        //Log.v("insert???",msgs.size.toString())
+                        //정상이 아님
+                        var chat_list = findViewById<RecyclerView>(R.id.chat_list)
+                        var _adapter = ChatAdapter(msgs.toList(),users.toList(),my_name)
+                        chat_list.setAdapter(_adapter)
+                        _adapter.notifyDataSetChanged()
+                        //findViewById<Button>(R.id.test_B).visibility = View.VISIBL
+                    }
+                })
+            }
+        }).start()
     }
 
     // 게임 도중 나가는 경우
