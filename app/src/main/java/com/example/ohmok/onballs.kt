@@ -25,6 +25,8 @@ class onballs: View {
 
     var signal = true;
 
+    var chating =false
+
     lateinit var mSocket: io.socket.client.Socket;
 
     var my_color = "black"
@@ -93,7 +95,7 @@ class onballs: View {
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         //Log.v("click0",for_black.size.toString())
-        if (!turn){
+        if (!turn || chating){
             return false
 
         }else{

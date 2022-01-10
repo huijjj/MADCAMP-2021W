@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import io.socket.emitter.Emitter
 import android.widget.Button
 import android.widget.ImageView
@@ -25,7 +26,8 @@ class MainActivity : AppCompatActivity() {
     var kid = ""
     var msgs = mutableListOf<String>()
     var users =  mutableListOf<String>()
-    var chatAdapter = ChatAdapter(msgs,users,my_name)
+    var chating = false
+    //var chatAdapter = ChatAdapter(msgs,users,my_name)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +41,17 @@ class MainActivity : AppCompatActivity() {
         kid = intent.getStringExtra("kid").toString()
 
         findViewById<Button>(R.id.send).setOnClickListener{view ->
-            var message = findViewById<TextInputEditText>(R.id.chat_msg).text.toString()
-            mSocket.emit("msg",room_name,my_name,message)//아마 resume의 리스너에서 처리 될꺼임
+            var message = findViewById<TextInputEditText>(R.id.chat_msg).text.toString().trim()
+            if (message!=""){
+                findViewById<TextInputEditText>(R.id.chat_msg).text = null
+                mSocket.emit("msg",room_name,my_name,message)
+            }
+               //아마 resume의 리스너에서 처리 될꺼임
+
+
+
         }
-        findViewById<RecyclerView>(R.id.chat_list).adapter = chatAdapter
+        //findViewById<RecyclerView>(R.id.chat_list).adapter = chatAdapter
 
 
         var my_name_part =findViewById<TextView>(R.id.my_name)
@@ -92,6 +101,22 @@ class MainActivity : AppCompatActivity() {
             mSocket.close()
             finish()
         }
+        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        val input1 = findViewById<TextInputEditText>(R.id.chat_msg)
+
+        findViewById<Button>(R.id.chat).setOnClickListener{view ->
+            if(chating){
+                findViewById<ConstraintLayout>(R.id.chatting).visibility = View.INVISIBLE
+                imm.hideSoftInputFromWindow(input1.getWindowToken(), 0);
+
+            }else{
+                findViewById<ConstraintLayout>(R.id.chatting).visibility = View.VISIBLE
+                imm.showSoftInput(input1, 0);
+            }
+            chating= !chating
+            ball_Board.chating = chating
+
+        }
 
     }
     var send_balls = Emitter.Listener { args->
@@ -137,13 +162,15 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread(Runnable {
                     kotlin.run {
                         Log.v("get???",args[0].toString())
-                        //msgs.add(args[1].toString())
-                        //users.add(args[0].toString())
-                        //Log.v("insert???",msgs.size.toString())
+                        msgs.add(args[1].toString())
+                        users.add(args[0].toString())
+                        Log.v("insert???",msgs.size.toString())
                         //정상이 아님
-                        //var chat_list = findViewById<RecyclerView>(R.id.chat_list)
-                        //var AAAdapter = ChatAdapter(msgs,users,my_name)
-                        chatAdapter.addItem(args[1].toString(),args[0].toString())
+                        var chat_list = findViewById<RecyclerView>(R.id.chat_list)
+                        var AAAdapter = ChatAdapter(msgs,users,my_name)
+                        chat_list.setAdapter(AAAdapter)
+                        chat_list.scrollToPosition(msgs.size - 1);
+                        //chatAdapter.addItem(args[1].toString(),args[0].toString())
                         //_adapter.notifyDataSetChanged()
                         //findViewById<Button>(R.id.test_B).visibility = View.VISIBL
                     }

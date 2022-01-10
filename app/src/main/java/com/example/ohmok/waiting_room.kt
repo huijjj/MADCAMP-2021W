@@ -111,7 +111,7 @@ class waiting_room : AppCompatActivity() {
     override fun onBackPressed() {
         // 방을 떠난다고 서버에 전송
         //TODO: 밑에꺼 주석 아님
-        //mSocket.emit("leave", room_name)
+        mSocket.emit("leave", room_name)
         mSocket.close()
         super.onBackPressed()
     }
