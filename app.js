@@ -132,6 +132,7 @@ io.on('connection', (socket) => {
 
     socket.on('win', (kid) => {
         // get users win data
+        console.log("(win)", kid);
         const get_sql = `SELECT * FROM users WHERE id='${kid}'`;
         con.query(get_sql, function(err, result) {
             if (err) {
@@ -152,6 +153,7 @@ io.on('connection', (socket) => {
 
     socket.on('lose', (kid) => {
         // get users win data
+        console.log("(lose)", kid);
         const get_sql = `SELECT * FROM users WHERE id='${kid}'`;
         con.query(get_sql, function(err, result) {
             if (err) {
