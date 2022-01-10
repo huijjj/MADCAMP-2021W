@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             var message = findViewById<TextInputEditText>(R.id.chat_msg).text.toString()
             mSocket.emit("msg",room_name,my_name,message)//아마 resume의 리스너에서 처리 될꺼임
         }
-
+        findViewById<RecyclerView>(R.id.chat_list).adapter = chatAdapter
 
 
         var my_name_part =findViewById<TextView>(R.id.my_name)
@@ -141,10 +141,10 @@ class MainActivity : AppCompatActivity() {
                         //users.add(args[0].toString())
                         //Log.v("insert???",msgs.size.toString())
                         //정상이 아님
-                        var chat_list = findViewById<RecyclerView>(R.id.chat_list)
-                        var _adapter = ChatAdapter(msgs.toList(),users.toList(),my_name)
-                        chat_list.setAdapter(_adapter)
-                        _adapter.notifyDataSetChanged()
+                        //var chat_list = findViewById<RecyclerView>(R.id.chat_list)
+                        //var AAAdapter = ChatAdapter(msgs,users,my_name)
+                        chatAdapter.addItem(args[1].toString(),args[0].toString())
+                        //_adapter.notifyDataSetChanged()
                         //findViewById<Button>(R.id.test_B).visibility = View.VISIBL
                     }
                 })

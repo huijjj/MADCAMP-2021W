@@ -21,7 +21,6 @@ class RoomAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.room_element,parent,false)
         view.setOnClickListener{v ->
-            Log.v("click","hihi")
             val room_name = v.findViewById<TextView>(R.id.roomy).text
             val room_intent = Intent(v.context, waiting_room::class.java)
             room_intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

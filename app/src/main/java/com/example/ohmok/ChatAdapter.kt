@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ChatAdapter (
-    private val chat: List<String>,
-    private val user: List<String>,
+    private val chat: MutableList<String>,
+    private val users: MutableList<String>,
     private val me: String
 ) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
@@ -44,14 +44,20 @@ class ChatAdapter (
 
     override fun getItemViewType(position: Int): Int {
         Log.v("chat???","find_view_type")
-        val chat_user = user[position]
-        val size_u = chat_user.length
-        val char_user_s = chat_user.substring(1,size_u-1)
+        val chat_user = users[position]
 
-        if (me == char_user_s){
+        if (me == chat_user){
             return 0
         }else{
             return 1
         }
+    }
+
+    fun addItem(msg:String,user:String){
+        Log.v("chat!>>>",msg)
+        chat.add(msg)
+        users.add(user)
+        notifyDataSetChanged()
+
     }
 }
