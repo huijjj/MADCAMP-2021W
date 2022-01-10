@@ -196,6 +196,7 @@ class Main_room : AppCompatActivity() {
                 // db api
                 requestQueue = Volley.newRequestQueue(this);
                 val url = "http://192.249.18.162:443/users/";
+                val url_rank = "http://192.249.18.162:443/rank";
 
                 // get user data from db, if user does not exist add user to db
                 val get_request = object: StringRequest(
@@ -245,6 +246,26 @@ class Main_room : AppCompatActivity() {
 
                 ){}
                 requestQueue?.add(get_request);
+                
+                val get_rank_request = object : StringRequest(
+                    Request.Method.GET,
+                    url ,
+                    Response.Listener {
+                        val rank = JSONObject(it).getJSONArray("rank")
+                        //kid, name, win, lose 찾기
+                        for (i in 0..4){
+                            var person = rank.getJSONObject(i);
+                        }
+
+                        //리사이클러뷰 어뎁터 만들자
+                    },
+                    Response.ErrorListener {
+                        Log.d("serverresponse", it.toString());
+                    }
+
+                ){}
+                requestQueue?.add(get_rank_request);
+                
 
             }
         }

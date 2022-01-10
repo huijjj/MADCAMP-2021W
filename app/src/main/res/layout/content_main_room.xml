@@ -21,9 +21,11 @@
 
     <View
         android:id="@+id/view2"
-        android:layout_width="328dp"
+        android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/round_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,14 +34,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/room_list"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="24dp"
         android:background="#FFFFFF"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,19 +51,19 @@
         android:id="@+id/new_room"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:drawable/ic_media_play"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"/>
+        app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/type"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toStartOf="@+id/new_room"
@@ -82,21 +82,38 @@
 
     <Button
         android:id="@+id/refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="refresh"
-        app:layout_constraintBottom_toBottomOf="@+id/room_list"
-        app:layout_constraintEnd_toEndOf="@+id/room_list" />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:drawable/stat_notify_sync"
+        app:layout_constraintBottom_toTopOf="@+id/room_list"
+        app:layout_constraintEnd_toEndOf="@+id/room_list"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/room_list"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        tools:layout_editor_absoluteX="52dp" />
+        android:layout_marginStart="30dp"
+        android:text="기다림."
+        android:textColor="#000000"
+
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/room_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:text="랭킹."
+
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/room_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

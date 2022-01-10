@@ -31,7 +31,7 @@
                 android:layout_width="109dp"
                 android:layout_height="98dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/round_border"
                 android:gravity="center"
@@ -39,14 +39,14 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/win"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
 
             <TextView
                 android:id="@+id/win"
                 android:layout_width="109dp"
                 android:layout_height="98dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/round_border"
                 android:gravity="center"
@@ -54,34 +54,35 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toStartOf="@+id/lose"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginEnd="8dp"
-                android:background="#FFFFFF"
+                android:layout_marginTop="220dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/black_ball"
                 android:gravity="center"
-                android:text="WIN"
-                android:textSize="16sp"
+                android:text="勝"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
                 app:layout_constraintEnd_toStartOf="@+id/textView4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="200dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="220dp"
                 android:layout_marginEnd="16dp"
-                android:background="#FFFFFF"
+                android:background="@drawable/white_ball"
                 android:gravity="center"
-                android:text="LOSE"
-                android:textSize="16sp"
+                android:text="敗"
+                android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent" />

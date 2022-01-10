@@ -15,28 +15,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/Start_image" />
+        app:srcCompat="@drawable/start_image" />
+
+    <ImageView
+        android:id="@+id/title_view"
+        android:layout_width="333dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_height="45dp"
         android:background="#99FFFFFF"
         android:text="TextView"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/title_view"
+        app:layout_constraintEnd_toEndOf="@+id/title_view"
+        app:layout_constraintStart_toStartOf="@+id/title_view"
+        app:layout_constraintTop_toTopOf="@+id/title_view" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="100dp"
         android:text="접신 준비중입니다..."
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

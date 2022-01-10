@@ -10,7 +10,7 @@
         android:id="@+id/Go_board"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#CB7D65"
+        android:background="@drawable/board"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,7 @@
 package com.example.ohmok
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -20,6 +21,7 @@ class waiting_room : AppCompatActivity() {
     var ready_num = 0
     var user_name = ""
     var kid = ""
+    private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.v("2nd","create")
@@ -76,6 +78,17 @@ class waiting_room : AppCompatActivity() {
         this.finish()
         //finish();
     }
+    override fun onResume(){
+        super.onResume()
+        mediaPlayer = MediaPlayer.create(this, R.raw.waiting_music);
+        mediaPlayer.start()
+    }
+
+    override fun onPause(){
+        super.onPause()
+        mediaPlayer.stop()
+
+    }
 
     var Go_back = Emitter.Listener{ (_) ->
 
@@ -97,7 +110,7 @@ class waiting_room : AppCompatActivity() {
     override fun onBackPressed() {
         // 방을 떠난다고 서버에 전송
         //TODO: 밑에꺼 주석 아님
-        mSocket.emit("leave", room_name)
+        //mSocket.emit("leave", room_name)
         mSocket.close()
         super.onBackPressed()
     }

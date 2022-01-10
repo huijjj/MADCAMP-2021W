@@ -158,7 +158,7 @@ class onballs: View {
         //세로
         var winner = 0;
         for(i in 0..14){
-            for(j in 0..9){
+            for(j in 0..10){
                 if(ball_array[i][j]==1){
                     if(ball_array[i][j+1]==1&&ball_array[i][j+2]==1&&ball_array[i][j+3]==1&&ball_array[i][j+4]==1){
                         winner = 1
@@ -172,7 +172,7 @@ class onballs: View {
             }
         }
         //가로
-        for(i in 0..9){
+        for(i in 0..10){
             for(j in 0..14){
                 if(ball_array[i][j]==1){
                     if(ball_array[i+1][j]==1&&ball_array[i+2][j]==1&&ball_array[i+3][j]==1&&ball_array[i+4][j]==1){
@@ -187,8 +187,8 @@ class onballs: View {
             }
         }
         //왼쪽 대각
-        for(i in 0..9){
-            for(j in 0..9){
+        for(i in 0..10){
+            for(j in 0..10){
                 if(ball_array[i][j]==1){
                     if(ball_array[i+1][j+1]==1&&ball_array[i+2][j+2]==1&&ball_array[i+3][j+3]==1&&ball_array[i+4][j+4]==1){
                         winner = 1

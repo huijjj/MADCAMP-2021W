@@ -30,7 +30,7 @@ class Go_board: View{
 
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawColor(Color.rgb(242,201,130))
+        //canvas.drawColor(Color.rgb(242,201,130))
         distance = canvas.width.toFloat() / 16
         super.onDraw(canvas)
 
@@ -40,7 +40,7 @@ class Go_board: View{
         paint.setStrokeWidth(8F)
         val line_x = mutableListOf<Float>()
         val line_y = mutableListOf<Float>()
-        for (i in 1..16) {
+        for (i in 1..15) {
             line_x.add(canvas.width * i.toFloat() / 16)
             line_x.add(canvas.width.toFloat() / 16)
             line_x.add(canvas.width * i.toFloat() / 16)
