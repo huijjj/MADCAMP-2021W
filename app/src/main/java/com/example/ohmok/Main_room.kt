@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -107,6 +108,8 @@ class Main_room : AppCompatActivity() {
 
         }
         findViewById<Button>(R.id.refresh).setOnClickListener{view ->
+            val animation = AnimationUtils.loadAnimation(this,R.anim.rotation)
+            findViewById<Button>(R.id.refresh).startAnimation(animation)
             mSocket.emit("rooms")//아마 resume의 리스너에서 처리 될꺼임
         }
 

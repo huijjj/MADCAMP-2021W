@@ -110,7 +110,7 @@ class onballs: View {
             when(event?.action) {
                 MotionEvent.ACTION_DOWN -> {
                     //Log.v("click",for_black.size.toString())
-                    if (round(event.x/distance).toInt()<1 || round(event.x/distance).toInt()>16|| round(event.y/distance).toInt()<1 || round(event.y/distance).toInt()>17){
+                    if (round(event.x/distance).toInt()<1 || round(event.x/distance).toInt()>15|| round(event.y/distance).toInt()<1 || round(event.y/distance).toInt()>15){
                         return false
                     }
                     if(ball_array[round(event.x/distance).toInt()-1][ round(event.y/distance).toInt()-1]==0){
@@ -165,7 +165,7 @@ class onballs: View {
 
     fun check_win_or_fall():Int{
         //세로
-        if(count == 255) {
+        if(count == 225) {
             return 2;
         }
         var winner = 0;
