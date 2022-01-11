@@ -33,10 +33,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/round_border"
                 android:gravity="center"
                 android:text="TextView"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/win"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -47,11 +46,10 @@
                 android:layout_height="98dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/round_border"
+                android:layout_marginEnd="16dp"
                 android:gravity="center"
                 android:text="TextView"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/lose"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -67,7 +65,7 @@
                 android:gravity="center"
                 android:text="勝"
                 android:textColor="#FFFFFF"
-                android:textSize="34sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/textView4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +80,7 @@
                 android:background="@drawable/white_ball"
                 android:gravity="center"
                 android:text="敗"
-                android:textSize="34sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,6 +94,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="52dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/round_bord" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>

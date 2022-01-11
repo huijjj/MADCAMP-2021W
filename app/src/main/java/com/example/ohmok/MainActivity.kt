@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import io.socket.emitter.Emitter
 import android.widget.Button
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity() {
         kid = intent.getStringExtra("kid").toString()
 
         findViewById<Button>(R.id.send).setOnClickListener{view ->
+            val animation = AnimationUtils.loadAnimation(this,R.anim.blink)
+            findViewById<Button>(R.id.send).startAnimation(animation)
             var message = findViewById<TextInputEditText>(R.id.chat_msg).text.toString().trim()
             if (message!=""){
                 findViewById<TextInputEditText>(R.id.chat_msg).text = null
@@ -119,11 +122,17 @@ class MainActivity : AppCompatActivity() {
         val input1 = findViewById<TextInputEditText>(R.id.chat_msg)
 
         findViewById<Button>(R.id.chat).setOnClickListener{view ->
+            val animation = AnimationUtils.loadAnimation(this,R.anim.blink)
+            findViewById<Button>(R.id.chat).startAnimation(animation)
             if(chating){
+                val animation = AnimationUtils.loadAnimation(this,R.anim.close)
+                findViewById<ConstraintLayout>(R.id.chatting).startAnimation(animation)
                 findViewById<ConstraintLayout>(R.id.chatting).visibility = View.INVISIBLE
                 imm.hideSoftInputFromWindow(input1.getWindowToken(), 0);
 
             }else{
+                val animation = AnimationUtils.loadAnimation(this,R.anim.open)
+                findViewById<ConstraintLayout>(R.id.chatting).startAnimation(animation)
                 findViewById<ConstraintLayout>(R.id.chatting).visibility = View.VISIBLE
                 findViewById<TextView>(R.id.new_msg).visibility = View.INVISIBLE
                 imm.showSoftInput(input1, 0);

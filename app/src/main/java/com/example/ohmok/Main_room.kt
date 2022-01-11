@@ -86,6 +86,8 @@ class Main_room : AppCompatActivity() {
         //new room: 새로운 방 파서 들어가 있기
         findViewById<Button>(R.id.new_room).setOnClickListener{view ->
             //소켓에 새로운 방 집어넣기
+            val animation = AnimationUtils.loadAnimation(this,R.anim.blink)
+            findViewById<Button>(R.id.new_room).startAnimation(animation)
             room_name = findViewById<TextInputEditText>(R.id.room_name).text.toString().trim()
             if (room_name.length<=0){
                 Toast.makeText(getApplicationContext(), "옳은 방 이름이 아닙니다.", Toast.LENGTH_SHORT).show()
@@ -252,8 +254,8 @@ class Main_room : AppCompatActivity() {
                             lose = userObject.getInt("lose");
 
                         }
-                        navView.findViewById<TextView>(R.id.win).text = win.toString()
-                        navView.findViewById<TextView>(R.id.lose).text =lose.toString()
+                        navView.findViewById<TextView>(R.id.win).text = win.toString()+"승"
+                        navView.findViewById<TextView>(R.id.lose).text =lose.toString()+"패"
                     },
                     Response.ErrorListener {
                         Log.d("serverresponse", it.toString());
