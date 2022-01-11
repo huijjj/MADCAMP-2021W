@@ -30,7 +30,7 @@ Client application is consisted of following 3 activities.
 
 ## 로그인 화면 (Log-in page)
 <p align="center">
-    <img width="30%" src=https://user-images.githubusercontent.com/81007362/148932226-ee8578b1-caeb-4166-8688-7d4fb4250183.gif/>
+    <img width="30%" src="https://user-images.githubusercontent.com/81007362/148932226-ee8578b1-caeb-4166-8688-7d4fb4250183.gif/>
 </p>
 
 카카오 SDK에서 제공하는 API를 사용하여 로그인을 할 수 있는 페이지입니다.
@@ -39,9 +39,10 @@ You can log in using your kakao account. This is done by API provieded by kakao 
 
 ## 로비 화면 (Lobby page)
 <p align="center">
-    <img width="30%" src="https://user-images.githubusercontent.com/81007362/148931735-02dc0a8c-4ba6-402f-b343-764e97b58d33.gif"/>
-    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900089-8115122c-c1f3-4ba6-9aed-77969a907ede.gif"/>
+    
     <img width="30%" src="https://user-images.githubusercontent.com/81007362/148932234-b15b7aec-0f13-4dfd-a6ea-c156e18eda84.gif"/>
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900089-8115122c-c1f3-4ba6-9aed-77969a907ede.gif"/>
+    <img width="30%" src="https://user-images.githubusercontent.com/81007362/148931735-02dc0a8c-4ba6-402f-b343-764e97b58d33.gif"/>
 </p>
 
 로그인 이후, 현재 참여 가능한 방들과 전체 랭킹을 확인할 수 있는 화면입니다.
