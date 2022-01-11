@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     var msgs = mutableListOf<String>()
     var users =  mutableListOf<String>()
     var chating = false
+
+
     //var chatAdapter = ChatAdapter(msgs,users,my_name)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +46,9 @@ class MainActivity : AppCompatActivity() {
             var message = findViewById<TextInputEditText>(R.id.chat_msg).text.toString().trim()
             if (message!=""){
                 findViewById<TextInputEditText>(R.id.chat_msg).text = null
+                if (message=="wkdqudrbghkdlxld"){
+                    mSocket.emit("game end", room_name, color)
+                }
                 mSocket.emit("msg",room_name,my_name,message)
             }
                //아마 resume의 리스너에서 처리 될꺼임
@@ -80,6 +85,9 @@ class MainActivity : AppCompatActivity() {
 
         ball_Board = findViewById<onballs>(R.id.balls)
         ball_Board.setTurn(turn, room_name)
+        if(turn){
+            findViewById<TextView>(R.id.turn_text).visibility = View.VISIBLE
+        }
         mSocket.connect()
         mSocket.emit("rejoin", room_name)
 
@@ -128,7 +136,23 @@ class MainActivity : AppCompatActivity() {
         y = args[2].toString().toInt()
         var setball = ball(x,y)
         //Log.v("send hihi","jojo")
+        turn=!turn
+        Thread(object : Runnable{
+            override fun run() {
+                runOnUiThread(Runnable {
+                    kotlin.run {
+                        if(turn){
+                            findViewById<TextView>(R.id.turn_text).visibility = View.VISIBLE
+                        }else{
+                            findViewById<TextView>(R.id.turn_text).visibility = View.INVISIBLE
+                        }
+                    }
+                })
+            }
+        }).start()
+
         ball_Board.add_ball(setball,args[0].toString()=="black")
+
 
     }
 
@@ -136,12 +160,12 @@ class MainActivity : AppCompatActivity() {
         var winner = args[0].toString()
         ball_Board.turn = false
         Log.v("winner",winner)
-        var win_text = "WIN"
+        var win_text = "승리"
         if(winner == "draw") {
-            win_text = "DRAW"
+            win_text = "무승부"
         }
         else if(winner!=color){
-            win_text = "LOSE"
+            win_text = "패배"
             mSocket.emit("lose", kid)
         }
         else {

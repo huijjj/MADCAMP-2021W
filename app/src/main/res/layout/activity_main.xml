@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
             android:text="TextView"
+            android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/op_color"
@@ -70,8 +71,8 @@
 
         <Button
             android:id="@+id/chat"
-            android:layout_width="47dp"
-            android:layout_height="45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="16dp"
             android:background="@android:drawable/sym_action_chat"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -80,10 +81,12 @@
 
         <TextView
             android:id="@+id/my_name"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
             android:text="TextView"
+            android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/my_color"
@@ -98,6 +101,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/black_ball" />
+
+        <TextView
+            android:id="@+id/turn_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 차례"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/my_name"
+            app:layout_constraintEnd_toStartOf="@+id/chat"
+            app:layout_constraintStart_toEndOf="@+id/my_name"
+            app:layout_constraintTop_toTopOf="@+id/my_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -163,10 +177,12 @@
 
     <TextView
         android:id="@+id/new_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="New"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/new_button"
+        android:gravity="center"
         android:textColor="#FFE100"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/my_part"
@@ -198,9 +214,11 @@
 
         <TextView
             android:id="@+id/win_text"
+            android:fontFamily="@font/h2mjre"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:gravity="center|center_vertical"
+            android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/main"
             app:layout_constraintEnd_toEndOf="parent"

@@ -87,7 +87,7 @@ class Main_room : AppCompatActivity() {
             //소켓에 새로운 방 집어넣기
             room_name = findViewById<TextInputEditText>(R.id.room_name).text.toString().trim()
             if (room_name.length<=0){
-                Toast.makeText(getApplicationContext(), "방 이름을 제대로 입력하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(getApplicationContext(), "옳은 방 이름이 아닙니다.", Toast.LENGTH_SHORT).show()
             }else{
                 findViewById<TextInputEditText>(R.id.room_name).text = null
                 val room_intent = Intent(this, waiting_room::class.java)
