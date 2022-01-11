@@ -162,13 +162,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/new_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:text="New"
         android:textColor="#FFE100"
-        tools:layout_editor_absoluteX="358dp"
-        tools:layout_editor_absoluteY="682dp" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/my_part"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/my_part" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/win_or_lose"

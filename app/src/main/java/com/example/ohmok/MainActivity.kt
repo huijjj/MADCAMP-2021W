@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
 
             }else{
                 findViewById<ConstraintLayout>(R.id.chatting).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.new_msg).visibility = View.INVISIBLE
                 imm.showSoftInput(input1, 0);
             }
             chating= !chating
@@ -137,7 +138,7 @@ class MainActivity : AppCompatActivity() {
         Log.v("winner",winner)
         var win_text = "WIN"
         if(winner == "draw") {
-            win_text == "DRAW"
+            win_text = "DRAW"
         }
         else if(winner!=color){
             win_text = "LOSE"
@@ -164,6 +165,10 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 runOnUiThread(Runnable {
                     kotlin.run {
+                        if (!chating){
+                            findViewById<TextView>(R.id.new_msg).visibility = View.VISIBLE
+                        }
+
                         Log.v("get???",args[0].toString())
                         msgs.add(args[1].toString())
                         users.add(args[0].toString())
