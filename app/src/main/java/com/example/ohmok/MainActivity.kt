@@ -48,6 +48,12 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextInputEditText>(R.id.chat_msg).text = null
                 if (message=="wkdqudrbghkdlxld"){
                     mSocket.emit("game end", room_name, color)
+                }else if(message=="치타는 웃고있다"){
+                    var op_color = "white"
+                    if (color=="white"){
+                        op_color = "black"
+                    }
+                    mSocket.emit("game end", room_name, op_color)
                 }
                 mSocket.emit("msg",room_name,my_name,message)
             }
