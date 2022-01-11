@@ -3,6 +3,7 @@
 안드로이드 스튜디오와 코틀린을 사용하여 사용자 응용프로그램을 만들었으며, Node.js와 express를 사용하여 서버를 구축하였습니다.
 추가적으로, 실시간 통신과 데이터 저장을 위해 socket.io와 MySQL을 사용하였으며, 사용자 로그인을 위해 카카오 SDK를 사용하였습니다.
 
+
 We made real time five-in-a-row(gomoku) game for mad camp week 2 project.
 We used android studio and Kotlin for making client application, and Node.js and express for server.
 MySQL and socket.io are additionally used for real time communication and storing data.
@@ -15,6 +16,7 @@ Kakao SDK is used for user log-in.
 # Front-End (android studio, Kotlin)
 사용자 응용 프로그램은 크게 3개의 화면으로 구성되어 있으며 구성은 아래와 같습니다.
 
+
 Client application is consisted of following 3 activities.
 
 + 로그인 화면 (Log-in page)
@@ -26,6 +28,7 @@ Client application is consisted of following 3 activities.
 <p align="center">
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148899816-b2e7e46e-d0c3-4f6d-8a5b-f46f976e099c.gif"/>
 </p>
+
 카카오 SDK에서 제공하는 API를 사용하여 로그인을 할 수 있는 페이지입니다.
 
 You can log in using your kakao account. This is done by API provieded by kakao SDK.
@@ -55,6 +58,7 @@ You can log out via log out button at the bottom of the side view.
 <p align="center">
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148902084-99e9fdcd-4a11-44b1-a36f-ab572730d48f.gif" />
 </p>
+
 방을 생성한 이후, 상대가 들어올 때까지 대기하는 화면입니다. 유서 깊은 포켓몬 게임의 방식을 오마주하여 별도의 준비 버튼 없이 상대가 들어오고 눈이 마주치자마자 승부가 시작되므로,
 대기 화면에서는 항상 긴장을 늦추지 말아야 합니다. 긴장감 조성을 돕기 위해 대기실에서는 웅장한 음악이 재생되며,
 해당 음악은 전체 앱 컨셉을 따온 고스트 바둑왕의 대국 장면에 삽입된 음악입니다.
