@@ -39,7 +39,6 @@ You can log in using your kakao account. This is done by API provieded by kakao 
 
 ## 로비 화면 (Lobby page)
 <p align="center">
-   
     <img width="30%" src="https://user-images.githubusercontent.com/81007362/148932234-b15b7aec-0f13-4dfd-a6ea-c156e18eda84.gif"/>
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900089-8115122c-c1f3-4ba6-9aed-77969a907ede.gif"/>
     <img width="30%" src="https://user-images.githubusercontent.com/81007362/148931735-02dc0a8c-4ba6-402f-b343-764e97b58d33.gif"/>
