@@ -13,6 +13,10 @@ Kakao SDK is used for user log-in.
 + 박도윤(victoria0406): victoria0406@kaist.ac.kr
 + 정희종(huijjj): hui0213@postech.ac.kr
 
+<img width="100%" src="https://user-images.githubusercontent.com/64083281/148896176-c1755e2e-826b-482c-b417-757c537e2d97.gif" />
+<p align="center"><em>지금, 치타가 달리기 시작했다.</em></p>
+<p align="center"><em>At the moment, the cheetah is on it's way.</em></p>
+
 # Front-End (android studio, Kotlin)
 사용자 응용 프로그램은 크게 3개의 화면으로 구성되어 있으며 구성은 아래와 같습니다.
 
@@ -290,7 +294,3 @@ http.listen(PORT, () => {
     console.log(`listening to port ${PORT}`);
 });
 ```
-
-<img width="100%" src="https://user-images.githubusercontent.com/64083281/148896176-c1755e2e-826b-482c-b417-757c537e2d97.gif" />
-<p align="center"><em>지금, 치타가 달리기 시작했다.</em></p>
-<p align="center"><em>At the moment, the cheetah is on it's way.</em></p>
