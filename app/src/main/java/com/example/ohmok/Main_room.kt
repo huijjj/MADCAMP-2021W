@@ -1,6 +1,7 @@
 package com.example.ohmok
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -107,6 +108,21 @@ class Main_room : AppCompatActivity() {
 
 
         }
+
+        val kakao_logout_button = findViewById<Button>(R.id.log_out) // 로그인 버튼
+
+        kakao_logout_button.setOnClickListener {
+            UserApiClient.instance.logout { error ->
+                if (error != null) {
+                    Toast.makeText(this, "로그아웃 실패 $error", Toast.LENGTH_SHORT).show()
+                }else {
+                    Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
+                }
+                val intent = Intent(this, Login_activity::class.java)
+                startActivity(intent.addFlags(FLAG_ACTIVITY_CLEAR_TOP))
+                finish()
+            }
+        }
         findViewById<Button>(R.id.refresh).setOnClickListener{view ->
             val animation = AnimationUtils.loadAnimation(this,R.anim.rotation)
             findViewById<Button>(R.id.refresh).startAnimation(animation)
@@ -129,10 +145,6 @@ class Main_room : AppCompatActivity() {
         rooms = _rooms
     }
 
-    override fun onStop() {
-        super.onStop()
-        mSocket.close()
-    }
 
     override fun onPause(){
         super.onPause()
