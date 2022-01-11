@@ -8,12 +8,11 @@ app.use(express.json());
 
 
 const PORT = 443;
-let roomSet = new Map();
+const roomSet = new Map();
 
 
 // db setting
 const mysql = require('mysql');
-const { threadId } = require('worker_threads');
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -74,9 +73,9 @@ app.get('/rank', (_, res) => {
         rank.sort((a, b) => {
             const a_winrate = (a.win + a.lose) === 0 ? -1 : a.win / (a.win + a.lose);
             const b_winrbte = (b.win + b.lose) === 0 ? -1 : b.win / (b.win + b.lose);
-            return a_winrate == b_winrbte ? (a.win > b.win ? -1 : 1) : (a_winrate > b_winrbte ? -1 : 1);
+            return a_winrate == b_winrbte ? (a.win == b.win ? (a.lose < b.lose ?  -1 : 1 ) : a.win > b.win ? -1 : 1) : (a_winrate > b_winrbte ? -1 : 1);
         });
-        const ret = rank.slice(0, 5);
+        const ret = rank.slice(0, 3);
         console.log(ret);
         res.json({ rank : rank });
     });
@@ -206,6 +205,11 @@ io.on('connection', (socket) => {
         // console.log("room set", roomSet);
         // console.log("room list", ret);
         io.to(socket.id).emit('rooms', ret, nameRet);
+    });
+
+    socket.on('msg', (room, name, msg) => {
+        console.log("(msg)", room, name, msg);
+        io.to(room).emit('msg', name, msg);
     });
 
     socket.on('disconnect', async () => {
