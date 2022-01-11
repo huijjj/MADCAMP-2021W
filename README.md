@@ -23,15 +23,25 @@ Client application is consisted of following 3 activities.
 + 게임 화면 (Game page)
 
 ## 로그인 화면 (Log-in page)
+<p align="center">
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148899816-b2e7e46e-d0c3-4f6d-8a5b-f46f976e099c.gif"/>
+</p>
 카카오 SDK에서 제공하는 API를 사용하여 로그인을 할 수 있는 페이지입니다.
 
 You can log in using your kakao account. This is done by API provieded by kakao SDK.
 
 ## 로비 화면 (Lobby page)
+<p align="center">
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148901303-90e7dc48-3bc7-4b6e-930d-828a01ab06e0.gif"/>
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900089-8115122c-c1f3-4ba6-9aed-77969a907ede.gif"/>
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900185-eb9ad0bd-7238-4fb9-8096-0dba473c332c.gif"/>
+</p>
+
 로그인 이후, 현재 참여 가능한 방들과 전체 랭킹을 확인할 수 있는 화면입니다.
 좌측의 사이드 탭을 열어 자신의 프로필 이미지와 이름, 그리고 승리 횟수와 패배 횟수를 확인할 수 있습니다.
 상단의 텍스트 입력창에 방 이름을 입력해 방에 참석하거나, 방 목록의 방을 클릭해 게임을 시작할 수 있습니다. 방 리스트 우 상단의 새로고침 버튼을 눌러 목록을 새로고침할 수 있습니다.
 아래의 랭킹에선 총 승률을 기준으로 1, 2, 3등을 확인 할 수 있습니다. 유저 정보와 랭킹 정보는 http GET 요청을 통해, 방의 목록은 socket 통신을 통해 서버로부터 받아옵니다.
+사이드뷰 하단의 로그아웃 버튼을 클릭해 로그아웃 할 수 있습니다.
 
 This page is main lobby of your application. After logging in with kakao account in log-in page, you can see joinable rooms and ranking in this page.
 You can see your profile image, name, and win lose count at side view by opening the side view at the top left.
@@ -39,8 +49,12 @@ You can either enter room name at the text input and click go button or click ro
 You can refresh the list with the refresh button at the top right of the list.
 You can see the top 3 rankers at the bottom-side of the page according to win rate.
 User data and Ranking data is fetched from the server using http GET request, and room list is fetch by socket communication.
+You can log out via log out button at the bottom of the side view.
 
 ## 대기 화면 (Waiting page)
+<p align="center">
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148902084-99e9fdcd-4a11-44b1-a36f-ab572730d48f.gif" />
+</p>
 방을 생성한 이후, 상대가 들어올 때까지 대기하는 화면입니다. 유서 깊은 포켓몬 게임의 방식을 오마주하여 별도의 준비 버튼 없이 상대가 들어오고 눈이 마주치자마자 승부가 시작되므로,
 대기 화면에서는 항상 긴장을 늦추지 말아야 합니다. 긴장감 조성을 돕기 위해 대기실에서는 웅장한 음악이 재생되며,
 해당 음악은 전체 앱 컨셉을 따온 고스트 바둑왕의 대국 장면에 삽입된 음악입니다.
@@ -50,16 +64,23 @@ without any additional ready logic. You should keep on your toe since you have n
 This music is from japanese animation *Hikaru's Go*.
 
 ## 게임 화면 (Game page)
+<p align="center">
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900924-dea911e4-08b4-4878-b381-5c7a264b8dd6.gif" />
+    <img width="30%" src="https://user-images.githubusercontent.com/64083281/148901737-2d631c7d-234c-4db4-b1ce-52aba2944529.gif" />
+</p>
+
 실제 게임이 진행되는 화면이며, 바둑판을 클릭하여 착수할 수 있습니다. 규칙으로는 국제 표준 오목 규칙인 _*고모쿠룰*_ 을 채택하였습니다. 
 더 나은 사용자 경험을 위해, 바둑판은 바둑판계의 에르메스인 *비자나무* 의 이미지를 사용했습니다.
 바둑알로 대화를 나누는 수담이 가능한 바둑과 달리, 오목에서는 대화를 통한 교란 역시 전략의 한 요소로 사용될 수 있으므로 채팅 기능을 구현하였습니다.
 채팅은 우 하단의 채팅버튼을 눌러 생성되는 팝업에서 진행할 수 있습니다. 착수와 채팅은 socket 통신을 통해 구현되었습니다.
+채팅 기능을 통해 마법의 문장을 입력할 경우 게임에서 승리하는 이스터에그가 존재합니다.
 
 This page is the page where the actual game is done. For our gomoku game, we used the global standard _*gomoku rule*_.
 You can set your stone by clicking the desired position at the Go board. For better user experience, we used *japanese nutmeg-yew's* image.
 *Japanese nutmeg-yew* is the tree used to make a high-end state of an art Go board in real world.
 Since distracting opponent with deft eloquence is part of the strategy in gomoku, we implemented chatting for you to test your skills.
 Setting stone and Chatting function is implemented via socket.io.
+There exists a magical secret sentence that you can send via chat and win in any situation. Try it out! 
 
 # Back-End (Node.js, express, MySQL, http, socket.io)
 Node.js 환경 위에서 express로 서버를 구축하였으며 클라이언트와의 통신을 위해 http와 socket.io를 사용합니다. 유저 정보 저장을 위한 데이터베이스로는 MySQL을 사용합니다.
@@ -265,3 +286,7 @@ http.listen(PORT, () => {
     console.log(`listening to port ${PORT}`);
 });
 ```
+
+<img width="100%" src="https://user-images.githubusercontent.com/64083281/148896176-c1755e2e-826b-482c-b417-757c537e2d97.gif" />
+<p align="center"><em>지금, 치타가 달리기 시작했다.</em></p>
+<p align="center"><em>At the moment, the cheetah is on it's way.</em></p>
