@@ -98,8 +98,29 @@ app.post('/api/user/register', (req, res) => {
 });
 
 /*login*/
-app.get('/api/user/login/:id/:pwd', (req, res) => {
-  res.send('Root');
+app.post('/api/user/login', (req, res) => {
+  const id = req.body.id;
+  const pwd = req.body.pwd;
+  let sqlLoginValid = 'select EXISTS(select * from User where id=? AND pwd=? limit 1) as success';
+  let paramLoginValid = [id, pwd];
+  connection.query(sqlLoginValid, paramLoginValid,  (error, results) =>{
+    if (error) throw error;
+    if(!parseInt(existSTR[12]))
+    {
+      let sqlUserId = 'SELECT * from User where id = ?';
+      let paramUserId = [id];
+      connection.query(sqlUserId, paramUserId, (error, results) => {
+        if (error) throw error;
+        console.log('/api/user/login/'+id+'/'+pwd);
+        res.json(results);
+      });
+    }
+    else
+    {
+      console.log('/api/user/login/'+id+'/'+pwd+'-> fail');
+      res.json({status : "fail"});
+    }
+  })
 });
 
 /*get every animal info which owner has*/
