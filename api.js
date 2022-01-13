@@ -84,8 +84,8 @@ app.post('/api/user/register', (req, res) => {
         if (error) throw error;
         connection.query('select * from User where id='+id,(error, results) => {
           if (error) throw error;
+          console.log('/api/user/register/');
           res.json(results);
-          console.log(results)
         });
       });
     }
