@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CloseIcon from '@mui/icons-material/Close';
+import HomeIcon from '@mui/icons-material/Home';
 import AnimalListItem from "../components/AnimalListItem";
 import ItemListItem from "../components/ItemListItem";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
+import Draggable from 'react-draggable';
 
 const CONTENT_ANIMAL = 0;
 const CONTENT_ITEM = 1;
@@ -15,12 +18,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function MyFarm() {
+  const navigate = useNavigate();
   const [ animalList, setAnimalList ] = useState([]);
   const [ itemList, setItemList ] = useState([]);
   const [ listOpen, setListOpen ] = useState(false);
   const [ contentType, setContentType ] = useState(0);
   const [ useItem, setUseItem ] = useState();
-  const [ useItemId, setUseItemId ] = useState(-1);
   // const [ listContent, setListContent ] = useState();
   
 
@@ -38,7 +41,9 @@ export default function MyFarm() {
         geee: 0,
         duck: 0,
         chae: 0,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000001,
@@ -51,7 +56,9 @@ export default function MyFarm() {
         geee: 40,
         duck: 20,
         chae: 70,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000002,
@@ -64,7 +71,9 @@ export default function MyFarm() {
         geee: 20,
         duck: 80,
         chae: 120,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000003,
@@ -77,7 +86,9 @@ export default function MyFarm() {
         geee: 50,
         duck: 30,
         chae: 50,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000004,
@@ -90,7 +101,9 @@ export default function MyFarm() {
         geee: 0,
         duck: 0,
         chae: 0,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000005,
@@ -103,7 +116,9 @@ export default function MyFarm() {
         geee: 40,
         duck: 20,
         chae: 70,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000006,
@@ -116,7 +131,9 @@ export default function MyFarm() {
         geee: 20,
         duck: 80,
         chae: 120,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000007,
@@ -129,7 +146,9 @@ export default function MyFarm() {
         geee: 50,
         duck: 30,
         chae: 50,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000008,
@@ -142,7 +161,9 @@ export default function MyFarm() {
         geee: 0,
         duck: 0,
         chae: 0,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000009,
@@ -155,7 +176,9 @@ export default function MyFarm() {
         geee: 40,
         duck: 20,
         chae: 70,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000010,
@@ -168,7 +191,9 @@ export default function MyFarm() {
         geee: 20,
         duck: 80,
         chae: 120,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
       {
         id: 1000000011,
@@ -181,7 +206,9 @@ export default function MyFarm() {
         geee: 50,
         duck: 30,
         chae: 50,
-        isCarbonCompound: false
+        isAbandoned: false,
+        X: 0,
+        Y: 0
       },
     ]);
 
@@ -316,10 +343,9 @@ export default function MyFarm() {
           else {
             return e;
           }
-        }))
+        }));
 
         setContentType(CONTENT_ITEM);
-        setUseItemId(-1);
         setUseItem();
       }
       else {
@@ -349,17 +375,18 @@ export default function MyFarm() {
   const makeListContent = (contentType) => {
     switch (contentType) {
       case CONTENT_ANIMAL :
-        return animalList.map(animal => <ListItem key={animal.id}>
-          <AnimalListItem 
-            onClick={onAnimalItemClick}
-            id={animal.id}
-            name={animal.name}
-            type={animal.type}
-            sex={animal.sex}
-            geee={animal.geee}
-            duck={animal.duck}
-            chae={animal.chae} />
-        </ListItem>);
+        return animalList.map(animal => 
+          <ListItem key={animal.id}>
+            <AnimalListItem 
+              onClick={onAnimalItemClick}
+              id={animal.id}
+              name={animal.name}
+              type={animal.type}
+              sex={animal.sex}
+              geee={animal.geee}
+              duck={animal.duck}
+              chae={animal.chae} />
+          </ListItem>);
     
       case CONTENT_ITEM :
         return itemList.map(item => <ListItem key={item.id}>
@@ -380,32 +407,75 @@ export default function MyFarm() {
     setListOpen(true);
   }
 
+  const onDrag = (e, data) => {
+    e.preventDefault();
+  }
+
+  const onStop = (e, data) => {
+    e.preventDefault();
+    const target = e.target.id;
+    const newX = data.x > 0 ? data.x : 0;
+    const newY = data.y > 0 ? data.y : 0;
+    console.log(target, newX, newY);
+    
+    // request api to update DB
+    
+    // update local data
+    setAnimalList(animalList.map(e => e.id === target ? {
+      id: e.id,
+      name: e.name,
+      type: e.type,
+      sex: e.sex,
+      owner: e.owner,
+      adventureCount: e.adventureCount,
+      itemCount: e.itemCount,
+      geee: e.geee + useItem.geee,
+      duck: e.duck + useItem.duck,
+      chae: e.chae + useItem.chae,
+      isCarbonCompound: e.isCarbonCompound,
+      X: newX,
+      Y: newY
+    } : e));
+  }
+
+  const renderAnimals = () => {
+    return animalList.map((e) => {
+      const src = `/images/${e.type.substring(0, 3)}/${e.type.at(3)}.jpg`;
+      return (<Draggable onDrag={onDrag} onStop={onStop} key={e.id}>
+        <img id={e.id} style={{position: "absolute", width: "7rem", height: "7rem", transform: `translate(${e.X}px, ${e.Y}px)`}} src={src} />
+      </Draggable>);
+    }); 
+  }
+
   return (
-    <div style={{height: "100%", width: "100%"}} >
-      <div style={{width: "100%", height: "90%"}}>
-        fsaas
-      </div>
-      <div>
-        <div onClick={() => showList(CONTENT_ANIMAL)}>
-          animalList
+    <div>
+      <HomeIcon onClick={() => navigate(-1)} />
+      <div style={{height: "100%", width: "90%"}}>
+        <div style={{width: "100%", height: "100%"}}>
+          {renderAnimals()}
         </div>
-        <div onClick={() => showList(CONTENT_ITEM)}>
-          itemList
+        <div>
+          <div onClick={() => showList(CONTENT_ANIMAL)}>
+            animalList
+          </div>
+          <div onClick={() => showList(CONTENT_ITEM)}>
+            itemList
+          </div>
         </div>
+        <Dialog
+          open={listOpen}
+          TransitionComponent={Transition}
+          onClose={() => setListOpen(false)}>
+          <CloseIcon onClick={() => setListOpen(false)}/>
+          {useItem ? 
+            <div>{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요`}</div>:
+            <div></div>
+          }
+          <List>{
+            makeListContent(contentType)
+          }</List>
+        </Dialog>
       </div>
-      <Dialog
-        open={listOpen}
-        TransitionComponent={Transition}
-        onClose={() => setListOpen(false)}>
-        <CloseIcon onClick={() => setListOpen(false)}/>
-        {useItem ? 
-          <div>{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요`}</div>:
-          <div></div>
-        }
-        <List>{
-          makeListContent(contentType)
-        }</List>
-      </Dialog>
     </div>
   );
 }
