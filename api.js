@@ -78,8 +78,8 @@ app.post('/api/user/register', (req, res) => {
     if (error) throw error;
     if(!parseInt(existSTR[12]))
     {
-      let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd) VALUES (?,?,?,?,?);';
-      let paramRegister = [id, nick, '학사', 0, pwd];
+      let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd,Money) VALUES (?,?,?,?,?,?);';
+      let paramRegister = [id, nick, '학사', 0, pwd, 0];
       connection.query(sqlRegister, paramRegister, (error, insRes) => {
         if (error) throw error;
         connection.query('select * from User where id='+id,(error, results) => {
