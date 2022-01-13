@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from "@mui/material";
 
-export default function AdventureLobby() {
+export default function AdventureLobby({ setIsLobby }) {
   const navigate = useNavigate();
   const [ animalList, setAnimalList ] = useState([]);
   useEffect(() => {
@@ -68,12 +68,12 @@ export default function AdventureLobby() {
     ]);
   }, []);
 
-  const onClick = (target) => {
-    navigate(`/adventure/${target}`);
+  const handleClickJoin = () => {
+    setIsLobby(false);
   };
 
   return (
-    <div>
+    <div id = "adventure-lobby">
       { animalList.map(
           (animal) => 
             <Card sx={{ maxWidth: 345 }}>
@@ -95,10 +95,7 @@ export default function AdventureLobby() {
               <CardActions>
                 <Button
                   size="small"
-                  onClick={(e) => 
-                    {e.preventDefault();
-                     onClick("floor/1")}
-                  }
+                  onClick={handleClickJoin}
                 >
                 참가하기
                 </Button>

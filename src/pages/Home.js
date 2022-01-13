@@ -21,7 +21,7 @@ function Home({ history, match, location }) {
       
       <div onClick={(e) => {
         e.preventDefault();
-        onClick("adventure/lobby");
+        onClick("adventure");
       }}>
         Adventure
       </div>

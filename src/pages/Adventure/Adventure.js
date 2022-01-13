@@ -1,15 +1,27 @@
 
-import { useRoutes } from 'react-router-dom';
+import React, { useState } from 'react';
+
 import AdventureLobby from "./AdventureLobby";
 import AdventureFloor from "./AdventureFloor";
-import AdventureRoom from './AdventureRoom';
+import AdventureInGame from './AdventureInGame';
+import AdventureRoomFinal from '../../components/adventure/AdventureRoomFinal';
 
 export default function Adventure() {
-  const element = useRoutes([
-    { path: '/lobby', element: <AdventureLobby />},
-    { path: '/floor/:floor', element: <AdventureFloor />},
-    { path: '/floor/:id/room', element: <AdventureRoom />},
-  ]);
+  const [floor, setFloor] = useState(1);
+  const [isLobby, setIsLobby] = useState(true);
+  const [isInGame, setIsInGame] = useState(false);
 
-  return element;
+  return (
+    <>
+      {
+        (floor===11)
+        ? <AdventureRoomFinal />
+        : (isLobby)
+          ? <AdventureLobby setIsLobby={setIsLobby} />
+          : (isInGame)
+            ? <AdventureInGame floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
+            : <AdventureFloor floor={floor} setIsInGame={setIsInGame}/> 
+      }
+    </>
+  );
 }
