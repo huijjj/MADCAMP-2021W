@@ -29,7 +29,12 @@ app.get('/', (req, res) => {
 
 /*get every user information*/
 app.get('/api/user/all', (req, res) => {
-  res.send('Root');
+  var sqlUserAll = 'SELECT * from Users';
+    connection.query(sqlUserAll, (error, results) => {
+    if (error) throw error;
+    console.log('User info is: ', results);
+    res.send(JSON.stringify(results));
+  });
 });
 
 /*get user info, create new row when it doesn't exist*/
