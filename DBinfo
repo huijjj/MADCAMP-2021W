@@ -15,6 +15,7 @@ User
 | tier          | int(11)     | YES  |     | NULL    |       |
 | graduateCount | int(11)     | YES  |     | NULL    |       |
 | pwd           | varchar(45) | YES  |     | NULL    |       |
+| Money         | int(11)     | YES  |     | NULL    |       |
 +---------------+-------------+------+-----+---------+-------+
 
 Animal
