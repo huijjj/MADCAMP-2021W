@@ -49,6 +49,25 @@ app.get('/api/user/show/:id', (req, res) => {
   });
 });
 
+/*check ID valid*/
+app.get('/api/user/idvalid/:id', (req, res) => {
+  let {id} = req.params;
+  let sqlUserIdExist = 'select EXISTS(select * from User where id='+id+' limit 1) as success';
+  connection.query(sqlUserIdExist, (error, results) =>{
+    if (error) throw error;
+    if(!parseInt(existSTR[12]))
+    {
+      console.log('/api/user/idvalid/'+id+'-> valid');
+      res.send('valid');
+    }
+    else
+    {
+      console.log('/api/user/idvalid/'+id+'-> invalid');
+      res.send('invalid');
+    }
+  })
+});
+
 /*register*/
 app.get('/api/user/register/:id/:nick/:pwd', (req, res) => {
   res.send('Root');
