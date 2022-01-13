@@ -1,0 +1,10 @@
+ID - 10 digit
+
+'random key' + 'Month' + 'Day' + 'Hours' + 'Minutes' + 'Seconds'
+
+random : 1 digit
+Month : 1 digit [(month-1)%10]
+Day : 2 digit [day + 10]
+Hours : 2 digit [hours + 10]
+Minutes : 2 digit [minutes + 10]
+Seconds : 2 digit [seconds + 10]
