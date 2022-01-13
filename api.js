@@ -29,19 +29,35 @@ app.get('/', (req, res) => {
 
 /*get every user information*/
 app.get('/api/user/all', (req, res) => {
-  var sqlUserAll = 'SELECT * from Users';
+  let sqlUserAll = 'SELECT * from User';
     connection.query(sqlUserAll, (error, results) => {
     if (error) throw error;
-    console.log('User info is: ', results);
+    console.log('/api/user/all');
     res.send(JSON.stringify(results));
   });
 });
 
-/*get user info, create new row when it doesn't exist*/
-app.get('/api/user/:id/:nickname', (req, res) => {
+/*get user info*/
+app.get('/api/user/show/:id', (req, res) => {
+  let {id} = req.params;
+  let sqlUserId = 'SELECT * from User where id = ?';
+  let paramUserId = [id];
+  connection.query(sqlUserId, paramUserId, (error, results) => {
+    if (error) throw error;
+    console.log('/api/user/show/'+id);
+    res.send(JSON.stringify(results));
+  });
+});
+
+/*register*/
+app.get('/api/user/register/:id/:nick/:pwd', (req, res) => {
   res.send('Root');
 });
 
+/*login*/
+app.get('/api/user/login/:id/:pwd', (req, res) => {
+  res.send('Root');
+});
 
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
