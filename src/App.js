@@ -6,7 +6,8 @@ function App() {
   const element = useRoutes([
     { path: '/', element: <Home />},
     { path: '/myfarm', element: <MyFarm />},
-    { path: '/adventure', element: <Adventure />},
+    { path: '/adventure/*', element: <Adventure />},
+    // { path: '/adventure/lobby', element: <AdventureLobby />},
     { path: '/animalshop', element: <AnimalShop />},
     { path: '/itemshop', element: <ItemShop />},
     { path: '/auction', element: <Auction />}
