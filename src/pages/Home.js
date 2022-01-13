@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Home({ history, match, location }) {
@@ -10,6 +10,18 @@ function Home({ history, match, location }) {
     navigate(`/${target}`);
   }
 
+  const [ userInfo , setUserInfo ] = useState({});
+
+  useEffect(() => {
+    setUserInfo(
+      {
+        id: "0123456789",
+        nickname: "임승재",
+        tier: "학사"
+      }
+    );
+  })
+  
   return (
     <div>
       <div onClick={(e) => {
@@ -45,6 +57,23 @@ function Home({ history, match, location }) {
         onClick("auction");
       }}>
         Auction
+      </div>
+      
+      <div onClick={(e) => {
+        e.preventDefault();
+        onClick("logout");
+      }}>
+        logout
+      </div>
+
+      <div>
+        {userInfo.id}
+      </div>
+      <div>
+        {userInfo.nickname}
+      </div>
+      <div>
+        {userInfo.tier}
       </div>
     </div>
   );
