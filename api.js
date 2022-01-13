@@ -24,7 +24,7 @@ app.set('port', process.env.PORT || 443);
 
 /*root*/
 app.get('/', (req, res) => {
-  res.send('Root');
+  res.json({status : "root"});
 });
 
 /*get every user information*/
@@ -33,7 +33,7 @@ app.get('/api/user/all', (req, res) => {
     connection.query(sqlUserAll, (error, results) => {
     if (error) throw error;
     console.log('/api/user/all');
-    res.send(JSON.stringify(results));
+    res.json(results);
   });
 });
 
@@ -45,7 +45,7 @@ app.get('/api/user/show/:id', (req, res) => {
   connection.query(sqlUserId, paramUserId, (error, results) => {
     if (error) throw error;
     console.log('/api/user/show/'+id);
-    res.send(JSON.stringify(results));
+    res.json(results);
   });
 });
 
@@ -58,19 +58,43 @@ app.get('/api/user/idvalid/:id', (req, res) => {
     if(!parseInt(existSTR[12]))
     {
       console.log('/api/user/idvalid/'+id+'-> valid');
-      res.send('valid');
+      res.json({status : "invalid"});
     }
     else
     {
       console.log('/api/user/idvalid/'+id+'-> invalid');
-      res.send('invalid');
+      res.json({status : "invalid"});
     }
   })
 });
 
 /*register*/
-app.get('/api/user/register/:id/:nick/:pwd', (req, res) => {
-  res.send('Root');
+app.post('/api/user/register', (req, res) => {
+  const id = req.body.id;
+  const nick = req.body.nick;
+  const pwd = req.body.pwd;
+  let sqlUserIdExist = 'select EXISTS(select * from User where id='+id+' limit 1) as success';
+  connection.query(sqlUserIdExist, (error, results) =>{
+    if (error) throw error;
+    if(!parseInt(existSTR[12]))
+    {
+      let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd) VALUES (?,?,?,?,?);';
+      let paramRegister = [id, nick, '학사', 0, pwd];
+      connection.query(sqlRegister, paramRegister, (error, insRes) => {
+        if (error) throw error;
+        connection.query('select * from User where id='+id,(error, results) => {
+          if (error) throw error;
+          res.json(results);
+          console.log(results)
+        });
+      });
+    }
+    else
+    {
+      console.log('/api/user/register/'+id+'/'+nick+'/'+pwd+'-> err-dupId');
+      res.json({status : "invalid"});
+    }
+  })
 });
 
 /*login*/
