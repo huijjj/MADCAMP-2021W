@@ -1,0 +1,34 @@
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(45) | YES  |     | NULL    |       |
+| nick  | varchar(45) | YES  |     | NULL    |       |
+| tier  | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | varchar(45) | YES  |     | NULL    |       |
+| name           | varchar(45) | YES  |     | NULL    |       |
+| type           | varchar(45) | YES  |     | NULL    |       |
+| sex            | varchar(45) | YES  |     | NULL    |       |
+| owner          | varchar(45) | YES  |     | NULL    |       |
+| adventureCount | int(11)     | YES  |     | NULL    |       |
+| itemCount      | int(11)     | YES  |     | NULL    |       |
+| geee           | int(11)     | YES  |     | NULL    |       |
+| duck           | int(11)     | YES  |     | NULL    |       |
+| chae           | int(11)     | YES  |     | NULL    |       |
+| isAbandoned    | int(11)     | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(45) | YES  |     | NULL    |       |
+| type  | varchar(45) | YES  |     | NULL    |       |
+| owner | varchar(45) | YES  |     | NULL    |       |
+| geee  | int(11)     | YES  |     | NULL    |       |
+| duck  | int(11)     | YES  |     | NULL    |       |
+| chae  | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
