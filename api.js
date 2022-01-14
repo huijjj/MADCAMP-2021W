@@ -342,6 +342,7 @@ app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
     }
   });
 });
+
 /*get all item info*/
 app.get('/api/item/all', (req, res) => {
   let sqlItemAll = 'SELECT * from Item';
@@ -356,6 +357,46 @@ app.get('/api/item/all', (req, res) => {
 app.get('/api/item/info/:id', (req, res) => {
   res.send('Root');
 });
+
+/*buy item from shop*/
+app.get('/api/item/buy/:ownerId/:type/:geee/:duck/:chae/:price', (req, res) => {
+  let {ownerId, type, geee, duck, chae, price} = req.params;
+  let sqlUserMoney = 'SELECT Money from User where id = ?'
+  let paramUserMoney = [ownerId];
+  connection.query(sqlUserMoney, paramUserMoney, (err, result, fields) => {
+    if (err) throw err;
+    let userMoney = result[0].Money;
+    let id = CreateRandomID();
+    if(userMoney >= Number(price))
+    {
+      let sqlItemCreate = 'INSERT INTO Item (id, type, owner, geee, duck, chae) VALUES(?,?,?,?,?,?)';
+      let paramItemCreate = [id, type, ownerId, Number(geee), Number(duck), Number(chae)];
+      connection.query(sqlItemCreate, paramItemCreate, (err, result, fields) => {
+        if (err) throw err;
+        let sqlMoneyDecr = 'UPDATE User set Money = Money - ? where id = ?';
+        let paramMoneyDecr = [Number(price), ownerId];
+        connection.query(sqlMoneyDecr, paramMoneyDecr, (err, result, fields) => {
+          if (err) throw err;
+          let sqlInfoItem = 'SELECT * from Item where id = ?';
+          let paramInfoItem = [id];
+          connection.query(sqlInfoItem, paramInfoItem, (error, results) => {
+            if (error) throw error;
+            console.log('/api/item/buy/+'+ownerId+'/'+type+'/'+geee + '/'+duck + '/'+ chae +'/'+price);
+            res.json(results);
+          });
+        });
+      });
+    }
+    else
+    {
+      console.log('/api/item/buy/+'+ownerId+'/'+type+'/'+geee + '/'+duck + '/'+ chae +'/'+price);
+      res.json({status : "fail"});  
+    }
+  });
+});
+
+
+
 
 /*get every item owner has*/
 app.get('/api/item/owner/:ownerId', (req, res) => {
