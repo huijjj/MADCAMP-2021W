@@ -207,6 +207,20 @@ app.get('/api/animal/info/:id', (req, res) => {
   });
 });
 
+/*update animal x, y*/
+app.post('/api/animal/move', (req, res) => {
+  const { id, X, Y } = req.body;
+  console.log(X, Y);
+  const sql = `UPDATE Animal SET X=${Number(X)}, Y=${Number(Y)} WHERE id=${id}`;
+  connection.query(sql, (err, result) => {
+    if(err) {
+      throw err;
+    }
+    // console.log(result);
+    res.json(result);
+  });
+});
+
 /*buy from animal market*/
 app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
   let {ownerId, name, sex, type, price} = req.params;
