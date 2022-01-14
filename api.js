@@ -210,13 +210,12 @@ app.get('/api/animal/info/:id', (req, res) => {
 /*update animal x, y*/
 app.post('/api/animal/move', (req, res) => {
   const { id, X, Y } = req.body;
-  console.log(X, Y);
   const sql = `UPDATE Animal SET X=${Number(X)}, Y=${Number(Y)} WHERE id=${id}`;
   connection.query(sql, (err, result) => {
     if(err) {
       throw err;
     }
-    // console.log(result);
+    console.log('/api/animal/move/'+id+'/'+X+'/'+Y);
     res.json(result);
   });
 });
