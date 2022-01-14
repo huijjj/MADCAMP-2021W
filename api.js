@@ -220,7 +220,6 @@ app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
         if (err) throw err;
         let sqlMoneyDecr = 'UPDATE User set Money = Money - ? where id = ?';
         let paramMoneyDecr = [Number(price), ownerId];
-        console.log(paramMoneyDecr);
         connection.query(sqlMoneyDecr, paramMoneyDecr, (err, result, fields) => {
           if (err) throw err;
           let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
@@ -282,7 +281,19 @@ app.get('/api/animal/adopt/:id/:ownerId', (req, res) => {
 
 /*change status*/
 app.get('/api/animal/change/:id/:geee/:duck/:chae/:adventureCount/:itemCount', (req, res) => {
-  res.send('Root');
+  let {id, geee, duck, chae, adventureCount, itemCount} = req.params;
+  let sqlChangeAnimal = 'UPDATE Animal set geee = geee + ?, duck = duck + ?, chae = chae + ?, adventureCount = adventureCount + ?, itemCount = itemCount + ? where id = ?';
+  let paramChangeAnimal = [Number(geee), Number(duck), Number(chae), Number(adventureCount), Number(itemCount), id];
+  connection.query(sqlChangeAnimal, paramChangeAnimal, (err, result, fields) => {
+    if (err) throw err;
+    let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
+    let paramInfoAnimal = [id];
+    connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
+      if (error) throw error;
+      console.log('/api/animal/change/' + id + '/' + geee +'/' + duck + '/'+chae+'/'+adventureCount+'/' +itemCount);
+      res.json(results);
+    });
+  });
 });
 
 /*die animal*/
