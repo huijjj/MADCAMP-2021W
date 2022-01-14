@@ -49,25 +49,6 @@ app.get('/api/user/show/:id', (req, res) => {
   });
 });
 
-/*check ID valid*/
-app.get('/api/user/idvalid/:id', (req, res) => {
-  let {id} = req.params;
-  let sqlUserIdExist = 'select EXISTS(select * from User where id='+id+' limit 1) as success';
-  connection.query(sqlUserIdExist, (error, results) =>{
-    if (error) throw error;
-    if(!parseInt(existSTR[12]))
-    {
-      console.log('/api/user/idvalid/'+id+'-> valid');
-      res.json({status : "invalid"});
-    }
-    else
-    {
-      console.log('/api/user/idvalid/'+id+'-> invalid');
-      res.json({status : "invalid"});
-    }
-  })
-});
-
 /*register*/
 app.post('/api/user/register', (req, res) => {
   const id = req.body.id;
@@ -125,7 +106,7 @@ app.post('/api/user/login', (req, res) => {
 
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
-  res.send('Root');
+  let {ownerId}
 });
 
 /*get single animal info*/
