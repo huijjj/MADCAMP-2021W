@@ -1,13 +1,24 @@
 import Button from '@mui/material/Button';
+import axios from 'axios';
+import { useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function AdventureFeneral({ animal }) {
   const navigate = useNavigate();
   
   const handleClickExit = () => {
-  navigate("/");
+    navigate("/");
   }
+
+  useEffect(() => {
+    axios.get(`http://192.249.18.138:443/api/animal/kill/${animal.id}`).then(
+      res => (
+        console.log(res)
+      )
+    )
+  })
   
+  console.log(animal)
   return (
     <div>
       <h1>장례식..</h1>

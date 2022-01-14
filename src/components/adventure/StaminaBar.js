@@ -11,9 +11,11 @@ function LinearProgressWithLabel(props) {
         <LinearProgress variant="determinate" {...props} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value*2,
-        )}/200`}</Typography>
+        <Typography variant="body2" color="text.secondary">
+          {
+          `${Math.round(props.value*2,)}/200`
+          }
+        </Typography>
       </Box>
     </Box>
   );

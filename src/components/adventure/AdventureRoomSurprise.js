@@ -5,8 +5,9 @@ import AdventureRoomFinal from './AdventureRoomFinal';
 export default function AdventureRoomSurprise({ floor, stamina, setStamina, setFloor, setIsInGame, setIsSurprise}) {
   
   const handleNext = () => {
+    const newStamina = stamina<=170 ? 30 : 200-stamina;
     setFloor(floor+1);
-    setStamina(stamina+30);
+    setStamina(stamina+newStamina);
     setIsInGame(false);
     setIsSurprise(false);
   }

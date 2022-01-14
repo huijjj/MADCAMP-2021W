@@ -14,67 +14,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
-export default function AdventureLobby({ setIsLobby, setAnimal }) {
+export default function AdventureLobby({ animalList, setIsLobby, setAnimal }) {
   const navigate = useNavigate();
-  const [ animalList, setAnimalList ] = useState([]);
   const [ animalIndex, setAnimalIndex ] = useState(Number(0));
-
-  useEffect(() => {
-    setAnimalList([
-      {
-        id: 1000000000,
-        name: "기돌이",
-        type: "김기영1",
-        sex: "F",
-        owner: 2000000000,
-        adventureCount: 0,
-        itemCount: 0,
-        geee: 0,
-        duck: 0,
-        chae: 0,
-        isCarbonCompound: false
-      },
-      {
-        id: 1000000001,
-        name: "기순이",
-        type: "김기영2",
-        sex: "M",
-        owner: 2000000000,
-        adventureCount: 3,
-        itemCount: 10,
-        geee: 40,
-        duck: 20,
-        chae: 70,
-        isCarbonCompound: false
-      },
-      {
-        id: 1000000002,
-        name: "기똥이",
-        type: "김기영3",
-        sex: "F",
-        owner: 2000000000,
-        adventureCount: 5,
-        itemCount: 20,
-        geee: 20,
-        duck: 80,
-        chae: 120,
-        isCarbonCompound: false
-      },
-      {
-        id: 1000000003,
-        name: "기뚱이",
-        type: "김기영2",
-        sex: "M",
-        owner: 2000000000,
-        adventureCount: 2,
-        itemCount: 14,
-        geee: 50,
-        duck: 30,
-        chae: 50,
-        isCarbonCompound: false
-      }
-    ]);
-  }, []);
 
   const [exitOpen, setExitOpen] = useState(false);
 
@@ -97,10 +39,10 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
     setIsLobby(false);
 
   };
-
+  console.log(animalList)
   return (
     <div id = "adventure-lobby">
-      { animalList.map(
+      { animalList?.map(
           (animal, index) =>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia 
