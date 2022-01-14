@@ -17,6 +17,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 export default function AdventureLobby({ setIsLobby, setAnimal }) {
   const navigate = useNavigate();
   const [ animalList, setAnimalList ] = useState([]);
+  const [ animalIndex, setAnimalIndex ] = useState(Number(0));
+
   useEffect(() => {
     setAnimalList([
       {
@@ -76,8 +78,8 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
 
   const [exitOpen, setExitOpen] = useState(false);
 
-  const handleClickExit = () => {
-
+  const handleClickExit = (index) => {
+    setAnimalIndex(index);
     setExitOpen(true);
 
   };
@@ -99,7 +101,7 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
   return (
     <div id = "adventure-lobby">
       { animalList.map(
-          (animal, index) => 
+          (animal, index) =>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia 
                 component="img"
@@ -117,10 +119,7 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button
-                  size="small"
-                  onClick={handleClickExit}
-                >
+                <Button size="small" onClick={() => handleClickExit(index)}>
                 참가하기
                 </Button>
 
@@ -131,7 +130,7 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
                   aria-describedby="alert-dialog-description"
                 >
                   <DialogTitle id="alert-dialog-title">
-                    {animalList[index].name}와(과) 함께 탐험을 시작 하시겠습니까?
+                    {animalList[animalIndex].name}와(과) 함께 탐험을 시작 하시겠습니까?
                   </DialogTitle>
 
                   <DialogContent>
