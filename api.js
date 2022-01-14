@@ -183,16 +183,23 @@ app.get('/api/animal/owner/:ownerId', (req, res) => {
 
 /*get single animal info*/
 app.get('/api/animal/info/:id', (req, res) => {
+  let {id} = req.params;
+  let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
+  let paramInfoAnimal = [id];
+  connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
+    if (error) throw error;
+    console.log('/api/animal/info/'+id);
+    res.json(results);
+  });
+});
+
+/*buy from animal market*/
+app.get('/api/animal/buy/:id', (req, res) => {
   res.send('Root');
 });
 
 /*get animal info which abandoned*/
 app.get('/api/animal/abandoned', (req, res) => {
-  res.send('Root');
-});
-
-/*buy from animal market*/
-app.get('/api/animal/buy/:id', (req, res) => {
   res.send('Root');
 });
 
