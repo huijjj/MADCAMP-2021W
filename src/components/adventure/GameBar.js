@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
 export default function GameBar() {
@@ -15,29 +16,39 @@ export default function GameBar() {
 
     ctx.fillStyle = 'rgba(0,0,0,0.4)';
     ctx.strokeStyle = 'rgba(0,153,255,0.4)';
-    ctx.save();
-    // ctx.translate(150,150);
-
+    ctx.fill();
+    ctx.stroke();
 
     ctx.beginPath();
-    ctx.rect(x, 0, 50, 50);
-    ctx.fillStyle = "#FF0000";
+    ctx.rect(300, 0, 50, 50);
+    ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.rect(400, 0, 10, 50);
-    ctx.fillStyle = "#FF0000";
+    ctx.rect(315, 0, 20, 50);
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 
-    x += 2;
+    ctx.beginPath();
+    ctx.rect(x, 0, 10, 50);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+
+    x += 1.5;
   };
 
-  setInterval(draw, 10);
+  var interval = setInterval(draw, 0.01);
   
 
   return (
-    <canvas ref={canvasRef} width={500} height={50}></canvas>
+    <>
+      <canvas ref={canvasRef} width={400} height={50}></canvas>
+      <Button onClick={() => clearInterval(interval)}>
+        공격하기
+      </Button>
+    </>
   );
 }
