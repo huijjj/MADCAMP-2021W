@@ -355,7 +355,14 @@ app.get('/api/item/all', (req, res) => {
 
 /*get single item info*/
 app.get('/api/item/info/:id', (req, res) => {
-  res.send('Root');
+  let {id} = req.params;
+  let sqlInfoItem = 'SELECT * from Item where id = ?';
+  let paramInfoItem = [id];
+  connection.query(sqlInfoItem, paramInfoItem, (error, results) => {
+    if (error) throw error;
+    console.log('/api/item/info/'+id);
+    res.json(results);
+  });
 });
 
 /*buy item from shop*/
