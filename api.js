@@ -171,7 +171,14 @@ app.post('/api/user/login', (req, res) => {
 
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
-
+  let {ownerId} = req.params;
+  let sqlOwnerAnimal = 'SELECT * from Animal where owner = ?';
+  let paramOwnerAnimal = [ownerId];
+  connection.query(sqlOwnerAnimal, paramOwnerAnimal, (error, results) => {
+    if (error) throw error;
+    console.log('/api/animal/owner/'+ownerId);
+    res.json(results);
+  });
 });
 
 /*get single animal info*/
