@@ -24,27 +24,27 @@ export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloo
     },
     {
       stamina: 150,
-      speed: 1.6
+      speed: 2
     },
     {
       stamina: 170,
-      speed: 1.7
+      speed: 2.5
     },
     {
       stamina: 200,
-      speed: 1.8
+      speed: 3
     },
     {
       stamina: 220,
-      speed: 2
+      speed: 3.5
     },
     {
       stamina: 250,
-      speed: 2
+      speed: 4
     },
     {
       stamina: 300,
-      speed: 2
+      speed: 4.5
     }
   ]
 

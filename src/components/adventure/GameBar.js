@@ -78,14 +78,13 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
   
   return (
     <>
+      <canvas ref={canvasRef} width={400} height={50}></canvas><br/>
+
       <Button onClick={() => {
         interval = setInterval(draw, 0.01);
       }}>
         싸우기
       </Button>
-
-      <canvas ref={canvasRef} width={400} height={50}></canvas><br/>
-
       <Button onClick={() => {
         clearInterval(interval);
         handleAttack();
