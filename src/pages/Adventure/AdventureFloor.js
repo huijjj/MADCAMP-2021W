@@ -12,6 +12,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from "@mui/material";
+import StaminaBar from "../../components/adventure/StaminaBar";
 
 
 export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
@@ -61,10 +62,12 @@ export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
             {animal.name}, {animal.sex}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            HP: {stamina}
+            {/* HP: {stamina} */}
           </Typography>
+          <StaminaBar stamina={stamina} />
         </CardContent>
       </Card>
+      
 
       <Button onClick={handleClickDoor}>
         왼쪽 문

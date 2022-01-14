@@ -6,7 +6,7 @@ export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloo
 
   const handleNext = () => {
     setFloor(floor+1);
-    setStamina(stamina-200);
+    setStamina(stamina-50);
     setIsInGame(false);
   }
   

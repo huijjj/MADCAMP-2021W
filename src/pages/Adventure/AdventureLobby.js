@@ -90,10 +90,10 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
 
   };
 
-  const handleCloseYes = (index) => {
+  const handleCloseYes = (animalIndex) => {
 
     setExitOpen(false);
-    setAnimal(animalList[index]);
+    setAnimal(animalList[animalIndex]);
     setIsLobby(false);
 
   };
@@ -142,7 +142,7 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
 
                   <DialogActions>
                     <Button onClick={handleCloseNo}>아니요</Button>
-                    <Button onClick={() => handleCloseYes(index)}>네</Button>
+                    <Button onClick={() => handleCloseYes(animalIndex)}>네</Button>
                   </DialogActions>
                 </Dialog>
               </CardActions>
