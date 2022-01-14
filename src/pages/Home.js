@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function Home({ history, match, location }) {
+function Home({ userId }) {
+  
   const navigate = useNavigate();
 
   const onClick = (target) => {
-    // console.log(history, match, location);
-    // history.push(`/${target}`);
+
     navigate(`/${target}`);
   }
 
+  const [ userInfo , setUserInfo ] = useState({});
+  const tier = ['학사', '석사', '박사', '포스트 닥터', '교수'];
+  useEffect(() => {
+    axios.get('http://192.249.18.138:443/api/user/show/'+userId)
+    .then(res => {
+      setUserInfo(
+        {
+          id: res.data[0].id,
+          nickname: res.data[0].nick,
+          tier: tier[res.data[0].tier],
+          money: res.data[0].Money,
+          graduateCnt : res.data[0].graduateCount
+        }
+      );
+    })
+    .catch(err => console.log(err));
+  }, []);
+  
   return (
     <div>
       <div onClick={(e) => {
@@ -45,6 +64,21 @@ function Home({ history, match, location }) {
         onClick("auction");
       }}>
         Auction
+      </div>
+      <div>
+        아이디 : {userInfo.id}
+      </div>
+      <div>
+        닉네임 : {userInfo.nickname}
+      </div>
+      <div>
+        학위 : {userInfo.tier}
+      </div>
+      <div>
+        졸업시킨 학생 수 : {userInfo.graduateCnt}
+      </div>
+      <div>
+        소지금 : {userInfo.money}
       </div>
     </div>
   );
