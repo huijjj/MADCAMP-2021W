@@ -298,7 +298,23 @@ app.get('/api/animal/change/:id/:geee/:duck/:chae/:adventureCount/:itemCount', (
 
 /*die animal*/
 app.get('/api/animal/kill/:id', (req, res) => {
-  res.send('Root');
+  let {id} = req.params;
+  let sqlAnimalKill = 'DELETE FROM Animal where id=?'
+  let paramAnimalKill = [id];
+  connection.query(sqlAnimalKill, paramAnimalKill, (error, results) => {
+    if (error) throw error;
+    let delCnt = results.affectedRows;
+    if(delCnt == 0)
+    {
+      console.log('/api/animal/kill/'+id+'-> Fail');
+      res.json({status : "Fail"});
+    }
+    else
+    {
+      console.log('/api/animal/kill/'+id);
+      res.json({status : "Success"});
+    }
+  });
 });
 
 /*graduate animal*/
