@@ -7,7 +7,7 @@ export default function AdventureFeneral({ animal }) {
   const navigate = useNavigate();
   
   const handleClickExit = () => {
-    navigate("/");
+    navigate("/home");
   }
 
   useEffect(() => {
