@@ -1,5 +1,99 @@
+import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from "react-router-dom";
+
+import React, { useEffect, useState } from 'react';
+
+
+const items = [
+  {
+    type: "아령",
+    price: 100,
+    geee: 0,
+    duck: 0,
+    chae: 50
+  },
+  {
+    type: "흑장미",
+    price: 100,
+    geee: 0,
+    duck: 50,
+    chae: 0
+  },
+  {
+    type: "책",
+    price: 100,
+    geee: 50,
+    duck: 0,
+    chae: 0
+  }
+];
+
+function getPrice(type) {
+  switch(type) {
+    case "아령":
+    case "책":
+    case "흑장미":
+      return 100;  
+
+    default:
+      return 0;
+  }
+}
+
+
 export default function ItemShop() {
+  const navigate = useNavigate();
+  const [ money, setMoney ] = useState(0); 
+  
+  useEffect(() => {
+    // get user date from db
+    // set money
+
+    setMoney(1000);
+  }, []);
+
+  const onClick = (e, type) => {
+    e.preventDefault();
+    
+    const price = getPrice(type);
+
+    console.log(type, price);
+    if(window.confirm(`${type}을(를) ${price}원에 구매하시겠습니까?`)) {
+      if(price <= money) {
+        // send request
+
+        // update local data
+        setMoney(money - price); 
+      }
+      else {
+        window.alert("보유한 금액이 부족합니다.");
+      }
+    }
+  }
+
+  const renderItems = (item, i) => {
+    return (
+      <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type)}>
+        <img src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
+        <div>
+          <div>{item.type} {item.price}원</div>
+          <br></br>
+          <div>지: {item.geee}</div>
+          <div>덕: {item.duck}</div>
+          <div>체: {item.chae}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>ItemShop</div>
+    <div>
+      <HomeIcon onClick={() => navigate(-1)} />
+      <div>ItemShop</div>
+      <div>잔돈: {money}원</div>
+      <div>{
+        items.map(renderItems)
+      }</div>
+    </div>
   );
 }
