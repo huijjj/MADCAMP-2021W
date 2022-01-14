@@ -318,8 +318,29 @@ app.get('/api/animal/kill/:id', (req, res) => {
 });
 
 /*graduate animal*/
-app.get('/api/animal/graduate/:id', (req, res) => {
-  res.send('Root');
+app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
+  let {id, ownerId, reward} = req.params;
+  let sqlAnimalGraduate = 'DELETE FROM Animal where id=?'
+  let paramAnimalGraduate = [id];
+  connection.query(sqlAnimalGraduate, paramAnimalGraduate, (error, results) => {
+    if (error) throw error;
+    let delCnt = results.affectedRows;
+    if(delCnt == 0)
+    {
+      console.log('/api/animal/graduate/'+id+'/'+ownerId+'/'+reward +'-> Fail');
+      res.json({status : "Fail"});
+    }
+    else
+    {
+      let sqlUserReward = 'UPDATE User set Money = Money + ? where id = ?';
+      let paramUserReward = [Number(reward), ownerId];
+      connection.query(sqlUserReward, paramUserReward, (error, results) => {
+        if (error) throw error;
+        console.log('/api/animal/graduate/'+id+'/'+ownerId+'/'+reward);
+        res.json({status : "Success"});
+      });
+    }
+  });
 });
 
 /*get single item info*/
