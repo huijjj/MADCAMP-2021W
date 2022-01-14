@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Home({ history, match, location }) {
+function Home() {
   const navigate = useNavigate();
 
   const onClick = (target) => {
