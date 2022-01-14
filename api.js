@@ -117,6 +117,9 @@ app.get('/api/user/show/:id', (req, res) => {
 
 /*register*/
 app.post('/api/user/register', (req, res) => {
+  const id = req.body.id;
+  const nick = req.body.nick;
+  const pwd = req.body.pwd;
   let sqlUserIdExist = 'select EXISTS(select * from User where id=? limit 1) as success';
   let paramUserIdExist = [id];
   connection.query(sqlUserIdExist, paramUserIdExist, (error, results) =>{
