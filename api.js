@@ -36,7 +36,7 @@ app.get('/debug/user/register/:id/:nick/:pwd', (req, res) => {
     if(!parseInt(existSTR[12]))
     {
       let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd,Money) VALUES (?,?,?,?,?,?);';
-      let paramRegister = [id, nick, 0, 0, pwd, 0];
+      let paramRegister = [id, nick, 0, 0, pwd, 100];
       connection.query(sqlRegister, paramRegister, (error, insRes) => {
         if (error) throw error;
         let sqlUserRegistered = 'select * from User where id=?';
@@ -122,7 +122,7 @@ app.post('/api/user/register', (req, res) => {
     if(!parseInt(existSTR[12]))
     {
       let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd,Money) VALUES (?,?,?,?,?,?);';
-      let paramRegister = [id, nick, 0, 0, pwd, 0];
+      let paramRegister = [id, nick, 0, 0, pwd, 100];
       connection.query(sqlRegister, paramRegister, (error, insRes) => {
         if (error) throw error;
         let sqlUserRegistered = 'select * from User where id=?';
@@ -196,24 +196,45 @@ app.get('/api/animal/info/:id', (req, res) => {
 /*buy from animal market*/
 app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
   let {ownerId, name, sex, type, price} = req.params;
-  let id = CreateRandomID();
-  let sqlAnimalCreate = 'INSERT INTO Animal (id, name, type, sex, owner, adventureCount, itemCount, geee, duck, chae, isAbandoned, X, Y) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)';
-  let paramAnimalCreate = [id, name, type, sex, ownerId, 0, 0, 0, 0, 0, 0, 0, 0];
-  connection.query(sqlAnimalCreate, paramAnimalCreate, (err, result, fields) => {
+  let sqlUserMoney = 'SELECT Money from User where id = ?'
+  let paramUserMoney = [ownerId];
+  connection.query(sqlUserMoney, paramUserMoney, (err, result, fields) => {
     if (err) throw err;
-    let sqlMoneyDecr = 'UPDATE User set Money = Money - ? where id = ?';
-    let paramMoneyDecr = [Number(price), ownerId];
-    connection.query(sqlMoneyDecr, paramMoneyDecr, (err, result, fields) => {
-      if (err) throw err;
-      let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
-      let paramInfoAnimal = [id];
-      connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
-        if (error) throw error;
-        console.log('/api/animal/info/'+id);
-        res.json(results);
+    let userMoney = result[0].Money;
+    let id = CreateRandomID();
+    if(userMoney >= Number(price))
+    {
+      let sqlAnimalCreate = 'INSERT INTO Animal (id, name, type, sex, owner, adventureCount, itemCount, geee, duck, chae, isAbandoned, X, Y) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)';
+      let paramAnimalCreate = [id, name, type, sex, ownerId, 0, 0, 0, 0, 0, 0, 0, 0];
+      connection.query(sqlAnimalCreate, paramAnimalCreate, (err, result, fields) => {
+        if (err) throw err;
+        let sqlMoneyDecr = 'UPDATE User set Money = Money - ? where id = ?';
+        let paramMoneyDecr = [Number(price), ownerId];
+        console.log(paramMoneyDecr);
+        connection.query(sqlMoneyDecr, paramMoneyDecr, (err, result, fields) => {
+          if (err) throw err;
+          let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
+          let paramInfoAnimal = [id];
+          connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
+            if (error) throw error;
+            console.log('/api/animal/buy/+'+ownerId+'/'+name+'/'+sex+'/'+type+'/'+price);
+            res.json(results);
+          });
+        });
       });
-    });
+    }
+    else
+    {
+      console.log('/api/animal/buy/+'+ownerId+'/'+name+'/'+sex+'/'+type+'/'+price+'-> money lick');
+      res.json({status : "fail"});  
+    }
+    
   });
+});
+
+/*adandon animal*/
+app.get('/api/animal/abandon/:id', (req, res) => {
+  res.send('Root');
 });
 
 /*get animal info which abandoned*/
@@ -223,11 +244,6 @@ app.get('/api/animal/abandoned', (req, res) => {
 
 /*adopt from animal market*/
 app.get('/api/animal/adopt/:id', (req, res) => {
-  res.send('Root');
-});
-
-/*adandon animal*/
-app.get('/api/animal/abandon/:id', (req, res) => {
   res.send('Root');
 });
 
