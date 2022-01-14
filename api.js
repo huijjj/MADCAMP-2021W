@@ -186,7 +186,7 @@ app.get('/api/animal/all', (req, res) => {
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
   let {ownerId} = req.params;
-  let sqlOwnerAnimal = 'SELECT * from Animal where owner = ?';
+  let sqlOwnerAnimal = 'SELECT * from Animal where owner = ? and isAbandoned = 0';
   let paramOwnerAnimal = [ownerId];
   connection.query(sqlOwnerAnimal, paramOwnerAnimal, (error, results) => {
     if (error) throw error;
@@ -260,7 +260,7 @@ app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
 /*adandon animal*/
 app.get('/api/animal/abandon/:id', (req, res) => {
   let {id} = req.params;
-  let sqlAbandonAnimal = 'Update Animal SET owner = \'SHOP\', isAbandoned = 1 where id = ?';
+  let sqlAbandonAnimal = 'Update Animal SET isAbandoned = 1 where id = ?';
   let paramAbandonAnimal = [id];
   connection.query(sqlAbandonAnimal, paramAbandonAnimal, (error, results) => {
     if (error) throw error;
