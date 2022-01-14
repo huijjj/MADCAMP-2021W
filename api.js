@@ -4,6 +4,8 @@ const dbconfig   = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
 
 const app = express();
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 function CreateRandomID()
 {
