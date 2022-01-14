@@ -2,10 +2,12 @@ const express    = require('express');
 const mysql      = require('mysql');
 const dbconfig   = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
+const cors       = require('cors');
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cors());
 
 function CreateRandomID()
 {
