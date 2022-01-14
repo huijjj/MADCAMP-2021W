@@ -50,7 +50,7 @@ app.get('/debug/user/register/:id/:nick/:pwd', (req, res) => {
     }
     else
     {
-      console.log('/api/user/register/'+id+'/'+nick+'/'+pwd+'-> err-dupId');
+      console.log('/debug/user/register/'+id+'/'+nick+'/'+pwd+'-> err-dupId');
       res.json({status : "invalid"});
     }
   })
@@ -77,7 +77,7 @@ app.get('/debug/user/login/:id/:pwd', (req, res) => {
     }
     else
     {
-      console.log('/api/user/login/'+id+'/'+pwd+'-> fail');
+      console.log('/debug/user/login/'+id+'/'+pwd+'-> fail');
       res.json({status : "fail"});
     }
   })
@@ -171,6 +171,7 @@ app.post('/api/user/login', (req, res) => {
 
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
+
 });
 
 /*get single animal info*/
