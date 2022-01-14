@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 import GameBar from './GameBar';
 
-export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloor, setIsInGame }) {
+export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloor, setIsInGame, setIsDrink }) {
   const difficultyList = [
     {
       stamina: 100,
@@ -53,23 +53,34 @@ export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloo
 
   const handleNext = () => {
     setFloor(floor+1);
-    setStamina(stamina-50);
     setIsInGame(false);
+    setIsDrink(false);
   }
+
+  setIsDrink(true);
   
   return (
     <div>
       <h1>
         현지랑 술 배틀
       </h1>
+
       <h3>
         현지 체력: {hStamina}
       </h3>
+
+      <h3>
+        내 체력: {stamina}
+      </h3>
+
       <div>
-        <GameBar speed={difficultyList[floor-1].speed } setHStamina={setHStamina}/>
+        <GameBar speed={difficultyList[floor-1].speed } stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
       </div>
       <Button onClick={handleNext}>
-        {(floor===10) ? "마지막" : floor + 1}층으로 이동하기
+        {(hStamina <= 0)
+          ? `${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`
+          : ``
+        }
       </Button>
     </div>
   );

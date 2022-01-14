@@ -2,13 +2,16 @@ import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 
-export default function AdventureRoomSurprise({ floor, stamina, setStamina, setFloor, setIsInGame }) {
+export default function AdventureRoomSurprise({ floor, stamina, setStamina, setFloor, setIsInGame, setIsSurprise}) {
   
   const handleNext = () => {
     setFloor(floor+1);
     setStamina(stamina+30);
     setIsInGame(false);
+    setIsSurprise(false);
   }
+  
+  setIsSurprise(true);
   
   return (
     <div>
