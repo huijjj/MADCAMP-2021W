@@ -171,8 +171,8 @@ app.post('/api/user/login', (req, res) => {
 
 /*get every animal information*/
 app.get('/api/animal/all', (req, res) => {
-  let sqlUserAll = 'SELECT * from Animal';
-    connection.query(sqlUserAll, (error, results) => {
+  let sqlAnimalAll = 'SELECT * from Animal';
+    connection.query(sqlAnimalAll, (error, results) => {
     if (error) throw error;
     console.log('/api/animal/all');
     res.json(results);
@@ -340,6 +340,15 @@ app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
         res.json({status : "Success"});
       });
     }
+  });
+});
+/*get all item info*/
+app.get('/api/item/all', (req, res) => {
+  let sqlItemAll = 'SELECT * from Item';
+    connection.query(sqlItemAll, (error, results) => {
+    if (error) throw error;
+    console.log('/api/item/all');
+    res.json(results);
   });
 });
 
