@@ -402,12 +402,16 @@ app.get('/api/item/buy/:ownerId/:type/:geee/:duck/:chae/:price', (req, res) => {
   });
 });
 
-
-
-
 /*get every item owner has*/
 app.get('/api/item/owner/:ownerId', (req, res) => {
-  res.send('Root');
+  let {ownerId} = req.params;
+  let sqlOwnerItem = 'SELECT * from Item where owner = ?';
+  let paramOwnerItem = [ownerId];
+  connection.query(sqlOwnerItem, paramOwnerItem, (error, results) => {
+    if (error) throw error;
+    console.log('/api/item/owner/'+ownerId);
+    res.json(results);
+  });
 });
 
 /*use item*/
