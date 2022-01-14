@@ -169,6 +169,16 @@ app.post('/api/user/login', (req, res) => {
   })
 });
 
+/*get every animal information*/
+app.get('/api/animal/all', (req, res) => {
+  let sqlUserAll = 'SELECT * from Animal';
+    connection.query(sqlUserAll, (error, results) => {
+    if (error) throw error;
+    console.log('/api/animal/all');
+    res.json(results);
+  });
+});
+
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
   let {ownerId} = req.params;
@@ -228,13 +238,19 @@ app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
       console.log('/api/animal/buy/+'+ownerId+'/'+name+'/'+sex+'/'+type+'/'+price+'-> money lick');
       res.json({status : "fail"});  
     }
-    
   });
 });
 
 /*adandon animal*/
 app.get('/api/animal/abandon/:id', (req, res) => {
-  res.send('Root');
+  let {id} = req.params;
+  let sqlAbandonAnimal = 'Update Animal SET owner = \'SHOP\', isAbandoned = 1 where id = ?';
+  let paramAbandonAnimal = [id];
+  connection.query(sqlAbandonAnimal, paramAbandonAnimal, (error, results) => {
+    if (error) throw error;
+    console.log('/api/animal/abandon/' + id);
+    res.json({status : "Success"});
+  });
 });
 
 /*get animal info which abandoned*/
