@@ -19,8 +19,8 @@ function CreateRandomID()
   let hours = dateKey.getHours() + 10;
   let minutes = dateKey.getMinutes() + 10;
   let seconds = dateKey.getSeconds() + 10;
-  jobKey = jobKey + randKey + month + day + hours + minutes + seconds;
-  console.log('jobKey: ' + jobKey);
+  let milliSecond = (dateKey.getMilliseconds() % 800) + 100;
+  jobKey = jobKey + randKey + month + day + hours + minutes + seconds + milliSecond;
   return jobKey;
 }
 
@@ -413,7 +413,7 @@ app.get('/api/item/buy/:ownerId/:type/:geee/:duck/:chae/:price', (req, res) => {
     }
     else
     {
-      console.log('/api/item/buy/+'+ownerId+'/'+type+'/'+geee + '/'+duck + '/'+ chae +'/'+price);
+      console.log('/api/item/buy/'+ownerId+'/'+type+'/'+geee + '/'+duck + '/'+ chae +'/'+price);
       res.json({status : "fail"});  
     }
   });
