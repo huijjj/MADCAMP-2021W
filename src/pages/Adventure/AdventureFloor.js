@@ -48,7 +48,7 @@ export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
       <h1>
         {(floor === 11)
         ? "마지막 층" 
-        : floor}
+        : `${floor}층`}
       </h1>
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia 

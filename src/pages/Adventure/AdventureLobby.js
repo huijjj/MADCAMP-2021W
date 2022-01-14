@@ -8,6 +8,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from "@mui/material";
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+
 export default function AdventureLobby({ setIsLobby, setAnimal }) {
   const navigate = useNavigate();
   const [ animalList, setAnimalList ] = useState([]);
@@ -68,10 +74,27 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
     ]);
   }, []);
 
-  const handleClickAnimal = (index) => {
+  const [exitOpen, setExitOpen] = useState(false);
+
+  const handleClickExit = () => {
+
+    setExitOpen(true);
+
+  };
+
+  const handleCloseNo = () => {
+
+    setExitOpen(false);
+
+  };
+
+  const handleCloseYes = (index) => {
+
+    setExitOpen(false);
     setAnimal(animalList[index]);
     setIsLobby(false);
-  }
+
+  };
 
   return (
     <div id = "adventure-lobby">
@@ -96,10 +119,33 @@ export default function AdventureLobby({ setIsLobby, setAnimal }) {
               <CardActions>
                 <Button
                   size="small"
-                  onClick={() => handleClickAnimal(index)}
+                  onClick={handleClickExit}
                 >
                 참가하기
                 </Button>
+
+                <Dialog
+                  open={exitOpen}
+                  onClose={handleCloseNo}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {animalList[index].name}와(과) 함께 탐험을 시작 하시겠습니까?
+                  </DialogTitle>
+
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      탐험중에는 동물을 변경할 수 없습니다<br/>
+                      (체력이 0 보다 낮아지면 동물이 죽을수도 있습니다)
+                    </DialogContentText>
+                  </DialogContent>
+
+                  <DialogActions>
+                    <Button onClick={handleCloseNo}>아니요</Button>
+                    <Button onClick={() => handleCloseYes(index)}>네</Button>
+                  </DialogActions>
+                </Dialog>
               </CardActions>
             </Card>
         )
