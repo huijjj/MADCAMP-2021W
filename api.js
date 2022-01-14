@@ -56,6 +56,33 @@ app.get('/debug/user/register/:id/:nick/:pwd', (req, res) => {
   })
 });
 
+
+/*login*/
+app.get('/debug/user/login/:id/:pwd', (req, res) => {
+  let {id, pwd} = req.params;  
+  let sqlLoginValid = 'select EXISTS(select * from User where id=? AND pwd=? limit 1) as success';
+  let paramLoginValid = [id, pwd];
+  connection.query(sqlLoginValid, paramLoginValid,  (error, results) =>{
+    if (error) throw error;
+    var existSTR = JSON.stringify(results);
+    if(parseInt(existSTR[12]))
+    {
+      let sqlUserId = 'SELECT * from User where id = ?';
+      let paramUserId = [id];
+      connection.query(sqlUserId, paramUserId, (error, results) => {
+        if (error) throw error;
+        console.log('/api/user/login/'+id+'/'+pwd);
+        res.json(results);
+      });
+    }
+    else
+    {
+      console.log('/api/user/login/'+id+'/'+pwd+'-> fail');
+      res.json({status : "fail"});
+    }
+  })
+});
+
 /*----------------------API----------------------------*/
 /*root*/
 app.get('/', (req, res) => {
@@ -124,7 +151,7 @@ app.post('/api/user/login', (req, res) => {
   connection.query(sqlLoginValid, paramLoginValid,  (error, results) =>{
     if (error) throw error;
     var existSTR = JSON.stringify(results);
-    if(!parseInt(existSTR[12]))
+    if(parseInt(existSTR[12]))
     {
       let sqlUserId = 'SELECT * from User where id = ?';
       let paramUserId = [id];
