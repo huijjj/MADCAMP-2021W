@@ -194,8 +194,26 @@ app.get('/api/animal/info/:id', (req, res) => {
 });
 
 /*buy from animal market*/
-app.get('/api/animal/buy/:id', (req, res) => {
-  res.send('Root');
+app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
+  let {ownerId, name, sex, type, price} = req.params;
+  let id = CreateRandomID();
+  let sqlAnimalCreate = 'INSERT INTO Animal (id, name, type, sex, owner, adventureCount, itemCount, geee, duck, chae, isAbandoned, X, Y) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  let paramAnimalCreate = [id, name, type, sex, ownerId, 0, 0, 0, 0, 0, 0, 0, 0];
+  connection.query(sqlAnimalCreate, paramAnimalCreate, (err, result, fields) => {
+    if (err) throw err;
+    let sqlMoneyDecr = 'UPDATE User set Money = Money - ? where id = ?';
+    let paramMoneyDecr = [Number(price), ownerId];
+    connection.query(sqlMoneyDecr, paramMoneyDecr, (err, result, fields) => {
+      if (err) throw err;
+      let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
+      let paramInfoAnimal = [id];
+      connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
+        if (error) throw error;
+        console.log('/api/animal/info/'+id);
+        res.json(results);
+      });
+    });
+  });
 });
 
 /*get animal info which abandoned*/
