@@ -7,7 +7,7 @@ function App() {
 
   const element = useRoutes([
     { path: '/', element: <Auth getId={setUserId} />},
-    { path: '/myfarm', element: <MyFarm />},
+    { path: '/myfarm', element: <MyFarm userId={userId} />},
     { path: '/adventure', element: <Adventure />},
     { path: '/animalshop', element: <AnimalShop />},
     { path: '/itemshop', element: <ItemShop />},
