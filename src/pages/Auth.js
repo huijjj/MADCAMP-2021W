@@ -16,6 +16,11 @@ export default function Auth({ getId }) {
     setInputPw(e.target.value);
   }
 
+  const onClick = (target) => {
+
+    navigate(`/${target}`);
+  }
+
   const onLogin = (e) => {
     e.preventDefault();
     
@@ -49,6 +54,12 @@ export default function Auth({ getId }) {
         <input name="pwd"></input>
         <input type="submit"></input>
       </form>
+      <div onClick={(e) => {
+        e.preventDefault();
+        onClick("register");
+      }}>
+        Register
+      </div>
     </div>
   );
 }

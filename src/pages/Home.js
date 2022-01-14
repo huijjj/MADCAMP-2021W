@@ -27,7 +27,7 @@ function Home({ userId }) {
       );
     })
     .catch(err => console.log(err));
-  }, [])
+  }, []);
   
   return (
     <div>
