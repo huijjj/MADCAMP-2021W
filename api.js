@@ -22,6 +22,41 @@ function CreateRandomID()
 
 app.set('port', process.env.PORT || 443);
 
+
+/*----------------------DEBUG--------------------------*/
+/*register*/
+app.get('/debug/user/register/:id/:nick/:pwd', (req, res) => {
+  let {id, nick, pwd} = req.params;  
+  let sqlUserIdExist = 'select EXISTS(select * from User where id=? limit 1) as success';
+  let paramUserIdExist = [id];
+  connection.query(sqlUserIdExist, paramUserIdExist, (error, results) =>{
+    if (error) throw error;
+    var existSTR = JSON.stringify(results);
+    console.log(existSTR);
+    if(!parseInt(existSTR[12]))
+    {
+      let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd,Money) VALUES (?,?,?,?,?,?);';
+      let paramRegister = [id, nick, 0, 0, pwd, 0];
+      connection.query(sqlRegister, paramRegister, (error, insRes) => {
+        if (error) throw error;
+        let sqlUserRegistered = 'select * from User where id=?';
+        let paramUserRegistered = [id];
+        connection.query(sqlUserRegistered, paramUserRegistered,(error, results) => {
+          if (error) throw error;
+          console.log('/api/user/register/');
+          res.json(results);
+        });
+      });
+    }
+    else
+    {
+      console.log('/api/user/register/'+id+'/'+nick+'/'+pwd+'-> err-dupId');
+      res.json({status : "invalid"});
+    }
+  })
+});
+
+/*----------------------API----------------------------*/
 /*root*/
 app.get('/', (req, res) => {
   res.json({status : "root"});
@@ -51,19 +86,21 @@ app.get('/api/user/show/:id', (req, res) => {
 
 /*register*/
 app.post('/api/user/register', (req, res) => {
-  const id = req.body.id;
-  const nick = req.body.nick;
-  const pwd = req.body.pwd;
-  let sqlUserIdExist = 'select EXISTS(select * from User where id='+id+' limit 1) as success';
-  connection.query(sqlUserIdExist, (error, results) =>{
+  let sqlUserIdExist = 'select EXISTS(select * from User where id=? limit 1) as success';
+  let paramUserIdExist = [id];
+  connection.query(sqlUserIdExist, paramUserIdExist, (error, results) =>{
     if (error) throw error;
+    var existSTR = JSON.stringify(results);
+    console.log(existSTR);
     if(!parseInt(existSTR[12]))
     {
       let sqlRegister = 'INSERT INTO User (id,nick,tier,graduateCount,pwd,Money) VALUES (?,?,?,?,?,?);';
-      let paramRegister = [id, nick, '학사', 0, pwd, 0];
+      let paramRegister = [id, nick, 0, 0, pwd, 0];
       connection.query(sqlRegister, paramRegister, (error, insRes) => {
         if (error) throw error;
-        connection.query('select * from User where id='+id,(error, results) => {
+        let sqlUserRegistered = 'select * from User where id=?';
+        let paramUserRegistered = [id];
+        connection.query(sqlUserRegistered, paramUserRegistered,(error, results) => {
           if (error) throw error;
           console.log('/api/user/register/');
           res.json(results);
@@ -86,6 +123,7 @@ app.post('/api/user/login', (req, res) => {
   let paramLoginValid = [id, pwd];
   connection.query(sqlLoginValid, paramLoginValid,  (error, results) =>{
     if (error) throw error;
+    var existSTR = JSON.stringify(results);
     if(!parseInt(existSTR[12]))
     {
       let sqlUserId = 'SELECT * from User where id = ?';
@@ -106,7 +144,6 @@ app.post('/api/user/login', (req, res) => {
 
 /*get every animal info which owner has*/
 app.get('/api/animal/owner/:ownerId', (req, res) => {
-  let {ownerId}
 });
 
 /*get single animal info*/
