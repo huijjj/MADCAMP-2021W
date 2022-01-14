@@ -1,0 +1,26 @@
+import Button from '@mui/material/Button';
+import { useNavigate, useParams } from 'react-router-dom';
+import AdventureRoomFinal from './AdventureRoomFinal';
+
+export default function AdventureRoomSurprise({ floor, stamina, setStamina, setFloor, setIsInGame, setIsSurprise}) {
+  
+  const handleNext = () => {
+    const newStamina = stamina<=170 ? 30 : 200-stamina;
+    setFloor(floor+1);
+    setStamina(stamina+newStamina);
+    setIsInGame(false);
+    setIsSurprise(false);
+  }
+  
+  setIsSurprise(true);
+  
+  return (
+    <div>
+      <h1>선물입니다!</h1>
+      <h3>HP 30을 회복합니다</h3>
+      <Button onClick={handleNext}>
+        {(floor===10) ? "마지막" : floor + 1}층으로 이동하기
+      </Button>
+    </div>
+  );
+}
