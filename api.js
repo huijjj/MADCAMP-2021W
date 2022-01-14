@@ -264,8 +264,20 @@ app.get('/api/animal/abandoned', (req, res) => {
 });
 
 /*adopt from animal market*/
-app.get('/api/animal/adopt/:id', (req, res) => {
-  res.send('Root');
+app.get('/api/animal/adopt/:id/:ownerId', (req, res) => {
+  let {id, ownerId} = req.params;
+  let sqlAdoptAnimal = 'Update Animal SET owner = ?, isAbandoned = 0 where id = ?';
+  let paramAdoptAnimal = [ownerId,id];
+  connection.query(sqlAdoptAnimal, paramAdoptAnimal, (error, results) => {
+    if (error) throw error;
+    let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
+    let paramInfoAnimal = [id];
+    connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
+      if (error) throw error;
+      console.log('/api/animal/adopt/'+id+'/'+ownerId);
+      res.json(results);
+    });
+  });
 });
 
 /*change status*/
