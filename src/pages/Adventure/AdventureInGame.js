@@ -4,7 +4,7 @@ import AdventureRoomDrink from "../../components/adventure/AdventureRoomDrink";
 import AdventureRoomFinal from "../../components/adventure/AdventureRoomFinal";
 import AdventureRoomSurprise from "../../components/adventure/AdventureRoomSurprise";
 
-export default function AdventureInGame({ floor, setFloor, setIsInGame }) {
+export default function AdventureInGame({ animal, floor, setFloor, setIsInGame }) {
 
   function getRandomRoom() {
     const ran = Math.random();

@@ -8,8 +8,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardMedia } from "@mui/material";
 
-export default function AdventureFloor({ floor, setIsInGame}) {
+
+export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
 
   const navigate = useNavigate();
 
@@ -45,6 +50,21 @@ export default function AdventureFloor({ floor, setIsInGame}) {
         ? "마지막 층" 
         : floor}
       </h1>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia 
+          component="img"
+          image={`/images/${animal.type.substr(0, 3)}/${animal.type.substr(3,1)}.jpg`}
+          alt={`${animal.type}.jpg`}
+        />
+        <CardContent> 
+          <Typography gutterBottom variant="h5" component="div">
+            {animal.name}, {animal.sex}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            HP: {stamina}
+          </Typography>
+        </CardContent>
+      </Card>
 
       <Button onClick={handleClickDoor}>
         왼쪽 문
