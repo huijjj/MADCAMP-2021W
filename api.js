@@ -255,7 +255,12 @@ app.get('/api/animal/abandon/:id', (req, res) => {
 
 /*get animal info which abandoned*/
 app.get('/api/animal/abandoned', (req, res) => {
-  res.send('Root');
+  let sqlShowAbandoned = 'SELECT * from Animal where isAbandoned = 1';
+  connection.query(sqlShowAbandoned, (error, results) => {
+    if (error) throw error;
+    console.log('/api/animal/abandoned');
+    res.json(results);
+  });
 });
 
 /*adopt from animal market*/
