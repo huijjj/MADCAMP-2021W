@@ -416,7 +416,37 @@ app.get('/api/item/owner/:ownerId', (req, res) => {
 
 /*use item*/
 app.get('/api/item/use/:animalId/:itemId', (req, res) => {
-  res.send('Root');
+  let {animalId, itemId} = req.params;
+  let itemGeee, itemDuck, itemChae;
+  let sqlInfoItem = 'SELECT * from Item where id = ?';
+  let paramInfoItem = [itemId];
+  connection.query(sqlInfoItem, paramInfoItem, (error, results) => {
+    if (error) throw error;
+    itemGeee = results[0].geee;
+    itemDuck = results[0].duck;
+    itemChae = results[0].chae;
+    let sqlAddStat = 'UPDATE Animal set geee = geee + ?, duck = duck + ?, chae = chae + ? where id = ?';
+    let paramAddStat = [itemGeee, itemDuck, itemChae, animalId];
+    connection.query(sqlAddStat, paramAddStat, (error, results) => {
+      if (error) throw error;
+      let sqlItemUse = 'DELETE FROM Item where id=?'
+      let paramItemUse = [itemId];
+      connection.query(sqlItemUse, paramItemUse, (error, results) => {
+        if (error) throw error;
+        let delCnt = results.affectedRows;
+        if(delCnt == 0)
+        {
+          console.log('/api/item/use/'+animalId+'/'+itemId+'-> Fail');
+          res.json({status : "Fail"});
+        }
+        else
+        {
+          console.log('/api/item/use/'+animalId+'/'+itemId);
+          res.json({status : "Success"});
+        }
+      });
+    });
+  });
 });
 
 
