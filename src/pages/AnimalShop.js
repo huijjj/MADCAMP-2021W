@@ -204,7 +204,7 @@ export default function AnimalShop() {
     if(index === 0) { // shop
       const price = getPrice(type);
       if(window.confirm(`${type}을 ${price}원에 구매하시겠습니까?`)) {
-        if(price < money) {
+        if(price <= money) {
           const name = window.prompt("이름을 입력해주세요.");
           let sex = ""
           while(!(sex === "F" || sex === "M")) {
