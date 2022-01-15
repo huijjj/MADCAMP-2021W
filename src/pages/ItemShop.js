@@ -2,6 +2,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from "react-router-dom";
 
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 
 const items = [
@@ -41,18 +44,19 @@ function getPrice(type) {
 }
 
 
-export default function ItemShop() {
+export default function ItemShop({ userId }) {
   const navigate = useNavigate();
   const [ money, setMoney ] = useState(0); 
   
   useEffect(() => {
     // get user date from db
     // set money
+    axios.get(`${API_BASE}/user/show/${userId}`).then(
+      res => setMoney(res.data[0].Money)
+    );
+  });
 
-    setMoney(1000);
-  }, []);
-
-  const onClick = (e, type) => {
+  const onClick = (e, type, i) => {
     e.preventDefault();
     
     const price = getPrice(type);
@@ -61,9 +65,13 @@ export default function ItemShop() {
     if(window.confirm(`${type}을(를) ${price}원에 구매하시겠습니까?`)) {
       if(price <= money) {
         // send request
-
-        // update local data
-        setMoney(money - price); 
+        axios.get(`${API_BASE}/item/buy/${userId}/${type}/${items[i].geee}/${items[i].duck}/${items[i].chae}/${price}`).then(res => {
+          console.log(res.data);
+          // update local data
+          setMoney(money - price); 
+        }).catch(res => {
+          console.log(res);
+        });
       }
       else {
         window.alert("보유한 금액이 부족합니다.");
@@ -73,7 +81,7 @@ export default function ItemShop() {
 
   const renderItems = (item, i) => {
     return (
-      <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type)}>
+      <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
         <img src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
         <div>
           <div>{item.type} {item.price}원</div>
