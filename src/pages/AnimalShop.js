@@ -105,7 +105,12 @@ export default function AnimalShop({ userId }) {
           }
           // buy 
           // api request
-          axios.get(`${API_BASE}/animal/buy/${userId}/${name}/${sex}/${type}/${price}`).then(res => {
+          axios.post(`${API_BASE}/animal/buy/${userId}`, {
+            name: name,
+            sex: sex,
+            type: type,
+            price: price
+          }).then(res => {
             console.log(res.data);
             setMoney(money - price);
           }).catch(err => console.log(err));
@@ -119,7 +124,9 @@ export default function AnimalShop({ userId }) {
       if(window.confirm(`${name}을(를) 입양하시겠습니까?`)) {
         // check if adopting is possible
         // send request
-        axios.get(`${API_BASE}/animal/adopt/${id}/${userId}`).then(res => {
+        axios.post(`${API_BASE}/animal/adopt/${userId}`, {
+          id: id
+        }).then(res => {
           console.log(res.data);
           axios.get(`${API_BASE}/animal/abandoned`).then(res => {
             setAnimalList(res.data);

@@ -21,10 +21,18 @@ export default function AdventureRoomFinal({ user, animal }) {
     e.preventDefault();
     if (answer === e.target.finalAnswer.value){
       setIsFinish(true);
-      axios.get(`${API_BASE}/animal/change/${animal.id}/30/30/30/1/0`).then(
+      axios.get(`${API_BASE}/animal/change/${animal.id}`, {
+        geee: 30,
+        duck: 30,
+        chae: 30,
+        adventureCount: 1,
+        itemCount: 0
+      }).then(
         res => console.log(res)
       );
-      axios.get(`${API_BASE}/user/money/${user.id}/${user.Money + 1000}`).then(
+      axios.put(`${API_BASE}/user/money/${user.id}`, {
+        money: user.Money + 1000
+      }).then(
         res => console.log(res)
       );
     }

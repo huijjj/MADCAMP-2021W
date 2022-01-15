@@ -13,14 +13,13 @@ export default function AdventureFeneral({ animal }) {
   }
 
   useEffect(() => {
-    axios.get(`${API_BASE}/animal/kill/${animal.id}`).then(
-      res => (
-        console.log(res)
-      )
-    )
-  });
+    axios.delete(`${API_BASE}/animal/kill`, {
+      data: {
+        id: animal.id
+      }
+    }).then(res => (console.log(res)))});
   
-  console.log(animal)
+  console.log(animal);
   return (
     <div>
       <h1>장례식..</h1>

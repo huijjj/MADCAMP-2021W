@@ -65,7 +65,13 @@ export default function ItemShop({ userId }) {
     if(window.confirm(`${type}을(를) ${price}원에 구매하시겠습니까?`)) {
       if(price <= money) {
         // send request
-        axios.get(`${API_BASE}/item/buy/${userId}/${type}/${items[i].geee}/${items[i].duck}/${items[i].chae}/${price}`).then(res => {
+        axios.post(`${API_BASE}/item/buy/${userId}`, {
+          type: type,
+          geee: items[i].geee,
+          duck: items[i].duck,
+          chae: items[i].chae,
+          price: price
+        }).then(res => {
           console.log(res.data);
           // update local data
           setMoney(money - price); 

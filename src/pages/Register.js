@@ -17,7 +17,7 @@ export default function Register() {
       pwd: pwd
     })
     .then(res => {
-      console.log(res.data.status);
+      // console.log(res.data.status);
       if(res.data.status)
       {
         window.alert("Register Fail");

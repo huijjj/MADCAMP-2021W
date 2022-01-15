@@ -19,7 +19,7 @@ export default function Auth({ getId }) {
       id: id, 
       pwd: pwd
     }).then(res => {
-      console.log(res.data.status);
+      // console.log(res.data.status);
       if(res.data.status) {
         window.alert("Login Failed");
       }

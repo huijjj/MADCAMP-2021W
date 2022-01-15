@@ -47,7 +47,11 @@ export default function MyFarm({ userId }) {
   const onAnimalItemClick = (id, name) => {
     if(useItem) {
       if(window.confirm(`${name}에게 ${useItem.type}을(를) 사용하시겠습니까?`)) {
-        axios.get(`${API_BASE}/item/use/${id}/${useItem.id}`).then(
+        axios.delete(`${API_BASE}/item/use/${id}`, {
+          data: {
+            itemId: useItem.id
+          }
+        }).then(
           (res) => {
             console.log(res.data);
        
@@ -90,9 +94,10 @@ export default function MyFarm({ userId }) {
     else {
       if(window.confirm(`${name}을(를) 방생하시겠습니까?`)) {
         // api request 
-        axios.get(`${API_BASE}/animal/abandon/${id}`).then(res => {
-          console.log(res);
-
+        axios.put(`${API_BASE}/animal/abandon`, {
+          id: id
+        }).then(res => {
+          console.log(res.data);
           // update local state after requset success
           setAnimalList(animalList.filter(animal => animal.id !== id));
         });
@@ -156,7 +161,7 @@ export default function MyFarm({ userId }) {
 
     // console.log(target.id, newX, newY);  
 
-    axios.post(`${API_BASE}/animal/move`, {
+    axios.put(`${API_BASE}/animal/move`, {
       id: target.id,
       X: newX,
       Y: newY
