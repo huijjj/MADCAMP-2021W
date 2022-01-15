@@ -119,7 +119,6 @@ app.get('/api/user/show/:id', (req, res) => {
 app.put('/api/user/money/:id', (req, res) => {
   let {id} = req.params;
   let money = req.body.money;
-  console.log(req);
   let sqlMoneySet = 'UPDATE User set Money = ? where id = ?';
   let paramMoneySet = [money,id];
   connection.query(sqlMoneySet, paramMoneySet, (error, results) => {
@@ -480,7 +479,7 @@ app.get('/api/item/owner/:ownerId', (req, res) => {
 });
 
 /*use item*/
-app.put('/api/item/use/:animalId', (req, res) => {
+app.delete('/api/item/use/:animalId', (req, res) => {
   let {animalId} = req.params;
   const itemId = req.body.itemId;
   let itemGeee, itemDuck, itemChae;
