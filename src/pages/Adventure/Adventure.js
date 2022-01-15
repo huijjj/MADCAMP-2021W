@@ -39,8 +39,8 @@ export default function Adventure({ userId }) {
       {
         (stamina<=0)
         ? <AdventureFeneral animal={animal} />
-        : (floor===11)
-          ? <AdventureRoomFinal animal={animal} />
+        : (floor===1)
+          ? <AdventureRoomFinal user={user} animal={animal} />
           : (isLobby)
             ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} />
             : (isInGame)

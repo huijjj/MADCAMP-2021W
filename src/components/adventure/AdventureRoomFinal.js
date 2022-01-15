@@ -6,7 +6,7 @@ import axios from 'axios';
 import TextField from '@mui/material/TextField';
 
 
-export default function AdventureRoomFinal({ animal }) {
+export default function AdventureRoomFinal({ user, animal }) {
   const [isFinish, setIsFinish] = useState(false);
   const navigate = useNavigate();
   const API_BASE = process.env.REACT_APP_API_BASE;
@@ -22,6 +22,9 @@ export default function AdventureRoomFinal({ animal }) {
     if (answer === e.target.finalAnswer.value){
       setIsFinish(true);
       axios.get(`${API_BASE}/animal/change/${animal.id}/30/30/30/1/0`).then(
+        res => console.log(res)
+      );
+      axios.get(`${API_BASE}/user/money/${user.id}/${user.Money + 1000}`).then(
         res => console.log(res)
       );
     }
