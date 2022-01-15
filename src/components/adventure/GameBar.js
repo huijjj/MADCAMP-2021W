@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import FightButton from "./FightButton.js";
 
 export default function GameBar({ isStart, speed, stamina, setStamina, hStamina, setHStamina }) {
   
@@ -9,12 +10,16 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
   var x = 0;
   var interval;
 
+  const fighting = useRef();
+  fighting.current = false;
+  // const [ fighting, setFighting ] = useState(false);
 
   var canvasRef = useRef(null);
   const draw = ()=> {
     if (x > 405) {
       clearInterval(interval);
-      setStamina(stamina = stamina-30);
+      fighting.current = false;
+      setStamina(stamina - 30);
     }
 
     var canvas = canvasRef.current;
@@ -75,25 +80,24 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
       : setStamina(stamina-attackValue)
   }
 
-  console.log(`speed: ${speed}`);
+  // console.log(`speed: ${speed}`);
+  const onFight = () => {
+    // setFighting(true);
+    fighting.current = true;
+    interval = setInterval(draw, 0.01);
+  }
+
+  const onStop = () => {
+    fighting.current = false;
+    clearInterval(interval);
+    handleAttack();
+  }
+ 
   return (
     <>
-      <canvas ref={canvasRef} width={400} height={50}></canvas><br/>
-
-      <Button onClick={() => {
-        interval = setInterval(draw, 0.01);
-      }}>
-        싸우기
-      </Button>
-      <Button onClick={() => {
-        clearInterval(interval);
-        handleAttack();
-        console.log(`stoppedX = ${stoppedX}`);
-        console.log(`attackValue = ${attackValue}`)
-        }}
-      >
-        멈추기
-      </Button>
+      <canvas ref={canvasRef} width={400} height={50} />
+      <br />
+      <FightButton hStamina={hStamina} fight={fighting} onFight={onFight} onStop={onStop}/>
     </>
   );
 }

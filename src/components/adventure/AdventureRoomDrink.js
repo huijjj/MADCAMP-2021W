@@ -80,12 +80,14 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
       <div>
         <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
       </div>
-      <Button onClick={handleNext}>
-        {(hStamina <= 0)
-          ? `${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`
-          : ``
-        }
-      </Button>
+      
+      <>{
+        (hStamina <= 0)
+        ? <Button onClick={handleNext}>
+          {`${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`}
+        </Button>
+        : <></>
+      }</>
     </div>
   );
 }
