@@ -365,7 +365,7 @@ app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
     }
     else
     {
-      let sqlUserReward = 'UPDATE User set Money = Money + ? where id = ?';
+      let sqlUserReward = 'UPDATE User set Money = Money + ?, graduateCount = graduateCount + 1 where id = ?';
       let paramUserReward = [Number(reward), ownerId];
       connection.query(sqlUserReward, paramUserReward, (error, results) => {
         if (error) throw error;
