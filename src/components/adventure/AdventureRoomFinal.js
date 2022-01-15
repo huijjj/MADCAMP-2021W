@@ -21,7 +21,7 @@ export default function AdventureRoomFinal({ user, animal }) {
     e.preventDefault();
     if (answer === e.target.finalAnswer.value){
       setIsFinish(true);
-      axios.get(`${API_BASE}/animal/change/${animal.id}`, {
+      axios.put(`${API_BASE}/animal/change/${animal.id}`, {
         geee: 30,
         duck: 30,
         chae: 30,
