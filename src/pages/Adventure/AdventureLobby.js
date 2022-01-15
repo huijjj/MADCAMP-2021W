@@ -14,7 +14,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
-export default function AdventureLobby({ animalList, setIsLobby, setAnimal }) {
+export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setFloor }) {
   const navigate = useNavigate();
   const [ animalIndex, setAnimalIndex ] = useState(Number(0));
 
@@ -36,6 +36,7 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal }) {
 
     setExitOpen(false);
     setAnimal(animalList[animalIndex]);
+    setFloor(+1);
     setIsLobby(false);
 
   };

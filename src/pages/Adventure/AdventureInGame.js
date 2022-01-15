@@ -23,9 +23,7 @@ export default function AdventureInGame({ animal, stamina, setStamina, floor, se
   return (
       <div id="adventure-room">
         <div>
-          {(floor === 11)
-          ? <AdventureRoomFinal />
-          : getRandomRoom()}
+          {getRandomRoom()}
         </div>
       </div>
     );

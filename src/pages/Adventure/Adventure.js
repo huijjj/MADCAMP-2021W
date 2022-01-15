@@ -14,7 +14,7 @@ export default function Adventure({ userId }) {
   const [user, setUser] = useState();
   const [animalList, setAnimalList] = useState([]);
 
-  const [floor, setFloor] = useState(1);
+  const [floor, setFloor] = useState(0);
   const [isLobby, setIsLobby] = useState(true);
   const [isInGame, setIsInGame] = useState(false);
   const [animal, setAnimal] = useState();
@@ -39,10 +39,10 @@ export default function Adventure({ userId }) {
       {
         (stamina<=0)
         ? <AdventureFeneral animal={animal} />
-        : (floor===1)
-          ? <AdventureRoomFinal />
+        : (floor===11)
+          ? <AdventureRoomFinal animal={animal} />
           : (isLobby)
-            ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} />
+            ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} />
             : (isInGame)
               ? <AdventureInGame animal={animal} stamina={stamina} setStamina={setStamina} floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
               : <AdventureFloor animal={animal} stamina={stamina} floor={floor} setIsInGame={setIsInGame}/> 
