@@ -78,7 +78,7 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
       </h3>
 
       <div>
-        <GameBar speed={difficultyList[floor-1].speed - (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+        <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
       </div>
       <Button onClick={handleNext}>
         {(hStamina <= 0)

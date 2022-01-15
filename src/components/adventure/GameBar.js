@@ -18,7 +18,7 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
     }
 
     var canvas = canvasRef.current;
-    var ctx = canvas.getContext("2d");
+    var ctx = canvas?.getContext("2d");
     
     ctx.clearRect(0, 0, 500, 50)
 
