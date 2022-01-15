@@ -116,8 +116,10 @@ app.get('/api/user/show/:id', (req, res) => {
 });
 
 /*give money to user*/
-app.get('/api/user/money/:id/:money', (req, res) => {
-  let {id, money} = req.params;
+app.put('/api/user/money/:id', (req, res) => {
+  let {id} = req.params;
+  let money = req.body.money;
+  console.log(req);
   let sqlMoneySet = 'UPDATE User set Money = ? where id = ?';
   let paramMoneySet = [money,id];
   connection.query(sqlMoneySet, paramMoneySet, (error, results) => {
@@ -224,7 +226,7 @@ app.get('/api/animal/info/:id', (req, res) => {
 });
 
 /*update animal x, y*/
-app.post('/api/animal/move', (req, res) => {
+app.put('/api/animal/move', (req, res) => {
   const { id, X, Y } = req.body;
   const sql = `UPDATE Animal SET X=${Number(X)}, Y=${Number(Y)} WHERE id=${id}`;
   connection.query(sql, (err, result) => {
@@ -237,8 +239,12 @@ app.post('/api/animal/move', (req, res) => {
 });
 
 /*buy from animal market*/
-app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
-  let {ownerId, name, sex, type, price} = req.params;
+app.post('/api/animal/buy/:ownerId', (req, res) => {
+  let {ownerId} = req.params;
+  const name = req.body.name;
+  const sex = req.body.sex;
+  const type = req.body.type;
+  const price = req.body.price;
   let sqlUserMoney = 'SELECT Money from User where id = ?'
   let paramUserMoney = [ownerId];
   connection.query(sqlUserMoney, paramUserMoney, (err, result, fields) => {
@@ -274,8 +280,8 @@ app.get('/api/animal/buy/:ownerId/:name/:sex/:type/:price', (req, res) => {
 });
 
 /*adandon animal*/
-app.get('/api/animal/abandon/:id', (req, res) => {
-  let {id} = req.params;
+app.put('/api/animal/abandon', (req, res) => {
+  const id = req.body.id;
   let sqlAbandonAnimal = 'Update Animal SET isAbandoned = 1 where id = ?';
   let paramAbandonAnimal = [id];
   connection.query(sqlAbandonAnimal, paramAbandonAnimal, (error, results) => {
@@ -296,9 +302,10 @@ app.get('/api/animal/abandoned', (req, res) => {
 });
 
 /*adopt from animal market*/
-app.get('/api/animal/adopt/:id/:ownerId', (req, res) => {
-  let {id, ownerId} = req.params;
-  let sqlAdoptAnimal = 'Update Animal SET owner = ?, isAbandoned = 0 where id = ?';
+app.put('/api/animal/adopt/:ownerId', (req, res) => {
+  let {ownerId} = req.params;
+  const id = req.body.id;
+  let sqlAdoptAnimal = 'Update Animal SET owner = ?, isAbandoned = 0 where id = ? and isAbandoned = 1';
   let paramAdoptAnimal = [ownerId,id];
   connection.query(sqlAdoptAnimal, paramAdoptAnimal, (error, results) => {
     if (error) throw error;
@@ -313,8 +320,13 @@ app.get('/api/animal/adopt/:id/:ownerId', (req, res) => {
 });
 
 /*change status*/
-app.get('/api/animal/change/:id/:geee/:duck/:chae/:adventureCount/:itemCount', (req, res) => {
-  let {id, geee, duck, chae, adventureCount, itemCount} = req.params;
+app.put('/api/animal/change/:id', (req, res) => {
+  let {id} = req.params;
+  const geee = req.body.geee;
+  const duck = req.body.duck;
+  const chae = req.body.chae;
+  const adventureCount = req.body.adventureCount;
+  const itemCount = req.body.itemCount;
   let sqlChangeAnimal = 'UPDATE Animal set geee = geee + ?, duck = duck + ?, chae = chae + ?, adventureCount = adventureCount + ?, itemCount = itemCount + ? where id = ?';
   let paramChangeAnimal = [Number(geee), Number(duck), Number(chae), Number(adventureCount), Number(itemCount), id];
   connection.query(sqlChangeAnimal, paramChangeAnimal, (err, result, fields) => {
@@ -330,8 +342,8 @@ app.get('/api/animal/change/:id/:geee/:duck/:chae/:adventureCount/:itemCount', (
 });
 
 /*die animal*/
-app.get('/api/animal/kill/:id', (req, res) => {
-  let {id} = req.params;
+app.delete('/api/animal/kill', (req, res) => {
+  const id = req.body.id;
   let sqlAnimalKill = 'DELETE FROM Animal where id=?'
   let paramAnimalKill = [id];
   connection.query(sqlAnimalKill, paramAnimalKill, (error, results) => {
@@ -351,8 +363,10 @@ app.get('/api/animal/kill/:id', (req, res) => {
 });
 
 /*graduate animal*/
-app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
-  let {id, ownerId, reward} = req.params;
+app.delete('/api/animal/graduate/:ownerId', (req, res) => {
+  let {ownerId} = req.params;
+  const id = req.body.id;
+  const reward = req.body.reward;
   let sqlAnimalGraduate = 'DELETE FROM Animal where id=?'
   let paramAnimalGraduate = [id];
   connection.query(sqlAnimalGraduate, paramAnimalGraduate, (error, results) => {
@@ -377,8 +391,9 @@ app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
 });
 
 /*evolve animal*/
-app.get('/api/animal/evolve/:id/:type', (req, res) => {
-  let {id, type} = req.params;
+app.put('/api/animal/evolve/:id', (req, res) => {
+  let {id} = req.params;
+  const type = req.body.type;
   let sqlEvolve = 'UPDATE Animal set type = ? where id = ?';
   let paramEvolve = [type, id];
   connection.query(sqlEvolve, paramEvolve, (error, results) => {
@@ -411,8 +426,13 @@ app.get('/api/item/info/:id', (req, res) => {
 });
 
 /*buy item from shop*/
-app.get('/api/item/buy/:ownerId/:type/:geee/:duck/:chae/:price', (req, res) => {
-  let {ownerId, type, geee, duck, chae, price} = req.params;
+app.post('/api/item/buy/:ownerId', (req, res) => {
+  let {ownerId} = req.params;
+  const type = req.body.type;
+  const geee = req.body.geee;
+  const duck = req.body.duck;
+  const chae = req.body.chae;
+  const price = req.body.price;
   let sqlUserMoney = 'SELECT Money from User where id = ?'
   let paramUserMoney = [ownerId];
   connection.query(sqlUserMoney, paramUserMoney, (err, result, fields) => {
@@ -460,8 +480,9 @@ app.get('/api/item/owner/:ownerId', (req, res) => {
 });
 
 /*use item*/
-app.get('/api/item/use/:animalId/:itemId', (req, res) => {
-  let {animalId, itemId} = req.params;
+app.put('/api/item/use/:animalId', (req, res) => {
+  let {animalId} = req.params;
+  const itemId = req.body.itemId;
   let itemGeee, itemDuck, itemChae;
   let sqlInfoItem = 'SELECT * from Item where id = ?';
   let paramInfoItem = [itemId];
