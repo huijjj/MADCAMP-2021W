@@ -378,7 +378,7 @@ app.delete('/api/animal/graduate/:ownerId', (req, res) => {
     }
     else
     {
-      let sqlUserReward = 'UPDATE User set Money = Money + ?, graduateCount = graduateCount + 1 where id = ?';
+      let sqlUserReward = 'UPDATE User set Money = Money + ?, graduateCount = graduateCount + 1, tier = graduateCount/5 where id = ?';
       let paramUserReward = [Number(reward), ownerId];
       connection.query(sqlUserReward, paramUserReward, (error, results) => {
         if (error) throw error;
