@@ -24,25 +24,18 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
   const handleClickExit = (index) => {
     setAnimalIndex(index);
     setExitOpen(true);
-
   };
 
   const handleCloseNo = () => {
-
     setExitOpen(false);
-
   };
 
   const handleCloseYes = (animalIndex) => {
-
     setAnimal(animalList[animalIndex]);
     setStamina(stamina+animalList[animalIndex].chae);
     setFloor(1);
     setIsLobby(false);
-
     setExitOpen(false);
-    
-
   };
   
   return (
@@ -50,7 +43,7 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
       <HomeIcon onClick={() => navigate(-1)} />
       { animalList?.map(
           (animal, index) =>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card key={index} sx={{ maxWidth: 345 }}>
               <CardMedia 
                 component="img"
                 image={`/images/${animal.type.substr(0, 3)}/${animal.type.substr(3,1)}.jpg`}

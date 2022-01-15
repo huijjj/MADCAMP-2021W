@@ -45,7 +45,7 @@ export default function AnimalShop({ userId }) {
     axios.get(`${API_BASE}/user/show/${userId}`).then(
       res => setMoney(res.data[0].Money)
     );
-  });
+  }, []);
 
   useEffect(() => {
     if(index === 0) { // shop

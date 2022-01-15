@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
@@ -18,7 +18,7 @@ export default function AdventureFeneral({ animal }) {
         console.log(res)
       )
     )
-  }, []);
+  });
   
   console.log(animal)
   return (

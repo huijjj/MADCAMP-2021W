@@ -42,7 +42,7 @@ export default function MyFarm({ userId }) {
         setItemList(res.data);
       }
     );
-  }, [userId]);
+  }, []);
   
   const onAnimalItemClick = (id, name) => {
     if(useItem) {

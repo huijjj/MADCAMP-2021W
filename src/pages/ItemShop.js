@@ -54,7 +54,7 @@ export default function ItemShop({ userId }) {
     axios.get(`${API_BASE}/user/show/${userId}`).then(
       res => setMoney(res.data[0].Money)
     );
-  });
+  }, []);
 
   const onClick = (e, type, i) => {
     e.preventDefault();
@@ -82,7 +82,7 @@ export default function ItemShop({ userId }) {
   const renderItems = (item, i) => {
     return (
       <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
-        <img src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
+        <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
         <div>
           <div>{item.type} {item.price}원</div>
           <br></br>
