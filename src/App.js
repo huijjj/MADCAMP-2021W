@@ -10,7 +10,7 @@ function App() {
     { path: '/myfarm', element: <MyFarm userId={userId} />},
     { path: '/adventure', element: <Adventure userId={userId} />},
     { path: '/animalshop', element: <AnimalShop userId={userId} />},
-    { path: '/itemshop', element: <ItemShop />},
+    { path: '/itemshop', element: <ItemShop userId={userId} />},
     { path: '/auction', element: <Auction />},
     { path: '/register', element: <Register />},
     { path: '/home', element: <Home userId={userId} />}
