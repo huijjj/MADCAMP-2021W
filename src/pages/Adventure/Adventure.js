@@ -23,17 +23,15 @@ export default function Adventure({ userId }) {
 
   useEffect(() => {
     axios.get(`${API_BASE}/user/show/${userId}`).then(
-      (res) => setUser(res.data[0])
+      (res) => setUser(res.data[0]))
       .catch(error => {
         console.log(error);
-      })
-    );
+      });
     axios.get(`${API_BASE}/animal/owner/${userId}`).then(
-      (res) => setAnimalList(res.data)
+      (res) => setAnimalList(res.data))
       .catch(error => {
         console.log(error);
       })
-    );
   }, []);
 
   return (
@@ -41,7 +39,7 @@ export default function Adventure({ userId }) {
       {
         (stamina<=0)
         ? <AdventureFeneral animal={animal} />
-        : (floor===11)
+        : (floor===1)
           ? <AdventureRoomFinal />
           : (isLobby)
             ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} />

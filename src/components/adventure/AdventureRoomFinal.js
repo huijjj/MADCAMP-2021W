@@ -29,7 +29,7 @@ export default function AdventureRoomFinal() {
       <img src={"images/장병규.jpeg"} width={292} height={385} /><br/>
       <em>"인류의 모든 성과는 시행착오로부터 이루어졌다."</em><br/><br/>
       <form onSubmit={onSubmit}>
-        <input name="finalAnswer" autocomplete="off"/>
+        <input name="finalAnswer" autoComplete="off"/>
         <input type="submit" value="확인" />
       </form>
       { (isFinish &&
