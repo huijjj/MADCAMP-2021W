@@ -18,7 +18,7 @@ export default function AdventureFeneral({ animal }) {
         console.log(res)
       )
     )
-  })
+  }, []);
   
   console.log(animal)
   return (

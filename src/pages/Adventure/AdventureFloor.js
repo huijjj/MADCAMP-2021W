@@ -36,7 +36,7 @@ export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
   const handleCloseYes = () => {
 
     setExitOpen(false);
-    navigate("/");
+    navigate("/home");
 
   };
 

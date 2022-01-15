@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import AdventureRoomDrink from "../../components/adventure/AdventureRoomDrink";
@@ -7,23 +7,18 @@ import AdventureRoomSurprise from "../../components/adventure/AdventureRoomSurpr
 
 export default function AdventureInGame({ animal, stamina, setStamina, floor, setFloor, setIsInGame }) {
   const [isDrink, setIsDrink] = useState(false);
-  const [isSurprise, setIsSurprise] = useState(false);
 
-  function getRandomRoom() {
-    const ran = Math.random();
-    if (ran < 0.7 || isDrink) {
-      return <AdventureRoomDrink animal={animal} floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} setIsDrink={setIsDrink} />;
-    }
-    else if (ran >= 0.7 || isSurprise) {
-      return <AdventureRoomSurprise floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} setIsSurprise={setIsSurprise} />;
-    }
-  }
+  useEffect(() => {
+    setIsDrink(Math.random() < 0.7 - animal.duck/1500);
+  }, []);
 
 
   return (
       <div id="adventure-room">
         <div>
-          {getRandomRoom()}
+          {isDrink 
+            ? <AdventureRoomDrink animal={animal} floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} setIsDrink={setIsDrink} />
+            : <AdventureRoomSurprise floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} />}
         </div>
       </div>
     );

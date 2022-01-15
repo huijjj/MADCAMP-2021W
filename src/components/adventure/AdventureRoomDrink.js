@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 import GameBar from './GameBar';
@@ -50,6 +50,9 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
 
   const [hStamina, setHStamina] = useState(difficultyList[floor-1].stamina);
   
+  useEffect(() => {
+    setIsDrink(true);
+  }, []);
 
   const handleNext = () => {
     setFloor(floor+1);
@@ -57,13 +60,14 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
     setIsDrink(false);
   }
 
-  setIsDrink(true);
+  // setIsDrink(true);
   
   return (
     <div>
       <h1>
         현지랑 술 배틀
       </h1>
+      <img src="/images/이현지.png" width={500} height={500} />
 
       <h3>
         현지 체력: {hStamina}
@@ -74,7 +78,7 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
       </h3>
 
       <div>
-        <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+        <GameBar speed={difficultyList[floor-1].speed - (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
       </div>
       <Button onClick={handleNext}>
         {(hStamina <= 0)

@@ -15,7 +15,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import HomeIcon from '@mui/icons-material/Home';
 
-export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setFloor }) {
+export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setFloor, stamina, setStamina }) {
   const navigate = useNavigate();
   const [ animalIndex, setAnimalIndex ] = useState(Number(0));
 
@@ -35,13 +35,16 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
 
   const handleCloseYes = (animalIndex) => {
 
-    setExitOpen(false);
     setAnimal(animalList[animalIndex]);
-    setFloor(+1);
+    setStamina(stamina+animalList[animalIndex].chae);
+    setFloor(1);
     setIsLobby(false);
 
+    setExitOpen(false);
+    
+
   };
-  console.log(animalList)
+  
   return (
     <div id = "adventure-lobby">
       <HomeIcon onClick={() => navigate(-1)} />
