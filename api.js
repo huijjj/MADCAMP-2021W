@@ -115,6 +115,19 @@ app.get('/api/user/show/:id', (req, res) => {
   });
 });
 
+/*give money to user*/
+app.get('/api/user/money/:id/:money', (req, res) => {
+  let {id, money} = req.params;
+  let sqlMoneySet = 'UPDATE User set Money = ? where id = ?';
+  let paramMoneySet = [money,id];
+  connection.query(sqlMoneySet, paramMoneySet, (error, results) => {
+    if (error) throw error;
+    console.log('/api/user/money/'+id+'/'+money);
+    res.json({status : "Success"});
+  });
+});
+
+
 /*register*/
 app.post('/api/user/register', (req, res) => {
   const id = req.body.id;
