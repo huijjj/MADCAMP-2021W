@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 import GameBar from './GameBar';
 
-export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloor, setIsInGame, setIsDrink }) {
+export default function AdventureRoomDrink({ animal, floor, stamina, setStamina, setFloor, setIsInGame, setIsDrink }) {
   const difficultyList = [
     {
       stamina: 100,
@@ -74,7 +74,7 @@ export default function AdventureRoomDrink({ floor, stamina, setStamina, setFloo
       </h3>
 
       <div>
-        <GameBar speed={difficultyList[floor-1].speed } stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+        <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
       </div>
       <Button onClick={handleNext}>
         {(hStamina <= 0)

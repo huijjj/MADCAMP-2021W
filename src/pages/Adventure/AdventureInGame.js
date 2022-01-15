@@ -12,7 +12,7 @@ export default function AdventureInGame({ animal, stamina, setStamina, floor, se
   function getRandomRoom() {
     const ran = Math.random();
     if (ran < 0.7 || isDrink) {
-      return <AdventureRoomDrink floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} setIsDrink={setIsDrink} />;
+      return <AdventureRoomDrink animal={animal} floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} setIsDrink={setIsDrink} />;
     }
     else if (ran >= 0.7 || isSurprise) {
       return <AdventureRoomSurprise floor={floor} stamina={stamina} setStamina={setStamina} setFloor={setFloor} setIsInGame={setIsInGame} setIsSurprise={setIsSurprise} />;

@@ -75,7 +75,7 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
       : setStamina(stamina-attackValue)
   }
 
-  
+  console.log(`speed: ${speed}`);
   return (
     <>
       <canvas ref={canvasRef} width={400} height={50}></canvas><br/>
