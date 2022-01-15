@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-export default function Adventure({ id }) {
+export default function Adventure({ userId }) {
   const [user, setUser] = useState();
   const [animalList, setAnimalList] = useState([]);
 
@@ -22,17 +22,17 @@ export default function Adventure({ id }) {
 
 
   useEffect(() => {
-    axios.get(`${API_BASE}/user/show/${id}`).then(
+    axios.get(`${API_BASE}/user/show/${userId}`).then(
       (res) => setUser(res.data[0])
-      // .catch(error => {
-      //   console.log(error);
-      // })
+      .catch(error => {
+        console.log(error);
+      })
     );
-    axios.get(`${API_BASE}/animal/owner/${id}`).then(
+    axios.get(`${API_BASE}/animal/owner/${userId}`).then(
       (res) => setAnimalList(res.data)
-      // .catch(error => {
-      //   console.log(error);
-      // })
+      .catch(error => {
+        console.log(error);
+      })
     );
   }, []);
 
