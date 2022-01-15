@@ -5,149 +5,36 @@ import React, { useState, useEffect } from 'react';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import axios from 'axios';
+
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 
 const animals = [
   {
     type: "김기영1",
-    price: 100
-  },
-  {
-    type: "박승민1",
-    price: 200
-  },
-  {
-    type: "최준영1",
-    price: 170
-  },
-  {
-    type: "성홍념1",
-    price: 130
-  },
-  {
-    type: "박시형1",
-    price: 130
-  },
-  {
-    type: "박종준1",
-    price: 200
-  },
-  {
-    type: "윤정인1",
-    price: 200
-  },
-  {
-    type: "이서진1",
-    price: 200
-  },
-  {
-    type: "김민희1",
-    price: 200
-  },
-  {
-    type: "김민정1",
-    price: 200
-  },
-  {
-    type: "김민채1",
-    price: 200
-  },
-  {
-    type: "박도윤1",
-    price: 200
-  },
-  {
-    type: "조민서1",
-    price: 200
-  },
-  {
-    type: "강준서1",
-    price: 200
+    price: 150
   },
   {
     type: "정희종1",
-    price: 150
+    price: 100
   },
   {
     type: "임승재1",
     price: 50
-  },
-  {
-    type: "공병규1",
-    price: 10
-  },
-  {
-    type: "배설영1",
-    price: 200
-  }
-];
-
-const abandon = [
-  {
-    type: "김기영1",
-    price: 100,
-    name: "기돌이",
-    sex: "M"
-  },
-  {
-    type: "정희종1",
-    price: 150,
-    name: "희돌이",
-    sex: "M"
-  },
-  {
-    type: "최준영1",
-    price: 170,
-    name: "준돌이",
-    sex: "M"
-  
-  },
-  {
-    type: "성홍념1",
-    price: 130,
-    name: "홍돌이",
-    sex: "M"
   }
 ];
 
 const getPrice = (type) => {
   switch (type) {
-    case "배설영1" :
-    case "강준서1" :
-    case "조민서1" :
-    case "박도윤1" :
-    case "김민채1" :
-    case "김민정1" :
-    case "김민희1" :
-    case "이서진1" :
-    case "박종준1" :
-    case "박승민1" :
-      return 200;
-  
-    case "최준영1" :
-      return 170;
-
-    case "박시형1" :
-    case "성홍념1" :
-      return 130;
-
-    case "정희종1" :
-      return 150;
-
-    case "김기영1" :
-      return 100;
-
-    case "임승재1" :
-      return 50;
-      
-    case "공병규1" :
-      return 10;
-    
-    default :
-      return 200;
+    case "김기영1" : return 150;
+    case "정희종1" : return 100;
+    case "임승재1" : return 50;
+    default : return 100;
   }
 }
 
-export default function AnimalShop() {
+export default function AnimalShop({ userId }) {
   const navigate = useNavigate();
   const [ money, setMoney ] = useState(0);
   const [ index, setIndex ] = useState(0);
@@ -155,8 +42,10 @@ export default function AnimalShop() {
 
   useEffect(() => {
     // request user data from db
-    setMoney(1000);
-  }, []);
+    axios.get(`${API_BASE}/user/show/${userId}`).then(
+      res => setMoney(res.data[0].Money)
+    );
+  });
 
   useEffect(() => {
     if(index === 0) { // shop
@@ -164,7 +53,11 @@ export default function AnimalShop() {
     }
     else { // shelter
       // send request to db
-      setAnimalList(abandon);
+      axios.get(`${API_BASE}/animal/abandoned`).then(res => {
+        setAnimalList(res.data);
+        console.log(res.data);
+      }).catch(err => console.log(err));
+      // setAnimalList(abandon);
     }
   }, [index]);
 
@@ -172,8 +65,8 @@ export default function AnimalShop() {
     const src = `/images/${animal.type.substring(0, 3)}/1.jpg`;
 
     return (
-      <div key={i} style={{ display: "flex"}} onClick={(e) => onClick(e, animal.type, animal.name)}>
-        <img src={src} style={{objectFit: "cover", width: "7rem", height: "7rem"}} />
+      <div key={i} style={{ display: "flex"}} onClick={(e) => onClick(e, animal.type, animal.name, animal.id)}>
+        <img alt={animal.type} src={src} style={{objectFit: "cover", width: "7rem", height: "7rem"}} />
         <div>{index === 0 ? animal.type : `${animal.name}(${animal.sex})`}</div>
         <div>{index === 0 && (`: ${animal.price}`)}</div>
       </div>
@@ -198,7 +91,7 @@ export default function AnimalShop() {
     );
   }
   
-  const onClick = (e, type, name) => {
+  const onClick = (e, type, name, id) => {
     e.preventDefault();
     console.log(type, index);
     if(index === 0) { // shop
@@ -212,9 +105,10 @@ export default function AnimalShop() {
           }
           // buy 
           // api request
-
-          // update local state
-          setMoney(money - price);
+          axios.get(`${API_BASE}/animal/buy/${userId}/${name}/${sex}/${type}/${price}`).then(res => {
+            console.log(res.data);
+            setMoney(money - price);
+          }).catch(err => console.log(err));
         }
         else {
           window.alert("보유한 금액이 부족합니다.");
@@ -225,8 +119,14 @@ export default function AnimalShop() {
       if(window.confirm(`${name}을(를) 입양하시겠습니까?`)) {
         // check if adopting is possible
         // send request
-
-        // update adandon list
+        axios.get(`${API_BASE}/animal/adopt/${id}/${userId}`).then(res => {
+          console.log(res.data);
+          axios.get(`${API_BASE}/animal/abandoned`).then(res => {
+            setAnimalList(res.data);
+            console.log(res.data);
+          }).catch(err => console.log(err));
+          window.alert(`${name}을(를) 입양했습니다!`);
+        }).catch(err => console.log(err));
       }
     }
   }

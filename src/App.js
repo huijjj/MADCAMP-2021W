@@ -9,7 +9,7 @@ function App() {
     { path: '/', element: <Auth getId={setUserId} />},
     { path: '/myfarm', element: <MyFarm userId={userId} />},
     { path: '/adventure', element: <Adventure userId={userId} />},
-    { path: '/animalshop', element: <AnimalShop />},
+    { path: '/animalshop', element: <AnimalShop userId={userId} />},
     { path: '/itemshop', element: <ItemShop />},
     { path: '/auction', element: <Auction />},
     { path: '/register', element: <Register />},
