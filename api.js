@@ -376,6 +376,18 @@ app.get('/api/animal/graduate/:id/:ownerId/:reward', (req, res) => {
   });
 });
 
+/*evolve animal*/
+app.get('/api/animal/evolve/:id/:type', (req, res) => {
+  let {id, type} = req.params;
+  let sqlEvolve = 'UPDATE Animal set type = ? where id = ?';
+  let paramEvolve = [type, id];
+  connection.query(sqlEvolve, paramEvolve, (error, results) => {
+    if (error) throw error;
+    console.log('/api/animal/evolve/'+id+'/' +type);
+    res.json({status : "Success"});
+  });
+});
+
 /*get all item info*/
 app.get('/api/item/all', (req, res) => {
   let sqlItemAll = 'SELECT * from Item';
