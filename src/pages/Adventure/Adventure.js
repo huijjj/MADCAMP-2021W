@@ -8,6 +8,8 @@ import AdventureRoomFinal from '../../components/adventure/AdventureRoomFinal';
 import AdventureFeneral from './AdventureFuneral';
 import axios from 'axios';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 export default function Adventure({ id }) {
   const [user, setUser] = useState();
   const [animalList, setAnimalList] = useState([]);
@@ -20,13 +22,13 @@ export default function Adventure({ id }) {
 
 
   useEffect(() => {
-    axios.get(`http://192.249.18.138:443/api/user/show/${id}`).then(
+    axios.get(`${API_BASE}/user/show/${id}`).then(
       (res) => setUser(res.data[0])
       // .catch(error => {
       //   console.log(error);
       // })
     );
-    axios.get(`http://192.249.18.138:443/api/animal/owner/${id}`).then(
+    axios.get(`${API_BASE}/animal/owner/${id}`).then(
       (res) => setAnimalList(res.data)
       // .catch(error => {
       //   console.log(error);

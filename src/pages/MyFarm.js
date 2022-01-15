@@ -13,6 +13,7 @@ import Draggable from 'react-draggable';
 
 import axios from 'axios';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
 const CONTENT_ANIMAL = 0;
 const CONTENT_ITEM = 1;
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -29,13 +30,13 @@ export default function MyFarm({ userId }) {
 
   useEffect(() => {
     console.log(userId);
-    axios.get(`http://192.249.18.138:443/api/animal/owner/${userId}`).then(
+    axios.get(`${API_BASE}/animal/owner/${userId}`).then(
       (res) => {
         console.log(res.data);
         setAnimalList(res.data);
       }
     );
-    axios.get(`http://192.249.18.138:443/api/item/owner/${userId}`).then(
+    axios.get(`${API_BASE}/item/owner/${userId}`).then(
       (res) => {
         console.log(res.data);
         setItemList(res.data);
@@ -46,7 +47,7 @@ export default function MyFarm({ userId }) {
   const onAnimalItemClick = (id, name) => {
     if(useItem) {
       if(window.confirm(`${name}에게 ${useItem.type}을(를) 사용하시겠습니까?`)) {
-        axios.get(`http://192.249.18.138:443/api/item/use/${id}/${useItem.id}`).then(
+        axios.get(`${API_BASE}/item/use/${id}/${useItem.id}`).then(
           (res) => {
             console.log(res.data);
        
@@ -89,7 +90,7 @@ export default function MyFarm({ userId }) {
     else {
       if(window.confirm(`${name}을(를) 방생하시겠습니까?`)) {
         // api request 
-        axios.get(`http://192.249.18.138:443/api/animal/abandon/${id}`).then(res => {
+        axios.get(`${API_BASE}/animal/abandon/${id}`).then(res => {
           console.log(res);
 
           // update local state after requset success
@@ -155,7 +156,7 @@ export default function MyFarm({ userId }) {
 
     // console.log(target.id, newX, newY);  
 
-    axios.post(`http://192.249.18.138:443/api/animal/move`, {
+    axios.post(`${API_BASE}/animal/move`, {
       id: target.id,
       X: newX,
       Y: newY

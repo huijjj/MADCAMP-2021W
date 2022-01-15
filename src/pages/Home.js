@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 function Home({ userId }) {
   
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ function Home({ userId }) {
   const [ userInfo , setUserInfo ] = useState({});
   const tier = ['학사', '석사', '박사', '포스트 닥터', '교수'];
   useEffect(() => {
-    axios.get('http://192.249.18.138:443/api/user/show/'+userId)
+    axios.get(`${API_BASE}/user/show/${userId}`)
     .then(res => {
       setUserInfo(
         {

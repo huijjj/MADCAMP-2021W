@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 export default function Register() {
   const navigate = useNavigate();
   const onRegister = (e) => {
@@ -9,7 +11,7 @@ export default function Register() {
     const id = e.target.id.value;
     const nick = e.target.nick.value;
     const pwd = e.target.pwd.value;
-    axios.post('http://192.249.18.138:443/api/user/register',
+    axios.post(`${API_BASE}/user/register`,
     {
       id: id,
       nick: nick, 

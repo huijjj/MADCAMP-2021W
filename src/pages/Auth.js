@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 export default function Auth({ getId }) {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
@@ -26,7 +28,7 @@ export default function Auth({ getId }) {
     
     const id = e.target.id.value;
     const pwd = e.target.pwd.value;
-    axios.post('http://192.249.18.138:443/api/user/login',
+    axios.post(`${API_BASE}/user/login`,
     {
       id: id, 
       pwd: pwd

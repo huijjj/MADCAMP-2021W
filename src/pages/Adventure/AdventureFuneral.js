@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 export default function AdventureFeneral({ animal }) {
   const navigate = useNavigate();
   
@@ -11,7 +13,7 @@ export default function AdventureFeneral({ animal }) {
   }
 
   useEffect(() => {
-    axios.get(`http://192.249.18.138:443/api/animal/kill/${animal.id}`).then(
+    axios.get(`${API_BASE}/animal/kill/${animal.id}`).then(
       res => (
         console.log(res)
       )
