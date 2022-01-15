@@ -13,6 +13,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setFloor }) {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
   console.log(animalList)
   return (
     <div id = "adventure-lobby">
+      <HomeIcon onClick={() => navigate(-1)} />
       { animalList?.map(
           (animal, index) =>
             <Card sx={{ maxWidth: 345 }}>
