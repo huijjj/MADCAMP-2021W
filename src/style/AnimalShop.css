@@ -1,17 +1,17 @@
-.ItemShop {
+.AnimalShop {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: cover;
   flex-direction: column;
   background-image: url("../../public/images/itemshopBackground.png");
   background-size: cover;
 }
 
-.itemshopBackground {
+.animalshopBackground {
   position: absolute;
   left: 40%;
   top: 20%;
-  width: 10%;
+  width: 14%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,11 +25,11 @@
   justify-content: center;
 }
 
-.haveMoney {
+.haveMoneyAnimal {
   position: absolute;
   left: 40%;
   top: 10%;
-  width: 14%;
+  width: 18%;
   display: flex;
   align-items: center;
   justify-content: center;
