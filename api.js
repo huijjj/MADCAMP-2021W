@@ -474,13 +474,13 @@ app.get('/api/item/owner/:ownerId', (req, res) => {
   let sqlOwnerItemDumbell = 'SELECT * from Item where owner = ? and type = \'dumbell\'';
   let sqlOwnerItemBook = 'SELECT * from Item where owner = ? and type = \'book\'';
   let paramOwnerItem = [ownerId];
-  connection.query(sqlOwnerItemRose, paramOwnerItem, (error, results) => {
+  connection.query(sqlOwnerItemBook, paramOwnerItem, (error, results) => {
     if (error) throw error;
     inventory.push(results);
-    connection.query(sqlOwnerItemDumbell, paramOwnerItem, (error, results) => {
+    connection.query(sqlOwnerItemRose, paramOwnerItem, (error, results) => {
       if (error) throw error;
       inventory.push(results);
-      connection.query(sqlOwnerItemBook, paramOwnerItem, (error, results) => {
+      connection.query(sqlOwnerItemDumbell, paramOwnerItem, (error, results) => {
         if (error) throw error;
         inventory.push(results);
         console.log('/api/item/owner/'+ownerId);
