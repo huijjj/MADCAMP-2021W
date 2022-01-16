@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import CloseIcon from '@mui/icons-material/Close';
 import HomeIcon from '@mui/icons-material/Home';
-import AnimalListItem from "../components/AnimalListItem";
-import ItemListItem from "../components/ItemListItem";
+import AnimalListItem from "../components/myfarm/AnimalListItem";
+import ItemListItem from "../components/myfarm/ItemListItem";
+import Animals from "../components/myfarm/Animals";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
-import Draggable from 'react-draggable';
 
 import axios from 'axios';
 
@@ -59,8 +59,77 @@ export default function MyFarm({ userId }) {
             // update item list
             setItemList(itemList.filter(e => e.id !== useItem.id));
             // update animal status
+            setAnimalList([]);
             setAnimalList(animalList.map(e => {
               if(e.id === id) {
+                const newGeee = e.geee + useItem.geee;
+                const newDuck = e.duck + useItem.duck;
+                const newChae = e.chae + useItem.chae;
+                const curLevel = e.type.substr(-1);
+                const next = e.type.substring(0, 3) + String(Number(curLevel) + 1);
+                if(curLevel === "1") {
+                  if((newGeee + newDuck + newChae) >= 100) {
+                    console.log("lev 1 to lev 2");
+                    axios.put(`${API_BASE}/animal/evolve/${id}`, {
+                      type: next  
+                    }).then(res => {
+                      console.log(res.data.status);
+                      if(res.data.status === "Success") {
+                        window.alert(`${e.name}이(가) 진화했습니다`);
+                        return {
+                          id: e.id,
+                          name: e.name,
+                          type: next,
+                          sex: e.sex,
+                          owner: e.owner,
+                          adventureCount: e.adventureCount,
+                          itemCount: e.itemCount,
+                          geee: newGeee,
+                          duck: newDuck,
+                          chae: newChae,
+                          isAbandonded: e.isAbandonded,
+                          X: e.X,
+                          Y: e.Y
+                        };
+                      }
+                    }).catch(console.log);
+                  }
+                }
+                else if(curLevel === "2") {
+                  if((newGeee + newDuck + newChae) >= 200) {
+                    console.log("lev 2 to lev 3");
+                    axios.put(`${API_BASE}/animal/evolve/${id}`, {
+                      type: next  
+                    }).then(res => {
+                      console.log(res.data.status);
+                      if(res.data.status === "Success") {
+                        window.alert(`${e.name}이(가) 진화했습니다`);
+                        return {
+                          id: e.id,
+                          name: e.name,
+                          type: next,
+                          sex: e.sex,
+                          owner: e.owner,
+                          adventureCount: e.adventureCount,
+                          itemCount: e.itemCount,
+                          geee: newGeee,
+                          duck: newDuck,
+                          chae: newChae,
+                          isAbandonded: e.isAbandonded,
+                          X: e.X,
+                          Y: e.Y
+                        };
+                      }
+                    }).catch(console.log);
+                  }
+                }
+                else {
+                  if((newGeee + newDuck + newChae) >= 300) {
+                    console.log("graduation");
+  
+                  }
+                }
+
                 return {
                   id: e.id,
                   name: e.name,
@@ -69,10 +138,10 @@ export default function MyFarm({ userId }) {
                   owner: e.owner,
                   adventureCount: e.adventureCount,
                   itemCount: e.itemCount,
-                  geee: e.geee + useItem.geee,
-                  duck: e.duck + useItem.duck,
-                  chae: e.chae + useItem.chae,
-                  isCarbonCompound: e.isCarbonCompound,
+                  geee: newGeee,
+                  duck: newDuck,
+                  chae: newChae,
+                  isAbandonded: e.isAbandonded,
                   X: e.X,
                   Y: e.Y
                 };
@@ -148,54 +217,12 @@ export default function MyFarm({ userId }) {
     setListOpen(true);
   }
 
-  const onDrag = (e, _) => {
-    e.preventDefault();
-  }
-
-  const onStop = (e, data) => {
-    e.preventDefault();
-    const target = animalList[e.target.id];
-
-    const newX = target.X + data.x;
-    const newY = target.Y + data.y;
-
-    // console.log(target.id, newX, newY);  
-
-    axios.put(`${API_BASE}/animal/move`, {
-      id: target.id,
-      X: newX,
-      Y: newY
-    }).then();
-  }
-
-  const renderAnimals = () => {
-    return animalList.map((e, i) => {
-      const X = e.X;
-      const Y = e.Y;
-
-      // console.log(X, Y);
-      const style = {
-        width: "7rem",
-        height: "7rem",
-        transform: "translate(" + X +"px," + Y +"px)",
-        position: "absolute"
-      };
-      
-      const src = `/images/${e.type.substring(0, 3)}/${e.type.at(3)}.jpg`;
-      return (<Draggable onDrag={onDrag} onStop={onStop} key={e.id}>
-        <div id={i} style={{width: "7rem"}}>
-          <img alt={e.type} id={i} style={style} src={src} />
-        </div>
-      </Draggable>);
-    }); 
-  }
-
   return (
     <div>
       <HomeIcon onClick={() => navigate(-1)} />
       <div style={{height: "100%", width: "90%"}}>
         <div style={{width: "100%", height: "100%"}}>
-          {renderAnimals()}
+          <Animals animalList={animalList} />
         </div>
         <div>
           <div onClick={() => showList(CONTENT_ANIMAL)}>

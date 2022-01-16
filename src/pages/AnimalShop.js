@@ -62,7 +62,7 @@ export default function AnimalShop({ userId }) {
   }, [index]);
 
   const renderGridItem = (animal, i) => {
-    const src = `/images/${animal.type.substring(0, 3)}/1.jpg`;
+    const src = `/images/${animal.type}.png`;
 
     return (
       <div key={i} style={{ display: "flex"}} onClick={(e) => onClick(e, animal.type, animal.name, animal.id)}>
