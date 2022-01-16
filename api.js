@@ -490,7 +490,7 @@ app.delete('/api/item/use/:animalId', (req, res) => {
     itemGeee = results[0].geee;
     itemDuck = results[0].duck;
     itemChae = results[0].chae;
-    let sqlAddStat = 'UPDATE Animal set geee = geee + ?, duck = duck + ?, chae = chae + ? where id = ?';
+    let sqlAddStat = 'UPDATE Animal set geee = geee + ?, duck = duck + ?, chae = chae + ?, itemCount = itemCount + 1 where id = ?';
     let paramAddStat = [itemGeee, itemDuck, itemChae, animalId];
     connection.query(sqlAddStat, paramAddStat, (error, results) => {
       if (error) throw error;
