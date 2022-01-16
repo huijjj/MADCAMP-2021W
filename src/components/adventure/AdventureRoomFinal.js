@@ -1,9 +1,9 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import TextField from '@mui/material/TextField';
+import '../../style/adventure/AdventureRoomFinal.css'
 
 const jangList = shuffleArray([
   "인류의 모든 성과는 시행착오로부터 이루어졌다",
@@ -118,28 +118,37 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
   }
   
   return (
-    <div>
-      <h1>
-        마지막 층
-      </h1>
-      <img src={"images/장병규.jpeg"} width={292} height={385} /><br/>
-      { !isFinish && 
-        <>
-        <em>{question}</em><br/><br/>
-        <form onSubmit={onSubmit}>
-          <input name="finalAnswer" autoComplete="off"/>
-          <input type="submit" value="확인" />
-        </form>
-        </>
-      }
-      { isFinish &&
-          <>
-            장병규를 이겼습니다!<br/>
-            <Button onClick={handleNext}>
-              탐험을 끝냅니다
-            </Button>
-          </>
-      }
+    <div className="AdventureFinal">
+      <div className="AdventureFinalBackground">
+        <div className="FinalTitle">마지막 층</div>
+        <div className="FinalImage">
+          <img src={"images/장병규.png"} width={292} height={385} alt="장병규.png" />
+          <div className="FinalSpeechBubble">
+            <div class="FinalQuiz">
+              <em>{question}</em><br/>
+            </div>
+          </div>
+        </div>
+        <div class="FinalInput">
+          { !isFinish && 
+            <>
+            <form onSubmit={onSubmit}>
+              {/* <img src={`images/${animal.type}.png`} weight={100} height={100}/> */}
+              <input name="finalAnswer" autoComplete="off"/>
+              <input type="submit" value="입력" />
+            </form>
+            </>
+          }
+          { isFinish &&
+              <>
+                장병규를 이겼습니다!<br/>
+                <Button onClick={handleNext}>
+                  탐험을 끝냅니다
+                </Button>
+              </>
+          }
+        </div>
+      </div>
     </div>
   );
 }
