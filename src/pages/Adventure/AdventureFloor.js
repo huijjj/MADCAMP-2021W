@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -15,7 +16,9 @@ import { CardMedia } from "@mui/material";
 import StaminaBar from "../../components/adventure/StaminaBar";
 
 
-export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
+const API_BASE = process.env.REACT_APP_API_BASE;
+
+export default function AdventureFloor({ user, animal, stamina, floor, setIsInGame}) {
 
   const navigate = useNavigate();
 
@@ -36,6 +39,11 @@ export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
   const handleCloseYes = () => {
 
     setExitOpen(false);
+    axios.put(`${API_BASE}/user/money/${user.id}`, {
+      money: user.Money + floor*10
+    }).then(
+      res => console.log(res)
+    );
     navigate("/home");
 
   };
@@ -88,12 +96,12 @@ export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"탐험을 중도에 포기하시겠습니까?"}
+          탐험을 중도에 포기하시겠습니까?
         </DialogTitle>
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            
+            포기하면 {floor*10}원을 얻을 수 있습니다
           </DialogContentText>
         </DialogContent>
 
