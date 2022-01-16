@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import CloseIcon from '@mui/icons-material/Close';
 import HomeIcon from '@mui/icons-material/Home';
+import PetsIcon from '@mui/icons-material/Pets';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import AnimalListItem from "../components/myfarm/AnimalListItem";
 import ItemListItem from "../components/myfarm/ItemListItem";
 import Animals from "../components/myfarm/Animals";
@@ -12,12 +14,13 @@ import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 
 import axios from 'axios';
+import "../style/MyFarm.css"
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 const CONTENT_ANIMAL = 0;
 const CONTENT_ITEM = 1;
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction="left" ref={ref} {...props} />;
 });
 
 export default function MyFarm({ userId }) {
@@ -272,30 +275,25 @@ export default function MyFarm({ userId }) {
   }
 
   return (
-    <div>
-      <HomeIcon onClick={() => navigate(-1)} />
-      <div style={{height: "100%", width: "90%"}}>
+    <div className="MyFarm">
+      <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
+      <div style={{height: "100%", width: "100%"}}>
         <div style={{width: "100%", height: "100%"}}>
           <Animals animalList={animalList} onStop={onStop}/>
         </div>
-        <div>
-          <div onClick={() => showList(CONTENT_ANIMAL)}>
-            animalList
-          </div>
-          <div onClick={() => showList(CONTENT_ITEM)}>
-            itemList
-          </div>
+        <div className="MyFarmMenu">
+          <PetsIcon sx={{ fontSize: 80 }} onClick={() => showList(CONTENT_ANIMAL)} className="MyFarmAnimal"/>
+          <AutoAwesomeIcon sx={{ fontSize: 80 }} onClick={() => showList(CONTENT_ITEM)} className="MyFarmItem"/>
         </div>
         <Dialog
           open={listOpen}
           TransitionComponent={Transition}
           onClose={() => setListOpen(false)}>
-          <CloseIcon onClick={() => setListOpen(false)}/>
-          {useItem ? 
-            <div>{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요`}</div>:
-            <div></div>
-          }
-          <List>{
+          <CloseIcon sx={{ fontSize: 40 }} style={{ zIndex: "9999", position: "fixed" }} onClick={() => setListOpen(false)}/>
+          { useItem ? <div>{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요`}</div> : <div></div> }
+          { ((contentType === CONTENT_ITEM) && (itemList.length === 0)) ? <div className="MyFarmEmpty">아이템이 없습니다.</div> : <></>}
+          { ((contentType === CONTENT_ANIMAL) && (animalList.length === 0)) ? <div className="MyFarmEmpty">동물이 없습니다.</div> : <></>}
+          <List className="MyFarmList">{
             makeListContent(contentType)
           }</List>
         </Dialog>

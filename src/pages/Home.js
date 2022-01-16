@@ -58,7 +58,7 @@ function Home({ userId, setUserId }) {
   return (
     <div className="Home">
       <AccountCircleIcon
-        sx={{ fontSize: 100 }}
+        sx={{ fontSize: 80 }}
         className="HomeProfileIcon" 
         onClick={onProfileClick} />
       <Dialog

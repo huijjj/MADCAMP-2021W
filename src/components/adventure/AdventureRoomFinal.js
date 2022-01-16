@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import '../../style/adventure/AdventureRoomFinal.css'
+import '../../style/Final.css'
 
 const jangList = shuffleArray([
   "인류의 모든 성과는 시행착오로부터 이루어졌다",

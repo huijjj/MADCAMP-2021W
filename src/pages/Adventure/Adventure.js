@@ -19,6 +19,7 @@ export default function Adventure({ userId }) {
   const [isInGame, setIsInGame] = useState(false);
   const [animal, setAnimal] = useState();
   const [stamina, setStamina] = useState(Number(200));
+  const [staminaMAX, setStaminaMAX] = useState(Number(200));
 
 
   useEffect(() => {
@@ -39,13 +40,13 @@ export default function Adventure({ userId }) {
       {
         (stamina<=0)
         ? <AdventureFeneral animal={animal} />
-        : (floor===1)
+        : (floor===5)
           ? <AdventureRoomFinal user={user} animal={animal} setStamina={setStamina} />
           : (isLobby)
-            ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} stamina={stamina} setStamina={setStamina} />
+            ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} stamina={stamina} setStamina={setStamina} setStaminaMAX={setStaminaMAX} />
             : (isInGame)
-              ? <AdventureInGame animal={animal} stamina={stamina} setStamina={setStamina} floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
-              : <AdventureFloor user={user} animal={animal} stamina={stamina} floor={floor} setIsInGame={setIsInGame}/> 
+              ? <AdventureInGame animal={animal} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
+              : <AdventureFloor user={user} animal={animal} stamina={stamina} floor={floor} setIsInGame={setIsInGame} staminaMAX={staminaMAX} setStaminaMAX={setStaminaMAX}/> 
       }
     </>
   );
