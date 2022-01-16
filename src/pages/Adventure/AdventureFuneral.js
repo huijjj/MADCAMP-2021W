@@ -22,8 +22,8 @@ export default function AdventureFeneral({ animal }) {
   console.log(animal);
   return (
     <div>
-      <h1>장례식..</h1>
-      <h2>user의 실력 미숙으로 인해 {animal.name}이(가) 죽었습니다</h2>
+      <h1>訃告</h1>
+      <h2>사용자의 실력 미숙으로 인해 {animal.name}이(가) 죽었습니다</h2>
       <Button onClick={handleClickExit}>
         슬픈 마음으로 홈으로 돌아가기
       </Button>
