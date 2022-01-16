@@ -2,12 +2,15 @@ import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 
-export default function AdventureRoomSurprise({ floor, stamina, setStamina, setFloor, setIsInGame }) {
+export default function AdventureRoomSurprise({ floor, stamina, setStamina, staminaMAX, setFloor, setIsInGame }) {
   
   const handleNext = () => {
-    const newStamina = stamina<=170 ? 30 : 200-stamina;
+    console.log(stamina)
+    console.log(staminaMAX)
+    const newStamina = (stamina+30 < staminaMAX) ? 30 : parseInt(staminaMAX-stamina);
+    console.log(newStamina)
     setFloor(floor+1);
-    setStamina(stamina+newStamina);
+    setStamina(stamina+parseInt(newStamina));
     setIsInGame(false);
   }
   

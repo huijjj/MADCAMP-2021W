@@ -13,12 +13,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from "@mui/material";
-import StaminaBar from "../../components/adventure/StaminaBar";
 
+import '../../style/Floor.css'
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-export default function AdventureFloor({ user, animal, stamina, floor, setIsInGame}) {
+export default function AdventureFloor({ user, animal, stamina, floor, setIsInGame, staminaMAX }) {
 
   const navigate = useNavigate();
 
@@ -53,7 +53,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
   }
 
   return (
-    <div>
+    <div class="Floor">
       <h1>
         {(floor === 11)
         ? "마지막 층" 
@@ -67,12 +67,24 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
         />
         <CardContent> 
           <Typography gutterBottom variant="h5" component="div">
-            {animal.name}, {animal.sex}
+            {animal.name}({animal.sex})
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {/* HP: {stamina} */}
+          <Typography variant="body1" color="text.secondary">
+            지: {animal.geee}<br/>
+            덕: {animal.duck}<br/>
+            체: {animal.chae}<br/>
           </Typography>
-          <StaminaBar stamina={stamina} />
+          <div className="FloorStamina">
+            <progress 
+              id="animalStamina" 
+              max="1" 
+              value={stamina/staminaMAX}
+              style={{ width: "75%" }}
+            >
+            </progress>
+            &nbsp;&nbsp;&nbsp;{stamina}/{staminaMAX}
+          </div>
+          
         </CardContent>
       </Card>
       
