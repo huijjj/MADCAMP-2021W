@@ -10,6 +10,11 @@ import ItemListItem from "../components/myfarm/ItemListItem";
 import Animals from "../components/myfarm/Animals";
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import Button from '@mui/material/Button';
 
 import axios from 'axios';
 import "../style/MyFarm.css"
@@ -50,6 +55,8 @@ export default function MyFarm({ userId }) {
   const [ roseCount, setRoseCount ] = useState(0);
   const [ dumbellCount, setDumbellCount ] = useState(0);
   const [ bookCount, setBookCount ] = useState(0);
+  const [ alertTitle, setAlertTitle ] = useState("");
+  const [ alertOpen, setAlertOpen ] = useState(false);
 
   // rose dumbell book
 
@@ -102,7 +109,9 @@ export default function MyFarm({ userId }) {
                     }).then(res => { 
                       console.log(res.data);
                       if(res.data.status === "Success") {
-                        window.alert(`${e.name}이(가) 진화했습니다`);
+                        // window.alert(`${e.name}이(가) 진화했습니다`);
+                        setAlertTitle(`${e.name}이(가) 진화했습니다`);
+                        setAlertOpen(true);
                       }
                     }).catch(console.log);
                   }
@@ -115,7 +124,8 @@ export default function MyFarm({ userId }) {
                     }).then(res => { 
                       console.log(res.data);
                       if(res.data.status === "Success") {
-                        window.alert(`${e.name}이(가) 진화했습니다`);
+                        setAlertTitle(`${e.name}이(가) 진화했습니다`);
+                        setAlertOpen(true);
                       }
                     }).catch(console.log);
                   }
@@ -131,7 +141,8 @@ export default function MyFarm({ userId }) {
                     }).then(res => {
                       console.log(res.data.status);
                       if(res.data.status === "Success") {
-                        window.alert(`${e.name}이(가) 졸업했습니다`);
+                        setAlertTitle(`${e.name}이(가) 졸업했습니다`);
+                        setAlertOpen(true);
                       }
                     }).catch(console.log);
                   }
@@ -282,14 +293,38 @@ export default function MyFarm({ userId }) {
           TransitionComponent={Transition}
           onClose={() => { 
             setListOpen(false);
-            setUseItem()}}>
+            setUseItem();
+          }}>
           <CloseIcon sx={{ fontSize: 40 }} style={{ zIndex: "9999", position: "fixed" }} onClick={() => setListOpen(false)}/>
-          { useItem ? <div className="MyFarmEmpty">{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요.`}</div> : <div></div> }
+          { useItem ? <div className="MyFarmEmpty">{`${useItem.type === "rose" ? "흑장미" : useItem.type === "dumbell" ? "아령" : "책" }을(를) 사용할 동물을 선택하여 주세요.`}</div> : <div></div> }
           { ((contentType === CONTENT_ITEM) && ((itemList[0].length === 0 && itemList[1].length === 0 && itemList[2].length === 0))) ? <div className="MyFarmEmpty">아이템이 없습니다.</div> : <></>}
           { ((contentType === CONTENT_ANIMAL) && (animalList.length === 0)) ? <div className="MyFarmEmpty">동물이 없습니다.</div> : <></>}
           <div className="MyFarmList">{
             makeListContent(contentType)
           }</div>
+        </Dialog>
+        <Dialog
+          open={alertOpen}
+          TransitionComponent={Transition}>
+          <DialogTitle>{alertTitle}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => {
+              axios.get(`${API_BASE}/animal/owner/${userId}`).then(
+                (res) => {
+                  console.log(res.data);
+                  setAnimalList(res.data);
+                }
+              );
+              setContentType(CONTENT_ITEM);
+              setUseItem();
+              setAlertOpen(false);
+            }}>확인</Button>
+          </DialogActions>
         </Dialog>
       </div>
     </div>
