@@ -8,7 +8,6 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import AnimalListItem from "../components/myfarm/AnimalListItem";
 import ItemListItem from "../components/myfarm/ItemListItem";
 import Animals from "../components/myfarm/Animals";
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
@@ -203,8 +202,6 @@ export default function MyFarm({ userId }) {
     switch (contentType) {
       case CONTENT_ANIMAL :
         return animalList.map(animal => 
-          // { (animal.id === -1) 
-          //   ? []
             <ListItem key={animal.id}>
                 <AnimalListItem 
                   onClick={onAnimalItemClick}
@@ -293,9 +290,9 @@ export default function MyFarm({ userId }) {
           { useItem ? <div>{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요`}</div> : <div></div> }
           { ((contentType === CONTENT_ITEM) && (itemList.length === 0)) ? <div className="MyFarmEmpty">아이템이 없습니다.</div> : <></>}
           { ((contentType === CONTENT_ANIMAL) && (animalList.length === 0)) ? <div className="MyFarmEmpty">동물이 없습니다.</div> : <></>}
-          <List className="MyFarmList">{
+          <div className="MyFarmList">{
             makeListContent(contentType)
-          }</List>
+          }</div>
         </Dialog>
       </div>
     </div>
