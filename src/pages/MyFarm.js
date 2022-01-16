@@ -106,7 +106,7 @@ export default function MyFarm({ userId }) {
                       console.log(res.data.status);
                       if(res.data.status === "Success") {
                         setNumGrowth(numGrowth + 1);
-                        // window.alert(`${e.name}이(가) 진화했습니다`);
+                        window.alert(`${e.name}이(가) 진화했습니다`);
                         return {
                           id: e.id,
                           name: e.name,
@@ -126,10 +126,36 @@ export default function MyFarm({ userId }) {
                     }).catch(console.log);
                   }
                 }
-                else {
+                else if(curLevel === "3") {
                   if((newGeee + newDuck + newChae) >= 300) {
                     console.log("graduation");
-  
+                    axios.delete(`${API_BASE}/animal/graduate/${userId}`, {
+                      data: {
+                        id: id,
+                        reward: 100
+                      },
+                    }).then(res => {
+                      console.log(res.data.status);
+                      if(res.data.status === "Success") {
+                        setNumGrowth(numGrowth + 1);
+                        window.alert(`${e.name}이(가) 졸업했습니다`);
+                        return {
+                          id: -1,
+                          // name: e.name,
+                          // type: next,
+                          // sex: e.sex,
+                          // owner: e.owner,
+                          // adventureCount: e.adventureCount,
+                          // itemCount: e.itemCount,
+                          // geee: newGeee,
+                          // duck: newDuck,
+                          // chae: newChae,
+                          // isAbandonded: e.isAbandonded,
+                          // X: e.X,
+                          // Y: e.Y
+                        };
+                      }
+                    }).catch(console.log);
                   }
                 }
 
@@ -189,17 +215,20 @@ export default function MyFarm({ userId }) {
     switch (contentType) {
       case CONTENT_ANIMAL :
         return animalList.map(animal => 
-          <ListItem key={animal.id}>
-            <AnimalListItem 
-              onClick={onAnimalItemClick}
-              id={animal.id}
-              name={animal.name}
-              type={animal.type}
-              sex={animal.sex}
-              geee={animal.geee}
-              duck={animal.duck}
-              chae={animal.chae} />
-          </ListItem>);
+          // { (animal.id === -1) 
+          //   ? []
+            <ListItem key={animal.id}>
+                <AnimalListItem 
+                  onClick={onAnimalItemClick}
+                  id={animal.id}
+                  name={animal.name}
+                  type={animal.type}
+                  sex={animal.sex}
+                  geee={animal.geee}
+                  duck={animal.duck}
+                  chae={animal.chae} />
+              </ListItem>
+          );
     
       case CONTENT_ITEM :
         return itemList.map(item => <ListItem key={item.id}>
