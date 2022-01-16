@@ -103,13 +103,17 @@ export default function ItemShop({ userId }) {
 
   return (
     <div className="ItemShop">
-      <HomeIcon onClick={() => navigate(-1)} />
-      <div>잔돈: {money}원</div>
-      <div className="itemshopBackground">
-        <div>
-          <div>{
-            items.map(renderItems)
-          }</div>
+      <HomeIcon onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }}/>
+      <div className='haveMoney'>
+        잔돈: {money}원
+      </div>
+      <div className='itemshopLayout'>
+        <div className="itemshopBackground">
+          <div>
+            <div>{
+              items.map(renderItems)
+            }</div>
+          </div>
         </div>
       </div>
     </div>

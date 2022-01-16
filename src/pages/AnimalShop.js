@@ -7,6 +7,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import axios from 'axios';
 
+import '../style/AnimalShop.css';
+
 const API_BASE = process.env.REACT_APP_API_BASE;
 
 
@@ -139,18 +141,23 @@ export default function AnimalShop({ userId }) {
   }
 
   return (
-    <div style={{width: "100%", height: "100%"}}>
-      <HomeIcon onClick={() => navigate(-1)} />
-      <div>AnimalShop</div>
-      <div>잔돈: {money}원</div>
-      <div>
-        <Tabs value={index} onChange={(e, v) => setIndex(v)}>
-          <Tab label="Shop"></Tab>
-          <Tab label="Shelter"></Tab>
-        </Tabs>
+    <div className="AnimalShop">
+      <div style={{width: "50%", height: "50%"}}>
+        <HomeIcon onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }} />
+        <div className='haveMoneyAnimal'>
+          잔돈: {money}원
+        </div>
+        <div className='animalshopBackground'>
+          <div>
+            <Tabs value={index} onChange={(e, v) => setIndex(v)}>
+              <Tab label="Shop"></Tab>
+              <Tab label="Shelter"></Tab>
+            </Tabs>
+          </div>
+          <TabPanel value={index} index={0} />
+          <TabPanel value={index} index={1} />
+        </div>
       </div>
-      <TabPanel value={index} index={0} />
-      <TabPanel value={index} index={1} />
     </div>
   );
 }
