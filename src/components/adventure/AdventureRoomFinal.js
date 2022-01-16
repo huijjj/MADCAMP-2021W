@@ -11,7 +11,16 @@ export default function AdventureRoomFinal({ user, animal }) {
   const navigate = useNavigate();
   const API_BASE = process.env.REACT_APP_API_BASE;
 
-  const answer = "다졌어루이 터부로오착행시 는과성 든모 의류인";
+  const jangList = [
+    "인류의 모든 성과는 시행착오로부터 이루어졌다",
+    "나는 여러분의 롤모델 아냐",
+    "질문에 답할 권리는 나에게 있다",
+    "박수를 치면 따듯해집니다",
+    "단상위에서는 마스크를 벗어도 충분히 떨어져있기 때문에 방역수칙 위반이 아니다"
+  ]
+  
+  const question = jangList[1];
+  const answer = question.split("").reverse?.().join("");
   
   const handleNext = () => {
     navigate("/home")
@@ -44,7 +53,7 @@ export default function AdventureRoomFinal({ user, animal }) {
         마지막 층
       </h1>
       <img src={"images/장병규.jpeg"} width={292} height={385} /><br/>
-      <em>"인류의 모든 성과는 시행착오로부터 이루어졌다."</em><br/><br/>
+      <em>{question}</em><br/><br/>
       <form onSubmit={onSubmit}>
         <input name="finalAnswer" autoComplete="off"/>
         <input type="submit" value="확인" />
