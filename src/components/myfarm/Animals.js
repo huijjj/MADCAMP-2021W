@@ -29,8 +29,8 @@ export default function Animals({ animalList, onStop }) {
 
       // console.log(X, Y);
       const style = {
-        width: "7rem",
-        height: "7rem",
+        width: "10rem",
+        height: "10rem",
         transform: "translate(" + X +"px," + Y +"px)",
         position: "absolute"
       };
@@ -38,7 +38,7 @@ export default function Animals({ animalList, onStop }) {
       const src = `/images/${e.type}.png`;
 
       return (<Draggable onDrag={onDrag} onStop={onStop} key={e.id}>
-        <div id={i} style={{width: "7rem"}}>
+        <div id={i} style={{width: "10rem"}}>
           <img alt={e.type} id={i} style={style} src={src} />
         </div>
       </Draggable>);

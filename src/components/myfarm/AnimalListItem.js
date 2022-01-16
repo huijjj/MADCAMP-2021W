@@ -13,10 +13,10 @@ export default function AnimalListItem({
   return (
     <div onClick={() => onClick(id, name)} style={{ display: "flex", flexDirection: "column", margin: "1rem" }}>
       <div style={{display: "flex"}}>
-        <img style={{ objectFit :"cover", width: "7rem", height: "7rem" }} alt={`${type}.png`} src={imgSrc} />
+        <img style={{ objectFit :"cover", width: "7rem", height: "7rem", marginRight: "0.5rem" }} alt={`${type}.png`} src={imgSrc} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div>
-            <div>{name}({sex})</div>
+            <div style={{ fontWeight: "bold", marginTop: "0.5rem"}}>{name} ({sex})</div>
             <br></br>
           </div>
           <div>

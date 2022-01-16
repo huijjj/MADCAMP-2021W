@@ -1,0 +1,33 @@
+.MyFarm {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/background_farm.png");
+  background-size: cover;
+}
+
+.HomeButton {
+  position: absolute;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.MyFarmMenu {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+  flex-direction: row-reverse;
+  padding-bottom: 1rem;
+}
+
+.MyFarmAnimal {
+  margin-right: 2rem;
+}
+
+.MyFarmItem {
+  margin-right: 1rem;
+}
+
+.MyFarmEmpty {
+  margin: 3.5rem 1rem 0 1rem;
+}
