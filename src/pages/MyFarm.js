@@ -27,6 +27,7 @@ export default function MyFarm({ userId }) {
   const [ listOpen, setListOpen ] = useState(false);
   const [ contentType, setContentType ] = useState(0);
   const [ useItem, setUseItem ] = useState();
+  const [ numGrowth, setNumGrowth ] = useState(0);
 
   useEffect(() => {
     console.log(userId);
@@ -42,7 +43,7 @@ export default function MyFarm({ userId }) {
         setItemList(res.data);
       }
     );
-  }, []);
+  }, [numGrowth]);
   
   const onAnimalItemClick = (id, name) => {
     if(useItem) {
@@ -75,6 +76,7 @@ export default function MyFarm({ userId }) {
                     }).then(res => {
                       console.log(res.data.status);
                       if(res.data.status === "Success") {
+                        setNumGrowth(numGrowth + 1);
                         window.alert(`${e.name}이(가) 진화했습니다`);
                         return {
                           id: e.id,
@@ -103,7 +105,8 @@ export default function MyFarm({ userId }) {
                     }).then(res => {
                       console.log(res.data.status);
                       if(res.data.status === "Success") {
-                        window.alert(`${e.name}이(가) 진화했습니다`);
+                        setNumGrowth(numGrowth + 1);
+                        // window.alert(`${e.name}이(가) 진화했습니다`);
                         return {
                           id: e.id,
                           name: e.name,
