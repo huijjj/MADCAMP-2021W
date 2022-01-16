@@ -29,11 +29,11 @@
 }
 
 .MyFarmEmpty {
-  margin: 3.5rem 1rem 0 1rem;
+  margin: 3.5rem 1rem 1rem 1rem;
 }
 
-.MyFarmList {
-
+.MyFarmAnimalListItem:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar {
