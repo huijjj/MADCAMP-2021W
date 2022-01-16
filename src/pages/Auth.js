@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../style/Auth.css';
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
@@ -31,18 +32,22 @@ export default function Auth({ getId }) {
   }
 
   return (
-    <div>
-      <div>login</div>
-      <form onSubmit={onLogin}>
-        <input name="id"></input>
-        <input name="pwd"></input>
-        <input type="submit"></input>
-      </form>
-      <div onClick={(e) => {
-        e.preventDefault();
-        onClick("register");
-      }}>
-        Register
+    <div className="Auth">
+      <div className="Background">
+        <div className="Title">DRUNKEN FARM</div>
+        <form className="LoginForm" onSubmit={onLogin}>
+          <div className="LoginFormInput">
+            <input placeholder="id" className="LoginFormInputId" name="id"></input>
+            <input placeholder="password" type="password" autoComplete="off" name="pwd"></input>
+          </div>
+          <input type="submit" value="Login"></input>
+        </form>
+        <div className="RegisterButton" onClick={(e) => {
+          e.preventDefault();
+          onClick("register");
+        }}>
+          계정이 없으신가요?
+        </div>
       </div>
     </div>
   );

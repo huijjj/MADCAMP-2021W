@@ -1,7 +1,4 @@
 import Draggable from 'react-draggable';
-import axios  from 'axios';
-
-const API_BASE = process.env.REACT_APP_API_BASE;
 
 export default function Animals({ animalList, onStop }) {
 
