@@ -57,6 +57,7 @@ export default function MyFarm({ userId }) {
   const [ bookCount, setBookCount ] = useState(0);
   const [ alertTitle, setAlertTitle ] = useState("");
   const [ alertOpen, setAlertOpen ] = useState(false);
+  const [ confirmOpen, setConfirmOpen ] = useState(false);
 
   // rose dumbell book
 
@@ -109,7 +110,6 @@ export default function MyFarm({ userId }) {
                     }).then(res => { 
                       console.log(res.data);
                       if(res.data.status === "Success") {
-                        // window.alert(`${e.name}이(가) 진화했습니다`);
                         setAlertTitle(`${e.name}이(가) 진화했습니다`);
                         setAlertOpen(true);
                       }
@@ -305,6 +305,29 @@ export default function MyFarm({ userId }) {
         </Dialog>
         <Dialog
           open={alertOpen}
+          TransitionComponent={Transition}>
+          <DialogTitle>{alertTitle}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => {
+              axios.get(`${API_BASE}/animal/owner/${userId}`).then(
+                (res) => {
+                  console.log(res.data);
+                  setAnimalList(res.data);
+                }
+              );
+              setContentType(CONTENT_ITEM);
+              setUseItem();
+              setAlertOpen(false);
+            }}>확인</Button>
+          </DialogActions>
+        </Dialog>
+        <Dialog
+          open={confirmOpen}
           TransitionComponent={Transition}>
           <DialogTitle>{alertTitle}</DialogTitle>
           <DialogContent>
