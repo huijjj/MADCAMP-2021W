@@ -14,7 +14,7 @@ function Home({ userId }) {
   }
 
   const [ userInfo , setUserInfo ] = useState({});
-  const tier = ['학사', '석사', '박사', '포스트 닥터', '교수'];
+  const tier = ['학사', '석사', '박사', '포닥', '교수'];
   useEffect(() => {
     axios.get(`${API_BASE}/user/show/${userId}`)
     .then(res => {

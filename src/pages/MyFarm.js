@@ -60,7 +60,6 @@ export default function MyFarm({ userId }) {
             // update item list
             setItemList(itemList.filter(e => e.id !== useItem.id));
             // update animal status
-            setAnimalList([]);
             setAnimalList(animalList.map(e => {
               if(e.id === id) {
                 const newGeee = e.geee + useItem.geee;
@@ -139,21 +138,6 @@ export default function MyFarm({ userId }) {
                       if(res.data.status === "Success") {
                         setNumGrowth(numGrowth + 1);
                         window.alert(`${e.name}이(가) 졸업했습니다`);
-                        return {
-                          id: -1,
-                          // name: e.name,
-                          // type: next,
-                          // sex: e.sex,
-                          // owner: e.owner,
-                          // adventureCount: e.adventureCount,
-                          // itemCount: e.itemCount,
-                          // geee: newGeee,
-                          // duck: newDuck,
-                          // chae: newChae,
-                          // isAbandonded: e.isAbandonded,
-                          // X: e.X,
-                          // Y: e.Y
-                        };
                       }
                     }).catch(console.log);
                   }
@@ -179,6 +163,7 @@ export default function MyFarm({ userId }) {
                 return e;
               }
             }));
+            setNumGrowth(numGrowth + 1);
             setContentType(CONTENT_ITEM);
             setUseItem();
           }
@@ -249,12 +234,49 @@ export default function MyFarm({ userId }) {
     setListOpen(true);
   }
 
+  const onStop = (e, data) => {
+    e.preventDefault();
+    const target = animalList[e.target.id];
+
+    const newX = target.X + data.x;
+    const newY = target.Y + data.y;
+
+    setAnimalList(animalList.map((e, i) => {
+      if(i === e.target?.id) {
+        return {
+          id: e.id,
+          name: e.name,
+          type: e.type,
+          sex: e.sex,
+          owner: e.owner,
+          adventureCount: e.adventureCount,
+          itemCount: e.itemCount,
+          geee: e.geee,
+          duck: e.duck,
+          chae: e.chae,
+          isAbandonded: e.isAbandonded,
+          X: newX,
+          Y: newY
+        }
+      }
+      else {
+        return e;
+      }
+    }));
+    // console.log(target.id, newX, newY);  
+    axios.put(`${API_BASE}/animal/move`, {
+      id: target.id,
+      X: newX,
+      Y: newY
+    }).then();
+  }
+
   return (
     <div>
       <HomeIcon onClick={() => navigate(-1)} />
       <div style={{height: "100%", width: "90%"}}>
         <div style={{width: "100%", height: "100%"}}>
-          <Animals animalList={animalList} />
+          <Animals animalList={animalList} onStop={onStop}/>
         </div>
         <div>
           <div onClick={() => showList(CONTENT_ANIMAL)}>

@@ -3,26 +3,26 @@ import axios  from 'axios';
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-export default function Animals({ animalList }) {
+export default function Animals({ animalList, onStop }) {
 
   const onDrag = (e, _) => {
     e.preventDefault();
   }
 
-  const onStop = (e, data) => {
-    e.preventDefault();
-    const target = animalList[e.target.id];
+  // const onStop = (e, data) => {
+  //   e.preventDefault();
+  //   const target = animalList[e.target.id];
 
-    const newX = target.X + data.x;
-    const newY = target.Y + data.y;
+  //   const newX = target.X + data.x;
+  //   const newY = target.Y + data.y;
 
-    // console.log(target.id, newX, newY);  
-    axios.put(`${API_BASE}/animal/move`, {
-      id: target.id,
-      X: newX,
-      Y: newY
-    }).then();
-  }
+  //   // console.log(target.id, newX, newY);  
+  //   axios.put(`${API_BASE}/animal/move`, {
+  //     id: target.id,
+  //     X: newX,
+  //     Y: newY
+  //   }).then();
+  // }
 
 
   return <>{
