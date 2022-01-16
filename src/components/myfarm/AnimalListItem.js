@@ -8,12 +8,12 @@ export default function AnimalListItem({
   chae,
   onClick
 }) {
-  const imgSrc = `/images/${type.substring(0, 3)}/${type.at(3)}.jpg`;
+  const imgSrc = `/images/${type}.png`;
 
   return (
     <div onClick={() => onClick(id, name)} style={{ display: "flex", flexDirection: "column", margin: "1rem" }}>
       <div style={{display: "flex"}}>
-        <img style={{ objectFit :"cover", width: "7rem", height: "7rem" }} alt={`${type}.jpg`} src={imgSrc} />
+        <img style={{ objectFit :"cover", width: "7rem", height: "7rem" }} alt={`${type}.png`} src={imgSrc} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div>
             <div>{name}({sex})</div>

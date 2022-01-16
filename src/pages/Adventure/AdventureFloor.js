@@ -54,8 +54,8 @@ export default function AdventureFloor({ animal, stamina, floor, setIsInGame}) {
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia 
           component="img"
-          image={`/images/${animal.type.substr(0, 3)}/${animal.type.substr(3,1)}.jpg`}
-          alt={`${animal.type}.jpg`}
+          image={`/images/${animal.type}.png`}
+          alt={`${animal.type}.png`}
         />
         <CardContent> 
           <Typography gutterBottom variant="h5" component="div">
