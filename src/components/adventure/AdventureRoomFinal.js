@@ -52,13 +52,66 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
         }).then(
           res => console.log(res)
         );
+
         axios.put(`${API_BASE}/user/money/${user.id}`, {
-          money: user.Money + 1000
+          money: user.Money + 2000
         }).then(
           res => console.log(res)
         );
+        
+        const id = animal.id;
+        const newGeee = animal.geee + 30;
+        const newDuck = animal.duck + 30;
+        const newChae = animal.chae + 30;
+        const curLevel = animal.type.substr(-1);
+        const next = animal.type.substring(0, 3) + String(Number(curLevel) + 1);
+
+        if(curLevel === "1") {
+          if((newGeee + newDuck + newChae) >= 100) {
+            console.log("lev 1 to lev 2");
+            axios.put(`${API_BASE}/animal/evolve/${id}`, {
+              type: next  
+            }).then(res => {
+              console.log(res.data.status);
+              if(res.data.status === "Success") {
+                window.alert(`${e.name}이(가) 진화했습니다`);
+              }
+            }).catch(console.log);
+          }
+        }
+        else if(curLevel === "2") {
+          if((newGeee + newDuck + newChae) >= 200) {
+            console.log("lev 2 to lev 3");
+            axios.put(`${API_BASE}/animal/evolve/${id}`, {
+              type: next  
+            }).then(res => {
+              console.log(res.data.status);
+              if(res.data.status === "Success") {
+                window.alert(`${e.name}이(가) 진화했습니다`);
+              }
+            }).catch(console.log);
+          }
+        }
+        else if(curLevel === "3") {
+          if((newGeee + newDuck + newChae) >= 300) {
+            console.log("graduation");
+            axios.delete(`${API_BASE}/animal/graduate/${user.id}`, {
+              data: {
+                id: id,
+                reward: 100
+              },
+            }).then(res => {
+              console.log(res.data.status);
+              if(res.data.status === "Success") {
+                window.alert(`${e.name}이(가) 졸업했습니다`);
+              }
+            }).catch(console.log);
+          }
+        }
       }
-    }
+
+      }
+    
     else {
       setStamina(0);
     }
@@ -95,3 +148,4 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
 // 다졌어루이 터부로오착행시 는과성 든모 의류인
 // 다니집해듯따 면치 를수박
 // 냐아 델모롤 의분러여 는나
+// 다니아 이반위 칙수역방 에문때 기있져어떨 히분충 도어벗 를크스마 는서에위상단
