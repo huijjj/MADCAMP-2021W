@@ -74,7 +74,7 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
             }).then(res => {
               console.log(res.data.status);
               if(res.data.status === "Success") {
-                window.alert(`${e.name}이(가) 진화했습니다`);
+                window.alert(`${animal.name}이(가) ${next}로 진화했습니다!`);
               }
             }).catch(console.log);
           }
@@ -87,7 +87,7 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
             }).then(res => {
               console.log(res.data.status);
               if(res.data.status === "Success") {
-                window.alert(`${e.name}이(가) 진화했습니다`);
+                window.alert(`${animal.name}이(가) ${next}로 진화했습니다!`);
               }
             }).catch(console.log);
           }
@@ -103,7 +103,7 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
             }).then(res => {
               console.log(res.data.status);
               if(res.data.status === "Success") {
-                window.alert(`${e.name}이(가) 졸업했습니다`);
+                window.alert(`${animal.name}이(가) 졸업했습니다!`);
               }
             }).catch(console.log);
           }

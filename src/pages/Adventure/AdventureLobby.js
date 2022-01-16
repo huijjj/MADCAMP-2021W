@@ -22,6 +22,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 import '../../style/Lobby.css'
+import '../../style/MyFarm.css'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -53,15 +54,16 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
   };
   
   return (
-    <div id = "adventure-lobby">
-      <HomeIcon onClick={() => navigate(-1)} />
+    <div className="Lobby">
+      <>
+      <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
       <div class="LobbyGrid">
         <Box sx={{width: '80%'}}>
-        <Grid container spacing={{ xs: 2, md: 3 }}>
+        <Grid container spacing={3}>
           {animalList?.map(
               (animal, index) =>
-                <Grid xs={4} sm={4} md={4}>
-                <Card key={index} sx={{ maxWidth: 345 }}>
+                <Grid item xs={4}>
+                <Card className="LobbyCard" key={index} sx={{ maxWidth: 345 }}>
                   <CardMedia 
                     component="img"
                     image={`/images/${animal.type}.png`}
@@ -113,7 +115,7 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
         </Grid>
         </Box>
       </div>
-
+      </>
     </div>  
   );
 }
