@@ -124,7 +124,7 @@ export default function AnimalShop({ userId }) {
       if(window.confirm(`${name}을(를) 입양하시겠습니까?`)) {
         // check if adopting is possible
         // send request
-        axios.post(`${API_BASE}/animal/adopt/${userId}`, {
+        axios.put(`${API_BASE}/animal/adopt/${userId}`, {
           id: id
         }).then(res => {
           console.log(res.data);
