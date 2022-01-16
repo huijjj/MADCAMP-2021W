@@ -10,21 +10,21 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 
 const items = [
   {
-    type: "아령",
+    type: "dumbell",
     price: 100,
     geee: 0,
     duck: 0,
     chae: 50
   },
   {
-    type: "흑장미",
+    type: "rose",
     price: 100,
     geee: 0,
     duck: 50,
     chae: 0
   },
   {
-    type: "책",
+    type: "rose",
     price: 100,
     geee: 50,
     duck: 0,
@@ -34,9 +34,9 @@ const items = [
 
 function getPrice(type) {
   switch(type) {
-    case "아령":
-    case "책":
-    case "흑장미":
+    case "dumbell":
+    case "book":
+    case "rose":
       return 100;  
 
     default:
