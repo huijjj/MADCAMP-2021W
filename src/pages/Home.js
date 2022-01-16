@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const tier = ['학사', '석사', '박사', '포닥', '교수'];
 
-function Home({ userId }) {
+function Home({ userId, setUserId }) {
   const navigate = useNavigate();
   const [ profileOpen, setProfileOpen ] = useState(false);
   const [ userInfo , setUserInfo ] = useState({});
@@ -37,6 +37,9 @@ function Home({ userId }) {
   }
   
   useEffect(() => {
+    setUserId(window.sessionStorage.getItem('id'));
+    console.log(window.sessionStorage.getItem('id'));
+    console.log('진입띠');
     axios.get(`${API_BASE}/user/show/${userId}`).then(res => {
       axios.get(`${API_BASE}/animal/owner/${res.data[0].id}`).then(res => {
         console.log(res.data);
@@ -50,7 +53,7 @@ function Home({ userId }) {
         graduateCnt : res.data[0].graduateCount
       });
     }).catch(err => console.log(err));
-  }, []);
+  }, [userId]);
   
   return (
     <div className="Home">

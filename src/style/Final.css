@@ -11,7 +11,7 @@
 .AdventureFinalBackground {
   width: 100%;
   height: 100%;
-  background-image: url("../../../public/images/background_sky.png");
+  background-image: url("../../public/images/background_sky.png");
 
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@
 }
 
 .FinalSpeechBubble {
-  background-image: url("../../../public/images/chatbox.png");
+  background-image: url("../../public/images/chatbox.png");
   background-size: 450px 280px;
 
   width: 450px;

@@ -10,9 +10,9 @@ function App() {
     { path: '/myfarm', element: <MyFarm userId={userId} />},
     { path: '/adventure', element: <Adventure userId={userId} />},
     { path: '/animalshop', element: <AnimalShop userId={userId} />},
-    { path: '/itemshop', element: <ItemShop userId={userId} />},
+    { path: '/itemshop', element: <ItemShop userId={userId}  />},
     { path: '/register', element: <Register />},
-    { path: '/home', element: <Home userId={userId} />}
+    { path: '/home', element: <Home userId={userId} setUserId={setUserId} />}
   ]);
 
   return element;
