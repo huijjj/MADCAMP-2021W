@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../style/ItemShop.css';
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
@@ -88,26 +89,29 @@ export default function ItemShop({ userId }) {
   const renderItems = (item, i) => {
     return (
       <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
-        <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
-        <div>
-          <div>{item.type} {item.price}원</div>
-          <br></br>
-          <div>지: {item.geee}</div>
-          <div>덕: {item.duck}</div>
-          <div>체: {item.chae}</div>
-        </div>
+          <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
+          <div>
+            <div>{item.type} {item.price}원</div>
+            <br></br>
+            <div>지: {item.geee}</div>
+            <div>덕: {item.duck}</div>
+            <div>체: {item.chae}</div>
+          </div>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className="ItemShop">
       <HomeIcon onClick={() => navigate(-1)} />
-      <div>ItemShop</div>
       <div>잔돈: {money}원</div>
-      <div>{
-        items.map(renderItems)
-      }</div>
+      <div className="itemshopBackground">
+        <div>
+          <div>{
+            items.map(renderItems)
+          }</div>
+        </div>
+      </div>
     </div>
   );
 }
