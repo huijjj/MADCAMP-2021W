@@ -452,7 +452,7 @@ app.post('/api/item/buy/:ownerId', (req, res) => {
           let paramInfoItem = [id];
           connection.query(sqlInfoItem, paramInfoItem, (error, results) => {
             if (error) throw error;
-            console.log('/api/item/buy/+'+ownerId+'/'+type+'/'+geee + '/'+duck + '/'+ chae +'/'+price);
+            console.log('/api/item/buy/'+ownerId+'/'+type+'/'+geee + '/'+duck + '/'+ chae +'/'+price);
             res.json(results);
           });
         });
