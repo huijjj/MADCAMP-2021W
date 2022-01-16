@@ -26,6 +26,8 @@ export default function Auth({ getId }) {
       }
       else {
         getId(res.data[0].id);
+        window.sessionStorage.setItem('id', res.data[0].id);
+        console.log(window.sessionStorage.getItem('id'));
         navigate(`/home`);
       }
     }).catch(err => console.log(err));

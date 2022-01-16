@@ -20,13 +20,11 @@ export default function Register() {
     })
     .then(res => {
       // console.log(res.data.status);
-      if(res.data.status)
-      {
-        window.alert("Register Fail");
+      if(res.data.status) {
+        window.alert("모종의 이유로 회원가입에 실패했습니다.");
       }
-      else
-      {
-        window.alert("Register Success");
+      else {
+        window.alert("회원가입에 성공하셨습니다. 가입하신 계정으로 로그인 해주세요.");
         navigate(`/`);
       }
     })
@@ -36,11 +34,14 @@ export default function Register() {
   return (
     <div className="Register">
       <div className="Background">
-        <div className="RegisterTitle">REGISTER</div>
-        <form onSubmit={onRegister}>
-          <input autoComplete="off" placeholder="id" name="id"></input>
-          <input autoComplete="off" placeholder="nickname" name="nick"></input>
-          <input autoComplete="off" placeholder="password" name="pwd"></input>
+        <div className="Title">REGISTER</div>
+        <form className="LoginForm" onSubmit={onRegister}>
+          <div className="LoginFormInput">
+            <input className="LoginFormInputId" autoComplete="off" placeholder="id" name="id"></input>
+            <input className="LoginFormInputId" autoComplete="off" placeholder="password" name="pwd"></input>
+            <input className="LoginFormInputId" autoComplete="off" placeholder="nickname" name="nick"></input>
+            <input autoComplete="off" placeholder="email"></input>
+          </div>
           <input type="submit"></input>
         </form>
       </div>

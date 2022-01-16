@@ -10,7 +10,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
-import Draggable from 'react-draggable';
 
 import axios from 'axios';
 

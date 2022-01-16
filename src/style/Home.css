@@ -1,0 +1,728 @@
+.Home {
+  width: 100%;
+  height: 100%;
+}
+
+.HomeProfileIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 2rem;
+  margin-right: 2rem;
+}
+
+
+.HomeUserStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.HomeUserStatusNick {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.HomeUserStatusOther {
+  display: flex;
+  flex-direction: column;
+}
+
+.HomeUserStatusOtherStat {
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HomeUserStatusClose {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.HomeUserStatusImg{
+  width: 8rem;
+  height: 8rem;
+}
+
+.HomeRow {
+  width: 100%;
+  height: 14.2857143%;
+  display: flex;
+}
+
+.HomeItem {
+  height: 100%;
+  width: 9.0909090909%;
+}
+
+.HomeItem1 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_001.jpg");
+}
+
+.HomeItem2 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_002.jpg");
+}
+
+.HomeItem3 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_003.jpg");
+}
+
+.HomeItem4 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_004.jpg");
+}
+
+.HomeItem4 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_004.jpg");
+}
+
+.HomeItem4 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_004.jpg");
+}
+
+.HomeItem5 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_005.jpg");
+}
+
+.HomeItem6 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_006.jpg");
+}
+
+.HomeItem7 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_007.jpg");
+}
+
+.HomeItem8 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_008.jpg");
+}
+
+.HomeItem9 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_009.jpg");
+}
+
+.HomeItem10 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_010.jpg");
+}
+
+.HomeItem11 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_011.jpg");
+}
+
+.HomeItem12 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_012.jpg");
+}
+
+.HomeItem13 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_013.jpg");
+}
+
+.HomeItem14 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_014.jpg");
+}
+
+.HomeItem15 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_015.jpg");
+}
+
+.HomeItem16 {
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_016.jpg");
+}
+.HomeItem16:hover {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_916.jpg");
+}
+
+.HomeItem17 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_017.jpg");
+}
+
+.HomeItem18 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_018.jpg");
+}
+
+.HomeItem19 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_019.jpg");
+}
+
+.HomeItem20 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_020.jpg");
+}
+
+.HomeItem21 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_021.jpg");
+}
+
+.HomeItem22 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_022.jpg");
+}
+
+.HomeItem23 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_023.jpg");
+}
+
+.HomeItem24 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_024.jpg");
+}
+
+.HomeItem25 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_025.jpg");
+}
+
+.HomeItem26 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_026.jpg");
+}
+
+.HomeItem27 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_027.jpg");
+}
+
+.HomeItem28 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_028.jpg");
+}
+
+.HomeItem29 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_029.jpg");
+}
+
+.HomeItem30 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_030.jpg");
+}
+
+.HomeItem31 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_031.jpg");
+}
+
+.HomeItem31:hover {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_931.jpg");
+}
+
+.HomeItem32 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_032.jpg");
+}
+.HomeItem33 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_033.jpg");
+}
+.HomeItem34 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_034.jpg");
+}
+.HomeItem35 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_035.jpg");
+}
+.HomeItem36 {
+  display: flex;
+  align-items:flex-end;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_036.jpg");
+}
+
+.HomeItem36:hover {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_936.jpg");
+}
+.HomeItem37 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_037.jpg");
+}
+.HomeItem38 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_038.jpg");
+}
+.HomeItem39 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_039.jpg");
+}
+.HomeItem40 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_040.jpg");
+}
+.HomeItem41 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_041.jpg");
+}
+.HomeItem42 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_042.jpg");
+}
+.HomeItem43 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_043.jpg");
+}
+.HomeItem44 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_044.jpg");
+}
+.HomeItem45 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_045.jpg");
+}
+.HomeItem46 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_046.jpg");
+}
+.HomeItem47 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_047.jpg");
+}
+.HomeItem48 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_048.jpg");
+}
+.HomeItem49 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_049.jpg");
+}
+.HomeItem50 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_050.jpg");
+}
+.HomeItem51 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_051.jpg");
+}
+.HomeItem52 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_052.jpg");
+}
+.HomeItem52:hover {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_952.jpg");
+}
+.HomeItem53 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_053.jpg");
+}
+.HomeItem54 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_054.jpg");
+}
+.HomeItem55 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_055.jpg");
+}
+.HomeItem56 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_056.jpg");
+}
+.HomeItem57 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_057.jpg");
+}
+.HomeItem58 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_058.jpg");
+}
+.HomeItem59 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_059.jpg");
+}
+.HomeItem60 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_060.jpg");
+}
+.HomeItem61 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_061.jpg");
+}
+.HomeItem62 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_062.jpg");
+}
+.HomeItem63 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_063.jpg");
+}
+
+.HomeItem64 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_064.jpg");
+}
+.HomeItem65 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_065.jpg");
+}
+.HomeItem66 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_066.jpg");
+}
+.HomeItem67 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_067.jpg");
+}
+.HomeItem68 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_068.jpg");
+}
+.HomeItem69 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_069.jpg");
+}
+.HomeItem70 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_070.jpg");
+}
+.HomeItem71 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_071.jpg");
+}
+.HomeItem72 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_072.jpg");
+}
+.HomeItem73 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_073.jpg");
+}
+.HomeItem74 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_074.jpg");
+}
+.HomeItem75 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_075.jpg");
+}
+.HomeItem76 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_076.jpg");
+}
+.HomeItem77 {
+  height: 100%;
+  width: 9.0909090909%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/kaist/kaistmap_077.jpg");
+}
+
+.HomeItemAdventure {
+  display: inline;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.3rem;
+  border-radius: 1rem;
+  padding: 0 0.2rem;
+}
+
+.HomeItemAnimal {
+  display: inline;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 0 0.2rem;
+  transform: translate(0px, 15px);
+}
+
+.HomeItemFarm {
+  display: inline;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 0 0.2rem;
+}
+
+.HomeItemItem {
+  display: inline;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 0 0.2rem;
+  margin-bottom: 1.2rem;
+}
