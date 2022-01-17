@@ -66,20 +66,20 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
       <div className="FloorHeader">
         <div style={{ marginTop: "40rem" }}>{floor}층</div>
         <div className="FloorCard">
-          <Card sx={{ maxWidth: "20rem", maxHeight: "40rem", backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
-            <CardMedia 
+          <Card style ={{fontFamily:'paybooc'}} sx={{ maxWidth: "20rem", maxHeight: "40rem", backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
+            <CardMedia style ={{fontFamily:'paybooc'}}
               component="img"
               image={`/images/${animal.type}.png`}
               alt={`${animal.type}.png`}
             />
-            <CardContent> 
+            <CardContent style ={{fontFamily:'paybooc'}}> 
               <Typography gutterBottom variant="h5" component="div" color="common.white">
                 {animal.name}({animal.sex})
               </Typography>
               <Typography variant="body1" color="common.white">
-                <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
-                <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
-                <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
+                <ProgressBarLobby style ={{fontFamily:'paybooc'}} bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
+                <ProgressBarLobby style ={{fontFamily:'paybooc'}} bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
+                <ProgressBarLobby style ={{fontFamily:'paybooc'}} bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
               </Typography>
               <div className="FloorStamina">
                 <progress 
@@ -95,31 +95,31 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
             </CardContent>
           </Card>
         </div>
-        <Button onClick={handleClickExit} style={{ marginTop: "3rem" }} variant="contained" color="error" >포기하기</Button>
+        <Button onClick={handleClickExit} style={{ marginTop: "3rem", fontFamily:'paybooc' }} variant="contained" color="error" >포기하기</Button>
       </div>
       <div style={{ display: "flex", width: "100%", height: "100%" }}>
         <div className="FloorLeft" onClick={handleClickDoor}></div>
         <div className="FloorRight" onClick={handleClickDoor}></div>
       </div>
-      <Dialog
+      <Dialog style ={{fontFamily:'paybooc'}}
         open={exitOpen}
         onClose={handleCloseNo}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle style ={{fontFamily:'paybooc'}} id="alert-dialog-title">
           탐험을 중도에 포기하시겠습니까?
         </DialogTitle>
 
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+        <DialogContent style ={{fontFamily:'paybooc'}} >
+          <DialogContentText style ={{fontFamily:'paybooc'}} id="alert-dialog-description">
             포기하면 {(floor < 5) ? (floor == 1 ? 0 : 10) : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20}원을 얻을 수 있습니다
           </DialogContentText>
         </DialogContent>
 
-        <DialogActions>
-          <Button onClick={handleCloseNo}>아니요</Button>
-          <Button onClick={handleCloseYes}>네</Button>
+        <DialogActions style ={{fontFamily:'paybooc'}} >
+          <Button style ={{fontFamily:'paybooc'}} onClick={handleCloseNo}>아니요</Button>
+          <Button style ={{fontFamily:'paybooc'}} onClick={handleCloseYes}>네</Button>
         </DialogActions>
       </Dialog>
     </div>

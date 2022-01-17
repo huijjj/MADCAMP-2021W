@@ -73,7 +73,7 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
         </div>
         <div className="DrinkGame">
           <div className='DrinkHyunji'>
-            <ProgressBar bgcolor="red" stamina={hStamina} staminaMAX={difficultyList[floor-1].stamina} />
+            <ProgressBar  bgcolor="red" stamina={hStamina} staminaMAX={difficultyList[floor-1].stamina} />
           </div>
           
           <div>
@@ -86,7 +86,7 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
 
           <>{
             (hStamina <= 0)
-            ? <Button variant="contained" color="success" onClick={handleNext}>
+            ? <Button style ={{fontFamily:'paybooc'}} variant="contained" color="success" onClick={handleNext}>
               {`${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`}
             </Button>
             : <></>

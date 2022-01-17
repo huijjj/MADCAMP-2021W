@@ -142,7 +142,7 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
           { isFinish &&
               <>
                 장병규를 이겼습니다!<br/>
-                <Button onClick={handleNext}>
+                <Button style ={{fontFamily:'paybooc'}} onClick={handleNext}>
                   탐험을 끝냅니다
                 </Button>
               </>

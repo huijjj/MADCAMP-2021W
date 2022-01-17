@@ -15,8 +15,8 @@ export default function AdventureInGame({ animal, stamina, setStamina, staminaMA
       <div id="adventure-room">
         <div>
           {isDrink 
-            ? <AdventureRoomDrink animal={animal} floor={floor} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} setFloor={setFloor} setIsInGame={setIsInGame} setIsDrink={setIsDrink} />
-            : <AdventureRoomSurprise floor={floor} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} setFloor={setFloor} setIsInGame={setIsInGame} />}
+            ? <AdventureRoomDrink style ={{fontFamily:'paybooc'}} animal={animal} floor={floor} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} setFloor={setFloor} setIsInGame={setIsInGame} setIsDrink={setIsDrink} />
+            : <AdventureRoomSurprise style ={{fontFamily:'paybooc'}} floor={floor} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} setFloor={setFloor} setIsInGame={setIsInGame} />}
         </div>
       </div>
     );

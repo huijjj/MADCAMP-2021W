@@ -200,7 +200,7 @@ export default function MyFarm({ userId }) {
           <PetsIcon sx={{ fontSize: 80 }} onClick={() => showList(CONTENT_ANIMAL)} className="MyFarmAnimal"/>
           <AutoAwesomeIcon sx={{ fontSize: 80 }} onClick={() => showList(CONTENT_ITEM)} className="MyFarmItem"/>
         </div>
-        <Dialog
+        <Dialog style ={{fontFamily:'paybooc'}}
           open={listOpen}
           TransitionComponent={Transition}
           onClose={() => { 
@@ -215,12 +215,12 @@ export default function MyFarm({ userId }) {
             makeListContent(contentType)
           }</div>
         </Dialog>
-        <Dialog
+        <Dialog style ={{fontFamily:'paybooc'}}
           open={alertOpen}
           TransitionComponent={Transition}>
-          <DialogTitle style={{ display: "flex", justifyContent: "center" }} >{alertTitle}</DialogTitle>
+          <DialogTitle  style={{ display: "flex", justifyContent: "center", fontFamily:'paybooc'}} >{alertTitle}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText> 
               <div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <img style={{ width: "10rem", height: "10rem"}} src={alertContentSrc[0]} alt="images" />
@@ -231,7 +231,7 @@ export default function MyFarm({ userId }) {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               axios.get(`${API_BASE}/animal/owner/${userId}`).then(
                 (res) => {
                   console.log(res.data);
@@ -245,21 +245,21 @@ export default function MyFarm({ userId }) {
           </DialogActions>
         </Dialog>
 
-        <Dialog
+        <Dialog style ={{fontFamily:'paybooc'}}
           open={itemConfirmOpen}
           TransitionComponent={Transition}>
-          <DialogTitle>{confirmTitle}</DialogTitle>
+          <DialogTitle style ={{fontFamily:'paybooc'}} >{confirmTitle}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setItemConfirmOpen(false);
               setUseItem();
             }}>취소</Button>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setContentType(CONTENT_ANIMAL);
               setItemConfirmOpen(false);
             }}>확인</Button>
@@ -269,18 +269,18 @@ export default function MyFarm({ userId }) {
         <Dialog
           open={abandonConfirmOpen}
           TransitionComponent={Transition}>
-          <DialogTitle>{confirmTitle}</DialogTitle>
+          <DialogTitle style ={{fontFamily:'paybooc'}} >{confirmTitle}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setAbandonTargetId("");
               setAbandonConfirmOpen(false);
             }}>취소</Button>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               axios.put(`${API_BASE}/animal/abandon`, {
                 id: abandonTargetId
               }).then(res => {
@@ -298,20 +298,20 @@ export default function MyFarm({ userId }) {
         <Dialog
           open={itemUseConfirmOpen}
           TransitionComponent={Transition}>
-          <DialogTitle>{confirmTitle}</DialogTitle>
+          <DialogTitle style ={{fontFamily:'paybooc'}}>{confirmTitle}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setUseItem();
               setContentType(CONTENT_ITEM);
               setItemUseConfirmOpen(false);
               setItemTargetId("");
             }}>취소</Button>
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               axios.delete(`${API_BASE}/item/use/${itemTargetId}`, {
                 data: {
                   itemId: useItem.id
