@@ -73,9 +73,9 @@ export default function MyFarm({ userId }) {
       (res) => {
         console.log(res.data);
         setItemList(res.data);
-        setRoseCount(res.data[0].length);
-        setDumbellCount(res.data[1].length);
-        setBookCount(res.data[2].length);
+        setRoseCount(res.data[1].length);
+        setDumbellCount(res.data[2].length);
+        setBookCount(res.data[0].length);
       }
     );
   }, []);
@@ -161,9 +161,9 @@ export default function MyFarm({ userId }) {
               (res) => {
                 console.log(res.data);
                 setItemList(res.data);
-                setRoseCount(res.data[0].length);
-                setDumbellCount(res.data[1].length);
-                setBookCount(res.data[2].length);
+                setRoseCount(res.data[1].length);
+                setDumbellCount(res.data[2].length);
+                setBookCount(res.data[0].length);
               }
             );
           }

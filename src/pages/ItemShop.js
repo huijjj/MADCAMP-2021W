@@ -10,6 +10,13 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 
 const items = [
   {
+    type: "book",
+    price: 100,
+    geee: 50,
+    duck: 0,
+    chae: 0
+  },
+  {
     type: "rose",
     price: 100,
     geee: 0,
@@ -22,13 +29,6 @@ const items = [
     geee: 0,
     duck: 0,
     chae: 50
-  },
-  {
-    type: "book",
-    price: 100,
-    geee: 50,
-    duck: 0,
-    chae: 0
   }
 ];
 
