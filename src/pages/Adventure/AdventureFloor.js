@@ -40,7 +40,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
 
     setExitOpen(false);
     axios.put(`${API_BASE}/user/money/${user.id}`, {
-      money: user.Money + floor*10
+      money: user.Money + ((floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20)
     }).then(
       res => console.log(res)
     );
@@ -55,9 +55,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
   return (
     <div class="Floor">
       <div className="FloorHeader">
-        {floor}층
-      </div>
-      <div className="FloorBody">
+        <div style={{ marginTop: "40rem" }}>{floor}층</div>
         <div className="FloorCard">
           <Card sx={{ maxWidth: 300, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
             <CardMedia 
@@ -88,18 +86,12 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
             </CardContent>
           </Card>
         </div>
-
-        <div className="FloorDoors">
-          <div className="FloorDoor">
-            <img src="/images/door.png" width="400" height="400" onClick={handleClickDoor}/>
-            <img src="/images/door.png" width="400" height="400" onClick={handleClickDoor}/><br/>
-          </div>
-          <div className="FloorExit">
-            <Button variant="contained" color="error" onClick={handleClickExit}>포기하기</Button>
-          </div>
-        </div>  
+        <Button onClick={handleClickExit} style={{ marginTop: "3rem" }} variant="contained" color="error" >포기하기</Button>
       </div>
-
+      <div style={{ display: "flex", width: "100%", height: "100%" }}>
+        <div className="FloorLeft" onClick={handleClickDoor}></div>
+        <div className="FloorRight" onClick={handleClickDoor}></div>
+      </div>
       <Dialog
         open={exitOpen}
         onClose={handleCloseNo}
@@ -112,7 +104,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            포기하면 {floor*10}원을 얻을 수 있습니다
+            포기하면 {(floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20}원을 얻을 수 있습니다
           </DialogContentText>
         </DialogContent>
 
@@ -121,7 +113,6 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
           <Button onClick={handleCloseYes}>네</Button>
         </DialogActions>
       </Dialog>
-      
     </div>
   );
 }

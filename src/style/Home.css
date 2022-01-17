@@ -17,18 +17,22 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  padding: 1rem;
+  padding: 1.3rem;
 }
 
 .HomeUserStatusNick {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
 }
 
 .HomeUserStatusOther {
   display: flex;
   flex-direction: column;
+  font-size: 1.2rem;
 }
 
 .HomeUserStatusOtherStat {

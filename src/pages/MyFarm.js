@@ -30,19 +30,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const stats = [
   {
-    geee: 50,
+    geee: 10,
     duck: 0, 
     chae: 0
   },
   {
     geee: 0,
-    duck: 50,
+    duck: 20,
     chae: 0
   },
   {
     geee: 0,
     duck: 0,
-    chae: 50
+    chae: 30
   }
 ];
 
@@ -330,7 +330,16 @@ export default function MyFarm({ userId }) {
                       const newChae = e.chae + useItem.chae;
                       const curLevel = e.type.substr(-1);
                       const next = e.type.substring(0, 3) + String(Number(curLevel) + 1);
-                    
+                      let reward;
+                      if(e.type === "김기영3") {
+                        reward = 450;
+                      }
+                      else if(e.type === "정희종3") {
+                        reward = 300;
+                      }
+                      else if(e.type === "임승재3") {
+                        reward = 150;
+                      }
                       if(curLevel === "1") {
                         if((newGeee + newDuck + newChae) >= 100) {
                           console.log("lev 1 to lev 2");
@@ -367,12 +376,12 @@ export default function MyFarm({ userId }) {
                           axios.delete(`${API_BASE}/animal/graduate/${userId}`, {
                             data: {
                               id: itemTargetId,
-                              reward: 100
+                              reward: reward
                             },
                           }).then(res => {
                             console.log(res.data.status);
                             if(res.data.status === "Success") {
-                              setAlertTitle(`${e.name}이(가) 졸업했습니다`);
+                              setAlertTitle(`${e.name}이(가) 졸업했습니다. (보상: ${reward}원)`);
                               setAlertContentSrc([`/images/${e.type}.png`, `/images/${next}.png`]);
                               setAlertOpen(true);
                             }

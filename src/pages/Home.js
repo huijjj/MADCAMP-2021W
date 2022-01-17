@@ -74,16 +74,16 @@ function Home({ userId, setUserId }) {
           <div className="HomeUserStatusNick">{userInfo.nickname}</div>
           <div className="HomeUserStatusOther">
             <div className="HomeUserStatusOtherStat">
-              <div> <img src={`/images/icons/graduationCap.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} /></div>
+              <div> <img src={`/images/icons/graduationCap.png`} style={{height: "1.7rem", width: "2rem", objectFit: "cover", marginRight: "10px"}} /></div>
               <div>{userInfo.tier}</div>
             </div>
             <div className="HomeUserStatusOtherStat">
-              <div> <img src={`/images/icons/money.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} /></div>
+              <div> <img src={`/images/icons/money.png`} style={{height: "1.7rem", width: "2rem", objectFit: "cover", marginRight: "10px"}} /></div>
               <div>{userInfo.money}원</div>
             </div>
             <div className="HomeUserStatusOtherStat">
-              <div>졸업시킨 학생 수: &nbsp;&nbsp;</div>
-              <div>{userInfo.graduateCnt}</div>
+            <div> <img src={`/images/icons/graduationCount.png`} style={{height: "1.7rem", width: "2rem", objectFit: "cover", marginRight: "10px"}} /></div>
+              <div>{userInfo.graduateCnt}명</div>
             </div>
           </div>
         </div>

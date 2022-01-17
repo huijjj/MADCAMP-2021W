@@ -27,14 +27,22 @@
 
 .haveMoneyAnimal {
   position: absolute;
-  left: 75%;
-  top: 90%;
-  width: 18%;
+  left: 85%;
+  top: 80%;
+  width: 10%;
+  height: 10%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column; 
+  justify-content: space-between;
+  flex-direction: row; 
   padding: 1rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 255, 255);
+  background-image: url("../../public/images/moneyBarAnimal.png");
+  background-size: cover;
+}
+
+.moneyInfo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1.8rem;
+  margin-right: 0.3rem;
 }

@@ -54,7 +54,7 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
         );
 
         axios.put(`${API_BASE}/user/money/${user.id}`, {
-          money: user.Money + 2000
+          money: user.Money + 300
         }).then(
           res => console.log(res)
         );

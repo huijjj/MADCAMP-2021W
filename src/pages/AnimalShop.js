@@ -69,8 +69,11 @@ export default function AnimalShop({ userId }) {
     return (
       <div key={i} style={{ display: "flex"}} onClick={(e) => onClick(e, animal.type, animal.name, animal.id)}>
         <img alt={animal.type} src={src} style={{objectFit: "cover", width: "7rem", height: "7rem"}} />
-        <div>{index === 0 ? animal.type : `${animal.name}(${animal.sex})`}</div>
-        <div>{index === 0 && (`: ${animal.price}`)}</div>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: "1.75rem" }}>
+          <div>{index === 0 ? animal.type.substring(0,3) : `${animal.name}(${animal.sex})`}</div>
+          <br></br>
+          <div>{index === 0 && (`${animal.price}원`)}</div>
+        </div>
       </div>
     );
   }
@@ -145,8 +148,8 @@ export default function AnimalShop({ userId }) {
       <div style={{width: "50%", height: "50%"}}>
         <HomeIcon onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }} />
         <div className='haveMoneyAnimal'>
-        <img src={`/images/icons/money.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} />
-        {money}원
+        <img src={`/images/icons/money.png`} style={{height: "2.7rem", width: "3rem", objectFit: "cover", marginLeft:"0.3rem", marginBottom:"1.1rem" }} />
+        <div className='moneyInfo'>{money}원</div>
         </div>
         <div className='animalshopBackground'>
           <div>
