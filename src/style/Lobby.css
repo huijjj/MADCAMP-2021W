@@ -5,6 +5,11 @@
   background-attachment: fixed;
 }
 
+.LobbyHomeButton {
+  position: absolute;
+  
+}
+
 .Lobby {
   width: 100vw;
   /* height: 100vh; */
