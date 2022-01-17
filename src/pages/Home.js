@@ -109,8 +109,7 @@ function Home({ userId, setUserId }) {
         <div className="HomeItem16" onClick={e => {
           e.preventDefault();
           onClick("animalshop");
-        }}>
-          <div className="HomeItemAnimal">동물</div></div>
+        }}></div>
         <div className="HomeItem17"></div>
         <div className="HomeItem18"></div>
         <div className="HomeItem19"></div>
@@ -130,8 +129,7 @@ function Home({ userId, setUserId }) {
         <div className="HomeItem31" onClick={e => {
           e.preventDefault();
           onClick("myfarm");
-        }}>
-          <div className="HomeItemFarm">농장</div></div>
+        }}></div>
         <div className="HomeItem32"></div>
         <div className="HomeItem33"></div>   
       </div>
@@ -141,7 +139,7 @@ function Home({ userId, setUserId }) {
         <div className="HomeItem36" onClick={e => {
           e.preventDefault();
           onClick("adventure");
-        }}><div className="HomeItemAdventure">모험</div></div>
+        }}></div>
         <div className="HomeItem37"></div>
         <div className="HomeItem38"></div>
         <div className="HomeItem39"></div>
@@ -162,7 +160,7 @@ function Home({ userId, setUserId }) {
         <div className="HomeItem52" onClick={e => {
           e.preventDefault();
           onClick("itemshop");
-        }}><div className="HomeItemItem">아이템</div></div>
+        }}></div>
         <div className="HomeItem53"></div>
         <div className="HomeItem54"></div>
         <div className="HomeItem55"></div>   
