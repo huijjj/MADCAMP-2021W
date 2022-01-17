@@ -45,11 +45,11 @@ export default function Auth({ getId }) {
   return (
     <div className="Auth">
       <div className="Background">
-        <div className="Title">DRUNKEN FARM</div>
+        <div className="Title">Drunken Farm</div>
         <form className="LoginForm" onSubmit={onLogin}>
           <div className="LoginFormInput">
-            <TextField label="ID" style={{ marginBottom: "0.6rem", width: "100%" }} autoComplete="off" size="small" name="id"/>
-            <TextField label="PASSWORD" style={{ width: "100%" }} type="password" size="small" autoComplete="off" name="pwd"/>
+            <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="ID" style={{ marginBottom: "0.6rem", width: "100%", style: {fontFamily:'paybooc'} }} autoComplete="off" size="small" name="id"/>
+            <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="PASSWORD" style={{ width: "100%", style: {fontFamily:'paybooc'} }} type="password" size="small" autoComplete="off" name="pwd"/>
           </div>
           <input className="SubmitButton" type="submit" value="LOGIN"/>
         </form>
@@ -60,10 +60,10 @@ export default function Auth({ getId }) {
           계정이 없으신가요?
         </div>
       </div>
-      <Dialog open={alertOpen}>
-        <DialogTitle style={{ display: "flex", justifyContent: "center" }} >로그인에 실패했습니다.</DialogTitle>
+      <Dialog style ={{fontFamily:'paybooc'}} open={alertOpen}>
+        <DialogTitle style={{ display: "flex", justifyContent: "center", fontFamily:'paybooc' }} >로그인에 실패했습니다.</DialogTitle>
         <DialogActions>
-          <Button onClick={() => {
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setAlertOpen(false);
           }}>확인</Button>
         </DialogActions>

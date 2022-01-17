@@ -74,8 +74,8 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
             <>
             <form onSubmit={onSubmit}>
               {/* <img src={`images/${animal.type}.png`} weight={100} height={100}/> */}
-              <input name="finalAnswer" autoComplete="off"/>
-              <input type="submit" value="입력" />
+              <input style ={{fontFamily:'paybooc'}} name="finalAnswer" autoComplete="off"/>
+              <input style ={{fontFamily:'paybooc'}} type="submit" value="입력" />
             </form>
             </>
           }
