@@ -16,6 +16,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+  font-family: "paybooc";
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -26,6 +27,13 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	overflow: hidden;
+  font-family: "paybooc";
+
+}
+
+html {
+  font-family: "paybooc";
+
 }
 ol, ul {
 	list-style: none;

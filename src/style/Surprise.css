@@ -15,6 +15,7 @@
 }
 
 .SurpriseTitle {
+  font-family: "paybooc";
   font-size: 3rem;
   font-weight: bold;
   color: white;
@@ -22,6 +23,7 @@
 }
 
 .SurpriseContent {
+  font-family: "paybooc";
   font-size: 2rem;
   color: white;
   padding-bottom: 4rem;
