@@ -7,7 +7,7 @@ export default function AdventureInGame({ animal, stamina, setStamina, staminaMA
   const [isDrink, setIsDrink] = useState(false);
 
   useEffect(() => {
-    setIsDrink(Math.random() < 1.0 - animal.duck/1500);
+    setIsDrink(Math.random() < 0.7 - animal.duck/1500);
   }, []);
 
 

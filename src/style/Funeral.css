@@ -16,12 +16,16 @@
   color: white;
   font-weight: bold;
   font-size: 3rem;
-  padding-top: 10rem;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
 }
 
 #FuneralPortrait {
   background-image: url("../../public/images/portrait.png");
-  background-size: 100%, 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  padding-bottom: 3rem;
 }
 
 .FuneralBody {
