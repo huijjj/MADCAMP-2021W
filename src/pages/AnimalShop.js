@@ -39,7 +39,7 @@ const animals = [
 ];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide  direction="up" ref={ref} {...props} />;
 });
 
 const getPrice = (type) => {
@@ -192,33 +192,33 @@ export default function AnimalShop({ userId }) {
   return (
     <div className="AnimalShop">
       <div style={{width: "50%", height: "50%"}}>
-        <HomeIcon onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }} />
+        <HomeIcon style ={{fontFamily:'paybooc'}} onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }} />
         <div className='haveMoneyAnimal'>
         <img src={`/images/icons/money.png`} style={{height: "2.7rem", width: "3rem", objectFit: "cover", marginLeft:"0.3rem", marginBottom:"1.1rem" }} />
         <div className='moneyInfo'>{money}원</div>
         </div>
         <div className='animalshopBackground'>
-          <div>
-            <Tabs value={index} onChange={(e, v) => setIndex(v)}>
-              <Tab label="Shop"></Tab>
-              <Tab label="Shelter"></Tab>
+          <div style ={{fontFamily:'paybooc'}}>
+            <Tabs style ={{fontFamily:'paybooc'}} value={index} onChange={(e, v) => setIndex(v)}>
+              <Tab style ={{fontFamily:'paybooc'}} label="Shop"></Tab>
+              <Tab style ={{fontFamily:'paybooc'}} label="Shelter"></Tab>
             </Tabs>
-          </div>
-          <TabPanel value={index} index={0} />
-          <TabPanel value={index} index={1} />
+          </div >
+          <TabPanel style ={{fontFamily:'paybooc'}} value={index} index={0} />
+          <TabPanel style ={{fontFamily:'paybooc'}} value={index} index={1} />
         </div>
       </div>
-      <Dialog
+      <Dialog style ={{fontFamily:'paybooc'}}
         open={animalConfirmOpen}
         TransitionComponent={Transition}>
-        <DialogTitle>{confirmTitle}</DialogTitle>
-        <DialogActions>
-          <Button onClick={() => {
+        <DialogTitle style ={{fontFamily:'paybooc'}}>{confirmTitle}</DialogTitle>
+        <DialogActions style ={{fontFamily:'paybooc'}}>
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setAnimalConfirmOpen(false);
             setAvailable(true);
           }}>취소</Button>
           { available && 
-            <Button onClick={() => {
+            <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               if(getPrice(type) <= money) {
                 setAvailable(true);
                 setAnimalConfirmOpen(false);
@@ -232,16 +232,18 @@ export default function AnimalShop({ userId }) {
         </DialogActions>
       </Dialog>
 
-      <Dialog
+      <Dialog style ={{fontFamily:'paybooc'}}
         open={animalNameOpen}
         TransitionComponent={Transition}>
-        <DialogTitle>{confirmTitle}</DialogTitle>
-        <DialogContent>
-          <TextField
+        <DialogTitle style ={{fontFamily:'paybooc'}}>{confirmTitle}</DialogTitle>
+        <DialogContent style ={{fontFamily:'paybooc'}}>
+          <TextField style ={{fontFamily:'paybooc'}}
+            inputProps={{style: {fontFamily:'paybooc'}}}
+            InputLabelProps={{style: {fontFamily:'paybooc'}}}
+            inputHelperProps= {{style: {fontFamily:'paybooc'}}}
             autoFocus
             required
             error={valueRefName.current?.value === "" ? true : false}
-            helperText="Type Name."
             autoComplete="off"
             margin="dense"
             id="name"
@@ -253,11 +255,11 @@ export default function AnimalShop({ userId }) {
             onChange={() => setNewName(valueRefName.current.value)}
           />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => {
+        <DialogActions style ={{fontFamily:'paybooc'}}>
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setAnimalNameOpen(false);
           }}>취소</Button>
-          <Button onClick={() => {
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setConfirmTitle("성별을 입력해주세요. (M: 남성, F: 여성)")
             setAnimalNameOpen(false);
             setAnimalSexOpen(true);
@@ -265,17 +267,19 @@ export default function AnimalShop({ userId }) {
         </DialogActions>
       </Dialog>
 
-      <Dialog
+      <Dialog style ={{fontFamily:'paybooc'}}
         open={animalSexOpen}
         TransitionComponent={Transition}>
-        <DialogTitle>{confirmTitle}</DialogTitle>
-        <DialogContent>
-          <TextField
+        <DialogTitle style ={{fontFamily:'paybooc'}}>{confirmTitle}</DialogTitle>
+        <DialogContent style ={{fontFamily:'paybooc'}}>
+          <TextField style ={{fontFamily:'paybooc'}}
+            
+            inputProps={{style: {fontFamily:'paybooc'}}}
+            InputLabelProps={{style: {fontFamily:'paybooc'}}}
             autoFocus
             required
             autoComplete="off"
             error={valueRefSex.current.value === "F" || valueRefSex.current.value === "M" ? false : true}
-            helperText="Type M or F"
             margin="dense"
             id="sex"
             label="sex"
@@ -288,11 +292,11 @@ export default function AnimalShop({ userId }) {
             }}
           />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => {
+        <DialogActions style ={{fontFamily:'paybooc'}}>
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setAnimalSexOpen(false);
           }}>취소</Button>
-          <Button onClick={() => {
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setAnimalSexOpen(false);
             console.log(newName);
             console.log(newSex);

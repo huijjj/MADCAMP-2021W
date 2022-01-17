@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 import '../../style/Final.css'
@@ -72,10 +73,11 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
         <div class="FinalInput">
           { !isFinish && 
             <>
-            <form onSubmit={onSubmit}>
-              {/* <img src={`images/${animal.type}.png`} weight={100} height={100}/> */}
-              <input name="finalAnswer" autoComplete="off"/>
-              <input type="submit" value="입력" />
+            <form style={{display: "flex"}} onSubmit={onSubmit}>
+              <div>
+                <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="ANSWER" style={{ width: "100%", style: {fontFamily:'paybooc'} }} size="small" autoComplete="off" name="finalAnswer"/>
+              </div>
+              <input style ={{ marginLeft: "0.5rem",padding: "0.3rem", borderRadius: "0.3rem", border: "none", backgroundColor: "rgb(255, 192, 203)", fontFamily:'paybooc'}} type="submit" value="입력" />
             </form>
             </>
           }

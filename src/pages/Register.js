@@ -47,10 +47,10 @@ export default function Register() {
         <div className="Title">REGISTER</div>
         <form className="LoginForm" onSubmit={onRegister}>
           <div className="LoginFormInput">
-            <TextField label="ID" style={{ marginBottom: "0.6rem"}} autoComplete="off" size="small" name="id"/>
-            <TextField label="PASSWORD" style={{ marginBottom: "0.6rem"}} autoComplete="off" size="small" name="pwd"/>
-            <TextField label="NICKNAME" style={{ marginBottom: "0.6rem"}} autoComplete="off" size="small" name="nick"/>
-            <TextField label="E-MAIL" autoComplete="off" size="small"/>
+            <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="ID" style={{ marginBottom: "0.6rem"}} autoComplete="off" size="small" name="id"/>
+            <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="PASSWORD" style={{ marginBottom: "0.6rem"}} autoComplete="off" size="small" name="pwd"/>
+            <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="NICKNAME" style={{ marginBottom: "0.6rem"}} autoComplete="off" size="small" name="nick"/>
+            <TextField inputProps={{style: {fontFamily:'paybooc'}}} InputLabelProps={{style: {fontFamily:'paybooc'}}} label="E-MAIL" autoComplete="off" size="small"/>
           </div>
           <input type="submit" className="RegisterSubmitButton" variant="contained" value="REGISTER"></input>
         </form>
@@ -61,10 +61,10 @@ export default function Register() {
           계정이 이미 있으신가요?
         </div>
       </div>
-      <Dialog open={alertOpen}>
-        <DialogTitle style={{ display: "flex", justifyContent: "center" }} >{alertTitle}</DialogTitle>
-        <DialogActions>
-          <Button onClick={() => {
+      <Dialog style ={{fontFamily:'paybooc'}} open={alertOpen}>
+        <DialogTitle style={{ display: "flex", justifyContent: "center", fontFamily:'paybooc' }} >{alertTitle}</DialogTitle>
+        <DialogActions style ={{fontFamily:'paybooc'}} >
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             if(done) {
               navigate("/");
             }
