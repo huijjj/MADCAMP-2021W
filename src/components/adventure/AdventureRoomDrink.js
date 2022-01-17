@@ -11,43 +11,43 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
   const difficultyList = [
     {
       stamina: 100,
-      speed: 1
-    },
-    {
-      stamina: 100,
-      speed: 1.2
-    },
-    {
-      stamina: 100,
-      speed: 1.4
-    },
-    {
-      stamina: 150,
-      speed: 1.4
-    },
-    {
-      stamina: 150,
       speed: 2
     },
     {
-      stamina: 170,
-      speed: 2.5
+      stamina: 100,
+      speed: 2.4
     },
     {
-      stamina: 200,
-      speed: 3
+      stamina: 100,
+      speed: 2.8
     },
     {
-      stamina: 220,
-      speed: 3.5
+      stamina: 150,
+      speed: 2.8
     },
     {
-      stamina: 250,
+      stamina: 150,
       speed: 4
     },
     {
+      stamina: 170,
+      speed: 5
+    },
+    {
+      stamina: 200,
+      speed: 6
+    },
+    {
+      stamina: 220,
+      speed: 7
+    },
+    {
+      stamina: 250,
+      speed: 8
+    },
+    {
       stamina: 300,
-      speed: 4.5
+      speed: 9
     }
   ]
 
