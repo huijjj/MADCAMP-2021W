@@ -1,37 +1,26 @@
  .Floor {
   width: 100%;
   height: 100%;
-  background-image: url("../../public/images/floor_background.jpg");
-  background-size: cover;
-
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .FloorHeader {
   color: white;
   font-size: 3rem;
   font-weight: bold;
-
-  align-self: center;
-  justify-self: center;
-
-  padding-top: 3rem;
-}
-
-.FloorBody {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   padding-top: 3rem;
+  height: 5%;
+  position: absolute;
+  top: 0px;
 }
 
-.FloorCard {
-  padding-left: 2rem;
-}
-
-/* .FloorStamina {
-  width: inherit;
-} */
 
 #animalStamina::-webkit-progress-bar {
   color: red;
@@ -41,13 +30,30 @@
   color: red;
 }
 
-.FloorDoors {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
+.FloorCard {
+  margin-top: 2rem;
 }
 
-.FloorExit {
-  align-self: center;
+.FloorLeft {
+  width: 50%;
+  height: 100%;
+  background-image: url("../../public/images/floorLeft0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.FloorLeft:hover {
+  background-image: url("../../public/images/floorLeft1.jpg");
+}
+
+.FloorRight {
+  width: 50%;
+  height: 100%;
+  background-image: url("../../public/images/floorRight0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.FloorRight:hover {
+  background-image: url("../../public/images/floorRight1.jpg");
 }
