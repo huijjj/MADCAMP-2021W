@@ -43,7 +43,7 @@ export default function Adventure({ userId }) {
         : (floor===11)
           ? <AdventureRoomFinal user={user} animal={animal} setStamina={setStamina} />
           : (isLobby)
-            ? <AdventureLobby animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} stamina={stamina} setStamina={setStamina} setStaminaMAX={setStaminaMAX} />
+            ? <AdventureLobby animal={animal} animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} stamina={stamina} setStamina={setStamina} setStaminaMAX={setStaminaMAX} />
             : (isInGame)
               ? <AdventureInGame animal={animal} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
               : <AdventureFloor user={user} animal={animal} stamina={stamina} floor={floor} setIsInGame={setIsInGame} staminaMAX={staminaMAX} setStaminaMAX={setStaminaMAX}/> 
