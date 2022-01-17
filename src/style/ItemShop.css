@@ -9,14 +9,13 @@
 
 .itemshopBackground {
   position: absolute;
-  left: 41%;
+  left: 40%;
   top: 17%;
-  width: 14%;
+  width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column; 
-  padding: 2rem;
   border-radius: 2rem;
   background-color: rgba(255, 255, 255);
 }
@@ -47,4 +46,12 @@
   font-weight: bold;
   margin-top: 5.0rem;
   margin-right: 0.5rem;
+}
+
+.ItemShopItemItem {
+  width: 100%;
+}
+.ItemShopItemItem:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2rem;
 }
