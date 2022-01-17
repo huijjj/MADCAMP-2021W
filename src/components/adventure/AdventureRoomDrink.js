@@ -4,9 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 import GameBar from './GameBar';
 
-import "../../style/Room.css"
+import "../../style/Drink.css"
 
-export default function AdventureRoomDrink({ animal, floor, stamina, setStamina, setFloor, setIsInGame, setIsDrink }) {
+export default function AdventureRoomDrink({ animal, floor, stamina, setStamina, staminaMAX, setFloor, setIsInGame, setIsDrink }) {
   const difficultyList = [
     {
       stamina: 100,
@@ -65,29 +65,34 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
   // setIsDrink(true);
   
   return (
-    <div className='RoomBack'>
-      <div className="Room">
-        <img src="/images/hyunji.png" height="100%" />
-
-        <h3>
-          현지 체력: {hStamina}
-        </h3>
-
-        <h3>
-          내 체력: {stamina}
-        </h3>
-
-        <div>
-          <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+    <div className='DrinkBack'>
+      <div className="Drink">
+        <div className="DrinkImg">
+          <img src="/images/hyunji.png" height="100%" />
         </div>
-        
-        <>{
-          (hStamina <= 0)
-          ? <Button onClick={handleNext}>
-            {`${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`}
-          </Button>
-          : <></>
-        }</>
+        <div className="DrinkGame">
+          <div className="DrinkStamina">
+            <progress max="1" value={hStamina/difficultyList[floor-1].stamina}></progress>
+            {hStamina}/{difficultyList[floor-1].stamina}
+          </div>
+
+          <div>
+            <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+          </div>
+
+          <div className="DrinkStamina">
+            <progress max="1" value={stamina/staminaMAX}></progress>
+            {stamina}/{staminaMAX}
+          </div>
+          
+          <>{
+            (hStamina <= 0)
+            ? <Button variant="contained" color="success" onClick={handleNext}>
+              {`${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`}
+            </Button>
+            : <></>
+          }</>
+        </div>
       </div>
     </div>
   );

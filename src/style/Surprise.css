@@ -1,0 +1,9 @@
+.SurpriseBack {
+  background-image: url("/public/images/surprise_background.jpeg");
+  background-size: cover;
+}
+
+.Surprise {
+  width: 100vh;
+  height: 100vh;
+}

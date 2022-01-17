@@ -1,0 +1,22 @@
+.DrinkBack {
+  background-image: url("../../public/images/room_background.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.Drink {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.DrinkGame {
+  align-self: center;
+  justify-self: center;
+}
+
+.DrinkStamina {
+  color: white;
+}

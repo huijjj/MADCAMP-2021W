@@ -9,6 +9,8 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
   var attackValue = 0;
   var x = 0;
   var interval;
+  const image = new Image(20, 50);
+  image.src = 'images/soju.png';
 
   const fighting = useRef();
   fighting.current = false;
@@ -25,7 +27,7 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
     var canvas = canvasRef.current;
     var ctx = canvas?.getContext("2d");
     
-    ctx.clearRect(0, 0, 500, 50)
+    ctx.clearRect(0, 0, 500, 100)
 
     ctx.fillStyle = 'rgba(0,0,0,0.4)';
     ctx.strokeStyle = 'rgba(0,153,255,0.4)';
@@ -33,23 +35,22 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.rect(300, 0, 50, 50);
+    ctx.rect(300, 0, 100, 100);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.rect(315, 0, 20, 50);
+    ctx.rect(330, 0, 40, 100);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.rect(x, 0, 10, 50);
-    ctx.fillStyle = "black";
-    ctx.fill();
+    ctx.drawImage(image, x, 0, 30, 100);
     ctx.closePath();
     
+    console.log(stoppedX);
     stoppedX = x;
     x += speed;
   };
@@ -95,7 +96,7 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
  
   return (
     <>
-      <canvas ref={canvasRef} width={400} height={50} />
+      <canvas ref={canvasRef} width={500} height={100} />
       <br />
       <FightButton hStamina={hStamina} fight={fighting} onFight={onFight} onStop={onStop}/>
     </>
