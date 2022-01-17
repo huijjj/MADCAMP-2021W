@@ -92,8 +92,8 @@ export default function ItemShop({ userId }) {
       <div>
         <br></br>
         <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
-            <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover", marginRight: "10px"}} />
-            <div>
+            <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover",  marginLeft: "2rem",marginRight: "2rem"}} />
+            <div className='itemstatus'>
               <div>{item.type}</div>
               <div>{item.price}원</div>
               <br></br>
@@ -110,9 +110,9 @@ export default function ItemShop({ userId }) {
   return (
     <div className="ItemShop">
       <HomeIcon onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }}/>
-      <div className='haveMoney'>
-        <img src={`/images/icons/money.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} /> 
-        {money}원
+      <div className="haveMoney">
+        <img src={`/images/icons/money.png`} style={{height: "2.7rem", width: "3rem", objectFit: "cover", marginLeft:"1.3rem", marginTop:"5.6rem" }} />
+        <div className='moneyInfoItem'>{money}원</div>
       </div>
       <div className='itemshopLayout'>
         <div className="itemshopBackground">

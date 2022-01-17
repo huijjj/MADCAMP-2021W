@@ -9,9 +9,9 @@
 
 .itemshopBackground {
   position: absolute;
-  left: 43%;
-  top: 20%;
-  width: 10%;
+  left: 41%;
+  top: 17%;
+  width: 14%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,17 +24,27 @@
   align-items: center;
   justify-content: center;
 }
+.itemstatus {
+  margin-right: 1.5rem;
+}
 
 .haveMoney {
   position: absolute;
-  left: 80%;
-  top: 90%;
-  width: 14%;
+  left: 78%;
+  top: -5%;
+  width: 10%;
+  height: 15%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column; 
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 255, 255);
+  justify-content: space-between;
+  flex-direction: row; 
+  padding: 4rem;
+  background-image: url("../../public/images/moneyBarItem.png");
+  background-size: cover;
+}
+.moneyInfoItem {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 5.0rem;
+  margin-right: 0.5rem;
 }
