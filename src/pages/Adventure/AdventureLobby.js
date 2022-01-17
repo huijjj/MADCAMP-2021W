@@ -21,8 +21,9 @@ import Slide from '@mui/material/Slide';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
-import '../../style/Lobby.css'
-import '../../style/MyFarm.css'
+import '../../style/Lobby.css';
+import '../../style/MyFarm.css';
+import ProgressBarLobby from '../../components/adventure/ProgressBarLobby';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -87,7 +88,7 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
                   (animal, index) =>
                     <Grid item xs={4} key={index}>
                     <div className="LobbyCard">
-                      <Card key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
+                      <Card key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
                         <CardMedia 
                           component="img"
                           image={`/images/${animal.type}.png`}
@@ -95,13 +96,14 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
                           onClick={() => handleClickExit(index)}
                         />
                         <CardContent> 
-                          <Typography gutterBottom variant="h5" component="div">
+                          <Typography gutterBottom variant="h5" component="div" color="common.white">
                             {animal.name}({animal.sex})
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            지: {animal.geee}<br/>
-                            덕: {animal.duck}<br/>
-                            체: {animal.chae}<br/>
+                          <Typography variant="body1" color="common.white">
+                              <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
+                              <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
+                              <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
+                            
                           </Typography>
                         </CardContent>
                       </Card>
