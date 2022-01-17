@@ -40,7 +40,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
 
     setExitOpen(false);
     axios.put(`${API_BASE}/user/money/${user.id}`, {
-      money: user.Money + floor*10
+      money: user.Money + ((floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20)
     }).then(
       res => console.log(res)
     );
@@ -104,7 +104,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            포기하면 {floor*10}원을 얻을 수 있습니다
+            포기하면 {(floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20}원을 얻을 수 있습니다
           </DialogContentText>
         </DialogContent>
 
