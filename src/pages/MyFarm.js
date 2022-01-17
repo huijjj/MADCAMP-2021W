@@ -28,6 +28,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const stats = [
   {
+    geee: 50,
+    duck: 0, 
+    chae: 0
+  },
+  {
     geee: 0,
     duck: 50,
     chae: 0
@@ -36,11 +41,6 @@ const stats = [
     geee: 0,
     duck: 0,
     chae: 50
-  },
-  {
-    geee: 50,
-    duck: 0, 
-    chae: 0
   }
 ];
 
@@ -191,7 +191,7 @@ export default function MyFarm({ userId }) {
   const onItemItemClick = (itemType) => {
     console.log(itemType);
     if(window.confirm(`${itemType === "rose" ? "흑장미" : itemType === "dumbell" ? "아령" : "책"}을(를) 사용하시겠습니까?`)) {
-      setUseItem(itemList[itemType === "rose" ? 0 : itemType === "dumbell" ? 1 : 2][0]); 
+      setUseItem(itemList[itemType === "rose" ? 1 : itemType === "dumbell" ? 2 : 0][0]); 
       setContentType(CONTENT_ANIMAL);
     }
   }
@@ -221,8 +221,8 @@ export default function MyFarm({ userId }) {
                 <ItemListItem 
                   onClick={onItemItemClick}
                   stat={stats[i]}
-                  type={i === 0 ? "rose" : i === 1 ? "dumbell" : "book"} 
-                  count={i === 0 ? roseCount : i === 1 ? dumbellCount : bookCount}/>
+                  type={i === 0 ? "book" : i === 1 ? "rose" : "dumbell"} 
+                  count={i === 0 ? bookCount : i === 1 ? roseCount : dumbellCount}/>
               </div>
             );
           }
