@@ -4,11 +4,19 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../style/ItemShop.css';
+import { margin } from '@mui/system';
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
 
 const items = [
+  {
+    type: "book",
+    price: 100,
+    geee: 50,
+    duck: 0,
+    chae: 0
+  },
   {
     type: "rose",
     price: 100,
@@ -22,13 +30,6 @@ const items = [
     geee: 0,
     duck: 0,
     chae: 50
-  },
-  {
-    type: "book",
-    price: 100,
-    geee: 50,
-    duck: 0,
-    chae: 0
   }
 ];
 
@@ -88,15 +89,20 @@ export default function ItemShop({ userId }) {
 
   const renderItems = (item, i) => {
     return (
-      <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
-          <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover"}}/>
-          <div>
-            <div>{item.type} {item.price}원</div>
-            <br></br>
-            <div>지: {item.geee}</div>
-            <div>덕: {item.duck}</div>
-            <div>체: {item.chae}</div>
-          </div>
+      <div>
+        <br></br>
+        <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
+            <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover", marginRight: "10px"}} />
+            <div>
+              <div>{item.type}</div>
+              <div>{item.price}원</div>
+              <br></br>
+              <div>지: {item.geee}</div>
+              <div>덕: {item.duck}</div>
+              <div>체: {item.chae}</div>
+            </div>
+        </div>
+        <br></br>
       </div>
     );
   }
