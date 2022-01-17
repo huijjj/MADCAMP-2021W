@@ -486,8 +486,6 @@ app.get('/api/item/owner/:ownerId', (req, res) => {
   let sqlOwnerItemRose = 'SELECT * from Item where owner = ? and type = \'rose\'';
   let sqlOwnerItemDumbell = 'SELECT * from Item where owner = ? and type = \'dumbell\'';
   let sqlOwnerItemBook = 'SELECT * from Item where owner = ? and type = \'book\'';
-  let sqlOwnerItemJangBook = 'SELECT * from Item where owner = ? and type = \'jangBook\'';
-  let sqlOwnerItemRyuMedal = 'SELECT * from Item where owner = ? and type = \'ryuMedal\'';
   let paramOwnerItem = [ownerId];
   connection.query(sqlOwnerItemBook, paramOwnerItem, (error, results) => {
     if (error) throw error;
@@ -498,16 +496,8 @@ app.get('/api/item/owner/:ownerId', (req, res) => {
       connection.query(sqlOwnerItemDumbell, paramOwnerItem, (error, results) => {
         if (error) throw error;
         inventory.push(results);
-        connection.query(sqlOwnerItemJangBook, paramOwnerItem, (error, results) => {
-          if (error) throw error;
-          inventory.push(results);
-          connection.query(sqlOwnerItemRyuMedal, paramOwnerItem, (error, results) => {
-            if (error) throw error;
-            inventory.push(results);
-            console.log('/api/item/owner/'+ownerId);
-            res.json(inventory);
-          });
-        });
+        console.log('/api/item/owner/'+ownerId);
+        res.json(inventory);
       });
     });
   });
