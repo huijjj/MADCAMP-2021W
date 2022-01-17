@@ -5,6 +5,11 @@
   background-attachment: fixed;
 }
 
+.LobbyHomeButton {
+  position: absolute;
+
+}
+
 .Lobby {
   width: 100vw;
   /* height: 100vh; */
@@ -16,4 +21,12 @@
   align-items: center;
   
   padding: 3rem;
+}
+
+.LobbyCard:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.LobbyStat {
+  width: 100%;
 }
