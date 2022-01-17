@@ -70,6 +70,10 @@ export default function AnimalShop({ userId }) {
 
   const [ animalSexOpen, setAnimalSexOpen ] = useState(false);
   const [ newSex, setNewSex ] = useState("");
+
+  const [ adoptOpen, setAdoptOpen ] = useState(false);
+  const [ isAdopt, setIsAdopt ] = useState(false);
+  const [ adoptId, setAdoptId ] = useState(-1);
   
   const valueRefName = useRef('');
   const valueRefSex = useRef('');
@@ -164,20 +168,24 @@ export default function AnimalShop({ userId }) {
 
     }
     else { // shelter
-      if(window.confirm(`${name}을(를) 입양하시겠습니까?`)) {
-        // check if adopting is possible
-        // send request
-        axios.put(`${API_BASE}/animal/adopt/${userId}`, {
-          id: id
-        }).then(res => {
-          console.log(res.data);
-          axios.get(`${API_BASE}/animal/abandoned`).then(res => {
-            setAnimalList(res.data);
-            console.log(res.data);
-          }).catch(err => console.log(err));
-          window.alert(`${name}을(를) 입양했습니다!`);
-        }).catch(err => console.log(err));
-      }
+      setNewName(name);
+      setConfirmTitle(`${name}을(를) 입양하시겠습니까?`);
+      setAdoptOpen(true);
+      setAdoptId(id);
+      // if(window.confirm(`${name}을(를) 입양하시겠습니까?`)) {
+      //   // check if adopting is possible
+      //   // send request
+      //   axios.put(`${API_BASE}/animal/adopt/${userId}`, {
+      //     id: id
+      //   }).then(res => {
+      //     console.log(res.data);
+      //     axios.get(`${API_BASE}/animal/abandoned`).then(res => {
+      //       setAnimalList(res.data);
+      //       console.log(res.data);
+      //     }).catch(err => console.log(err));
+      //     window.alert(`${name}을(를) 입양했습니다!`);
+      //   }).catch(err => console.log(err));
+      // }
     }
   }
 
@@ -298,6 +306,39 @@ export default function AnimalShop({ userId }) {
               setMoney(money - price);
             }).catch(err => console.log(err));
           }}>확인</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={adoptOpen}
+        TransitionComponent={Transition}>
+        <DialogTitle>{confirmTitle}</DialogTitle>
+        <DialogActions>
+        { available && 
+          <Button onClick={() => {
+            setAdoptOpen(false);
+          }}>취소</Button>}
+        { available && 
+          <Button onClick={() => {
+            setAvailable(false);
+            setConfirmTitle(`${newName}을(를) 입양했습니다!`);
+            setIsAdopt(true);
+          }}>확인</Button>}
+        { isAdopt &&
+          <Button onClick={() => {
+            axios.put(`${API_BASE}/animal/adopt/${userId}`, {
+              id: adoptId
+            }).then(res => {
+              console.log(res.data);
+              axios.get(`${API_BASE}/animal/abandoned`).then(res => {
+                setAnimalList(res.data);
+                console.log(res.data);
+              }).catch(err => console.log(err));
+            });
+            setAdoptOpen(false);
+            setAvailable(true);
+            setIsAdopt(false);
+          }}>확인</Button>}
         </DialogActions>
       </Dialog>
     </div>
