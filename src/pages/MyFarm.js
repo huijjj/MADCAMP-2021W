@@ -341,7 +341,7 @@ export default function MyFarm({ userId }) {
                         reward = 150;
                       }
                       if(curLevel === "1") {
-                        if((newGeee + newDuck + newChae) >= 100) {
+                        if((newGeee >= 100) && (newDuck >= 100) (newChae >= 100)) {
                           console.log("lev 1 to lev 2");
                           axios.put(`${API_BASE}/animal/evolve/${itemTargetId}`, {
                             type: next  
@@ -356,7 +356,7 @@ export default function MyFarm({ userId }) {
                         }
                       }
                       else if(curLevel === "2") {
-                        if((newGeee + newDuck + newChae) >= 200) {
+                        if((newGeee >= 200) && (newDuck >= 200) (newChae >= 200)) {
                           console.log("lev 2 to lev 3");
                           axios.put(`${API_BASE}/animal/evolve/${itemTargetId}`, {
                             type: next  
@@ -371,7 +371,7 @@ export default function MyFarm({ userId }) {
                         }
                       }
                       else {
-                        if((newGeee + newDuck + newChae) >= 300) {
+                        if((newGeee === 300) && (newDuck === 300) (newChae === 300)) {
                           console.log("graduate");
                           axios.delete(`${API_BASE}/animal/graduate/${userId}`, {
                             data: {
