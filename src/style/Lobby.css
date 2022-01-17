@@ -1,18 +1,18 @@
 .LobbyBack {
-  background-image: url("../../public/images/lobby_background.jpeg");
-  background-size: cover;
-
-  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 .LobbyHomeButton {
   position: absolute;
-
 }
 
 .Lobby {
-  width: 100vw;
-  /* height: 100vh; */
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/lobby_background.jpeg");
+  background-size: contain;
+  background-attachment: fixed;
 }
 
 .LobbyGrid {

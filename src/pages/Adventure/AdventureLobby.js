@@ -88,7 +88,7 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
                   (animal, index) =>
                     <Grid item xs={4} key={index}>
                     <div className="LobbyCard">
-                      <Card key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
+                      <Card key={index} sx={{ backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
                         <CardMedia 
                           component="img"
                           image={`/images/${animal.type}.png`}
