@@ -39,14 +39,14 @@ export default function Adventure({ userId }) {
     <>
       {
         (stamina<=0)
-        ? <AdventureFeneral animal={animal} />
+        ? <AdventureFeneral style ={{fontFamily:'paybooc'}} animal={animal} />
         : (floor===11)
-          ? <AdventureRoomFinal user={user} animal={animal} setStamina={setStamina} />
+          ? <AdventureRoomFinal style ={{fontFamily:'paybooc'}} user={user} animal={animal} setStamina={setStamina} />
           : (isLobby)
-            ? <AdventureLobby animal={animal} animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} stamina={stamina} setStamina={setStamina} setStaminaMAX={setStaminaMAX} />
+            ? <AdventureLobby style ={{fontFamily:'paybooc'}} animal={animal} animalList={animalList} setIsLobby={setIsLobby} setAnimal={setAnimal} setFloor={setFloor} stamina={stamina} setStamina={setStamina} setStaminaMAX={setStaminaMAX} />
             : (isInGame)
-              ? <AdventureInGame animal={animal} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
-              : <AdventureFloor user={user} animal={animal} stamina={stamina} floor={floor} setIsInGame={setIsInGame} staminaMAX={staminaMAX} setStaminaMAX={setStaminaMAX}/> 
+              ? <AdventureInGame  style ={{fontFamily:'paybooc'}} animal={animal} stamina={stamina} setStamina={setStamina} staminaMAX={staminaMAX} floor={floor} setFloor={setFloor} setIsInGame={setIsInGame}/>
+              : <AdventureFloor style ={{fontFamily:'paybooc'}} user={user} animal={animal} stamina={stamina} floor={floor} setIsInGame={setIsInGame} staminaMAX={staminaMAX} setStaminaMAX={setStaminaMAX}/> 
       }
     </>
   );

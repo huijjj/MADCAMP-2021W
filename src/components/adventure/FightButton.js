@@ -12,7 +12,7 @@ export default function FightButton({ hStamina, fight, onFight, onStop }) {
   }
 
   return (<>
-      {(hStamina > 0) ? <Button variant="contained" color="success" onClick={onClick}>싸우기</Button> : <></>}
+      {(hStamina > 0) ? <Button style ={{fontFamily:'paybooc'}} variant="contained" color="success" onClick={onClick}>싸우기</Button> : <></>}
     </>);
 } 
 

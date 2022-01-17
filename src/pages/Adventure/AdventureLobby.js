@@ -61,8 +61,9 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
           animalList?.map((animal, index) =>
           <Grid item xs={4}>
               <div className="LobbyCard">
-                <Card key={index} sx={{ backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
+                <Card key={index} style ={{fontFamily:'paybooc'}} sx={{ backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
                   <CardMedia 
+                    style ={{fontFamily:'paybooc'}}
                     component="img"
                     image={`/images/${animal.type}.png`}
                     alt={`${animal.type}.png`}
@@ -74,7 +75,7 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
                     <Typography variant="body1" color="common.white">
                       <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
                       <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
-                      <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} />
+                      <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
                     </Typography>
                   </CardContent>
                 </Card>
@@ -87,16 +88,16 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
         open={exitOpen}
         onClose={handleCloseNo}
         TransitionComponent={Transition} >
-        <DialogTitle>{animal?.name}와(과) 함께 탐험을 시작 하시겠습니까?</DialogTitle>
+        <DialogTitle style ={{fontFamily:'paybooc'}}>{animal?.name}와(과) 함께 탐험을 시작 하시겠습니까?</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText style ={{fontFamily:'paybooc'}}>
             탐험중에는 동물을 변경할 수 없습니다<br/>
             (체력이 0 보다 낮아지면 동물이 죽을 수도 있습니다)
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseNo}>아니요</Button>
-          <Button onClick={() => handleCloseYes()}>네</Button>
+        <DialogActions style ={{fontFamily:'paybooc'}}>
+          <Button style ={{fontFamily:'paybooc'}} onClick={handleCloseNo}>아니요</Button>
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => handleCloseYes()}>네</Button>
         </DialogActions>
       </Dialog>
     </div>

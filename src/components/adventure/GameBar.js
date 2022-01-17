@@ -93,7 +93,7 @@ export default function GameBar({ isStart, speed, stamina, setStamina, hStamina,
     <>
       <canvas ref={canvasRef} width={800} height={160} />
       <br />
-      <FightButton hStamina={hStamina} fight={fighting} onFight={onFight} onStop={onStop}/>
+      <FightButton style ={{fontFamily:'paybooc'}} hStamina={hStamina} fight={fighting} onFight={onFight} onStop={onStop}/>
     </>
   );
 }

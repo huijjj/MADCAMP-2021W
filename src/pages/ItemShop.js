@@ -143,15 +143,19 @@ export default function ItemShop({ userId }) {
       <Dialog
         open={itemConfirmOpen}
         TransitionComponent={Transition}>
-        <DialogTitle>{confirmTitle}</DialogTitle>
+        <DialogTitle
+          style ={{fontFamily:'paybooc'}}
+        >{confirmTitle}</DialogTitle>
         <DialogActions>
-          <Button onClick={() => {
+          <Button style ={{fontFamily:'paybooc'}} onClick={() => {
             setItemConfirmOpen(false);
             setType("");
             setAvailable(true);
           }}>취소</Button>
           { available &&
-          <Button onClick={() => {
+          <Button 
+          style ={{fontFamily:'paybooc'}}
+          onClick={() => {
             if(getPrice(type) <= money) {
               // send request
               axios.post(`${API_BASE}/item/buy/${userId}`, {

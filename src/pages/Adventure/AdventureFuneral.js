@@ -36,7 +36,7 @@ export default function AdventureFeneral({ animal }) {
           <img src={`images/portrait.png`} />
         </div>
         <div className="FuneralBody">과음으로 인해 {animal.name}이(가) 사망했습니다</div>
-        <Button onClick={handleClickExit}>
+        <Button style ={{fontFamily:'paybooc'}} onClick={handleClickExit}>
           슬픈 마음으로 홈으로 돌아가기
         </Button>
       </div>
