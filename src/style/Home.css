@@ -21,6 +21,7 @@
 }
 
 .HomeUserStatusNick {
+  font-family: "paybooc";
   font-size: 2rem;
   font-weight: bold;
   margin-top: 1rem;
@@ -30,6 +31,7 @@
 }
 
 .HomeUserStatusOther {
+  font-family: "paybooc";
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
@@ -200,6 +202,7 @@
 }
 
 .HomeItem16 {
+  font-family: "newVillage";
   display: flex;
   align-items: flex-end;
   font-size: 1.5rem;
@@ -331,6 +334,7 @@
 }
 
 .HomeItem31 {
+  font-family: "newVillage";
   font-size: 1.5rem;
   font-weight: bold;
   display: flex;
@@ -380,6 +384,7 @@
   background-image: url("/public/images/kaist/kaistmap_035.jpg");
 }
 .HomeItem36 {
+  font-family: "newVillage";
   display: flex;
   align-items:flex-end;
   justify-content: center;
@@ -505,6 +510,7 @@
   background-image: url("/public/images/kaist/kaistmap_051.jpg");
 }
 .HomeItem52 {
+  font-family: "newVillage";
   font-size: 1.5rem;
   font-weight: bold;
   display: flex;

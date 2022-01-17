@@ -38,7 +38,7 @@ function getPrice(type) {
     case "dumbell":
     case "book":
     case "rose":
-      return 100;  
+      return 25;  
 
     default:
       return 0;

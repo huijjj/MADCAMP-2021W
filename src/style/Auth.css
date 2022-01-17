@@ -19,12 +19,14 @@
 }
 
 .Title {
+  font-family: "paybooc";
   font-size: 6rem;
   margin-bottom: 2rem;
   font-weight: bold;
 }
 
 .LoginForm {
+  font-family: "paybooc";
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -32,23 +34,27 @@
 }
 
 .LoginFormInput {
+  font-family: "paybooc";
   display: flex;
   flex-direction: column;
   margin-right: 0.5rem;
 }
 
 .LoginFormInputId {
+  font-family: "paybooc";
   margin-bottom: 0.2rem;
 }
 
 .RegisterButton {
+  font-family: "paybooc";
   margin-top: 1rem;
-  font-size: 0.5rem;
+  font-size: 1rem;
   color: black;
   font-weight: bold;
 }
 
 .SubmitButton {
+  font-family: "paybooc";
   border-radius: 0.3rem;
   border: none;
   background-color: rgb(255, 192, 203);
