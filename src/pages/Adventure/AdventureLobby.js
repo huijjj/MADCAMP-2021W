@@ -54,6 +54,7 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
   };
   
   return (
+    <>
     <div className="Lobby">
       <>
       <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
@@ -62,8 +63,8 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
         <Grid container spacing={3}>
           {animalList?.map(
               (animal, index) =>
-                <Grid item xs={4}>
-                <Card className="LobbyCard" key={index} sx={{ maxWidth: 345 }}>
+                <Grid item xs={4} key={index}>
+                <Card className="LobbyCard" key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
                   <CardMedia 
                     component="img"
                     image={`/images/${animal.type}.png`}
@@ -116,6 +117,7 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
         </Box>
       </div>
       </>
-    </div>  
+    </div>
+    </>  
   );
 }

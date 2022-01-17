@@ -1,9 +1,6 @@
 .Lobby {
   width: 100%;
-  /* height: 100%; */
-  background-image: url("../../public/images/casttle.jpeg");
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url("../../public/images/lobby_background.jpeg");
   background-size: cover;
 
   background-attachment: fixed;
@@ -11,17 +8,8 @@
 
 .LobbyGrid {
   display: flex;
-
   justify-content: center;
   align-items: center;
   
   padding: 3rem;
-}
-
-.LobbyCard {
-  opacity: 0.8;
-}
-
-Dialog::backdrop {
-  background: rgba(255,0,0,.25);
 }

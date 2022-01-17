@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AdventureRoomFinal from './AdventureRoomFinal';
 import GameBar from './GameBar';
 
+import "../../style/Room.css"
+
 export default function AdventureRoomDrink({ animal, floor, stamina, setStamina, setFloor, setIsInGame, setIsDrink }) {
   const difficultyList = [
     {
@@ -63,31 +65,30 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
   // setIsDrink(true);
   
   return (
-    <div>
-      <h1>
-        현지랑 술 배틀
-      </h1>
-      <img src="/images/이현지.png" width={500} height={500} />
+    <div className='RoomBack'>
+      <div className="Room">
+        <img src="/images/hyunji.png" height="100%" />
 
-      <h3>
-        현지 체력: {hStamina}
-      </h3>
+        <h3>
+          현지 체력: {hStamina}
+        </h3>
 
-      <h3>
-        내 체력: {stamina}
-      </h3>
+        <h3>
+          내 체력: {stamina}
+        </h3>
 
-      <div>
-        <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+        <div>
+          <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
+        </div>
+        
+        <>{
+          (hStamina <= 0)
+          ? <Button onClick={handleNext}>
+            {`${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`}
+          </Button>
+          : <></>
+        }</>
       </div>
-      
-      <>{
-        (hStamina <= 0)
-        ? <Button onClick={handleNext}>
-          {`${(floor===10) ? "마지막" : floor + 1}층으로 이동하기`}
-        </Button>
-        : <></>
-      }</>
     </div>
   );
 }

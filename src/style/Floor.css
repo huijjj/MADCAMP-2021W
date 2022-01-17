@@ -1,3 +1,53 @@
+.Floor {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/floor_background.jpg");
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.FloorHeader {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+
+  align-self: center;
+  justify-self: center;
+
+  padding-top: 3rem;
+}
+
+.FloorBody {
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+}
+
+.FloorCard {
+  padding-left: 2rem;
+}
+
 .FloorStamina {
   width: inherit;
+}
+
+#animalStamina::-webkit-progress-bar {
+  color: red;
+}
+
+#animalStamina::-webkit-progress-value {
+  color: red;
+}
+
+.FloorDoors {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.FloorExit {
+  align-self: center;
 }

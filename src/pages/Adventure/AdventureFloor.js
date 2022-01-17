@@ -54,52 +54,51 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
 
   return (
     <div class="Floor">
-      <h1>
-        {(floor === 11)
-        ? "마지막 층" 
-        : `${floor}층`}
-      </h1>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia 
-          component="img"
-          image={`/images/${animal.type}.png`}
-          alt={`${animal.type}.png`}
-        />
-        <CardContent> 
-          <Typography gutterBottom variant="h5" component="div">
-            {animal.name}({animal.sex})
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            지: {animal.geee}<br/>
-            덕: {animal.duck}<br/>
-            체: {animal.chae}<br/>
-          </Typography>
-          <div className="FloorStamina">
-            <progress 
-              id="animalStamina" 
-              max="1" 
-              value={stamina/staminaMAX}
-              style={{ width: "75%" }}
-            >
-            </progress>
-            &nbsp;&nbsp;&nbsp;{stamina}/{staminaMAX}
+      <div className="FloorHeader">
+        {floor}층
+      </div>
+      <div className="FloorBody">
+        <div className="FloorCard">
+          <Card sx={{ maxWidth: 300, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
+            <CardMedia 
+              component="img"
+              image={`/images/${animal.type}.png`}
+              alt={`${animal.type}.png`}
+            />
+            <CardContent> 
+              <Typography gutterBottom variant="h5" component="div">
+                {animal.name}({animal.sex})
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                지: {animal.geee}<br/>
+                덕: {animal.duck}<br/>
+                체: {animal.chae}<br/>
+              </Typography>
+              <div className="FloorStamina">
+                <progress 
+                  id="animalStamina" 
+                  max="1" 
+                  value={stamina/staminaMAX}
+                  style={{ width: "70%" }}
+                >
+                </progress>
+                &nbsp;&nbsp;&nbsp;{stamina}/{staminaMAX}
+              </div>
+              
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="FloorDoors">
+          <div className="FloorDoor">
+            <img src="/images/door.png" width="400" height="400" onClick={handleClickDoor}/>
+            <img src="/images/door.png" width="400" height="400" onClick={handleClickDoor}/><br/>
           </div>
-          
-        </CardContent>
-      </Card>
-      
-
-      <Button onClick={handleClickDoor}>
-        왼쪽 문
-      </Button>
-
-      <Button onClick={handleClickDoor}>
-        오른쪽 문
-      </Button>
-
-      <Button onClick={handleClickExit}>
-        포기하기
-      </Button>
+          <div className="FloorExit">
+            <Button variant="contained" color="error" onClick={handleClickExit}>포기하기</Button>
+          </div>
+        </div>  
+      </div>
 
       <Dialog
         open={exitOpen}
