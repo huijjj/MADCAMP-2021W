@@ -330,12 +330,25 @@ app.put('/api/animal/change/:id', (req, res) => {
   let paramChangeAnimal = [Number(geee), Number(duck), Number(chae), Number(adventureCount), Number(itemCount), id];
   connection.query(sqlChangeAnimal, paramChangeAnimal, (err, result, fields) => {
     if (err) throw err;
-    let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
-    let paramInfoAnimal = [id];
-    connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
-      if (error) throw error;
-      console.log('/api/animal/change/' + id + '/' + geee +'/' + duck + '/'+chae+'/'+adventureCount+'/' +itemCount);
-      res.json(results);
+    let sqlGeeeUpperBound = 'UPDATE Animal set geee = 300 where geee > 300';
+    let sqlDuckUpperBound = 'UPDATE Animal set duck = 300 where duck > 300';
+    let sqlChaeUpperBound = 'UPDATE Animal set chae = 300 where chae > 300';
+    connection.query(sqlGeeeUpperBound, (err, result, fields) =>
+    {
+      if (err) throw err;
+      connection.query(sqlDuckUpperBound, (err, result, fields) =>{
+        if (err) throw err;
+        connection.query(sqlChaeUpperBound, (err, result, fields) =>{
+          if (err) throw err;
+          let sqlInfoAnimal = 'SELECT * from Animal where id = ?';
+          let paramInfoAnimal = [id];
+          connection.query(sqlInfoAnimal, paramInfoAnimal, (error, results) => {
+            if (error) throw error;
+            console.log('/api/animal/change/' + id + '/' + geee +'/' + duck + '/'+chae+'/'+adventureCount+'/' +itemCount);
+            res.json(results);
+          });
+        });
+      });
     });
   });
 });
@@ -506,21 +519,33 @@ app.delete('/api/item/use/:animalId', (req, res) => {
     let paramAddStat = [itemGeee, itemDuck, itemChae, animalId];
     connection.query(sqlAddStat, paramAddStat, (error, results) => {
       if (error) throw error;
-      let sqlItemUse = 'DELETE FROM Item where id=?'
-      let paramItemUse = [itemId];
-      connection.query(sqlItemUse, paramItemUse, (error, results) => {
-        if (error) throw error;
-        let delCnt = results.affectedRows;
-        if(delCnt == 0)
-        {
-          console.log('/api/item/use/'+animalId+'/'+itemId+'-> Fail');
-          res.json({status : "Fail"});
-        }
-        else
-        {
-          console.log('/api/item/use/'+animalId+'/'+itemId);
-          res.json({status : "Success"});
-        }
+      let sqlGeeeUpperBound = 'UPDATE Animal set geee = 300 where geee > 300';
+      let sqlDuckUpperBound = 'UPDATE Animal set duck = 300 where duck > 300';
+      let sqlChaeUpperBound = 'UPDATE Animal set chae = 300 where chae > 300';
+      connection.query(sqlGeeeUpperBound, (err, result, fields) =>
+      {
+        if (err) throw err;
+        connection.query(sqlDuckUpperBound, (err, result, fields) =>{
+          if (err) throw err;
+          connection.query(sqlChaeUpperBound, (err, result, fields) =>{
+            let sqlItemUse = 'DELETE FROM Item where id=?'
+            let paramItemUse = [itemId];
+            connection.query(sqlItemUse, paramItemUse, (error, results) => {
+              if (error) throw error;
+              let delCnt = results.affectedRows;
+              if(delCnt == 0)
+              {
+                console.log('/api/item/use/'+animalId+'/'+itemId+'-> Fail');
+                res.json({status : "Fail"});
+              }
+              else
+              {
+                console.log('/api/item/use/'+animalId+'/'+itemId);
+                res.json({status : "Success"});
+              }
+            });   
+          });
+        });
       });
     });
   });
