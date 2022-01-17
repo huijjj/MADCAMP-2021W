@@ -43,15 +43,6 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
       setNumAnswer(numAnswer+1);
       if (numAnswer === 3) {
         setIsFinish(true);
-        axios.put(`${API_BASE}/animal/change/${animal.id}`, {
-          geee: 30,
-          duck: 30,
-          chae: 30,
-          adventureCount: 1,
-          itemCount: 0
-        }).then(
-          res => console.log(res)
-        );
 
         axios.put(`${API_BASE}/user/money/${user.id}`, {
           money: user.Money + 300
@@ -59,59 +50,8 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
           res => console.log(res)
         );
         
-        const id = animal.id;
-        const newGeee = animal.geee + 30;
-        const newDuck = animal.duck + 30;
-        const newChae = animal.chae + 30;
-        const curLevel = animal.type.substr(-1);
-        const next = animal.type.substring(0, 3) + String(Number(curLevel) + 1);
-
-        if(curLevel === "1") {
-          if((newGeee + newDuck + newChae) >= 100) {
-            console.log("lev 1 to lev 2");
-            axios.put(`${API_BASE}/animal/evolve/${id}`, {
-              type: next  
-            }).then(res => {
-              console.log(res.data.status);
-              if(res.data.status === "Success") {
-                window.alert(`${animal.name}이(가) ${next}로 진화했습니다!`);
-              }
-            }).catch(console.log);
-          }
-        }
-        else if(curLevel === "2") {
-          if((newGeee + newDuck + newChae) >= 200) {
-            console.log("lev 2 to lev 3");
-            axios.put(`${API_BASE}/animal/evolve/${id}`, {
-              type: next  
-            }).then(res => {
-              console.log(res.data.status);
-              if(res.data.status === "Success") {
-                window.alert(`${animal.name}이(가) ${next}로 진화했습니다!`);
-              }
-            }).catch(console.log);
-          }
-        }
-        else if(curLevel === "3") {
-          if((newGeee + newDuck + newChae) >= 300) {
-            console.log("graduation");
-            axios.delete(`${API_BASE}/animal/graduate/${user.id}`, {
-              data: {
-                id: id,
-                reward: 100
-              },
-            }).then(res => {
-              console.log(res.data.status);
-              if(res.data.status === "Success") {
-                window.alert(`${animal.name}이(가) 졸업했습니다!`);
-              }
-            }).catch(console.log);
-          }
-        }
       }
-
-      }
-    
+    }
     else {
       setStamina(0);
     }
@@ -141,7 +81,6 @@ export default function AdventureRoomFinal({ user, animal, setStamina }) {
           }
           { isFinish &&
               <>
-                장병규를 이겼습니다!<br/>
                 <Button onClick={handleNext}>
                   탐험을 끝냅니다
                 </Button>
