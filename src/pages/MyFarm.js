@@ -8,10 +8,13 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import AnimalListItem from "../components/myfarm/AnimalListItem";
 import ItemListItem from "../components/myfarm/ItemListItem";
 import Animals from "../components/myfarm/Animals";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import Button from '@mui/material/Button';
 
 import axios from 'axios';
 import "../style/MyFarm.css"
@@ -23,6 +26,25 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
+const stats = [
+  {
+    geee: 0,
+    duck: 50,
+    chae: 0
+  },
+  {
+    geee: 0,
+    duck: 0,
+    chae: 50
+  },
+  {
+    geee: 50,
+    duck: 0, 
+    chae: 0
+  }
+];
+
+
 export default function MyFarm({ userId }) {
   const navigate = useNavigate();
   const [ animalList, setAnimalList ] = useState([]);
@@ -30,7 +52,14 @@ export default function MyFarm({ userId }) {
   const [ listOpen, setListOpen ] = useState(false);
   const [ contentType, setContentType ] = useState(0);
   const [ useItem, setUseItem ] = useState();
-  const [ numGrowth, setNumGrowth ] = useState(0);
+  const [ roseCount, setRoseCount ] = useState(0);
+  const [ dumbellCount, setDumbellCount ] = useState(0);
+  const [ bookCount, setBookCount ] = useState(0);
+  const [ alertTitle, setAlertTitle ] = useState("");
+  const [ alertOpen, setAlertOpen ] = useState(false);
+  const [ confirmOpen, setConfirmOpen ] = useState(false);
+
+  // rose dumbell book
 
   useEffect(() => {
     console.log(userId);
@@ -44,13 +73,16 @@ export default function MyFarm({ userId }) {
       (res) => {
         console.log(res.data);
         setItemList(res.data);
+        setRoseCount(res.data[0].length);
+        setDumbellCount(res.data[1].length);
+        setBookCount(res.data[2].length);
       }
     );
-  }, [numGrowth]);
+  }, []);
   
   const onAnimalItemClick = (id, name) => {
     if(useItem) {
-      if(window.confirm(`${name}에게 ${useItem.type}을(를) 사용하시겠습니까?`)) {
+      if(window.confirm(`${name}에게 ${useItem.type === "rose" ? "흑장미" : useItem.type === "dumbell" ? "아령" : "책"}을(를) 사용하시겠습니까?`)) {
         axios.delete(`${API_BASE}/item/use/${id}`, {
           data: {
             itemId: useItem.id
@@ -61,40 +93,25 @@ export default function MyFarm({ userId }) {
        
             // update local state after request success
             // update item list
-            setItemList(itemList.filter(e => e.id !== useItem.id));
             // update animal status
-            setAnimalList(animalList.map(e => {
+            animalList.forEach(e => {
               if(e.id === id) {
                 const newGeee = e.geee + useItem.geee;
                 const newDuck = e.duck + useItem.duck;
                 const newChae = e.chae + useItem.chae;
                 const curLevel = e.type.substr(-1);
                 const next = e.type.substring(0, 3) + String(Number(curLevel) + 1);
+              
                 if(curLevel === "1") {
                   if((newGeee + newDuck + newChae) >= 100) {
                     console.log("lev 1 to lev 2");
                     axios.put(`${API_BASE}/animal/evolve/${id}`, {
                       type: next  
-                    }).then(res => {
-                      console.log(res.data.status);
+                    }).then(res => { 
+                      console.log(res.data);
                       if(res.data.status === "Success") {
-                        setNumGrowth(numGrowth + 1);
-                        window.alert(`${e.name}이(가) 진화했습니다`);
-                        return {
-                          id: e.id,
-                          name: e.name,
-                          type: next,
-                          sex: e.sex,
-                          owner: e.owner,
-                          adventureCount: e.adventureCount,
-                          itemCount: e.itemCount,
-                          geee: newGeee,
-                          duck: newDuck,
-                          chae: newChae,
-                          isAbandonded: e.isAbandonded,
-                          X: e.X,
-                          Y: e.Y
-                        };
+                        setAlertTitle(`${e.name}이(가) 진화했습니다`);
+                        setAlertOpen(true);
                       }
                     }).catch(console.log);
                   }
@@ -104,33 +121,18 @@ export default function MyFarm({ userId }) {
                     console.log("lev 2 to lev 3");
                     axios.put(`${API_BASE}/animal/evolve/${id}`, {
                       type: next  
-                    }).then(res => {
-                      console.log(res.data.status);
+                    }).then(res => { 
+                      console.log(res.data);
                       if(res.data.status === "Success") {
-                        setNumGrowth(numGrowth + 1);
-                        window.alert(`${e.name}이(가) 진화했습니다`);
-                        return {
-                          id: e.id,
-                          name: e.name,
-                          type: next,
-                          sex: e.sex,
-                          owner: e.owner,
-                          adventureCount: e.adventureCount,
-                          itemCount: e.itemCount,
-                          geee: newGeee,
-                          duck: newDuck,
-                          chae: newChae,
-                          isAbandonded: e.isAbandonded,
-                          X: e.X,
-                          Y: e.Y
-                        };
+                        setAlertTitle(`${e.name}이(가) 진화했습니다`);
+                        setAlertOpen(true);
                       }
                     }).catch(console.log);
                   }
                 }
-                else if(curLevel === "3") {
+                else {
                   if((newGeee + newDuck + newChae) >= 300) {
-                    console.log("graduation");
+                    console.log("graduate");
                     axios.delete(`${API_BASE}/animal/graduate/${userId}`, {
                       data: {
                         id: id,
@@ -139,36 +141,31 @@ export default function MyFarm({ userId }) {
                     }).then(res => {
                       console.log(res.data.status);
                       if(res.data.status === "Success") {
-                        setNumGrowth(numGrowth + 1);
-                        window.alert(`${e.name}이(가) 졸업했습니다`);
+                        setAlertTitle(`${e.name}이(가) 졸업했습니다`);
+                        setAlertOpen(true);
                       }
                     }).catch(console.log);
                   }
                 }
-
-                return {
-                  id: e.id,
-                  name: e.name,
-                  type: e.type,
-                  sex: e.sex,
-                  owner: e.owner,
-                  adventureCount: e.adventureCount,
-                  itemCount: e.itemCount,
-                  geee: newGeee,
-                  duck: newDuck,
-                  chae: newChae,
-                  isAbandonded: e.isAbandonded,
-                  X: e.X,
-                  Y: e.Y
-                };
               }
-              else {
-                return e;
+              axios.get(`${API_BASE}/animal/owner/${userId}`).then(
+                (res) => {
+                  console.log(res.data);
+                  setAnimalList(res.data);
+                }
+              );
+              setContentType(CONTENT_ITEM);
+              setUseItem();
+            });
+            axios.get(`${API_BASE}/item/owner/${userId}`).then(
+              (res) => {
+                console.log(res.data);
+                setItemList(res.data);
+                setRoseCount(res.data[0].length);
+                setDumbellCount(res.data[1].length);
+                setBookCount(res.data[2].length);
               }
-            }));
-            setNumGrowth(numGrowth + 1);
-            setContentType(CONTENT_ITEM);
-            setUseItem();
+            );
           }
         );
       }
@@ -191,10 +188,10 @@ export default function MyFarm({ userId }) {
     }
   }
   
-  const onItemItemClick = (itemType, item) => {
+  const onItemItemClick = (itemType) => {
     console.log(itemType);
-    if(window.confirm(`${itemType}을(를) 사용하시겠습니까?`)) {
-      setUseItem(item); 
+    if(window.confirm(`${itemType === "rose" ? "흑장미" : itemType === "dumbell" ? "아령" : "책"}을(를) 사용하시겠습니까?`)) {
+      setUseItem(itemList[itemType === "rose" ? 0 : itemType === "dumbell" ? 1 : 2][0]); 
       setContentType(CONTENT_ANIMAL);
     }
   }
@@ -203,28 +200,34 @@ export default function MyFarm({ userId }) {
     switch (contentType) {
       case CONTENT_ANIMAL :
         return animalList.map(animal => 
-          // { (animal.id === -1) 
-          //   ? []
-            <ListItem key={animal.id}>
-                <AnimalListItem 
-                  onClick={onAnimalItemClick}
-                  id={animal.id}
-                  name={animal.name}
-                  type={animal.type}
-                  sex={animal.sex}
-                  geee={animal.geee}
-                  duck={animal.duck}
-                  chae={animal.chae} />
-              </ListItem>
+            <div key={animal.id} className="MyFarmAnimalListItem">
+              <AnimalListItem 
+                onClick={onAnimalItemClick}
+                id={animal.id}
+                name={animal.name}
+                type={animal.type}
+                sex={animal.sex}
+                geee={animal.geee}
+                duck={animal.duck}
+                chae={animal.chae} />
+            </div>
           );
     
       case CONTENT_ITEM :
-        return itemList.map(item => <ListItem key={item.id}>
-          <ItemListItem 
-            onClick={onItemItemClick}
-            type={item.type}
-            item={item} />
-        </ListItem>);
+        return itemList.map((itemType, i) => {
+          if(itemType.length !== 0) {
+            return (
+              <div key={i} className="MyFarmAnimalListItem">
+                <ItemListItem 
+                  onClick={onItemItemClick}
+                  stat={stats[i]}
+                  type={i === 0 ? "rose" : i === 1 ? "dumbell" : "book"} 
+                  count={i === 0 ? roseCount : i === 1 ? dumbellCount : bookCount}/>
+              </div>
+            );
+          }
+        } 
+        );
 
       default:
         return [];
@@ -288,14 +291,63 @@ export default function MyFarm({ userId }) {
         <Dialog
           open={listOpen}
           TransitionComponent={Transition}
-          onClose={() => setListOpen(false)}>
+          onClose={() => { 
+            setListOpen(false);
+            setUseItem();
+          }}>
           <CloseIcon sx={{ fontSize: 40 }} style={{ zIndex: "9999", position: "fixed" }} onClick={() => setListOpen(false)}/>
-          { useItem ? <div>{`${useItem.type}을(를) 사용할 동물을 선택하여 주세요`}</div> : <div></div> }
-          { ((contentType === CONTENT_ITEM) && (itemList.length === 0)) ? <div className="MyFarmEmpty">아이템이 없습니다.</div> : <></>}
+          { useItem ? <div className="MyFarmEmpty">{`${useItem.type === "rose" ? "흑장미" : useItem.type === "dumbell" ? "아령" : "책" }을(를) 사용할 동물을 선택하여 주세요.`}</div> : <div></div> }
+          { ((contentType === CONTENT_ITEM) && ((itemList[0].length === 0 && itemList[1].length === 0 && itemList[2].length === 0))) ? <div className="MyFarmEmpty">아이템이 없습니다.</div> : <></>}
           { ((contentType === CONTENT_ANIMAL) && (animalList.length === 0)) ? <div className="MyFarmEmpty">동물이 없습니다.</div> : <></>}
-          <List className="MyFarmList">{
+          <div className="MyFarmList">{
             makeListContent(contentType)
-          }</List>
+          }</div>
+        </Dialog>
+        <Dialog
+          open={alertOpen}
+          TransitionComponent={Transition}>
+          <DialogTitle>{alertTitle}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => {
+              axios.get(`${API_BASE}/animal/owner/${userId}`).then(
+                (res) => {
+                  console.log(res.data);
+                  setAnimalList(res.data);
+                }
+              );
+              setContentType(CONTENT_ITEM);
+              setUseItem();
+              setAlertOpen(false);
+            }}>확인</Button>
+          </DialogActions>
+        </Dialog>
+        <Dialog
+          open={confirmOpen}
+          TransitionComponent={Transition}>
+          <DialogTitle>{alertTitle}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => {
+              axios.get(`${API_BASE}/animal/owner/${userId}`).then(
+                (res) => {
+                  console.log(res.data);
+                  setAnimalList(res.data);
+                }
+              );
+              setContentType(CONTENT_ITEM);
+              setUseItem();
+              setAlertOpen(false);
+            }}>확인</Button>
+          </DialogActions>
         </Dialog>
       </div>
     </div>

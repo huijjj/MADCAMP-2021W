@@ -1,0 +1,40 @@
+.ItemShop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../public/images/itemshopBackground.png");
+  background-size: cover;
+}
+
+.itemshopBackground {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  padding: 3rem;
+  border-radius: 4rem;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.itemshopLayout {
+  align-items: center;
+  justify-content: center;
+}
+
+.haveMoney {
+  position: absolute;
+  left: 40%;
+  top: 10%;
+  width: 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  padding: 1rem;
+  border-radius: 4rem;
+  background-color: rgba(255, 255, 255, 0.8);
+}

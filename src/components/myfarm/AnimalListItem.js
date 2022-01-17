@@ -11,7 +11,7 @@ export default function AnimalListItem({
   const imgSrc = `/images/${type}.png`;
 
   return (
-    <div onClick={() => onClick(id, name)} style={{ display: "flex", flexDirection: "column", margin: "1rem" }}>
+    <div onClick={() => onClick(id, name)} style={{ display: "flex", flexDirection: "column", padding: "1rem" }}>
       <div style={{display: "flex"}}>
         <img style={{ objectFit :"cover", width: "7rem", height: "7rem", marginRight: "0.5rem" }} alt={`${type}.png`} src={imgSrc} />
         <div style={{ display: "flex", flexDirection: "column" }}>
