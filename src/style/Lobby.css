@@ -17,3 +17,7 @@
   
   padding: 3rem;
 }
+
+.LobbyCard:hover {
+  background-color: rgba(0, 0, 0, 1);
+}

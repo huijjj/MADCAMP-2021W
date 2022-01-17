@@ -86,25 +86,26 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
               {animalList?.map(
                   (animal, index) =>
                     <Grid item xs={4} key={index}>
-                    <Card className="LobbyCard" key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
-                      <CardMedia 
-                        component="img"
-                        image={`/images/${animal.type}.png`}
-                        alt={`${animal.type}.png`}
-                        onClick={() => handleClickExit(index)}
-                      />
-                      <CardContent> 
-                        <Typography gutterBottom variant="h5" component="div">
-                          {animal.name}({animal.sex})
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          지: {animal.geee}<br/>
-                          덕: {animal.duck}<br/>
-                          체: {animal.chae}<br/>
-                        </Typography>
-                      </CardContent>
-                        
-                    </Card>
+                    <div className="LobbyCard">
+                      <Card key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
+                        <CardMedia 
+                          component="img"
+                          image={`/images/${animal.type}.png`}
+                          alt={`${animal.type}.png`}
+                          onClick={() => handleClickExit(index)}
+                        />
+                        <CardContent> 
+                          <Typography gutterBottom variant="h5" component="div">
+                            {animal.name}({animal.sex})
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            지: {animal.geee}<br/>
+                            덕: {animal.duck}<br/>
+                            체: {animal.chae}<br/>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </div>
                     </Grid>
                 )
               }
