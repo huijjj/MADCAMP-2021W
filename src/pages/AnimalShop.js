@@ -240,7 +240,6 @@ export default function AnimalShop({ userId }) {
           <TextField style ={{fontFamily:'paybooc'}}
             inputProps={{style: {fontFamily:'paybooc'}}}
             InputLabelProps={{style: {fontFamily:'paybooc'}}}
-            inputHelperProps= {{style: {fontFamily:'paybooc'}}}
             autoFocus
             required
             error={valueRefName.current?.value === "" ? true : false}
@@ -279,7 +278,7 @@ export default function AnimalShop({ userId }) {
             autoFocus
             required
             autoComplete="off"
-            error={valueRefSex.current.value === "F" || valueRefSex.current.value === "M" ? false : true}
+            error={valueRefSex.current?.value === "F" || valueRefSex.current?.value === "M" ? false : true}
             margin="dense"
             id="sex"
             label="sex"

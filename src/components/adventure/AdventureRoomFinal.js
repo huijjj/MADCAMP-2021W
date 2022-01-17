@@ -6,14 +6,6 @@ import axios from 'axios';
 
 import '../../style/Final.css'
 
-const jangList = shuffleArray([
-  "인류의 모든 성과는 시행착오로부터 이루어졌다",
-  "나는 여러분의 롤모델 아냐",
-  "질문에 답할 권리는 나에게 있다",
-  "스타트업의 성공은 비정형적이다",
-  "스타트업의 평균은 실패다"
-]);
-
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -21,6 +13,19 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+const jangList = shuffleArray([
+  "인류의 모든 성과는 시행착오로부터 이루어졌다",
+  "나는 여러분의 롤모델 아냐",
+  "질문에 답할 권리는 나에게 있다",
+  "스타트업의 성공은 비정형적이다",
+  "스타트업의 평균은 실패다",
+  "인류의 모든 성과는 시행착오로부터 이루어졌다",
+  "나는 여러분의 롤모델 아냐",
+  "질문에 답할 권리는 나에게 있다",
+  "스타트업의 성공은 비정형적이다",
+  "스타트업의 평균은 실패다"
+]);
 
 
 export default function AdventureRoomFinal({ user, animal, setStamina }) {

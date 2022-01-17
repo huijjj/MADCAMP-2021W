@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Slide from '@mui/material/Slide';
+import { createTheme } from '@material-ui/core/styles'
 
 import '../style/ItemShop.css';
 
@@ -106,9 +107,9 @@ export default function ItemShop({ userId }) {
 
   const renderItems = (item, i) => {
     return (
-      <div className="ItemShopItemItem">
+      <div key={i} className="ItemShopItemItem">
         <br></br>
-        <div key={i} style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
+        <div style={{display: "flex"}} onClick={(e) => onClick(e, item.type, i)}>
             <img alt={item.type} src={`/images/items/${item.type}.png`} style={{height: "7rem", width: "7rem", objectFit: "cover",  marginLeft: "2rem",marginRight: "2rem"}} />
             <div className='itemstatus'>
               <div>{item.type === "book" ? "책" : item.type === "rose" ? "흑장미" : "아령"}</div>

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Root from './Root.js';
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: 'paybooc',
   },

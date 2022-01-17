@@ -220,15 +220,13 @@ export default function MyFarm({ userId }) {
           TransitionComponent={Transition}>
           <DialogTitle  style={{ display: "flex", justifyContent: "center", fontFamily:'paybooc'}} >{alertTitle}</DialogTitle>
           <DialogContent>
-            <DialogContentText> 
-              <div>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <img style={{ width: "10rem", height: "10rem"}} src={alertContentSrc[0]} alt="images" />
-                  <DoubleArrowIcon />
-                  <img style={{ width: "10rem", height: "10rem"}} src={alertContentSrc[1]} alt="images" />
-                </div>
+            <div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img style={{ width: "10rem", height: "10rem"}} src={alertContentSrc[0]} alt="images" />
+                <DoubleArrowIcon />
+                <img style={{ width: "10rem", height: "10rem"}} src={alertContentSrc[1]} alt="images" />
               </div>
-            </DialogContentText>
+            </div>
           </DialogContent>
           <DialogActions>
             <Button style ={{fontFamily:'paybooc'}} onClick={() => {
@@ -249,11 +247,6 @@ export default function MyFarm({ userId }) {
           open={itemConfirmOpen}
           TransitionComponent={Transition}>
           <DialogTitle style ={{fontFamily:'paybooc'}} >{confirmTitle}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              
-            </DialogContentText>
-          </DialogContent>
           <DialogActions>
             <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setItemConfirmOpen(false);
@@ -270,11 +263,6 @@ export default function MyFarm({ userId }) {
           open={abandonConfirmOpen}
           TransitionComponent={Transition}>
           <DialogTitle style ={{fontFamily:'paybooc'}} >{confirmTitle}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              
-            </DialogContentText>
-          </DialogContent>
           <DialogActions>
             <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setAbandonTargetId("");
@@ -299,11 +287,6 @@ export default function MyFarm({ userId }) {
           open={itemUseConfirmOpen}
           TransitionComponent={Transition}>
           <DialogTitle style ={{fontFamily:'paybooc'}}>{confirmTitle}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              
-            </DialogContentText>
-          </DialogContent>
           <DialogActions>
             <Button style ={{fontFamily:'paybooc'}} onClick={() => {
               setUseItem();
@@ -312,6 +295,7 @@ export default function MyFarm({ userId }) {
               setItemTargetId("");
             }}>취소</Button>
             <Button style ={{fontFamily:'paybooc'}} onClick={() => {
+              console.log(useItem)
               axios.delete(`${API_BASE}/item/use/${itemTargetId}`, {
                 data: {
                   itemId: useItem.id
@@ -341,7 +325,7 @@ export default function MyFarm({ userId }) {
                         reward = 150;
                       }
                       if(curLevel === "1") {
-                        if((newGeee >= 100) && (newDuck >= 100) (newChae >= 100)) {
+                        if((newGeee >= 100) && (newDuck >= 100) && (newChae >= 100)) {
                           console.log("lev 1 to lev 2");
                           axios.put(`${API_BASE}/animal/evolve/${itemTargetId}`, {
                             type: next  
@@ -356,7 +340,7 @@ export default function MyFarm({ userId }) {
                         }
                       }
                       else if(curLevel === "2") {
-                        if((newGeee >= 200) && (newDuck >= 200) (newChae >= 200)) {
+                        if((newGeee >= 200) && (newDuck >= 200) && (newChae >= 200)) {
                           console.log("lev 2 to lev 3");
                           axios.put(`${API_BASE}/animal/evolve/${itemTargetId}`, {
                             type: next  
@@ -371,7 +355,7 @@ export default function MyFarm({ userId }) {
                         }
                       }
                       else {
-                        if((newGeee === 300) && (newDuck === 300) (newChae === 300)) {
+                        if((newGeee === 300) && (newDuck === 300) && (newChae === 300)) {
                           console.log("graduate");
                           axios.delete(`${API_BASE}/animal/graduate/${userId}`, {
                             data: {
