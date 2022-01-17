@@ -55,66 +55,76 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
   };
   
   return (
-    <div className="LobbyBack">
+    <div className="Lobby">
+      <div className="LobbyAnimalGrid">
+        <Grid style={{ width: "80%", marginTop: "3%" }} container spacing={2}>{
+          animalList?.map((animal, index) =>
+          <Grid item xs={4}>
+              <div className="LobbyCard">
+                <Card key={index} sx={{ backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
+                  <CardMedia 
+                    component="img"
+                    image={`/images/${animal.type}.png`}
+                    alt={`${animal.type}.png`}
+                    onClick={() => handleClickExit(index)} />
+                  <CardContent> 
+                    <Typography gutterBottom variant="h5" component="div" color="common.white">
+                      {animal.name}({animal.sex})
+                    </Typography>
+                    <Typography variant="body1" color="common.white">
+                      <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
+                      <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
+                      <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </div>
+            </Grid>)}
+        </Grid>
+      <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
+      </div>
       <Dialog
         open={exitOpen}
         onClose={handleCloseNo}
-        TransitionComponent={Transition}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {animal?.name}와(과) 함께 탐험을 시작 하시겠습니까?
-        </DialogTitle>
-
+        TransitionComponent={Transition} >
+        <DialogTitle>{animal?.name}와(과) 함께 탐험을 시작 하시겠습니까?</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText>
             탐험중에는 동물을 변경할 수 없습니다<br/>
             (체력이 0 보다 낮아지면 동물이 죽을 수도 있습니다)
           </DialogContentText>
         </DialogContent>
-
         <DialogActions>
           <Button onClick={handleCloseNo}>아니요</Button>
           <Button onClick={() => handleCloseYes()}>네</Button>
         </DialogActions>
       </Dialog>
-      <div className="Lobby">
-        <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
-        <div class="LobbyGrid">
-          <Box sx={{width: '80%'}}>
-            <Grid container spacing={3}>
-              {animalList?.map(
-                  (animal, index) =>
-                    <Grid item xs={4} key={index}>
-                    <div className="LobbyCard">
-                      <Card key={index} sx={{ backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
-                        <CardMedia 
-                          component="img"
-                          image={`/images/${animal.type}.png`}
-                          alt={`${animal.type}.png`}
-                          onClick={() => handleClickExit(index)}
-                        />
-                        <CardContent> 
-                          <Typography gutterBottom variant="h5" component="div" color="common.white">
-                            {animal.name}({animal.sex})
-                          </Typography>
-                          <Typography variant="body1" color="common.white">
-                              <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
-                              <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
-                              <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
-                            
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </div>
-                    </Grid>
-                )
-              }
-            </Grid>
-          </Box>
-        </div>
-      </div>
     </div>
   );
 }
+
+
+
+
+// animalList?.map((animal, index) =>
+//                 <div className="LobbyCard">
+//                   <Card key={index} sx={{ backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
+//                     <CardMedia 
+//                       component="img"
+//                       image={`/images/${animal.type}.png`}
+//                       alt={`${animal.type}.png`}
+//                       onClick={() => handleClickExit(index)}
+//                     />
+//                     <CardContent> 
+//                       <Typography gutterBottom variant="h5" component="div" color="common.white">
+//                         {animal.name}({animal.sex})
+//                       </Typography>
+//                       <Typography variant="body1" color="common.white">
+//                           <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
+//                           <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
+//                           <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
+//                       </Typography>
+//                     </CardContent>
+//                   </Card>
+//                 </div>
+//           )
