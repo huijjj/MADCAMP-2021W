@@ -9,3 +9,10 @@
 }
 
 
+.RegisterSubmitButton {
+  border-radius: 0.3rem;
+  border: none;
+  background-color: rgb(255, 192, 203);
+  width: 20%;
+}
+
