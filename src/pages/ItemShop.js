@@ -60,6 +60,9 @@ export default function ItemShop({ userId }) {
   const [ money, setMoney ] = useState(0); 
   const [ itemConfirmOpen, setItemConfirmOpen ] = useState(false);
   const [ confirmTitle, setConfirmTitle ] = useState("");
+  const [ type, setType ] = useState("");
+  const [ available, setAvailable ] = useState(true);
+
   
   useEffect(() => {
     // get user date from db
@@ -75,7 +78,7 @@ export default function ItemShop({ userId }) {
     const price = getPrice(type);
 
     console.log(type, price);
-
+    setType(type);
     setConfirmTitle(`${type === "book" ? "책" : type === "rose" ? "흑장미" : "아령"}을(를) ${price}원에 구매하시겠습니까?`);
     setItemConfirmOpen(true);
     // if(window.confirm(`${type}을(를) ${price}원에 구매하시겠습니까?`)) {
@@ -144,10 +147,33 @@ export default function ItemShop({ userId }) {
         <DialogActions>
           <Button onClick={() => {
             setItemConfirmOpen(false);
+            setType("");
+            setAvailable(true);
           }}>취소</Button>
+          { available &&
           <Button onClick={() => {
-            setItemConfirmOpen(false);
-          }}>확인</Button>
+            if(getPrice(type) <= money) {
+              // send request
+              axios.post(`${API_BASE}/item/buy/${userId}`, {
+                type: type,
+                geee: items[type === "book" ? 0 : type === "rose" ? 1 : 2].geee,
+                duck: items[type === "book" ? 0 : type === "rose" ? 1 : 2].duck,
+                chae: items[type === "book" ? 0 : type === "rose" ? 1 : 2].chae,
+                price: getPrice(type)
+              }).then(res => {
+                console.log(res.data);
+                // update local data
+                setMoney(money - getPrice(type)); 
+              }).catch(res => {
+                console.log(res);
+              });
+              setItemConfirmOpen(false);
+            }
+            else {
+              setConfirmTitle("보유한 금액이 부족합니다.");
+              setAvailable(false);
+            }
+          }}>확인</Button>}
         </DialogActions>
       </Dialog>
     </div>
