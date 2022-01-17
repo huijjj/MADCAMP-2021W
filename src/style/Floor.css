@@ -29,9 +29,9 @@
   padding-left: 2rem;
 }
 
-.FloorStamina {
+/* .FloorStamina {
   width: inherit;
-}
+} */
 
 #animalStamina::-webkit-progress-bar {
   color: red;

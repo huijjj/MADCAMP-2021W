@@ -20,3 +20,22 @@
 .DrinkStamina {
   color: white;
 }
+
+.DrinkHyunji {
+  position: absolute;
+  
+  top: 2rem;
+  left: 2rem;
+
+  width: 95vw;
+}
+
+.DrinkMe {
+
+  position: absolute;
+  
+  bottom: 2rem;
+  left: 2rem;
+
+  width: 95vw;
+}

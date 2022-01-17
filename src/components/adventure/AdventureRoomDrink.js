@@ -5,6 +5,7 @@ import AdventureRoomFinal from './AdventureRoomFinal';
 import GameBar from './GameBar';
 
 import "../../style/Drink.css"
+import ProgressBar from './ProgressBar';
 
 export default function AdventureRoomDrink({ animal, floor, stamina, setStamina, staminaMAX, setFloor, setIsInGame, setIsDrink }) {
   const difficultyList = [
@@ -71,20 +72,18 @@ export default function AdventureRoomDrink({ animal, floor, stamina, setStamina,
           <img src="/images/hyunji.png" height="100%" />
         </div>
         <div className="DrinkGame">
-          <div className="DrinkStamina">
-            <progress max="1" value={hStamina/difficultyList[floor-1].stamina}></progress>
-            {hStamina}/{difficultyList[floor-1].stamina}
+          <div className='DrinkHyunji'>
+            <ProgressBar bgcolor="red" stamina={hStamina} staminaMAX={difficultyList[floor-1].stamina} />
           </div>
-
+          
           <div>
             <GameBar speed={difficultyList[floor-1].speed * (1-animal.geee/600)} stamina={stamina} setStamina={setStamina} hStamina={hStamina} setHStamina={setHStamina}/>
           </div>
 
-          <div className="DrinkStamina">
-            <progress max="1" value={stamina/staminaMAX}></progress>
-            {stamina}/{staminaMAX}
+          <div className="DrinkMe">
+            <ProgressBar bgcolor="blue" stamina={stamina} staminaMAX={staminaMAX} />
           </div>
-          
+
           <>{
             (hStamina <= 0)
             ? <Button variant="contained" color="success" onClick={handleNext}>
