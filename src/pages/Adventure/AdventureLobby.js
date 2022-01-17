@@ -54,70 +54,68 @@ export default function AdventureLobby({ animalList, setIsLobby, setAnimal, setF
   };
   
   return (
-    <>
-    <div className="Lobby">
-      <>
-      <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
-      <div class="LobbyGrid">
-        <Box sx={{width: '80%'}}>
-        <Grid container spacing={3}>
-          {animalList?.map(
-              (animal, index) =>
-                <Grid item xs={4} key={index}>
-                <Card className="LobbyCard" key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
-                  <CardMedia 
-                    component="img"
-                    image={`/images/${animal.type}.png`}
-                    alt={`${animal.type}.png`}
-                  />
-                  <CardContent> 
-                    <Typography gutterBottom variant="h5" component="div">
-                      {animal.name}({animal.sex})
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      지: {animal.geee}<br/>
-                      덕: {animal.duck}<br/>
-                      체: {animal.chae}<br/>
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" onClick={() => handleClickExit(index)}>
-                    선택하기
-                    </Button>
+    <div className="LobbyBack">
+      <div className="Lobby">
+        <HomeIcon className="HomeButton" sx={{ fontSize: 80 }} onClick={() => navigate(-1)} />
+        <div class="LobbyGrid">
+          <Box sx={{width: '80%'}}>
+            <Grid container spacing={3}>
+              {animalList?.map(
+                  (animal, index) =>
+                    <Grid item xs={4} key={index}>
+                    <Card className="LobbyCard" key={index} sx={{ maxWidth: 345, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
+                      <CardMedia 
+                        component="img"
+                        image={`/images/${animal.type}.png`}
+                        alt={`${animal.type}.png`}
+                      />
+                      <CardContent> 
+                        <Typography gutterBottom variant="h5" component="div">
+                          {animal.name}({animal.sex})
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          지: {animal.geee}<br/>
+                          덕: {animal.duck}<br/>
+                          체: {animal.chae}<br/>
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" onClick={() => handleClickExit(index)}>
+                        선택하기
+                        </Button>
 
-                    <Dialog
-                      open={exitOpen}
-                      onClose={handleCloseNo}
-                      TransitionComponent={Transition}
-                      aria-labelledby="alert-dialog-title"
-                      aria-describedby="alert-dialog-description"
-                    >
-                      <DialogTitle id="alert-dialog-title">
-                        {animalList[animalIndex].name}와(과) 함께 탐험을 시작 하시겠습니까?
-                      </DialogTitle>
+                        <Dialog
+                          open={exitOpen}
+                          onClose={handleCloseNo}
+                          TransitionComponent={Transition}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                          <DialogTitle id="alert-dialog-title">
+                            {animalList[animalIndex].name}와(과) 함께 탐험을 시작 하시겠습니까?
+                          </DialogTitle>
 
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          탐험중에는 동물을 변경할 수 없습니다<br/>
-                          (체력이 0 보다 낮아지면 동물이 죽을수도 있습니다)
-                        </DialogContentText>
-                      </DialogContent>
+                          <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                              탐험중에는 동물을 변경할 수 없습니다<br/>
+                              (체력이 0 보다 낮아지면 동물이 죽을수도 있습니다)
+                            </DialogContentText>
+                          </DialogContent>
 
-                      <DialogActions>
-                        <Button onClick={handleCloseNo}>아니요</Button>
-                        <Button onClick={() => handleCloseYes(animalIndex)}>네</Button>
-                      </DialogActions>
-                    </Dialog>
-                  </CardActions>
-                </Card>
-                </Grid>
-            )
-          }
-        </Grid>
-        </Box>
+                          <DialogActions>
+                            <Button onClick={handleCloseNo}>아니요</Button>
+                            <Button onClick={() => handleCloseYes(animalIndex)}>네</Button>
+                          </DialogActions>
+                        </Dialog>
+                      </CardActions>
+                    </Card>
+                    </Grid>
+                )
+              }
+            </Grid>
+          </Box>
+        </div>
       </div>
-      </>
     </div>
-    </>  
   );
 }

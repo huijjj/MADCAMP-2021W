@@ -1,9 +1,13 @@
-.Lobby {
-  width: 100%;
+.LobbyBack {
   background-image: url("../../public/images/lobby_background.jpeg");
   background-size: cover;
 
   background-attachment: fixed;
+}
+
+.Lobby {
+  width: 100vw;
+  /* height: 100vh; */
 }
 
 .LobbyGrid {

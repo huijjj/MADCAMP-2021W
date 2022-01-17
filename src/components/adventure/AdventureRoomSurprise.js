@@ -21,9 +21,10 @@ export default function AdventureRoomSurprise({ floor, stamina, setStamina, stam
   return (
     <div className="SurpriseBack">
       <div className="Surprise">
-        <h1>선물입니다!</h1>
-        <h3>HP 30을 회복합니다</h3>
-        <Button onClick={handleNext}>
+        <div className="SurpriseTitle">선물입니다!</div>
+        <img className="SurpriseWater" src="images/water.png" ></img>
+        <div className="SurpriseContent">HP 30을 회복합니다</div>
+        <Button variant="contained" onClick={handleNext}>
           {(floor===10) ? "마지막" : floor + 1}층으로 이동하기
         </Button>
       </div>

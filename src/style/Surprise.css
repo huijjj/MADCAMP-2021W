@@ -4,6 +4,30 @@
 }
 
 .Surprise {
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.SurpriseTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 5rem;
+}
+
+.SurpriseContent {
+  font-size: 2rem;
+  color: white;
+  padding-bottom: 4rem;
+}
+
+.SurpriseWater {
+  width: 10rem;
+  height: 20rem;
 }
