@@ -74,7 +74,7 @@ export default function AdventureLobby({ animal, animalList, setIsLobby, setAnim
                     <Typography variant="body1" color="common.white">
                       <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
                       <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
-                      <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
+                      <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} />
                     </Typography>
                   </CardContent>
                 </Card>

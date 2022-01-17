@@ -1,4 +1,5 @@
 .AnimalShop {
+  font-family: "paybooc";
   width: 100%;
   height: 100%;
   display: cover;
@@ -8,6 +9,7 @@
 }
 
 .animalshopBackground {
+  font-family: "paybooc";
   position: absolute;
   left: 40%;
   top: 20%;
@@ -21,11 +23,13 @@
   background-color: rgba(255, 255, 255);
 }
 .itemshopLayout {
+  font-family: "paybooc";
   align-items: center;
   justify-content: center;
 }
 
 .haveMoneyAnimal {
+  font-family: "paybooc";
   position: absolute;
   left: 85%;
   top: 80%;
@@ -41,6 +45,7 @@
 }
 
 .moneyInfo {
+  font-family: "paybooc";
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 1.8rem;

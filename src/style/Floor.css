@@ -7,6 +7,7 @@
 }
 
 .FloorHeader {
+  font-family: "paybooc";
   color: white;
   font-size: 3rem;
   font-weight: bold;
@@ -21,14 +22,6 @@
   top: 0px;
 }
 
-
-#animalStamina::-webkit-progress-bar {
-  color: red;
-}
-
-#animalStamina::-webkit-progress-value {
-  color: red;
-}
 
 .FloorCard {
   margin-top: 2rem;
@@ -56,4 +49,10 @@
 
 .FloorRight:hover {
   background-image: url("../../public/images/floorRight1.jpg");
+}
+
+.FloorStamina {
+  color: white;
+  font-size: 1rem;
+  font-weight: normal;
 }

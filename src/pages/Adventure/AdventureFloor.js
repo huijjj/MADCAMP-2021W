@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { CardMedia } from "@mui/material";
 
 import '../../style/Floor.css'
+import ProgressBarLobby from '../../components/adventure/ProgressBarLobby'
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
@@ -37,10 +38,18 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
   };
 
   const handleCloseYes = () => {
-
+    let money;
     setExitOpen(false);
+    if(floor == 1)
+    {
+      money = 0;
+    }
+    else
+    {
+      money = ((floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20);
+    }
     axios.put(`${API_BASE}/user/money/${user.id}`, {
-      money: user.Money + ((floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20)
+      money: user.Money + money
     }).then(
       res => console.log(res)
     );
@@ -57,20 +66,20 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
       <div className="FloorHeader">
         <div style={{ marginTop: "40rem" }}>{floor}층</div>
         <div className="FloorCard">
-          <Card sx={{ maxWidth: 300, backgroundColor: 'rgba( 255, 255, 255, 0.7 )'}}>
+          <Card sx={{ maxWidth: "20rem", maxHeight: "40rem", backgroundColor: 'rgba( 0, 0, 0, 0.7 )'}}>
             <CardMedia 
               component="img"
               image={`/images/${animal.type}.png`}
               alt={`${animal.type}.png`}
             />
             <CardContent> 
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h5" component="div" color="common.white">
                 {animal.name}({animal.sex})
               </Typography>
-              <Typography variant="body1" color="text.secondary">
-                지: {animal.geee}<br/>
-                덕: {animal.duck}<br/>
-                체: {animal.chae}<br/>
+              <Typography variant="body1" color="common.white">
+                <ProgressBarLobby bgcolor="orange" type={"지"} stamina={animal.geee} staminaMAX={300} /><br/>
+                <ProgressBarLobby bgcolor="green" type={"덕"} stamina={animal.duck} staminaMAX={300} /><br/>
+                <ProgressBarLobby bgcolor="red" type={"체"} stamina={animal.chae} staminaMAX={300} /><br/>
               </Typography>
               <div className="FloorStamina">
                 <progress 
@@ -104,7 +113,7 @@ export default function AdventureFloor({ user, animal, stamina, floor, setIsInGa
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            포기하면 {(floor < 5 && floor > 1) ? 10 : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20}원을 얻을 수 있습니다
+            포기하면 {(floor < 5) ? (floor == 1 ? 0 : 10) : Math.pow(2,floor)/6-(Math.pow(2,floor)/6%5) + 20}원을 얻을 수 있습니다
           </DialogContentText>
         </DialogContent>
 

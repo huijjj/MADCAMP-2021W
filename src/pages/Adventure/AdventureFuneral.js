@@ -3,14 +3,23 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import '../../style/Funeral.css';
+
 const API_BASE = process.env.REACT_APP_API_BASE;
 
 export default function AdventureFeneral({ animal }) {
   const navigate = useNavigate();
-  
+
   const handleClickExit = () => {
     navigate("/home");
   }
+
+  useEffect(() => {
+    const portraitBackground = document.getElementById("FuneralPortrait");
+    console.log(portraitBackground);
+
+    portraitBackground.style.backgroundImage = `url("images/${animal.type}.png")`;
+  }, []);
 
   useEffect(() => {
     axios.delete(`${API_BASE}/animal/kill`, {
@@ -19,14 +28,18 @@ export default function AdventureFeneral({ animal }) {
       }
     }).then(res => (console.log(res)))});
   
-  console.log(animal);
   return (
-    <div>
-      <h1>訃告</h1>
-      <h2>사용자의 실력 미숙으로 인해 {animal.name}이(가) 죽었습니다</h2>
-      <Button onClick={handleClickExit}>
-        슬픈 마음으로 홈으로 돌아가기
-      </Button>
+    <div className="FuneralBack">
+      <div className="Funeral">
+        <div className="FuneralTitle">訃告</div>
+        <div id="FuneralPortrait">
+          <img src={`images/portrait.png`} />
+        </div>
+        <div className="FuneralBody">과음으로 인해 {animal.name}이(가) 사망했습니다</div>
+        <Button onClick={handleClickExit}>
+          슬픈 마음으로 홈으로 돌아가기
+        </Button>
+      </div>
     </div>
   );
 }

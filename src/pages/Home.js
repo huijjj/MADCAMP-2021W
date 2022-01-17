@@ -82,7 +82,7 @@ function Home({ userId, setUserId }) {
               <div>{userInfo.money}원</div>
             </div>
             <div className="HomeUserStatusOtherStat">
-            <div> <img src={`/images/icons/graduationCount.png`} style={{height: "1.7rem", width: "2rem", objectFit: "cover", marginRight: "10px"}} /></div>
+              <div> <img src={`/images/icons/graduationCount.png`} style={{height: "1.7rem", width: "2rem", objectFit: "cover", marginRight: "10px"}} /></div>
               <div>{userInfo.graduateCnt}명</div>
             </div>
           </div>

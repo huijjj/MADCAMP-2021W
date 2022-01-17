@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "newVillage";
+  src: url(./fonts/HSNewVillage.ttf);
+}
+
+@font-face {
+  font-family: "paybooc";
+  src: url(./fonts/payboocLight.ttf);
+}
