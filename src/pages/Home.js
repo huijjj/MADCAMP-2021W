@@ -74,11 +74,11 @@ function Home({ userId, setUserId }) {
           <div className="HomeUserStatusNick">{userInfo.nickname}</div>
           <div className="HomeUserStatusOther">
             <div className="HomeUserStatusOtherStat">
-              <div>학위: &nbsp;&nbsp;</div>
+              <div> <img src={`/images/icons/graduationCap.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} /></div>
               <div>{userInfo.tier}</div>
             </div>
             <div className="HomeUserStatusOtherStat">
-              <div>소지금: &nbsp;&nbsp;</div>
+              <div> <img src={`/images/icons/money.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} /></div>
               <div>{userInfo.money}원</div>
             </div>
             <div className="HomeUserStatusOtherStat">

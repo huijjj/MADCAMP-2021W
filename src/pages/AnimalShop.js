@@ -145,7 +145,8 @@ export default function AnimalShop({ userId }) {
       <div style={{width: "50%", height: "50%"}}>
         <HomeIcon onClick={() => navigate(-1)} className='HomeButton' sx={{ fontSize : 80 }} />
         <div className='haveMoneyAnimal'>
-          잔돈: {money}원
+        <img src={`/images/icons/money.png`} style={{height: "2rem", width: "2rem", objectFit: "cover", marginRight: "5px"}} />
+        {money}원
         </div>
         <div className='animalshopBackground'>
           <div>
