@@ -14,13 +14,16 @@ import SlideItem from "./SlideItem";
 import axios from "axios";
   
 
-  // install Swiper modules
-  SwiperCore.use([Pagination]);
-  SwiperCore.use([Scrollbar]);
+const userId = "hui0213";
+const API_BASE = "http://192.249.18.162:443";
+
+// install Swiper modules
+SwiperCore.use([Pagination]);
+SwiperCore.use([Scrollbar]);
 
 export default function Home() {
-  	const userId = "hui0213";
 	const [ recipes, setRecipes ] = useState([]);
+	const [ recipeVersions, setRecipeVersions ] = useState([]);
 
     useEffect(()=> {
         const dragflag = document.getElementsByClassName("swiper-scrollbar-drag");
@@ -31,11 +34,21 @@ export default function Home() {
         //     swiperArray[i].style.width = "500px";
         // }
 
-      	axios.get(`http://192.249.18.162:443/recipe/${userId}`).then(res => {
-			console.log(res.data);
-			setRecipes(res.data);	
-	  	});
+		// get every recipe of given userId
+    axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
+		console.log(res.data);
+		setRecipes(res.data);	
+
+		Promise.all(res.data.map(recipes => axios.get(`${API_BASE}/recipe/version/${recipes.versions[recipes.versions.length - 1].id}`)))
+			.then(re => {
+          		setRecipeVersions(re.map(e => e.data));
+					console.log(re.map(e => e.data));
+					// console.log(re);
+				}).catch(console.log);
+	  	}).catch(console.log);
     }, []);
+
+
     return (
         <>
         <div id = "title_bar">
