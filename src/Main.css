@@ -1,0 +1,17 @@
+.mainbackground {
+  text-align: center;
+  justify-content: center;
+}
+
+.domain {
+  font-size: x-large;
+  margin-top: 10cm;
+}
+
+.loginlink {
+  margin-top: 10cm;
+}
+
+.registerlink {
+  margin-top: 10px;
+}

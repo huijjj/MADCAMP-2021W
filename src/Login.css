@@ -1,0 +1,43 @@
+.loginbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginparent {
+  display: flex;
+  height: 30vh;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginchild {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginbutton {
+  height: 2.5cm;
+  width: 2cm;
+  border-radius: 5px;
+  color: white;
+  background-color: #0d3d68;
+  border-radius: 5px;
+}
+
+.inputid {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  height: 1cm;
+  border-radius: 5px;
+}
+
+.inputpw {
+  margin-right: 5px;
+  height: 1cm;
+  border-radius: 5px;
+}

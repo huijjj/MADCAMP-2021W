@@ -1,0 +1,41 @@
+.registerbody {
+  display: flex;
+  height: 50vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerparent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerchild {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputrpw {
+  margin-top: 5px;
+  margin-right: 5px;
+  height: 1cm;
+  border-radius: 5px;
+}
+.inputnickname {
+  margin-top: 5px;
+  margin-right: 5px;
+  height: 1cm;
+  border-radius: 5px;
+}
+
+.registerbutton {
+  height: 5cm;
+  background-color: #0d3d68;
+  color: white;
+  border-radius: 5px;
+}
