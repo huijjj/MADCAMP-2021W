@@ -35,7 +35,7 @@ export default function Home() {
             <span id = "title">김민채의 요리교실</span>
             <span id = "say_hi">민채님 안녕하세요 :)</span>
         </div>
-        <Swiper data-swipe-autoplay="200" slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
+        <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
       "clickable": true}} className="mySwiper">
           <SwiperSlide><SlideItem/></SwiperSlide>
           <SwiperSlide><SlideItem/></SwiperSlide>
