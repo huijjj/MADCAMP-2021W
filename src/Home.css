@@ -28,7 +28,7 @@ body {
 .swiper-slide {
   box-shadow: 0px 5px 10px -5px;
   border-radius: 30px;
-  width:500px;
+  width:500px !important;
   text-align: center;
   font-size: 18px;
   background: rgb(226, 226, 226);
@@ -75,6 +75,7 @@ body {
 
 
 #title {
+  float: left;
   color: white;
   font-size: 40px;
   margin-left : 50px;
@@ -96,5 +97,5 @@ body {
   padding-top: 10px;
 }
 
-.swiper-pagination-bullet { width: 12px; height: 12px; background: transparent; border: 1px solid pink; opacity: 1; }
-.swiper-pagination-bullet-active { width: 40px; transition: width .5s; border-radius: 5px; background: pink; border: 1px solid transparent; }
+.swiper-pagination-bullet { width: 10px !important; height:10px !important; background: transparent !important; border: 1px solid #0D3D68 !important; opacity: 1 !important; }
+.swiper-pagination-bullet-active { transition: width .5s !important; background: #0D3D68 !important ; }
