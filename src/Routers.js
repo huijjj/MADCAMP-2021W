@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import Main from './Main';
-// import Home from './HOME';
+import Home from './Home';
 
 function Routers() {
     return(
@@ -12,7 +12,7 @@ function Routers() {
                 <Route path = '/' element={<Main/>} />
                 <Route path = '/login' element={<Login/>} />
                 <Route path = '/register' element={<Register/>} />
-                {/* <Route path = '/home' element={<Home/>} /> */}
+                <Route path = '/home' element={<Home/>} />
             </Routes>
         </div>
     )
