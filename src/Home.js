@@ -11,12 +11,16 @@ import SwiperCore, {
     Scrollbar
   } from 'swiper';
 import SlideItem from "./SlideItem";
+import axios from "axios";
   
+
   // install Swiper modules
   SwiperCore.use([Pagination]);
   SwiperCore.use([Scrollbar]);
 
 export default function Home() {
+  	const userId = "hui0213";
+	const [ recipes, setRecipes ] = useState([]);
 
     useEffect(()=> {
         const dragflag = document.getElementsByClassName("swiper-scrollbar-drag");
@@ -27,7 +31,10 @@ export default function Home() {
         //     swiperArray[i].style.width = "500px";
         // }
 
-
+      	axios.get(`http://192.249.18.162:443/recipe/${userId}`).then(res => {
+			console.log(res.data);
+			setRecipes(res.data);	
+	  	});
     }, []);
     return (
         <>
