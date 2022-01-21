@@ -12,7 +12,7 @@ import SwiperCore, {
   } from 'swiper';
 import SlideItem from "./SlideItem";
 import axios from "axios";
-  
+import { useNavigate } from 'react-router-dom';
 
 // const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
@@ -22,7 +22,7 @@ SwiperCore.use([Pagination]);
 SwiperCore.use([Scrollbar]);
 
 export default function Home( {userId, userNickname} ) {
-	
+	const nav = useNavigate();
 	const [ recipes, setRecipes ] = useState([]);
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
 
@@ -66,15 +66,11 @@ export default function Home( {userId, userNickname} ) {
 				<SwiperSlide><SlideItem/></SwiperSlide>
 				<SwiperSlide><SlideItem/></SwiperSlide>
 			</Swiper>
-			<div>
-					{(course.filter((recipes) =>
-						item.과목번호.toLowerCase().includes(search) ||
-						item.과목번호.includes(search) ||
-						item.교과목명.includes(search) ||
-						item.교과목명.toLowerCase().includes(search) ||
-						item.이수구분.includes(search) ||
-						item.교과영역.includes(search)))
-						.map((e) => (<CourseInfo  key={e.과목번호 + e.교과목명} course = {e} taken = {isheard} settaken = {setisheard}  />)) }
+			<div onClick={(e) => {
+				e.preventDefault();
+				nav(`/recipe/add/${userId}`);
+			}}>
+				add
 			</div>
         </>
       );
