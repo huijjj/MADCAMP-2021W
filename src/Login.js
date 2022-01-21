@@ -9,7 +9,7 @@ function Login( {getId} ) {
         e.preventDefault();
         var json = {id: e.target.id.value, password: e.target.pw.value};
 
-        axios.post('http://192.249.18.162:443/login', json).then( res => {
+        axios.post('http://192.249.18.176:443/login', json).then( res => {
             console.log(`res.data`, res)
             if(res.status === 200){
                 nav('/home');
