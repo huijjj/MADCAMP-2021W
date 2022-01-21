@@ -3,17 +3,28 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-function Login( {getId} ) {
+function Login( {setUserId, setUserNickname} ) {
     const nav = useNavigate();
     function handleClick(e) {
         e.preventDefault();
+        
+        // console.log('e : ', e);
+        // console.log('id : ', e.target.id.value);
+        // console.log('pw : ', e.target.pw.value);
+
         var json = {id: e.target.id.value, password: e.target.pw.value};
 
-        axios.post('http://192.249.18.162:443/login', json).then( res => {
-            console.log(`res.data`, res)
+        axios.post('http://192.249.18.176:443/login', json).then( res => {
             if(res.status === 200){
-                nav('/home');
-                window.alert('로그인 성공!');
+                console.log(res.data);
+                console.log(res.data.nickname)
+
+                //유저 아이디, 닉네임 설정
+                setUserId(res.data.id);
+                setUserNickname(res.data.nickname);
+
+                nav(`/home/${e.target.id.value}`);
+                window.alert(`환영합니다 ${res.data.nickname}님!`);
             }
         }).catch((e) => {
             console.log(e);

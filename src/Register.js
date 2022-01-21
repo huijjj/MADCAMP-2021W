@@ -3,7 +3,6 @@ import React from 'react';
 import {useNavigate} from "react-router-dom"
 import './Register.css';
 
-
 function Register() {
     const nav = useNavigate()
 
@@ -20,9 +19,9 @@ function Register() {
         }
         else{
             var json = {id: e.target.id.value, password: e.target.pw.value, nickname: e.target.nickname.value};
-		    axios.post('http://192.249.18.162:443/register', json).then((res) =>{
-                nav("/main", {id: e.target.id.value, password: e.target.pw.value, nickname: e.target.nickname.value});
+		    axios.post('http://192.249.18.176:443/register', json).then((res) =>{
                 console.log(res.data);
+                nav("/login", {id: e.target.id.value, password: e.target.pw.value, nickname: e.target.nickname.value});
             }).catch((e) =>{
                 console.log(e);
                 window.alert('중복된 아이디입니다. 다른 아이디를 사용해주세요.');
