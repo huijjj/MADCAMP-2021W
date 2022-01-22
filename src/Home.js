@@ -27,8 +27,9 @@ export default function Home({ userNickname }) {
 	const [ recipes, setRecipes ] = useState([]);
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
 	const [ searchTerm, setSearchTerm] = useState("");
-    const [ recipesLoading, setRecipesLoading ] = useState(false);
     const [ recipeList, setRecipeList ] = useState([]);
+  	const [ recipesLoading, setRecipesLoading ] = useState(false);
+  	const [ favoriteRecipeList, setFavoriteRecipeList ] = useState([]);
 
     useEffect(()=> {
         const dragflag = document.getElementsByClassName("swiper-scrollbar-drag");
@@ -37,7 +38,15 @@ export default function Home({ userNickname }) {
         axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
             console.log(res.data);
             setRecipes(res.data);	
-            const tmp = document.createElement('div')
+            const tmp = document.createElement('div');
+
+			setFavoriteRecipeList(res.data.map(element => {
+				if (element.favorite === true) {
+					return (
+						<SwiperSlide><SlideItem title = {element.title}/></SwiperSlide>
+					);
+				}
+			}));
 
             // detail recipe
             Promise.all(res.data.map(recipes => axios.get(`${API_BASE}/recipe/version/${recipes.versions[recipes.versions.length - 1].id}`)))
@@ -53,28 +62,24 @@ export default function Home({ userNickname }) {
                       } else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
                         return val;
                       }
-                }).map((val, index) => {
-                    return(
-                        <div className = "recipe">
-                            <div className = "recipe_content">
-                                <div className = "recipe_title">
-                                    {val.title}
-                                </div>
-                                <div className = "recipe_ingredients">
-                                    {
-                                        re[index].data.ingredients?.map(el =>{
-                                            return(<div className = "ingredient"> {`${el.name}  ${el.amount} g`} </div>)
-                                        })
-                                    }
-                                </div> 
+                }).map((val, index) => (
+                    <div key={index} className = "recipe">
+                        <div className = "recipe_content">
+                            <div className = "recipe_title">
+                                {val.title}
                             </div>
-                        </div>
-                    );
-
-                }))
-
-            }).catch(console.log);
-
+                            <div className = "recipe_ingredients">{
+                                re[index].data.ingredients?.map((el,idx) => {
+                                    if(idx == re[index].data.ingredients.length - 1 ) {
+                                    	return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
+                                    } 
+									else {
+                                        return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
+                                    }})
+                        	}</div> 
+						</div>
+					</div>)));
+				}).catch(console.log);
         }).catch(console.log);
 
         //setRecipesLoading(true);
@@ -89,11 +94,12 @@ export default function Home({ userNickname }) {
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
                 "clickable": true}} className="mySwiper">
-                <SwiperSlide><SlideItem/></SwiperSlide>
+                {/* <SwiperSlide><SlideItem/></SwiperSlide>
             <SwiperSlide><SlideItem/></SwiperSlide>
             <SwiperSlide><SlideItem/></SwiperSlide>
             <SwiperSlide><SlideItem/></SwiperSlide>
-            <SwiperSlide><SlideItem/></SwiperSlide>
+            <SwiperSlide><SlideItem/></SwiperSlide> */}
+			{favoriteRecipeList}
             </Swiper>
             <input
                 className="searchbar"

@@ -27,7 +27,7 @@ body {
 .swiper-slide {
   box-shadow: 0px 5px 10px -5px;
   border-radius: 30px;
-  width: 500px !important;
+  width:400px !important;
   text-align: center;
   font-size: 18px;
   background: rgb(226, 226, 226);
@@ -54,9 +54,9 @@ body {
   object-fit: cover;
 }
 
-.slide_item {
-  width: 500px;
-  height: 300px;
+.slide_item{
+  width: 400px;
+  height: 250px;
 }
 
 .mySwiper {
@@ -64,7 +64,7 @@ body {
   width: 100%;
   height: fit-content + 50px;
   padding-bottom: 100px;
-  margin-top: -150px;
+  margin-top: -120px;
 }
 
 .swiper-wrapper {
@@ -76,12 +76,14 @@ body {
   float: left;
   color: white;
   font-size: 40px;
-  margin-left: 50px;
+  margin-left : 50px;
+  padding-top: 10px;
+
 }
 
 #title_bar {
-  padding-top: 30px;
-  background: #0d3d68;
+  padding-top: 40px;
+  background: #0D3D68;
   width: 100%;
   height: 220px;
 }
@@ -90,8 +92,8 @@ body {
   color: white;
   float: right;
   font-size: 20px;
-  padding-right: 30px;
-  padding-top: 10px;
+  padding-right: 50px;
+  padding-top: 20px;
 }
 
 .swiper-pagination-bullet {
@@ -108,15 +110,17 @@ body {
 
 .recipe_container {
   overflow: auto;
+  text-align: center;
 }
 
 .recipe {
   background: #0d3a62;
   margin: 30px 10% 30px 10%;
-
-  width: 80%;
+  width: 1000px;
   height: 300px;
   border-radius: 70px;
+  display: inline-block;
+
 }
 
 .recipe_title {
@@ -127,21 +131,23 @@ body {
 }
 
 .recipe_content {
+  width: 50%;
   height: 300px;
-  padding-right: 70px;
-  float: right;
+  margin-right: 70px;
+  float:right;
 }
 .recipe_ingredients {
   display: flex;
-  padding-bottom: 50%;
+  height: 100px;
+  justify-content: center;
 }
 .ingredient {
   color: white;
+  height:fit-content;
+
 }
 
-.searchbar {
-  height: 40px;
-  width: 300px;
+.favorite_recipe_title {
+  margin-top: 30px;
   font-size: 20px;
-  padding: 5px;
 }
