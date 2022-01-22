@@ -43,7 +43,12 @@ export default function Home({ userNickname }) {
 			setFavoriteRecipeList(res.data.map(element => {
 				if (element.favorite === true) {
 					return (
-						<SwiperSlide><SlideItem title = {element.title}/></SwiperSlide>
+						<SwiperSlide onClick={() => {
+                            console.log(element);
+                            nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, _id: element._id}});
+                            }}>
+                            <SlideItem title = {element.title} />
+                        </SwiperSlide>
 					);
 				}
 			}));
