@@ -110,11 +110,28 @@ body {
 
   width: 80%;
   height: 300px;
-  border-radius: 30px;
+  border-radius: 70px;
 
 
 }
 
 .recipe_title {
+  color: white;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.recipe_content {
+
+  height: 300px;
+  padding-right: 70px;
+  float:right;
+}
+.recipe_ingredients {
+  display: flex;
+  padding-bottom: 50%;
+}
+.ingredient {
   color: white;
 }

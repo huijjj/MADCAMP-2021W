@@ -56,7 +56,7 @@ export default function Home() {
                               <div className = "recipe_ingredients">
                                     {
                                         re[index].data.ingredients?.map(el =>{
-                                            return(<div> {`${el.name}  ${el.amount} g`} </div>)
+                                            return(<div className = "ingredient"> {`${el.name}  ${el.amount} g`} </div>)
                                         })
                                     }
                               </div> 
