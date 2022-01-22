@@ -46,24 +46,25 @@ export default function Home( {userId, userNickname} ) {
                 console.log(re);
 
                 setRecipeList(res.data.filter(val => {
+                    console.log(val);
                     if(searchTerm == "") {
                         return val;
                       } else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
                         return val;
                       }
-                }).map((elem, index) => {
+                }).map((val, index) => {
                     return(
                         <div className = "recipe">
                             <div className = "recipe_content">
                                 <div className = "recipe_title">
-                                    {elem.title}
+                                    {val.title}
                                 </div>
                                 <div className = "recipe_ingredients">
-                                        {
-                                            re[index].data.ingredients?.map(el =>{
-                                                return(<div className = "ingredient"> {`${el.name}  ${el.amount} g`} </div>)
-                                            })
-                                        }
+                                    {
+                                        re[index].data.ingredients?.map(el =>{
+                                            return(<div className = "ingredient"> {`${el.name}  ${el.amount} g`} </div>)
+                                        })
+                                    }
                                 </div> 
                             </div>
                         </div>
@@ -77,9 +78,8 @@ export default function Home( {userId, userNickname} ) {
 
         //setRecipesLoading(true);
 
-    }, []);
+    }, [searchTerm]);
   
-    
     return (
         <>
             <div id = "title_bar">
@@ -95,9 +95,9 @@ export default function Home( {userId, userNickname} ) {
             <SwiperSlide><SlideItem/></SwiperSlide>
             </Swiper>
             <input
+                className="searchbar"
                 type = 'text'
-                placeholder = 'Search'
-                style={elementStyle}
+                placeholder = 'Search...'
                 onChange={(event)=>{
                     setSearchTerm(event.target.value);
                 }}

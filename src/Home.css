@@ -1,18 +1,17 @@
-#app { 
-  height: 100% 
+#app {
+  height: 100%;
 }
 
 #root {
-  height: 100%
+  height: 100%;
 }
 html,
 body {
-
   height: 100%;
 }
 
 body {
-  background: #F2F2F2;
+  background: #f2f2f2;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
@@ -28,7 +27,7 @@ body {
 .swiper-slide {
   box-shadow: 0px 5px 10px -5px;
   border-radius: 30px;
-  width:500px !important;
+  width: 500px !important;
   text-align: center;
   font-size: 18px;
   background: rgb(226, 226, 226);
@@ -55,64 +54,69 @@ body {
   object-fit: cover;
 }
 
-.slide_item{
+.slide_item {
   width: 500px;
   height: 300px;
 }
 
-.mySwiper{
-  position:absolute;
+.mySwiper {
+  position: absolute;
   width: 100%;
   height: fit-content + 50px;
   padding-bottom: 100px;
   margin-top: -150px;
 }
 
-.swiper-wrapper{
+.swiper-wrapper {
   width: 100%;
   padding-bottom: 50px;
 }
-
 
 #title {
   float: left;
   color: white;
   font-size: 40px;
-  margin-left : 50px;
-
+  margin-left: 50px;
 }
 
 #title_bar {
   padding-top: 30px;
-  background: #0D3D68;
+  background: #0d3d68;
   width: 100%;
   height: 220px;
 }
 
 #say_hi {
   color: white;
-  float:right;
+  float: right;
   font-size: 20px;
   padding-right: 30px;
   padding-top: 10px;
 }
 
-.swiper-pagination-bullet { width: 10px !important; height:10px !important; background: transparent !important; border: 1px solid #0D3D68 !important; opacity: 1 !important; }
-.swiper-pagination-bullet-active { transition: width .5s !important; background: #0D3D68 !important ; }
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background: transparent !important;
+  border: 1px solid #0d3d68 !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  transition: width 0.5s !important;
+  background: #0d3d68 !important ;
+}
 
 .recipe_container {
   overflow: auto;
 }
 
 .recipe {
-  background: #0D3A62;
+  background: #0d3a62;
   margin: 30px 10% 30px 10%;
 
   width: 80%;
   height: 300px;
   border-radius: 70px;
-
-
 }
 
 .recipe_title {
@@ -123,10 +127,9 @@ body {
 }
 
 .recipe_content {
-
   height: 300px;
   padding-right: 70px;
-  float:right;
+  float: right;
 }
 .recipe_ingredients {
   display: flex;
@@ -134,4 +137,11 @@ body {
 }
 .ingredient {
   color: white;
+}
+
+.searchbar {
+  height: 40px;
+  width: 300px;
+  font-size: 20px;
+  padding: 5px;
 }
