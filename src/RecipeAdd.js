@@ -54,52 +54,73 @@ export default function RecipeAdd() {
     }
 
     return (
-        <>
-            <div onClick={onSubmit}>Add recipe</div>
-            <div style={{ display: "flex" }}>
-                <input placeholder="title" ref={titleRef}></input>
-                <input placeholder="memo" ref={recipememoRef}></input>
-                <input type="checkbox" ref={favRef}></input>
+        <div className = "add_body">
+            <div className = "container">
+                <div className = "container_text">레시피 등록</div>
+                <div className = "image_title_memo">
+                    <div id = "add_image">image</div>
+                    <div className = "title_memo">
+                        <div className = "title_favorite" style={{ display: "flex"}}>
+                            <input id = "input_title" placeholder="title" ref={titleRef}></input>
+                            <input type="checkbox" ref={favRef}></input>
+                        </div>
+                        <div className = "memo_container">
+                            <span id = "text_MEMO">MEMO</span>
+                            <input id= "input_memo"placeholder="memo" ref={recipememoRef}></input>
+                        </div>
+                    </div>
+                </div>
+                <div className = "ingredients">
+                    <div id = "text_INGREDIENTS">재료</div>
+                    <div className = "input_wrapper" style={{ display: "flex", flexDirection: "column" , justifyContent: "center"/*,alignItems: "center" */}}>
+                        <div className = "input_name_amount">
+                            <input placeholder="name" ref={ingredientNameRef}></input>
+                            <input type="number" placeholder="amount" ref={ingredientAmountRef}></input>
+                            <div style={{ fontSize: "1.5rem" }} onClick={(e) => {
+                                e.preventDefault();
+                                if(ingredientAmountRef.current.value && ingredientNameRef.current.value) {
+                                setIngredients(ingredients.concat({ 
+                                name: ingredientNameRef.current.value,
+                                amount: Number(ingredientAmountRef.current.value)
+                                }));
+                                ingredientNameRef.current.value = null;
+                                ingredientAmountRef.current.value = null;
+                                }}}>+</div>
+                        </div>
+                        <div className="added_ingredients">{
+                            ingredients.map((e, i) => 
+                                <div className = "item_ingredient" key={i} onClick={(e) => onIngredientDelete(e, i)}>
+                                {`${e.name} : ${e.amount}g`}</div>)}
+                        </div>
+                    </div>
+                </div>
+
+                <div className = "procedures">
+                    <div id = "text_PROCEDURES">과정</div>
+
+                    <div className = "added_procedures">{
+                        procedures.map((e, i)=> 
+                        <div className = "item_procedure" onClick={(e) => onProcedureDelete(e, i)} key={i}>
+                            <div className= "procedure_index">{`${i+1}`}</div>
+                            <div className = "procedure_text">{`${e.content}`}</div>
+                            {/* {`${i + 1}: ${e.content}`} */}
+                        </div>)
+                    }</div>
+                    <div id = "input_procedures" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <input id = "input_procedure_text" placeholder="procedure" ref={procedureRef}></input>
+                        <div style={{ fontSize: "1.5rem" }} onClick={(e) => {
+                            e.preventDefault();
+                            if(procedureRef.current.value) {
+                                setProcedures(procedures.concat({ 
+                                    content: procedureRef.current.value
+                                }));
+                                procedureRef.current.value = null;
+                            }
+                        }}>+</div>
+                    </div>
+                </div>
+                <div id = "add_button" onClick={onSubmit}>Add recipe</div>
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <input placeholder="name" ref={ingredientNameRef}></input>
-                <input type="number" placeholder="amount" ref={ingredientAmountRef}></input>
-                <div style={{ fontSize: "1.5rem" }} onClick={(e) => {
-                    e.preventDefault();
-                    if(ingredientAmountRef.current.value && ingredientNameRef.current.value) {
-                        setIngredients(ingredients.concat({ 
-                            name: ingredientNameRef.current.value,
-                            amount: Number(ingredientAmountRef.current.value)
-                        }));
-                        ingredientNameRef.current.value = null;
-                        ingredientAmountRef.current.value = null;
-                    }
-                }}>+</div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <input placeholder="procedure" ref={procedureRef}></input>
-                <div style={{ fontSize: "1.5rem" }} onClick={(e) => {
-                    e.preventDefault();
-                    if(procedureRef.current.value) {
-                        setProcedures(procedures.concat({ 
-                            content: procedureRef.current.value
-                        }));
-                        procedureRef.current.value = null;
-                    }
-                }}>+</div>
-            </div>
-            <div>{
-                ingredients.map((e, i) => 
-                    <div key={i} onClick={(e) => onIngredientDelete(e, i)}>
-                        {`${e.name}: ${e.amount}g`}
-                    </div>)
-            }</div>
-            <div>{
-                procedures.map((e, i)=> 
-                    <div onClick={(e) => onProcedureDelete(e, i)} key={i}>
-                        {`${i + 1}: ${e.content}`}
-                    </div>)
-            }</div>
-        </>
+        </div>
     );
 }
