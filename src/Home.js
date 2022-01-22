@@ -14,7 +14,7 @@ import SlideItem from "./SlideItem";
 import axios from "axios";
   
 
-// const userId = "hui0213";
+const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
 
 // install Swiper modules
@@ -25,6 +25,7 @@ export default function Home( {userId, userNickname} ) {
 	
 	const [ recipes, setRecipes ] = useState([]);
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
+	const [ searchTerm, setSearchTerm] = useState("");
 
     useEffect(()=> {
         const dragflag = document.getElementsByClassName("swiper-scrollbar-drag");
@@ -36,7 +37,7 @@ export default function Home( {userId, userNickname} ) {
         // }
 
 		// get every recipe of given userId
-    axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
+    axios.get(`${API_BASE}/recipe/${userId}`).then(res => { //userId -> ${userId}
 		// console.log(`userId : `, {userId});
 		// console.log(`userNickname : `, {userNickname});
 		
@@ -51,6 +52,34 @@ export default function Home( {userId, userNickname} ) {
 				}).catch(console.log);
 	  	}).catch(console.log);
     }, []);
+	
+	const styleInfo = {
+		paddingRight:'10px'
+	}
+	const elementStyle ={
+		border:'solid',
+		borderRadius:'10px',
+		position:'relative',
+		left:'10vh',
+		height:'3vh',
+		width:'20vh',
+		marginTop:'5vh',
+		marginBottom:'10vh'
+	}
+	
+	const items = recipes.filter(val=>{
+		if(searchTerm == "") {
+			return val;
+		} else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
+			return val;
+		}
+	}).map((val, key) => {
+		return(
+			<div className="recipes" key={key}>
+			  <p>{val.title}</p>
+			</div>
+			)
+	})
 
     return (
         <>
@@ -66,16 +95,19 @@ export default function Home( {userId, userNickname} ) {
 				<SwiperSlide><SlideItem/></SwiperSlide>
 				<SwiperSlide><SlideItem/></SwiperSlide>
 			</Swiper>
+
 			<div>
-					{(course.filter((recipes) =>
-						item.과목번호.toLowerCase().includes(search) ||
-						item.과목번호.includes(search) ||
-						item.교과목명.includes(search) ||
-						item.교과목명.toLowerCase().includes(search) ||
-						item.이수구분.includes(search) ||
-						item.교과영역.includes(search)))
-						.map((e) => (<CourseInfo  key={e.과목번호 + e.교과목명} course = {e} taken = {isheard} settaken = {setisheard}  />)) }
+				<input
+					type = 'text'
+					placeholder = 'Search'
+					style={elementStyle}
+					onChange={(event)=>{
+						setSearchTerm(event.target.value);
+					}}
+				/>
+				{items}
 			</div>
+
         </>
       );
 
