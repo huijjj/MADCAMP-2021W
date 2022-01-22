@@ -99,3 +99,39 @@ body {
 
 .swiper-pagination-bullet { width: 10px !important; height:10px !important; background: transparent !important; border: 1px solid #0D3D68 !important; opacity: 1 !important; }
 .swiper-pagination-bullet-active { transition: width .5s !important; background: #0D3D68 !important ; }
+
+.recipe_container {
+  overflow: auto;
+}
+
+.recipe {
+  background: #0D3A62;
+  margin: 30px 10% 30px 10%;
+
+  width: 80%;
+  height: 300px;
+  border-radius: 70px;
+
+
+}
+
+.recipe_title {
+  color: white;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.recipe_content {
+
+  height: 300px;
+  padding-right: 70px;
+  float:right;
+}
+.recipe_ingredients {
+  display: flex;
+  padding-bottom: 50%;
+}
+.ingredient {
+  color: white;
+}
