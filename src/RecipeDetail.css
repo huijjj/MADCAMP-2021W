@@ -1,0 +1,65 @@
+.recipemain {
+  font-size: 30px;
+  margin-top: 2.5cm;
+  margin-left: 2cm;
+  text-align: left;
+}
+
+.ingredientbody {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2cm;
+}
+
+.ingredientitem {
+  height: 50px;
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.upstructure {
+  margin-top: 2cm;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.picture {
+  font-size: 30px;
+}
+
+.memobody {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1cm;
+}
+.memomain {
+  font-size: 20px;
+  margin-bottom: 1cm;
+}
+
+.procedurebody {
+  margin-top: 2cm;
+  display: flex;
+  flex-direction: column;
+}
+
+.procedureitem {
+  width: 30cm;
+  height: 1.5cm;
+  margin-left: 3cm;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+  border: 1px solid black;
+  padding: 5px;
+}
