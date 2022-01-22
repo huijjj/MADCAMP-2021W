@@ -36,7 +36,7 @@ export default function Home({ userNickname }) {
 
 		    // get every recipe of given userId
         axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             setRecipes(res.data);	
             const tmp = document.createElement('div');
 
@@ -63,7 +63,10 @@ export default function Home({ userNickname }) {
                         return val;
                       }
                 }).map((val, index) => (
-                    <div key={index} className = "recipe">
+                    <div key={index} className = "recipe" onClick={() => {
+                        // console.log(val);
+                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
+                        }}>
                         <div className = "recipe_content">
                             <div className = "recipe_title">
                                 {val.title}
@@ -122,5 +125,3 @@ export default function Home({ userNickname }) {
     );
 
 }
-
-    
