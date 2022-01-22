@@ -12,7 +12,7 @@ import SwiperCore, {
   } from 'swiper';
 import SlideItem from "./SlideItem";
 import axios from "axios";
-  
+import { useNavigate, useParams } from 'react-router-dom';
 
 const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
@@ -21,8 +21,9 @@ const API_BASE = "http://192.249.18.176:443";
 SwiperCore.use([Pagination]);
 SwiperCore.use([Scrollbar]);
 
-export default function Home( {userId, userNickname} ) {
-	
+export default function Home({ userNickname }) {
+	const nav = useNavigate();
+    const { userId } = useParams();
 	const [ recipes, setRecipes ] = useState([]);
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
 	const [ searchTerm, setSearchTerm] = useState("");
@@ -84,7 +85,7 @@ export default function Home( {userId, userNickname} ) {
         <>
             <div id = "title_bar">
                 <span id = "title">김민채의 요리교실</span>
-                <span id = "say_hi">민채님 안녕하세요 :)</span>
+                <span id = "say_hi">{userNickname}님 안녕하세요 :)</span>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
                 "clickable": true}} className="mySwiper">
@@ -105,6 +106,12 @@ export default function Home( {userId, userNickname} ) {
             <div class = "recipe_container">
                 {recipeList}
             </div>
+			<div onClick={(e) => {
+				e.preventDefault();
+				nav(`/recipe/add/${userId}`);
+			}}>
+				add
+			</div>
         </>
     );
 
