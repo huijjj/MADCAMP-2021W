@@ -2,9 +2,10 @@ import { Component } from "react";
 
 class SlideItem extends Component {
     render () {
+        
         return (
             <div class = "slide_item">
-                <p>슬라이드 입니다.</p>
+                <p class = "favorite_recipe_title">{this.props.title}</p>
             </div>
         );
     }

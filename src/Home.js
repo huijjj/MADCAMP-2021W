@@ -26,6 +26,7 @@ export default function Home() {
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
   const [ recipesLoading, setRecipesLoading ] = useState(false);
   const [ recipeList, setRecipeList ] = useState([]);
+  const [ favoriteRecipeList, setFavoriteRecipeList ] = useState([]);
 
     useEffect(()=> {
         const dragflag = document.getElementsByClassName("swiper-scrollbar-drag");
@@ -34,7 +35,14 @@ export default function Home() {
         axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
         console.log(res.data);
         setRecipes(res.data);	
-        const tmp = document.createElement('div')
+
+        setFavoriteRecipeList(res.data.map(element => {
+            if (element.favorite === true) {
+                return (
+                    <SwiperSlide><SlideItem title = {element.title}/></SwiperSlide>
+                );
+            }
+        }))
 
 
 
@@ -48,29 +56,27 @@ export default function Home() {
               setRecipeList(res.data.map((elem, index) => {
 
                   return(
-                      <div className = "recipe">
+                      <div className = "recipe" key = {index}>
                           <div className = "recipe_content">
                               <div className = "recipe_title">
                                   {elem.title}
                               </div>
                               <div className = "recipe_ingredients">
                                     {
-                                        re[index].data.ingredients?.map(el =>{
-                                            return(<div className = "ingredient"> {`${el.name}  ${el.amount} g`} </div>)
+                                        re[index].data.ingredients?.map((el,idx) =>{
+                                            if(idx == re[index].data.ingredients.length - 1 ){
+                                                return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
+                                            } else {
+                                                return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
+                                            }
+
                                         })
                                     }
                               </div> 
                           </div>
                       </div>
                   );
-
               }))
-
-
-                  
-            
-            
-            
             }).catch(console.log);
           }).catch(console.log);
 
@@ -138,11 +144,12 @@ export default function Home() {
         </div>
         <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
       "clickable": true}} className="mySwiper">
+          {/* <SwiperSlide><SlideItem/></SwiperSlide>
           <SwiperSlide><SlideItem/></SwiperSlide>
           <SwiperSlide><SlideItem/></SwiperSlide>
           <SwiperSlide><SlideItem/></SwiperSlide>
-          <SwiperSlide><SlideItem/></SwiperSlide>
-          <SwiperSlide><SlideItem/></SwiperSlide>
+          <SwiperSlide><SlideItem/></SwiperSlide> */}
+          {favoriteRecipeList}
       </Swiper>
       <div class = "recipe_container">
         {recipeList}
