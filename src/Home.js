@@ -12,7 +12,7 @@ import SwiperCore, {
   } from 'swiper';
 import SlideItem from "./SlideItem";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
@@ -21,8 +21,9 @@ const API_BASE = "http://192.249.18.176:443";
 SwiperCore.use([Pagination]);
 SwiperCore.use([Scrollbar]);
 
-export default function Home( {userId, userNickname} ) {
+export default function Home({ userId, userNickname }) {
 	const nav = useNavigate();
+    const { id } = useParams();
 	const [ recipes, setRecipes ] = useState([]);
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
 
@@ -36,7 +37,7 @@ export default function Home( {userId, userNickname} ) {
         // }
 
 		// get every recipe of given userId
-    axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
+    axios.get(`${API_BASE}/recipe/${id}`).then(res => {
 		// console.log(`userId : `, {userId});
 		// console.log(`userNickname : `, {userNickname});
 		
@@ -68,7 +69,7 @@ export default function Home( {userId, userNickname} ) {
 			</Swiper>
 			<div onClick={(e) => {
 				e.preventDefault();
-				nav(`/recipe/add/${userId}`);
+				nav(`/recipe/add/${id}`);
 			}}>
 				add
 			</div>
