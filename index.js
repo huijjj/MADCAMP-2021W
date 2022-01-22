@@ -141,7 +141,7 @@ app.post('/recipe', async (req, res) => {
       owner: owner,
       versions: [{ id: newRecipeDetail._id }]
     }).save();
-    res.status(201).send({ status: "success" });
+    res.status(201).json({ status: "success" });
     // console.log(newRecipe);
   }
   catch(err) {
@@ -175,6 +175,22 @@ app.get('/recipe/version/:id', async (req, res) => {
 });
 
 
+/* delete recipe with id
+params : {
+	id: ObjectId
+}
+delete recipe with id */
+app.delete('/recipe/:id', async (req, res) => {
+  const id = req.params.id;
+
+  try {
+		await Recipes.deleteOne({ _id: id });
+		res.status(200).json({ status: "success" });
+  } 
+	catch(err) {
+    res.status(400).send({ status: "fail" });
+  }
+});
 
 
 
