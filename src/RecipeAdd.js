@@ -12,6 +12,7 @@ export default function RecipeAdd() {
     const [ ingredients, setIngredients ] = useState([]);
     const [ procedures, setProcedures ] = useState([]);
     const [ img, setImg ] = useState("");
+    const [ isButtonClicked, setButtonClicked ] = useState(false);
     const ingredientNameRef = useRef();
     const ingredientAmountRef = useRef();
     const procedureRef = useRef();
@@ -28,9 +29,9 @@ export default function RecipeAdd() {
                 owner: userId,
                 title: titleRef.current.value,
                 memo: recipememoRef.current.value,
-                favorite: favRef.current.checked,
+                favorite: isButtonClicked,
                 ingredients: ingredients,
-                procedur: procedures.map((e, i) => ({
+                procedure: procedures.map((e, i) => ({
                     index: i + 1,
                     content: e.content
                 }))
@@ -77,9 +78,10 @@ export default function RecipeAdd() {
                     <div id = "add_image" className="image_add_container">
                         {
                             img === "" ? <></>
-                            :<img src={`${API_BASE}/image/${img}`} style={{ width: "200px", height: "200px" }}/>
+                            :<img src={`${API_BASE}/image/${img}`} style={{ width: "230px", height: "230px" }}/>
                         }
                         <ImageUploader
+                            id="image_uploader"
                             withLabel={false}
                             withIcon={false}
                             buttonText="사진 선택"
@@ -90,12 +92,23 @@ export default function RecipeAdd() {
                     </div>
                     <div className = "title_memo">
                         <div className = "title_favorite" style={{ display: "flex"}}>
-                            <input id = "input_title" placeholder="title" ref={titleRef}></input>
-                            <input type="checkbox" ref={favRef}></input>
+                            <input id = "input_title" placeholder="제목을 입력하세요" ref={titleRef}></input>
+                            {/* <input type="checkbox" ref={favRef}></input> */}
+                            <button id = "is_favorite" style = {isButtonClicked? { fontWeight: "900" ,color: 'blue'} : { color:'black'}} onClick = {() => {
+                                if(isButtonClicked == false) {
+                                    setButtonClicked(true);
+                                    document.getElementById("is_favorite").innerText = "★";
+                                }
+                                else {
+                                    setButtonClicked(false);
+                                    document.getElementById("is_favorite").innerText = "★";
+
+                                }
+                            }}>★</button>
                         </div>
                         <div className = "memo_container">
-                            <span id = "text_MEMO">MEMO</span>
-                            <input id= "input_memo"placeholder="memo" ref={recipememoRef}></input>
+                            <span id = "text_MEMO">메모</span>
+                            <textarea id= "input_memo"placeholder="메모를 입력하세요" ref={recipememoRef}></textarea>
                         </div>
                     </div>
                 </div>
@@ -103,9 +116,9 @@ export default function RecipeAdd() {
                     <div id = "text_INGREDIENTS">재료</div>
                     <div className = "input_wrapper" style={{ display: "flex", flexDirection: "column" , justifyContent: "center"/*,alignItems: "center" */}}>
                         <div className = "input_name_amount">
-                            <input placeholder="name" ref={ingredientNameRef}></input>
-                            <input type="number" placeholder="amount" ref={ingredientAmountRef}></input>
-                            <div style={{ fontSize: "1.5rem" }} onClick={(e) => {
+                            <input id="input_ingredient_name" placeholder="재료 이름" ref={ingredientNameRef}></input>
+                            <input id="input_ingredient_amount" type="number" placeholder="중량 (g)" ref={ingredientAmountRef}></input>
+                            <div id="ingredient_add_button" style={{ fontSize: "1.5rem", height: "fit-content"}} onClick={(e) => {
                                 e.preventDefault();
                                 if(ingredientAmountRef.current.value && ingredientNameRef.current.value) {
                                 setIngredients(ingredients.concat({ 
@@ -136,8 +149,8 @@ export default function RecipeAdd() {
                         </div>)
                     }</div>
                     <div id = "input_procedures" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <input id = "input_procedure_text" placeholder="procedure" ref={procedureRef}></input>
-                        <div style={{ fontSize: "1.5rem" }} onClick={(e) => {
+                        <input id = "input_procedure_text" placeholder="다음 과정을 입력하세요" ref={procedureRef}></input>
+                        <div id = "procedure_add_button" style={{ fontSize: "1.5rem" }} onClick={(e) => {
                             e.preventDefault();
                             if(procedureRef.current.value) {
                                 setProcedures(procedures.concat({ 
