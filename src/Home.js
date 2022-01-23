@@ -12,7 +12,7 @@ import SwiperCore, {
   } from 'swiper';
 import SlideItem from "./SlideItem";
 import axios from "axios";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { Fab, Action } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
@@ -24,8 +24,11 @@ const API_BASE = "http://192.249.18.176:443";
 SwiperCore.use([Pagination]);
 SwiperCore.use([Scrollbar]);
 
-export default function Home({ userNickname }) {
+export default function Home() {
 	const nav = useNavigate();
+    const loc = useLocation();
+    let nickname = loc.state.nickname;
+    
     const { userId } = useParams();
 	const [ recipes, setRecipes ] = useState([]);
 	const [ recipeVersions, setRecipeVersions ] = useState([]);
@@ -105,7 +108,7 @@ export default function Home({ userNickname }) {
         <>
             <div id = "title_bar">
                 <span id = "title">김민채의 요리보고 조리보고</span>
-                <span id = "say_hi">{userNickname}님 안녕하세요 :)</span>
+                <span id = "say_hi">{nickname}님 안녕하세요 :)</span>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
                 "clickable": true}} className="mySwiper">

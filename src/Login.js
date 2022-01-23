@@ -23,7 +23,7 @@ function Login( {setUserId, setUserNickname} ) {
                 setUserId(res.data.id);
                 setUserNickname(res.data.nickname);
 
-                nav(`/home/${e.target.id.value}`);
+                nav(`/home/${e.target.id.value}`, {state: {nickname: res.data.nickname}});
                 window.alert(`환영합니다 ${res.data.nickname}님!`);
             }
         }).catch((e) => {
