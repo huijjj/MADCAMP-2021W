@@ -14,13 +14,11 @@ function RecipeDetail() {
     const loc = useLocation();
     const nav = useNavigate();
     // console.log(loc.state);
-    // const favorite = loc.state.favorite; // 디테일 파트에서는 즐겨찾기 기능 구현 x
     const owner = loc.state.owner;
     const title = loc.state.title;
     const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
     const _id = loc.state._id; // id of recipe in DB
 
-    // const [version, setVersion] = useState(0);
     const [ingredientList, setIngredientList] = useState([]);
     const [memo, setMemo] = useState("");
     const [procedure, setProcedure] = useState([]);
@@ -53,7 +51,12 @@ function RecipeDetail() {
             )));
             setMemo(res.data.memo);
             setProcedure(res.data.procedure.map((val, index) => (
-                <div className='procedureitem' key={index}>{val.content}</div>
+                <>
+                <div className='procedurebody'>
+                    <div className='procedureindex' key={index}>{index+1}</div>
+                    <div className='procedureitem' key={index}>{val.content}</div>
+                </div>
+                </>
             )));
         }).catch(console.log);
     }, [version]);
@@ -70,15 +73,13 @@ function RecipeDetail() {
                 <div className='picture'>사진</div>
                 <div className='memobody'>
                     <div className='memomain'>MEMO</div>
-                    {memo}
+                    <div className='memotext'>{memo}</div>
                 </div>
             </div>
             <div className='ingredientbody'>
                 {ingredientList}
             </div>
-            <div className='procedurebody'>
-                {procedure}
-            </div>
+            {procedure}
         </>
     );
 }

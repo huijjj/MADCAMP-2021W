@@ -97,7 +97,7 @@ export default function Home({ userNickname }) {
     return (
         <>
             <div id = "title_bar">
-                <span id = "title">김민채의 요리교실</span>
+                <span id = "title">김민채의 요리조리</span>
                 <span id = "say_hi">{userNickname}님 안녕하세요 :)</span>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{

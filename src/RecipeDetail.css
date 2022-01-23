@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
+
 .recipemain {
-  font-size: 30px;
+  font-family: "Hahmlet", serif;
+  font-size: 40px;
+  font-weight: 700;
   margin-top: 2.5cm;
   margin-left: 2cm;
   text-align: left;
@@ -10,11 +14,13 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 2cm;
+  margin-bottom: 2cm;
 }
 
 .ingredientitem {
-  height: 50px;
+  font-family: "Hahmlet", serif;
   width: 200px;
+  height: 50px;
   margin-left: 10px;
   margin-right: 10px;
   font-size: 20px;
@@ -42,24 +48,45 @@
   margin-left: 1cm;
 }
 .memomain {
+  font-family: "Hahmlet", serif;
   font-size: 20px;
   margin-bottom: 1cm;
 }
 
+.memotext {
+  font-family: "Hahmlet", serif;
+  font-size: 15px;
+}
+
 .procedurebody {
-  margin-top: 2cm;
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.procedureindex {
+  font-family: "Hahmlet", serif;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  margin-left: 3cm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 5px;
 }
 
 .procedureitem {
-  width: 30cm;
-  height: 1.5cm;
-  margin-left: 3cm;
+  font-family: "Hahmlet", serif;
+  font-size: 30px;
+  width: 1000px;
+  height: 50px;
+  margin-left: 1cm;
   display: flex;
   align-items: center;
-  font-size: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: 1px solid black;
   padding: 5px;
 }
