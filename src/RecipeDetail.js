@@ -19,12 +19,14 @@ function RecipeDetail() {
     const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
     const  _id = useParams().recipe; // id of recipe in DB
     const img = loc.state.img;
+    const fav = loc.state.favorite;
 
     const [ingredientList, setIngredientList] = useState([]);
     const [memo, setMemo] = useState("");
     const [procedure, setProcedure] = useState([]);
     const [version, setVersion] = useState(versions.length);
     const [dropContent, setDropContent] = useState();
+    const [prev, setPrev] = useState();
 
 
     function onVersionClicked({ key }){
@@ -61,6 +63,7 @@ function RecipeDetail() {
     useEffect(() => {
         axios.get(`${API_BASE}/recipe/version/${versions[version - 1].id}`).then(res => {
             console.log(res.data);
+            setPrev(res.data);
             setIngredientList(res.data.ingredients.map((val, index) => (
                 <div className='ingredientitem' key={`ingredient_${index}`}>{val.name} {val.amount}g</div>
             )));
@@ -96,7 +99,16 @@ function RecipeDetail() {
                         이 버전만 삭제
                     </button>
                 }
-                <button onClick={(e) => e.preventDefault()}>
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    nav(`/recipe/add/${owner}`, { state: { 
+                        img: img,
+                        favorite: fav,
+                        title: title,
+                        prev: prev,
+                        id: _id
+                     }});
+                }}>
                     버전 추가
                 </button>
             </div>

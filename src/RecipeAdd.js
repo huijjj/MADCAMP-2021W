@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 import ImageUploader from "react-images-upload";
@@ -18,31 +18,65 @@ export default function RecipeAdd() {
     const procedureRef = useRef();
     const titleRef = useRef();
     const recipememoRef = useRef();
-    const favRef = useRef();
+
     const nav = useNavigate();
+    const loc = useLocation();
+
+    useEffect(() => {
+        if(loc.state) {
+            console.log("edit");
+            console.log(loc.state);
+
+            titleRef.current.value = loc.state.title;
+            recipememoRef.current.value = loc.state.prev.memo;
+            setImg(loc.state.img ? loc.state.img : "");
+            setButtonClicked(loc.state.favorite);
+            setIngredients(loc.state.prev.ingredients);
+            setProcedures(loc.state.prev.procedure.map(e => ({ content: e.content})));
+        }
+    }, []);
 
     const onSubmit = (e) => {
         e.preventDefault();  
         if(titleRef.current.value) {
-            axios.post(`${API_BASE}/recipe`, {
-                img: img,
-                owner: userId,
-                title: titleRef.current.value,
-                memo: recipememoRef.current.value,
-                favorite: isButtonClicked,
-                ingredients: ingredients,
-                procedure: procedures.map((e, i) => ({
-                    index: i + 1,
-                    content: e.content
-                }))
-            }).then(res => {
-                console.log(res.data);
-                window.alert("저장 완료");
-                nav(`/home/${userId}`);
-            }).catch(err => {
-                console.log(err);
-                window.alert("실패");
-            });
+            if(loc.state) {
+                axios.post(`${API_BASE}/recipe/version/${loc.state.id}`, {
+                    img: img,
+                    title: titleRef.current.value,
+                    memo: recipememoRef.current.value,
+                    favorite: isButtonClicked,
+                    ingredients: ingredients,
+                    procedure: procedures.map((e, i) => ({
+                        index: i + 1,
+                        content: e.content
+                    }))
+                }).then(res => {
+                    console.log(res.data);
+                    window.alert("저장 완료");
+                    nav(`/${userId}/${loc.state.id}`, {state: {favorite: isButtonClicked, owner: userId, title: titleRef.current.value, versions: res.data.versions, img: img}});
+                }).catch(console.log);
+            }
+            else {
+                axios.post(`${API_BASE}/recipe`, {
+                    img: img,
+                    owner: userId,
+                    title: titleRef.current.value,
+                    memo: recipememoRef.current.value,
+                    favorite: isButtonClicked,
+                    ingredients: ingredients,
+                    procedure: procedures.map((e, i) => ({
+                        index: i + 1,
+                        content: e.content
+                    }))
+                }).then(res => {
+                    console.log(res.data);
+                    window.alert("저장 완료");
+                    nav(`/home/${userId}`);
+                }).catch(err => {
+                    console.log(err);
+                    window.alert("실패");
+                });
+            }
         }
         else {
             window.alert("제목 입력");
