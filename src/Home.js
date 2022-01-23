@@ -78,24 +78,29 @@ export default function Home() {
                         console.log(val.versions[val.versions.length-1].id);
                         nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img}});
                         }}>
-                        <div className = "recipe_content">
-                            <div>{
-                                val.img ? 
-                                <img style={{ width: "100px", height: "100px" }} src={`${API_BASE}/image/${val.img}`}/> : <></>
-                            }</div>
-                            <div className = "recipe_title">
-                                {val.title}
+                            <div className = "recipe_content">
+                                <div className="recipe_body">
+                                    <div>{
+                                        val.img ? 
+                                        <img style={{ width: "200px", height: "200px", borderRadius: "20px", border: "1px solid black"}} src={`${API_BASE}/image/${val.img}`}/> : <></>
+                                    }</div>
+
+                                    <div className="recipe_info">
+                                        <div className = "recipe_title">
+                                            {val.title}
+                                        </div>
+                                        <div className = "recipe_ingredients">{
+                                            re[index].data.ingredients?.map((el,idx) => {
+                                                if(idx == re[index].data.ingredients.length - 1 ) {
+                                                    return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
+                                                } 
+                                                else {
+                                                    return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
+                                                }})
+                                        }</div> 
+                                    </div>
+                                </div>
                             </div>
-                            <div className = "recipe_ingredients">{
-                                re[index].data.ingredients?.map((el,idx) => {
-                                    if(idx == re[index].data.ingredients.length - 1 ) {
-                                    	return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
-                                    } 
-									else {
-                                        return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
-                                    }})
-                        	}</div> 
-						</div>
 					</div>)));
 				}).catch(console.log);
         }).catch(console.log);
@@ -146,7 +151,7 @@ export default function Home() {
                 }}
                 ></Fab>
 
-            <div class = "recipe_container">
+            <div className = "recipe_container">
                 {recipeList}
             </div>
 			<div onClick={(e) => {
