@@ -14,6 +14,9 @@ import SlideItem from "./SlideItem";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { Fab, Action } from 'react-tiny-fab';
+import 'react-tiny-fab/dist/styles.css';
+
 const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
 
@@ -97,7 +100,7 @@ export default function Home({ userNickname }) {
     return (
         <>
             <div id = "title_bar">
-                <span id = "title">김민채의 요리조리</span>
+                <span id = "title">김민채의 요리보고 조리보고</span>
                 <span id = "say_hi">{userNickname}님 안녕하세요 :)</span>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
@@ -109,14 +112,33 @@ export default function Home({ userNickname }) {
             <SwiperSlide><SlideItem/></SwiperSlide> */}
 			{favoriteRecipeList}
             </Swiper>
-            <input
-                className="searchbar"
-                type = 'text'
-                placeholder = 'Search...'
-                onChange={(event)=>{
-                    setSearchTerm(event.target.value);
+            <div className = "search">
+                <div>
+                <input
+                    className="searchInput"
+                    type = 'text'
+                    placeholder = '🍎 🍓 🍒 🍑 🍅 🍟'
+                    onChange={(event)=>{
+                        setSearchTerm(event.target.value);
+                    }}
+                />
+                </div>
+
+            </div>
+
+            <Fab
+                mainButtonStyles={{background : "#BF7D7C", fontSize : "10px"} /*mainButtonStyles*/}
+                // actionButtonStyles={actionButtonStyles}
+                // style={style}
+                icon={"ADD"}
+                // event={event}
+                alwaysShowTitle={true}
+                onClick={(e) => {
+                    e.preventDefault();
+                    nav(`/recipe/add/${userId}`);
                 }}
-            />
+                ></Fab>
+
             <div class = "recipe_container">
                 {recipeList}
             </div>
