@@ -1,3 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
+
+.search {
+  margin: 20px;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+  /* filter: drop-shadow(0 2px #ffffff); */
+}
+
+.search > div:after {
+
+  content: "";
+  background: white;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  right: 2px;
+  transform: rotate(130deg) translate(-15px, 3px);
+}
+
+.search > div > input {
+  color: rgb(112, 112, 112);
+  font-size: 16px;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: solid 3px rgb(255, 255, 255);
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+}
+
+.search > div > input::placeholder {
+  color: #efefef;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 0.7;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 500px;
+}
+
+
 #app {
   height: 100%;
 }
@@ -7,12 +60,13 @@
 }
 html,
 body {
+  font-family: "Hahmlet", serif;
   height: 100%;
 }
 
 body {
-  background: #f2f2f2;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  background: #FFADA6;
+  /* font-family: "Hahmlet", serif; */
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -30,7 +84,8 @@ body {
   width: 400px !important;
   text-align: center;
   font-size: 18px;
-  background: rgb(226, 226, 226);
+  background: rgb(255, 182, 182);
+  background: linear-gradient(-180deg,  #ffb7b7 0%,  #ffdad3 100%);
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -57,17 +112,20 @@ body {
 .slide_item {
   width: 400px;
   height: 250px;
+  color: white;
 }
+
 
 .mySwiper {
   position: absolute;
   width: 100%;
   height: fit-content + 50px;
   padding-bottom: 100px;
-  margin-top: -120px;
+  margin-top: -110px;
 }
 
 .swiper-wrapper {
+  font-family: "Hahmlet", serif;
   width: 100%;
   padding-bottom: 50px;
 }
@@ -81,10 +139,12 @@ body {
 }
 
 #title_bar {
+  font-family: "Hahmlet", serif;
   padding-top: 40px;
-  background: #0d3d68;
+  background: #FFA7A6;
+  background: linear-gradient(180deg, #FFA7A6 0%, #ff9e97 100%);
   width: 100%;
-  height: 220px;
+  height: 250px;
 }
 
 #say_hi {
@@ -99,21 +159,22 @@ body {
   width: 10px !important;
   height: 10px !important;
   background: transparent !important;
-  border: 1px solid #0d3d68 !important;
+  border: 1px solid #5a5a5a !important;
   opacity: 1 !important;
 }
 .swiper-pagination-bullet-active {
   transition: width 0.5s !important;
-  background: #0d3d68 !important ;
+  background: #5a5a5a !important ;
 }
 
 .recipe_container {
   overflow: auto;
   text-align: center;
+  font-family: "Hahmlet", serif;
 }
 
 .recipe {
-  background: #0d3a62;
+  background: #FFA7A6;
   margin: 30px 10% 30px 10%;
   width: 1000px;
   height: 300px;
@@ -146,5 +207,5 @@ body {
 
 .favorite_recipe_title {
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 25px;
 }

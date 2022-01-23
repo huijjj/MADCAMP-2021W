@@ -1,5 +1,15 @@
+html {
+  background: rgb(255, 236, 236);
+}
+
+#root {
+  background: transparent;
+}
+
 .App {
   text-align: center;
+  background: rgb(255, 236, 236);
+  /* background: rgb(255, 245, 241); */
 }
 
 .App-logo {
@@ -21,7 +31,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgba(255, 255, 255, 0);
 }
 
 .App-link {
