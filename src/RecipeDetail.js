@@ -42,19 +42,18 @@ function RecipeDetail() {
         );
     }, []); 
 
-
     useEffect(() => {
         axios.get(`${API_BASE}/recipe/version/${versions[version - 1].id}`).then(res => {
-            console.log(res.data); 
+            console.log(res.data);
             setIngredientList(res.data.ingredients.map((val, index) => (
-                <div className='ingredientitem' key={index}>{val.name} {val.amount}g</div>
+                <div className='ingredientitem' key={`ingredient_${index}`}>{val.name} {val.amount}g</div>
             )));
             setMemo(res.data.memo);
             setProcedure(res.data.procedure.map((val, index) => (
                 <>
-                <div className='procedurebody'>
-                    <div className='procedureindex' key={index}>{index+1}</div>
-                    <div className='procedureitem' key={index}>{val.content}</div>
+                <div className='procedurebody' key={`procedure_${index}`}>
+                    <div className='procedureindex'>{index+1}</div>
+                    <div className='procedureitem'>{val.content}</div>
                 </div>
                 </>
             )));
@@ -63,11 +62,17 @@ function RecipeDetail() {
     
     return(
         <>
-            <div className='recipemain'>{title}</div>
-            <div>
-                <Dropdown overlay={dropContent}>
-                    <Button>ver. {version}<DownOutlined /></Button>
-                </Dropdown>
+            <div className='recipebody'>
+                <div className='recipemain'>{title}</div>
+                <div className='versionbutton'>
+                    <Dropdown overlay={dropContent}>
+                        <Button>ver. {version}<DownOutlined /></Button>
+                    </Dropdown>
+                </div>
+                <button className='gotochart' onClick={() => {
+                    // console.log(versions);
+                    nav(`/${owner}/${_id}/chart`, {state: {versions: versions}});
+                    }}>chart</button>
             </div>
             <div className='upstructure'>
                 <div className='picture'>사진</div>

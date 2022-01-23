@@ -69,8 +69,8 @@ export default function Home({ userNickname }) {
                       }
                 }).map((val, index) => (
                     <div key={index} className = "recipe" onClick={() => {
-                        // console.log(val);
-                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
+                        console.log(val.versions[val.versions.length-1].id);
+                        nav(`/${val.owner}/${val.versions[val.versions.length-1].id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
                         }}>
                         <div className = "recipe_content">
                             <div className = "recipe_title">
@@ -97,7 +97,7 @@ export default function Home({ userNickname }) {
     return (
         <>
             <div id = "title_bar">
-                <span id = "title">김민채의 요리조리</span>
+                <span id = "title">김민채의 요리보고 조리보고</span>
                 <span id = "say_hi">{userNickname}님 안녕하세요 :)</span>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{

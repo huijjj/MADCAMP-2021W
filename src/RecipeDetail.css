@@ -1,12 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
 
+.recipebody {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-top: 2.5cm;
+  margin-left: 2cm;
+}
+
 .recipemain {
   font-family: "Hahmlet", serif;
   font-size: 40px;
   font-weight: 700;
-  margin-top: 2.5cm;
-  margin-left: 2cm;
   text-align: left;
+}
+
+.versionbutton {
+  font-family: "Hahmlet", serif;
+  margin-left: 30px;
+  padding-bottom: 6px;
+}
+
+.gotochart {
+  font-family: "Hahmlet", serif;
+  margin-left: 30px;
+  margin-bottom: 5px;
 }
 
 .ingredientbody {
