@@ -30,6 +30,23 @@ function RecipeDetail() {
     function onVersionClicked({ key }){
         setVersion(Number(key));
     }
+
+    const onDelete = (e, deleteAll) => {
+        e.preventDefault();
+        if(deleteAll) {
+            if(window.confirm("레시피 전체 삭제")) {
+                axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
+                    window.alert("삭제 완료");
+                    nav(`/home/${owner}`);
+                }).catch(console.log);
+            }
+        }
+        else {
+            if(window.confirm("이 버전을 삭제")) {
+
+            }
+        }
+    };
   
     useEffect(()=>{
         setDropContent(
@@ -69,7 +86,19 @@ function RecipeDetail() {
                 <button className='gotochart' onClick={() => {
                     // console.log(versions);
                     nav(`/${owner}/${_id}/chart`, {state: {versions: versions}});
-                    }}>chart</button>
+                }}>chart</button>
+                <button onClick={(e) => onDelete(e, true)}>
+                    레시피 전체 삭제
+                </button>
+                {
+                    versions.length !== 1 && 
+                    <button onClick={(e) => onDelete(e, false)}>
+                        이 버전만 삭제
+                    </button>
+                }
+                <button onClick={(e) => e.preventDefault()}>
+                    버전 추가
+                </button>
             </div>
             <div className='upstructure'>
                 <div className='picture'>사진</div>
