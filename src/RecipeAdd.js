@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 
 import ImageUploader from "react-images-upload";
+import './RecipeAdd.css'
 
 const API_BASE = 'http://192.249.18.176:443';
 
