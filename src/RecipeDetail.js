@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { Menu, Dropdown, Button } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
@@ -17,7 +17,8 @@ function RecipeDetail() {
     const owner = loc.state.owner;
     const title = loc.state.title;
     const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
-    const _id = loc.state._id; // id of recipe in DB
+    const  _id = useParams().recipe; // id of recipe in DB
+    const img = loc.state.img;
 
     const [ingredientList, setIngredientList] = useState([]);
     const [memo, setMemo] = useState("");
@@ -72,6 +73,9 @@ function RecipeDetail() {
             </div>
             <div className='upstructure'>
                 <div className='picture'>사진</div>
+                <div>{
+                    img ? <img src={`${API_BASE}/image/${img}`}/> : <></>
+                }</div>
                 <div className='memobody'>
                     <div className='memomain'>MEMO</div>
                     <div className='memotext'>{memo}</div>

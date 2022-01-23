@@ -48,7 +48,7 @@ export default function Home({ userNickname }) {
 					return (
 						<SwiperSlide onClick={() => {
                             console.log(element);
-                            nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, _id: element._id}});
+                            nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, img: element.img}});
                             }}>
                             <SlideItem img = {element.img} title = {element.title} />
                         </SwiperSlide>
@@ -73,7 +73,7 @@ export default function Home({ userNickname }) {
                 }).map((val, index) => (
                     <div key={index} className = "recipe" onClick={() => {
                         console.log(val.versions[val.versions.length-1].id);
-                        nav(`/${val.owner}/${val.versions[val.versions.length-1].id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
+                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img}});
                         }}>
                         <div className = "recipe_content">
                             <div>{
