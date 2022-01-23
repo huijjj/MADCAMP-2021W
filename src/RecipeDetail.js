@@ -1,7 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { Menu, Dropdown, Button } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+
 import './RecipeDetail.css';
+import 'antd/dist/antd.css'
 
 function RecipeDetail() {
     const API_BASE = "http://192.249.18.176:443";
@@ -13,15 +18,35 @@ function RecipeDetail() {
     const owner = loc.state.owner;
     const title = loc.state.title;
     const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
-    const _id = loc.state._id;
+    const _id = loc.state._id; // id of recipe in DB
 
     // const [version, setVersion] = useState(0);
     const [ingredientList, setIngredientList] = useState([]);
     const [memo, setMemo] = useState("");
     const [procedure, setProcedure] = useState([]);
+    const [version, setVersion] = useState(versions.length);
+    const [dropContent, setDropContent] = useState();
 
+
+    function onVersionClicked({ key }){
+        if(version !== Number(key)) {
+            setVersion(Number(key));
+        }
+    }
+  
     useEffect(()=>{
-        axios.get(`${API_BASE}/recipe/version/${versions[versions.length - 1].id}/`).then( res => {
+        setDropContent(
+            <Menu onClick={onVersionClicked}>{
+                versions.map((_, i) => (
+                    <Menu.Item key={i + 1}>{i + 1}</Menu.Item>
+                ))
+            }</Menu>
+        );
+    }, []); 
+
+
+    useEffect(() => {
+        axios.get(`${API_BASE}/recipe/version/${versions[version - 1].id}`).then(res => {
             console.log(res.data); 
             setIngredientList(res.data.ingredients.map((val, index) => (
                 <div className='ingredientitem' key={index}>{val.name} {val.amount}g</div>
@@ -31,16 +56,16 @@ function RecipeDetail() {
                 <div className='procedureitem' key={index}>{val.content}</div>
             )));
         }).catch(console.log);
-    }, []); // version 바뀔 때 마다 바뀌도록.
-    
-    function onVersionClicked(){
-
-    }
-
+    }, [version]);
     
     return(
         <>
             <div className='recipemain'>{title}</div>
+            <div>
+                <Dropdown overlay={dropContent}>
+                    <Button>ver. {version}<DownOutlined /></Button>
+                </Dropdown>
+            </div>
             <div className='upstructure'>
                 <div className='picture'>사진</div>
                 <div className='memobody'>
@@ -55,7 +80,7 @@ function RecipeDetail() {
                 {procedure}
             </div>
         </>
-    )
+    );
 }
 
 export default RecipeDetail;
