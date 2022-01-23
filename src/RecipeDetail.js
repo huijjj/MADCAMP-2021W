@@ -16,7 +16,7 @@ function RecipeDetail() {
     // console.log(loc.state);
     const owner = loc.state.owner;
     const title = loc.state.title;
-    const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
+    // const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
     const  _id = useParams().recipe; // id of recipe in DB
     const img = loc.state.img;
     const fav = loc.state.favorite;
@@ -24,6 +24,7 @@ function RecipeDetail() {
     const [ingredientList, setIngredientList] = useState([]);
     const [memo, setMemo] = useState("");
     const [procedure, setProcedure] = useState([]);
+    const [versions, setVersions] = useState(loc.state.versions);
     const [version, setVersion] = useState(versions.length);
     const [dropContent, setDropContent] = useState();
     const [prev, setPrev] = useState();
@@ -45,7 +46,13 @@ function RecipeDetail() {
         }
         else {
             if(window.confirm("이 버전을 삭제")) {
-
+                axios.delete(`${API_BASE}/recipe/version/${_id}/${versions[version - 1].id}`).then(res => {
+                    window.alert("삭제 완료");
+                    // nav(`/home/${owner}`);
+                    console.log(res.data);
+                    setVersions(res.data.versions);
+                    setVersion(res.data.versions.length);
+                }).catch(console.log);
             }
         }
     };

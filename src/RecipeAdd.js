@@ -71,7 +71,7 @@ export default function RecipeAdd() {
                 }).then(res => {
                     console.log(res.data);
                     window.alert("저장 완료");
-                    nav(`/home/${userId}`);
+                    nav(`/home/${userId}`, {state: {nickname: userId}});
                 }).catch(err => {
                     console.log(err);
                     window.alert("실패");
