@@ -27,9 +27,7 @@ function RecipeDetail() {
 
 
     function onVersionClicked({ key }){
-        if(version !== Number(key)) {
-            setVersion(Number(key));
-        }
+        setVersion(Number(key));
     }
   
     useEffect(()=>{
@@ -50,12 +48,10 @@ function RecipeDetail() {
             )));
             setMemo(res.data.memo);
             setProcedure(res.data.procedure.map((val, index) => (
-                <>
                 <div className='procedurebody' key={`procedure_${index}`}>
                     <div className='procedureindex'>{index+1}</div>
                     <div className='procedureitem'>{val.content}</div>
                 </div>
-                </>
             )));
         }).catch(console.log);
     }, [version]);
