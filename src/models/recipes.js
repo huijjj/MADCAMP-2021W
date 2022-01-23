@@ -9,7 +9,8 @@ const RecipeShema = new Schema({
   title: { type: String, required: true },
   versions: [{id: Schema.Types.ObjectId}],
   favorite: { type: Boolean, default: false },
-  owner: { type: String, required: true }
+  owner: { type: String, required: true },
+  img: { type: String }
 });
 
 module.exports = mongoose.model('Recipe', RecipeShema);
