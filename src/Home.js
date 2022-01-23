@@ -72,8 +72,8 @@ export default function Home({ userNickname }) {
                       }
                 }).map((val, index) => (
                     <div key={index} className = "recipe" onClick={() => {
-                        // console.log(val);
-                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
+                        console.log(val.versions[val.versions.length-1].id);
+                        nav(`/${val.owner}/${val.versions[val.versions.length-1].id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
                         }}>
                         <div className = "recipe_content">
                             <div>{
