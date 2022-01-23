@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#c2e59c, #64b3f4);
+}
+
 .search {
   margin: 20px;
 }

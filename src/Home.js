@@ -50,7 +50,7 @@ export default function Home({ userNickname }) {
                             console.log(element);
                             nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, _id: element._id}});
                             }}>
-                            <SlideItem title = {element.title} />
+                            <SlideItem img = {element.img} title = {element.title} />
                         </SwiperSlide>
 					);
 				}
@@ -76,6 +76,10 @@ export default function Home({ userNickname }) {
                         nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, _id: val._id}});
                         }}>
                         <div className = "recipe_content">
+                            <div>{
+                                val.img ? 
+                                <img style={{ width: "100px", height: "100px" }} src={`${API_BASE}/image/${val.img}`}/> : <></>
+                            }</div>
                             <div className = "recipe_title">
                                 {val.title}
                             </div>
