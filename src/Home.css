@@ -3,11 +3,11 @@
 ::-webkit-scrollbar {
   width: 10px;
 }
- 
+
 ::-webkit-scrollbar-track {
   background: #eeeeee;
 }
- 
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(#c2e59c, #64b3f4);
 }
@@ -23,7 +23,6 @@
 }
 
 .search > div:after {
-
   content: "";
   background: white;
   width: 4px;
@@ -62,7 +61,6 @@
   width: 500px;
 }
 
-
 #app {
   height: 100%;
 }
@@ -77,7 +75,7 @@ body {
 }
 
 body {
-  background: #FFADA6;
+  background: #ffada6;
   /* font-family: "Hahmlet", serif; */
   font-size: 14px;
   color: #000;
@@ -97,7 +95,7 @@ body {
   text-align: center;
   font-size: 18px;
   background: rgb(255, 182, 182);
-  background: linear-gradient(-180deg,  #ffb7b7 0%,  #ffdad3 100%);
+  background: linear-gradient(-180deg, #ffb7b7 0%, #ffdad3 100%);
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -127,7 +125,6 @@ body {
   color: white;
 }
 
-
 .mySwiper {
   position: absolute;
   width: 100%;
@@ -153,8 +150,8 @@ body {
 #title_bar {
   font-family: "Hahmlet", serif;
   padding-top: 40px;
-  background: #FFA7A6;
-  background: linear-gradient(180deg, #FFA7A6 0%, #ff9e97 100%);
+  background: #ffa7a6;
+  background: linear-gradient(180deg, #ffa7a6 0%, #ff9e97 100%);
   width: 100%;
   height: 250px;
 }
@@ -186,7 +183,7 @@ body {
 }
 
 .recipe {
-  background: #FFA7A6;
+  background: #ffa7a6;
   margin: 30px 10% 30px 10%;
   width: 1000px;
   height: 300px;
@@ -196,22 +193,43 @@ body {
 
 .recipe_title {
   color: white;
-  margin-top: 120px;
+  margin-top: 80px;
   margin-bottom: 10px;
   font-size: 25px;
+}
+
+.recipe_body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transform: translate(220px, 0);
 }
 
 .recipe_content {
   width: 50%;
   height: 300px;
   margin-right: 70px;
-  float: right;
+  margin-left: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.recipe_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin-left: 140px;
 }
 .recipe_ingredients {
   display: flex;
   height: 100px;
   justify-content: center;
 }
+
 .ingredient {
   color: white;
   height: fit-content;
