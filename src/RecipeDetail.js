@@ -7,6 +7,7 @@ import { DownOutlined } from '@ant-design/icons';
 
 import './RecipeDetail.css';
 import 'antd/dist/antd.css'
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 function RecipeDetail() {
     const API_BASE = "http://192.249.18.176:443";
@@ -87,11 +88,8 @@ function RecipeDetail() {
     
     return(
         <>
-            <div onClick={() => {
-                nav(-1);
-                }}>
-                뒤로 가기
-            </div>
+            <KeyboardBackspaceIcon onClick={() => { nav(-1); }}/>
+            
             <div className='recipebody'>
                 <div className='recipemain'>{title}</div>
                 <div className='versionbutton'>

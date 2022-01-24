@@ -13,9 +13,9 @@ import SwiperCore, {
 import SlideItem from "./SlideItem";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-
 import { Fab, Action } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
@@ -115,15 +115,19 @@ export default function Home() {
             nav(`/login`);
         }else{
         }
-        
-        
     }
     return (
         <>
-            <div id = "title_bar">
-                <span id = "title">김민채의 요리보고 조리보고</span>
-                <span id = "say_hi">{nickname}님 안녕하세요 :)</span>
-                <span onClick={onClickHandler}>로그아웃</span>
+            <div className = "title_bar">
+                <div className="infobody">
+                    <div className = "title">김민채의 요리보고 조리보고</div>
+                    <div className="infobox">
+                        <div className = "say_hi">{nickname}님 안녕하세요 :)</div>
+                        <div className="logouticon">
+                            <LogoutIcon sx={{color: "white"}} onClick={onClickHandler} />
+                        </div>
+                    </div>
+                </div>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
                 "clickable": true}} className="mySwiper">

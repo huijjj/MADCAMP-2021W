@@ -4,6 +4,7 @@ import axios from "axios";
 
 import ImageUploader from "react-images-upload";
 import './RecipeAdd.css'
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const API_BASE = 'http://192.249.18.176:443';
 
@@ -106,6 +107,7 @@ export default function RecipeAdd() {
 
     return (
         <div className = "add_body">
+            <KeyboardBackspaceIcon onClick={() => { nav(-1); }}/>
             <div className = "container">
                 <div className = "container_text">레시피 등록</div>
                 <div className = "image_title_memo">

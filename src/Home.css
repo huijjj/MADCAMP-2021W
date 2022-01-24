@@ -140,29 +140,45 @@ body {
   padding-bottom: 8px;
 }
 
-#title {
-  float: left;
+.title {
   color: white;
   font-size: 40px;
-  margin-left: 50px;
-  padding-top: 10px;
+  padding-left: 40px;
 }
 
-#title_bar {
+.title_bar {
   font-family: "Hahmlet", serif;
-  padding-top: 40px;
   background: #ffa7a6;
   background: linear-gradient(180deg, #ffa7a6 0%, #ff9e97 100%);
   width: 100%;
   height: 250px;
 }
 
-#say_hi {
+.infobody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.infobox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px;
+}
+.say_hi {
   color: white;
-  float: right;
   font-size: 20px;
-  padding-right: 50px;
   padding-top: 20px;
+}
+.logouticon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+  padding-left: 24px;
 }
 
 .swiper-pagination-bullet {
