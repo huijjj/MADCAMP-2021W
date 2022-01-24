@@ -134,7 +134,7 @@ export default function Home() {
                     <input
                         className="searchInput"
                         type = 'text'
-                        placeholder = '🍎 🍓 🍒 🍑 🍅 🍟'
+                        placeholder = '🥐  🥨  🍞  🥯  🥞  🧇'
                         onChange={(event)=>{
                             setSearchTerm(event.target.value);
                         }}
@@ -145,7 +145,7 @@ export default function Home() {
 
             <Fab
                 event={false}
-                mainButtonStyles={{background : "#BF7D7C", fontSize : "10px"} /*mainButtonStyles*/}
+                mainButtonStyles={{background : "#3E4E80", fontSize : "10px"} /*mainButtonStyles*/}
                 // actionButtonStyles={actionButtonStyles}
                 // style={style}
                 icon={<AddIcon />}

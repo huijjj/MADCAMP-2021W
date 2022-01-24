@@ -82,8 +82,10 @@ function RecipeChart() {
     }, [ingredientList], [loading])
 
     return (
-        <>
-            <KeyboardBackspaceIcon onClick={() => { nav(-1); }}/>
+        <div className = "graph_container">
+            <div className = "graph_content">
+            <KeyboardBackspaceIcon id="graph_back_button" onClick={() => { nav(-1); }}/>
+            <div className = "graph_title">버전 별 재료 변화</div>
             <div>
                 {
                     chartOption &&
@@ -105,7 +107,8 @@ function RecipeChart() {
                     )
                 }
             </div>
-        </>
+            </div>
+        </div>
     );
 }
 
