@@ -14,6 +14,7 @@
 
 .search {
   margin: 20px;
+  margin-top: 100px;
 }
 
 .search > div {
@@ -136,7 +137,7 @@ body {
 .swiper-wrapper {
   font-family: "Hahmlet", serif;
   width: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 8px;
 }
 
 #title {
