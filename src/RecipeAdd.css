@@ -41,7 +41,7 @@
     font-weight: bold;
     width: fit-content;
     margin-left:80px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
   }
   
   .add_body {
