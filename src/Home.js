@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./Home.css";
 import "swiper/css";
@@ -13,11 +13,11 @@ import SwiperCore, {
 import SlideItem from "./SlideItem";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Fab, Action } from 'react-tiny-fab';
+import { Fab } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AddIcon from '@mui/icons-material/Add';
 
-const userId = "hui0213";
 const API_BASE = "http://192.249.18.176:443";
 
 // install Swiper modules 
@@ -30,11 +30,11 @@ export default function Home() {
     let nickname = loc.state.nickname;
     
     const { userId } = useParams();
-	const [ recipes, setRecipes ] = useState([]);
-	const [ recipeVersions, setRecipeVersions ] = useState([]);
+	// const [ recipes, setRecipes ] = useState([]);
+	// const [ recipeVersions, setRecipeVersions ] = useState([]);
 	const [ searchTerm, setSearchTerm] = useState("");
     const [ recipeList, setRecipeList ] = useState([]);
-  	const [ recipesLoading, setRecipesLoading ] = useState(false);
+  	// const [ recipesLoading, setRecipesLoading ] = useState(false);
   	const [ favoriteRecipeList, setFavoriteRecipeList ] = useState([]);
 
     useEffect(()=> {
@@ -43,8 +43,8 @@ export default function Home() {
 		    // get every recipe of given userId
         axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
             // console.log(res.data);
-            setRecipes(res.data);	
-            const tmp = document.createElement('div');
+            // setRecipes(res.data);	
+            // const tmp = document.createElement('div');
 
 			setFavoriteRecipeList(res.data.map(element => {
 				if (element.favorite === true) {
@@ -62,7 +62,7 @@ export default function Home() {
             // detail recipe
             Promise.all(res.data.map(recipes => axios.get(`${API_BASE}/recipe/version/${recipes.versions[recipes.versions.length - 1].id}`)))
                 .then(re => {
-                setRecipeVersions(re.map(e => e.data));
+                // setRecipeVersions(re.map(e => e.data));
                 console.log(re.map(e => e.data));
                 console.log(re);
 
@@ -77,30 +77,31 @@ export default function Home() {
                     <div key={index} className = "recipe" onClick={() => {
                         // console.log(val.versions[val.versions.length-1].id);
                         nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
-                        }}>
-                            <div className = "recipe_content">
-                                <div className="recipe_body">
-                                    <div>{
-                                        val.img ? 
-                                        <img style={{ width: "200px", height: "200px", borderRadius: "20px", border: "1px solid black"}} src={`${API_BASE}/image/${val.img}`}/> : <></>
-                                    }</div>
+                    }}>
+                        <div className = "recipe_content">
+                            <div className="recipe_body">
+                                <div>{
+                                    val.img 
+                                        ? <img style={{ width: "200px", height: "200px", borderRadius: "20px", border: "1px solid black"}} src={`${API_BASE}/image/${val.img}`}/>
+                                        : <div style={{ width: "200px", height: "200px" }}></div>
+                                }</div>
 
-                                    <div className="recipe_info">
-                                        <div className = "recipe_title">
-                                            {val.title}
-                                        </div>
-                                        <div className = "recipe_ingredients">{
-                                            re[index].data.ingredients?.map((el,idx) => {
-                                                if(idx == re[index].data.ingredients.length - 1 ) {
-                                                    return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
-                                                } 
-                                                else {
-                                                    return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
-                                                }})
-                                        }</div> 
+                                <div className="recipe_info">
+                                    <div className = "recipe_title">
+                                        {val.title}
                                     </div>
+                                    <div className = "recipe_ingredients">{
+                                        re[index].data.ingredients?.map((el,idx) => {
+                                            if(idx == re[index].data.ingredients.length - 1 ) {
+                                                return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
+                                            } 
+                                            else {
+                                                return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
+                                            }})
+                                    }</div> 
                                 </div>
                             </div>
+                        </div>
 					</div>)));
 				}).catch(console.log);
         }).catch(console.log);
@@ -156,14 +157,13 @@ export default function Home() {
                 mainButtonStyles={{background : "#BF7D7C", fontSize : "10px"} /*mainButtonStyles*/}
                 // actionButtonStyles={actionButtonStyles}
                 // style={style}
-                icon={"+"}
+                icon={<AddIcon />}
                 // event={event}
                 alwaysShowTitle={true}
                 onClick={(e) => {
                     e.preventDefault();
                     nav(`/recipe/add/${userId}`, {state: {nickname: nickname}});
-                }}
-                ></Fab>
+            }}/>
 
             <div className = "recipe_container">
                 {recipeList}
