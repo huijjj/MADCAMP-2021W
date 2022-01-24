@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
+
+.chartbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartname {
+  font-family: "Hahmlet", serif;
+}

@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react/cjs/react.development';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Chart from 'react-apexcharts';
-// import './RecipeChart.css';
+import './RecipeChart.css';
 
 function RecipeChart() {
     const API_BASE = "http://192.249.18.176:443";
 
     const nav = useNavigate();
     const loc = useLocation();
+    console.log(loc.state);
     const versions = loc.state.versions;
 
     const [ingredientList, setIngredientList] = useState([]);
@@ -53,7 +54,7 @@ function RecipeChart() {
                     ingredientAmount[i].push(tar ? tar.amount : 0);
                 }
             }
-            console.log(ingredientAmount);
+            // console.log(ingredientAmount);
 
             for(var i=0; i<uniqueName.length; i++){
                 var state;
@@ -71,6 +72,7 @@ function RecipeChart() {
                     data: ingredientAmount[i]
                     }]
                 }
+                // console.log(state.options.chart.id);
                 chartOption.push(state);
             }
             setChartOption(chartOption);
@@ -80,16 +82,26 @@ function RecipeChart() {
 
     return (
         <>
+            <div onClick={() => {
+                nav(-1);
+                }}>뒤로 가기</div>
             <div>
                 {
                     chartOption &&
                     chartOption.map((e, i) => 
-                        <div key={i}>
-                            <Chart 
+                        <div className='chartbody' key={i}>
+                            <Chart
                                 options={e.options}
                                 series={e.series}
                                 type="line"
                                 width="700"/>
+                            <div className='chartname'>{`${e.options.chart.id}의 version에 따른 재료량 추이 그래프`}</div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                         </div>
                     )
                 }

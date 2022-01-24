@@ -87,6 +87,11 @@ function RecipeDetail() {
     
     return(
         <>
+            <div onClick={() => {
+                nav(-1);
+                }}>
+                뒤로 가기
+            </div>
             <div className='recipebody'>
                 <div className='recipemain'>{title}</div>
                 <div className='versionbutton'>

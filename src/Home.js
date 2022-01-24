@@ -75,7 +75,7 @@ export default function Home() {
                       }
                 }).map((val, index) => (
                     <div key={index} className = "recipe" onClick={() => {
-                        console.log(val.versions[val.versions.length-1].id);
+                        // console.log(val.versions[val.versions.length-1].id);
                         nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
                         }}>
                             <div className = "recipe_content">
@@ -109,11 +109,21 @@ export default function Home() {
 
     }, [searchTerm]);
   
+    const onClickHandler = () => {
+        if(window.confirm('로그아웃 하시겠습니까?')){
+            alert('로그아웃 완료!');
+            nav(`/login`);
+        }else{
+        }
+        
+        
+    }
     return (
         <>
             <div id = "title_bar">
                 <span id = "title">김민채의 요리보고 조리보고</span>
                 <span id = "say_hi">{nickname}님 안녕하세요 :)</span>
+                <span onClick={onClickHandler}>로그아웃</span>
             </div>
             <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
                 "clickable": true}} className="mySwiper">
