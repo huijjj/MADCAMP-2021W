@@ -17,6 +17,8 @@ import { Fab } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddIcon from '@mui/icons-material/Add';
+import Slide from '@mui/material/Slide';
+
 
 const API_BASE = "http://192.249.18.176:443";
 
@@ -107,17 +109,19 @@ export default function Home() {
 
     return (
         <>
-            <div className = "title_bar">
-                <div className="infobody">
-                    <div className = "title">김민채의 요리보고 조리보고</div>
-                    <div className="infobox">
-                        <div className = "say_hi">{nickname}님 안녕하세요 :)</div>
-                        <div className="logouticon">
-                            <LogoutIcon sx={{color: "white"}} onClick={onClickHandler} />
+            <Slide direction="down" in={true} mountOnEnter unmountOnExit>
+                <div className = "title_bar">
+                    <div className="infobody">
+                        <div className = "title">김민채의 요리보고 조리보고</div>
+                        <div className="infobox">
+                            <div className = "say_hi">{nickname}님 안녕하세요 :)</div>
+                            <div className="logouticon">
+                                <LogoutIcon sx={{color: "white"}} onClick={onClickHandler} />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Slide>
             <Swiper 
                 slidesPerView="auto" 
                 slidesOffsetBefore = {50} 
@@ -157,7 +161,7 @@ export default function Home() {
                 }}
             />
 
-            <div className = "recipe_container">
+            <div className = "recipe_container"> 
                 {recipeList}
             </div>
         </>

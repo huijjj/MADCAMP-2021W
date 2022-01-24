@@ -62,11 +62,16 @@ function RecipeChart() {
                 state = {
                     options: {
                         chart: {
-                            id: `${uniqueName[i]}`
+                            id: `${uniqueName[i]}`,
+                            toolbar: {show: false},
+                            zoom: {
+                                enabled: false
+                            }
                         },
                         xaxis: {
                             categories: versions.map((_, i) => "ver. " + (i + 1))
-                        }
+                        },
+                        colors: ['#3E4E80'],
                     },
                     series: [{
                     name: `${uniqueName[i]}`,
@@ -90,6 +95,7 @@ function RecipeChart() {
                     chartOption.map((e, i) => 
                         <div className='chartbody' key={i}>
                             <Chart
+                                fill={e.colors}
                                 options={e.options}
                                 series={e.series}
                                 type="line"

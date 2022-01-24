@@ -116,7 +116,7 @@ export default function RecipeAdd() {
                     <div style={{ display: "flex", alignItems: "center" }}>
                         <KeyboardBackspaceIcon sx={{ color: "rgb(255, 255, 255)" }} onClick={() => { 
                             setShow(false);
-                            setTimeout(() => nav(-1), 400);
+                            setTimeout(() => nav(-1), 200);
                         }}/>
                         <div className = "container_text">레시피 등록</div>
                     </div>
