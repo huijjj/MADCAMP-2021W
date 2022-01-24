@@ -36,6 +36,7 @@ export default function Home() {
 	// const [ recipeVersions, setRecipeVersions ] = useState([]);
 	const [ searchTerm, setSearchTerm] = useState("");
     const [ recipeList, setRecipeList ] = useState([]);
+    const [ show, setShow ] = useState(false);
   	// const [ recipesLoading, setRecipesLoading ] = useState(false);
   	const [ favoriteRecipeList, setFavoriteRecipeList ] = useState([]);
 
@@ -45,9 +46,13 @@ export default function Home() {
 			setFavoriteRecipeList(res.data.map(element => {
 				if (element.favorite === true) {
 					return (
-						<SwiperSlide onClick={() => {
-                            console.log(element);
-                            nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, img: element.img, nickname: nickname}});
+						<SwiperSlide onClick={(e) => {
+                            // console.log(element);
+                            e.preventDefault();
+                            setShow(false);
+                            setTimeout(() => {
+                                nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, img: element.img, nickname: nickname}});
+                            }, 100);
                             }}>
                             <SlideItem img = {element.img} title = {element.title} />
                         </SwiperSlide>
@@ -67,9 +72,13 @@ export default function Home() {
                             return val;
                         }
                     }).map((val, index) => (
-                        <div key={index} className = "recipe" onClick={() => {
+                        <div key={index} className = "recipe" onClick={(e) => {
                             // console.log(val.versions[val.versions.length-1].id);
-                            nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
+                            e.preventDefault();
+                            setShow(false);
+                            setTimeout(() => {
+                                nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
+                            }, 100);
                         }}>
                             <div className = "recipe_content">
                                 <div className="recipe_body">
@@ -97,19 +106,23 @@ export default function Home() {
                             </div>
 				    	</div>)));
 			}).catch(console.log);
+            setShow(true);
         }).catch(console.log);
     }, [searchTerm]);
   
     const onClickHandler = () => {
         if(window.confirm('로그아웃 하시겠습니까?')){
             alert('로그아웃 완료!');
-            nav(`/login`);
+            setShow(false);
+            setTimeout(() => {
+                nav(`/login`);
+            }, 100);
         }
     }
 
     return (
         <>
-            <Slide direction="down" in={true} mountOnEnter unmountOnExit>
+            <Slide direction="down" in={show} mountOnEnter unmountOnExit>
                 <div className = "title_bar">
                     <div className="infobody">
                         <div className = "title">김민채의 요리보고 조리보고</div>
@@ -157,7 +170,10 @@ export default function Home() {
                 alwaysShowTitle={true}
                 onClick={(e) => {
                     e.preventDefault();
-                    nav(`/recipe/add/${userId}`, {state: {nickname: nickname}});
+                    setShow(false);
+                    setTimeout(() => {
+                        nav(`/recipe/add/${userId}`, {state: {nickname: nickname}});
+                    }, 100);
                 }}
             />
 
