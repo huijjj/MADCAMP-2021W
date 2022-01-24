@@ -154,6 +154,7 @@ export default function Home() {
             </div>
 
             <Fab
+                event={false}
                 mainButtonStyles={{background : "#BF7D7C", fontSize : "10px"} /*mainButtonStyles*/}
                 // actionButtonStyles={actionButtonStyles}
                 // style={style}

@@ -14,6 +14,7 @@
 
 .search {
   margin: 20px;
+
   margin-top: 40px;
 }
 
@@ -95,8 +96,8 @@ body {
   width: 400px !important;
   text-align: center;
   font-size: 18px;
-  background: rgb(255, 182, 182);
-  background: linear-gradient(-180deg, #ffb7b7 0%, #ffdad3 100%);
+  /* background: rgb(255, 182, 182); */
+  /* background: linear-gradient(-180deg, #ffe6e6 0%, #ffdad3 100%); */
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -111,6 +112,16 @@ body {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+
+  background-color: rgba(79, 108, 159, 0.25);
+backdrop-filter: blur(30px);
+-webkit-backdrop-filter: blur(30px);
+border: 1px solid rgba(255, 255, 255, 0.18);
+box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+-webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+border-radius: 30px;
+-webkit-border-radius: 30px;
+color: rgba(174, 174, 174, 0.75);
 }
 
 .swiper-slide img {
@@ -144,12 +155,15 @@ body {
   color: white;
   font-size: 40px;
   padding-left: 40px;
+  margin-top: 40px;
+  margin-left: 30px;
 }
 
 .title_bar {
   font-family: "Hahmlet", serif;
-  background: #ffa7a6;
-  background: linear-gradient(180deg, #ffa7a6 0%, #ff9e97 100%);
+  background: #617db4;
+  background: linear-gradient(180deg, #617db4 0%, #526084 100%);
+  /* box-shadow: 0px 1px 30px rgb(103, 103, 103); */
   width: 100%;
   height: 250px;
 }
@@ -166,6 +180,7 @@ body {
   justify-content: center;
   align-items: center;
   padding-right: 40px;
+  margin-top: 30px;
 }
 .say_hi {
   color: white;
@@ -177,8 +192,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 24px;
+  padding-top: 20px;
   padding-left: 24px;
+  margin-top: -2px;
 }
 
 .swiper-pagination-bullet {
@@ -205,6 +221,12 @@ body {
   height: 300px;
   border-radius: 70px;
   display: inline-block;
+
+  background: linear-gradient(120deg, #c9d6ff 0%, #e2e2e2 100%) !important;
+box-shadow: rgb(72, 157, 207) 12px 12px 24px 0px, rgb(98, 213, 255) -12px -12px 24px 0px;
+-webkit-box-shadow: rgba(243, 245, 255, 0.75) 12px 12px 24px 0px, rgba(115, 128, 176, 0.826) -12px -12px 24px 0px;
+border-radius: 40px;
+-webkit-border-radius: 40px;
 }
 
 .recipe_title {

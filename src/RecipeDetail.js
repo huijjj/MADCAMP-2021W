@@ -100,7 +100,7 @@ function RecipeDetail() {
     return(
         <>
             <div className = "detail_body">
-                <div style={{ display: "flex" }}>
+                <div className= "buttons" style={{ display: "flex" }}>
                     <KeyboardBackspaceIcon sx={{ color: "rgb(90, 90, 90)" }} onClick={() => nav(-1)}/>
                     <FloatingMenu className="floating_menu_button" slideSpeed={500} direction='down' spacing={20} isOpen={isOpen}>
                         <MainButton className= "menu_button" iconResting={<MenuIcon></MenuIcon>} iconActive={<CloseIcon></CloseIcon>} backgroundColor='black'
