@@ -99,54 +99,41 @@ function RecipeDetail() {
     
     return(
         <>
-            <KeyboardBackspaceIcon onClick={() => { nav(-1); }}/>
-            <div className='recipebody'>
-                <div className='recipemain'>{title}</div>
-                <div className='versionbutton'>
-                    <Dropdown overlay={dropContent}>
-                        <Button>ver. {version}<DownOutlined /></Button>
-                    </Dropdown>
-                </div>
-                <div className='gotochart' onClick={() => {
-                    // console.log(versions);
-                    nav(`/${owner}/${_id}/chart`, {state: {versions: versions}});
-                }}>차트 보기</div>
-                <div className="delete_all" onClick={(e) => onDelete(e, true)}>
-                    레시피 전체 삭제
-                </div>
-                {
-                    versions.length !== 1 && 
-                    <div className = "delete_this" onClick={(e) => onDelete(e, false)}>
-                        이 버전만 삭제
-                    </div>
-                }
-                <div className="add_version" onClick={(e) => {
-                    e.preventDefault();
-                    nav(`/recipe/add/${owner}`, { state: { 
-                        img: img,
-                        favorite: fav,
-                        title: title,
-                        prev: prev,
-                        id: _id
-                     }});
-                }}>
-                    버전 추가
-                </div>
-            </div>
-
             <div className = "detail_body">
-                <FloatingMenu className="floating_menu_button" slideSpeed={500} direction='down' spacing={20} isOpen={isOpen}>
-                    <MainButton className= "menu_button" iconResting={<MenuIcon></MenuIcon>} iconActive={<CloseIcon></CloseIcon>} backgroundColor='black'
-                    onClick={() => { if(isOpen==false) {setisOpen(true)} else {setisOpen(false)}}} size={56}/>
-                    <ChildButton  icon = {<StackedLineChartIcon style={{ color:"rgb(90,90,90)"}}/>}  backgroundColor='white' size={50}
-                    onClick={()=> {console.log('first button clicked')}}/>
-                    <ChildButton icon = {<RemoveIcon style={{ color:"rgb(90,90,90)"}}></RemoveIcon>} backgroundColor='white' size={50}
-                    onClick={()=> {console.log('second button clicked')}}/>
-                    <ChildButton icon = {<ClearAllIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
-                    onClick={()=> {console.log('3rd button clicked')}}/>
-                    <ChildButton icon = {<ModeIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
-                    onClick={()=> {console.log('4th button clicked')}}/>
-                </FloatingMenu>
+                <div style={{ display: "flex" }}>
+                    <KeyboardBackspaceIcon sx={{ color: "rgb(90, 90, 90)" }} onClick={() => nav(-1)}/>
+                    <FloatingMenu className="floating_menu_button" slideSpeed={500} direction='down' spacing={20} isOpen={isOpen}>
+                        <MainButton className= "menu_button" iconResting={<MenuIcon></MenuIcon>} iconActive={<CloseIcon></CloseIcon>} backgroundColor='black'
+                        onClick={() => { if(isOpen==false) {setisOpen(true)} else {setisOpen(false)}}} size={56}/>
+                        <ChildButton  icon = {<StackedLineChartIcon style={{ color:"rgb(90,90,90)"}}/>}  backgroundColor='white' size={50}
+                        onClick={()=> {
+                            console.log('chart button clicked');
+                            nav(`/${owner}/${_id}/chart`, {state: {versions: versions}});
+                        }}/>
+                        <ChildButton icon = {<RemoveIcon style={{ color:"rgb(90,90,90)"}}></RemoveIcon>} backgroundColor='white' size={50}
+                        onClick={(e)=> {
+                            console.log('remove version button clicked');
+                            onDelete(e, false);
+                        }}/>
+                        <ChildButton icon = {<ClearAllIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
+                        onClick={(e)=> {
+                            console.log('remove recipe button clicked');
+                            onDelete(e, true);
+                        }}/>
+                        <ChildButton icon = {<ModeIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
+                        onClick={(e)=> {
+                            console.log('version add clicked');
+                            e.preventDefault();
+                            nav(`/recipe/add/${owner}`, { state: { 
+                                img: img,
+                                favorite: fav,
+                                title: title,
+                                prev: prev,
+                                id: _id
+                            }});
+                        }}/>
+                    </FloatingMenu>
+                </div>
                 <div className='recipebody'>
                     <div className='recipemain'>{title}</div>
                     <div className='versionbutton'>
