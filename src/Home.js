@@ -134,7 +134,7 @@ export default function Home({ userNickname }) {
                 mainButtonStyles={{background : "#BF7D7C", fontSize : "10px"} /*mainButtonStyles*/}
                 // actionButtonStyles={actionButtonStyles}
                 // style={style}
-                icon={"ADD"}
+                icon={"+"}
                 // event={event}
                 alwaysShowTitle={true}
                 onClick={(e) => {
@@ -150,7 +150,7 @@ export default function Home({ userNickname }) {
 				e.preventDefault();
 				nav(`/recipe/add/${userId}`);
 			}}>
-				add
+				+
 			</div>
         </>
     );

@@ -72,6 +72,7 @@ export default function RecipeAdd() {
 
     return (
         <div className = "add_body">
+
             <div className = "container">
                 <div className = "container_text">레시피 등록</div>
                 <div className = "image_title_memo">

@@ -26,25 +26,7 @@ function RecipeChart() {
     
     useEffect(() => {
         if(ingredientList.length) {
-            console.log(ingredientList);
-            console.log(ingredientList.length); // version의 개수
-            console.log(ingredientList[0].length); // 첫 version에 있는 ingredient의 개수
-            console.log(ingredientList[0][0].name); // 첫 version의 첫 ingredient의 이름
             
-            let ingredientname = [];
-            for(var i=0; i<ingredientList.length; i++){ // i : 각 version
-                for(var j=0; j<ingredientList[i].length; j++){ // j: 각 version에 들어있는 ingredient의 개수
-                    if(j=0){
-                        ingredientname.push(ingredientList[0][0].name);
-                    }
-                    for(var k=0; k<ingredientname.length; k++){
-                        while(ingredientList[k][j].name != ingredientname[k]){
-                            ingredientname.push(ingredientList[k][j].name);
-                        }
-                    }
-                }
-            }
-            console.log(ingredientname);
         }
     }, [ingredientList])
     
