@@ -17,11 +17,7 @@ function Login( {setUserId, setUserNickname} ) {
         axios.post('http://192.249.18.176:443/login', json).then( res => {
             if(res.status === 200){
                 console.log(res.data);
-                console.log(res.data.nickname)
-
-                //유저 아이디, 닉네임 설정
-                setUserId(res.data.id);
-                setUserNickname(res.data.nickname);
+                console.log(res.data.nickname);
 
                 nav(`/home/${e.target.id.value}`, {state: {nickname: res.data.nickname}});
                 window.alert(`환영합니다 ${res.data.nickname}님!`);

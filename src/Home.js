@@ -38,14 +38,8 @@ export default function Home() {
   	const [ favoriteRecipeList, setFavoriteRecipeList ] = useState([]);
 
     useEffect(()=> {
-        const dragflag = document.getElementsByClassName("swiper-scrollbar-drag");
-
-		    // get every recipe of given userId
+		// get every recipe of given userId
         axios.get(`${API_BASE}/recipe/${userId}`).then(res => {
-            // console.log(res.data);
-            // setRecipes(res.data);	
-            // const tmp = document.createElement('div');
-
 			setFavoriteRecipeList(res.data.map(element => {
 				if (element.favorite === true) {
 					return (
@@ -62,61 +56,55 @@ export default function Home() {
             // detail recipe
             Promise.all(res.data.map(recipes => axios.get(`${API_BASE}/recipe/version/${recipes.versions[recipes.versions.length - 1].id}`)))
                 .then(re => {
-                // setRecipeVersions(re.map(e => e.data));
-                console.log(re.map(e => e.data));
-                console.log(re);
+                    setRecipeList(res.data.filter(val => {
+                        console.log(val);
+                        if(searchTerm == "") {
+                            return val;
+                        }
+                        else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
+                            return val;
+                        }
+                    }).map((val, index) => (
+                        <div key={index} className = "recipe" onClick={() => {
+                            // console.log(val.versions[val.versions.length-1].id);
+                            nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
+                        }}>
+                            <div className = "recipe_content">
+                                <div className="recipe_body">
+                                    <div>{
+                                        val.img 
+                                            ? <img style={{ width: "200px", height: "200px", borderRadius: "20px", border: "1px solid black"}} src={`${API_BASE}/image/${val.img}`}/>
+                                            : <div style={{ width: "200px", height: "200px" }}></div>
+                                    }</div>
 
-                setRecipeList(res.data.filter(val => {
-                    console.log(val);
-                    if(searchTerm == "") {
-                        return val;
-                      } else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
-                        return val;
-                      }
-                }).map((val, index) => (
-                    <div key={index} className = "recipe" onClick={() => {
-                        // console.log(val.versions[val.versions.length-1].id);
-                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
-                    }}>
-                        <div className = "recipe_content">
-                            <div className="recipe_body">
-                                <div>{
-                                    val.img 
-                                        ? <img style={{ width: "200px", height: "200px", borderRadius: "20px", border: "1px solid black"}} src={`${API_BASE}/image/${val.img}`}/>
-                                        : <div style={{ width: "200px", height: "200px" }}></div>
-                                }</div>
-
-                                <div className="recipe_info">
-                                    <div className = "recipe_title">
-                                        {val.title}
+                                    <div className="recipe_info">
+                                        <div className = "recipe_title">
+                                            {val.title}
+                                        </div>
+                                        <div className = "recipe_ingredients">{
+                                            re[index].data.ingredients?.map((el,idx) => {
+                                                if(idx == re[index].data.ingredients.length - 1 ) {
+                                                    return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
+                                                } 
+                                                else {
+                                                    return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
+                                                }})
+                                        }</div> 
                                     </div>
-                                    <div className = "recipe_ingredients">{
-                                        re[index].data.ingredients?.map((el,idx) => {
-                                            if(idx == re[index].data.ingredients.length - 1 ) {
-                                                return(<div className = "ingredient" key = {idx}> &nbsp;{`${el.name}  ${el.amount}g`} </div>)
-                                            } 
-                                            else {
-                                                return(<div className = "ingredient"  key = {idx}> &nbsp;{`${el.name}  ${el.amount}g,`} </div>)
-                                            }})
-                                    }</div> 
                                 </div>
                             </div>
-                        </div>
-					</div>)));
-				}).catch(console.log);
+				    	</div>)));
+			}).catch(console.log);
         }).catch(console.log);
-
-        //setRecipesLoading(true);
-
     }, [searchTerm]);
   
     const onClickHandler = () => {
         if(window.confirm('로그아웃 하시겠습니까?')){
             alert('로그아웃 완료!');
             nav(`/login`);
-        }else{
         }
     }
+
     return (
         <>
             <div className = "title_bar">
@@ -130,25 +118,27 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <Swiper slidesPerView="auto" slidesOffsetBefore = {50} slidesOffsetAfter = {50} centeredSlides={false} spaceBetween={50} grabCursor={true} pagination={{
-                "clickable": true}} className="mySwiper">
-                {/* <SwiperSlide><SlideItem/></SwiperSlide>
-            <SwiperSlide><SlideItem/></SwiperSlide>
-            <SwiperSlide><SlideItem/></SwiperSlide>
-            <SwiperSlide><SlideItem/></SwiperSlide>
-            <SwiperSlide><SlideItem/></SwiperSlide> */}
-			{favoriteRecipeList}
+            <Swiper 
+                slidesPerView="auto" 
+                slidesOffsetBefore = {50} 
+                slidesOffsetAfter = {50} 
+                centeredSlides={false} 
+                spaceBetween={50} 
+                grabCursor={true} 
+                pagination={{ "clickable": true }} 
+                className="mySwiper">
+                {favoriteRecipeList}
             </Swiper>
             <div className = "search">
                 <div>
-                <input
-                    className="searchInput"
-                    type = 'text'
-                    placeholder = '🍎 🍓 🍒 🍑 🍅 🍟'
-                    onChange={(event)=>{
-                        setSearchTerm(event.target.value);
-                    }}
-                />
+                    <input
+                        className="searchInput"
+                        type = 'text'
+                        placeholder = '🍎 🍓 🍒 🍑 🍅 🍟'
+                        onChange={(event)=>{
+                            setSearchTerm(event.target.value);
+                        }}
+                    />
                 </div>
 
             </div>
@@ -163,7 +153,8 @@ export default function Home() {
                 onClick={(e) => {
                     e.preventDefault();
                     nav(`/recipe/add/${userId}`, {state: {nickname: nickname}});
-            }}/>
+                }}
+            />
 
             <div className = "recipe_container">
                 {recipeList}
