@@ -107,10 +107,12 @@ export default function RecipeAdd() {
 
     return (
         <div className = "add_body">
-            <KeyboardBackspaceIcon onClick={() => { nav(-1); }}/>
 
             <div className = "container">
-                <div className = "container_text">레시피 등록</div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <KeyboardBackspaceIcon sx={{ color: "rgb(255, 255, 255)" }} onClick={() => { nav(-1); }}/>
+                    <div className = "container_text">레시피 등록</div>
+                </div>
                 <div className = "image_title_memo">
                     <div id = "add_image" className="image_add_container">
                         {
