@@ -51,7 +51,7 @@ export default function Home() {
 					return (
 						<SwiperSlide onClick={() => {
                             console.log(element);
-                            nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, img: element.img}});
+                            nav(`/${element.owner}/${element._id}`, {state: {favorite: element.favorite, owner: element.owner, title: element.title, versions: element.versions, img: element.img, nickname: nickname}});
                             }}>
                             <SlideItem img = {element.img} title = {element.title} />
                         </SwiperSlide>
@@ -76,7 +76,7 @@ export default function Home() {
                 }).map((val, index) => (
                     <div key={index} className = "recipe" onClick={() => {
                         console.log(val.versions[val.versions.length-1].id);
-                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img}});
+                        nav(`/${val.owner}/${val._id}`, {state: {favorite: val.favorite, owner: val.owner, title: val.title, versions: val.versions, img: val.img, nickname: nickname}});
                         }}>
                             <div className = "recipe_content">
                                 <div className="recipe_body">
@@ -147,19 +147,13 @@ export default function Home() {
                 alwaysShowTitle={true}
                 onClick={(e) => {
                     e.preventDefault();
-                    nav(`/recipe/add/${userId}`);
+                    nav(`/recipe/add/${userId}`, {state: {nickname: nickname}});
                 }}
                 ></Fab>
 
             <div className = "recipe_container">
                 {recipeList}
             </div>
-			<div onClick={(e) => {
-				e.preventDefault();
-				nav(`/recipe/add/${userId}`);
-			}}>
-				add
-			</div>
         </>
     );
 

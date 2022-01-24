@@ -23,7 +23,7 @@ export default function RecipeAdd() {
     const loc = useLocation();
 
     useEffect(() => {
-        if(loc.state) {
+        if(loc.state.prev) {
             console.log("edit");
             console.log(loc.state);
 
@@ -39,7 +39,7 @@ export default function RecipeAdd() {
     const onSubmit = (e) => {
         e.preventDefault();  
         if(titleRef.current.value) {
-            if(loc.state) {
+            if(loc.state.prev) {
                 axios.post(`${API_BASE}/recipe/version/${loc.state.id}`, {
                     img: img,
                     title: titleRef.current.value,
@@ -53,7 +53,7 @@ export default function RecipeAdd() {
                 }).then(res => {
                     console.log(res.data);
                     window.alert("저장 완료");
-                    nav(`/${userId}/${loc.state.id}`, {state: {favorite: isButtonClicked, owner: userId, title: titleRef.current.value, versions: res.data.versions, img: img}});
+                    nav(`/${userId}/${loc.state.id}`, {state: {favorite: isButtonClicked, owner: userId, title: titleRef.current.value, versions: res.data.versions, img: img, nickname: loc.state.nickname}});
                 }).catch(console.log);
             }
             else {
@@ -71,7 +71,7 @@ export default function RecipeAdd() {
                 }).then(res => {
                     console.log(res.data);
                     window.alert("저장 완료");
-                    nav(`/home/${userId}`, {state: {nickname: userId}});
+                    nav(`/home/${userId}`, {state: {nickname: loc.state.nickname}});
                 }).catch(err => {
                     console.log(err);
                     window.alert("실패");

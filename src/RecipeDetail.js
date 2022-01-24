@@ -16,6 +16,7 @@ function RecipeDetail() {
     // console.log(loc.state);
     const owner = loc.state.owner;
     const title = loc.state.title;
+    const nickname = loc.state.nickname;
     // const versions = loc.state.versions; // 버전이 배열로 저장되어 있음.
     const  _id = useParams().recipe; // id of recipe in DB
     const img = loc.state.img;
@@ -40,7 +41,7 @@ function RecipeDetail() {
             if(window.confirm("레시피 전체 삭제")) {
                 axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
                     window.alert("삭제 완료");
-                    nav(`/home/${owner}`, {state: {nickname: owner}});
+                    nav(`/home/${owner}`, {state: {nickname: nickname}});
                 }).catch(console.log);
             }
         }
