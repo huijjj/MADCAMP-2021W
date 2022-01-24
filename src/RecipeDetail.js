@@ -97,7 +97,7 @@ function RecipeDetail() {
                     <div className='procedureitem'>{val.content}</div>
                 </div>
             )));
-            setTimeout(setShow(true), 500);
+            setShow(true);
         }).catch(console.log);
     }, [version]);
     
