@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
+
 .loginbody {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,8 @@
 
 .loginparent {
   display: flex;
-  height: 30vh;
+  padding-top: 180px;
+  padding-bottom: 80px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -21,7 +24,9 @@
 }
 
 .loginbutton {
-  height: 2.5cm;
+  font-family: "Hahmlet", serif;
+  font-size: 1.25rem;
+  height: 2.4cm;
   width: 2cm;
   border-radius: 5px;
   color: white;
@@ -30,14 +35,20 @@
 }
 
 .inputid {
+  font-family: "Hahmlet", serif;
+  font-size: 1.25rem;
+  color: black;
+  height: 1.1cm;
   margin-right: 5px;
   margin-bottom: 5px;
-  height: 1cm;
   border-radius: 5px;
 }
 
 .inputpw {
+  font-family: "Hahmlet", serif;
+  font-size: 1.25rem;
+  color: black;
+  height: 1.1cm;
   margin-right: 5px;
-  height: 1cm;
   border-radius: 5px;
 }
