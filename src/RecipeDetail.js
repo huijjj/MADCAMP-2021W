@@ -13,11 +13,12 @@ import {FloatingMenu, MainButton, ChildButton,} from 'react-floating-button-menu
 
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import RemoveIcon from '@mui/icons-material/Remove';
 import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
 import ModeIcon from '@mui/icons-material/Mode';
+
+import Slide from '@mui/material/Slide';
 
 function RecipeDetail() {
     const API_BASE = "http://192.249.18.176:443";
@@ -98,7 +99,7 @@ function RecipeDetail() {
     }, [version]);
     
     return(
-        <>
+        <Slide direction="up" in={true} mountOnEnter unmountOnExit>
             <div className = "detail_body">
                 <div className= "buttons" style={{ display: "flex" }}>
                     <KeyboardBackspaceIcon sx={{ color: "rgb(90, 90, 90)" }} onClick={() => nav(-1)}/>
@@ -110,11 +111,14 @@ function RecipeDetail() {
                             console.log('chart button clicked');
                             nav(`/${owner}/${_id}/chart`, {state: {versions: versions}});
                         }}/>
-                        <ChildButton icon = {<RemoveIcon style={{ color:"rgb(90,90,90)"}}></RemoveIcon>} backgroundColor='white' size={50}
-                        onClick={(e)=> {
-                            console.log('remove version button clicked');
-                            onDelete(e, false);
-                        }}/>
+                        {
+                            versions.length !== 1 ? 
+                            <ChildButton icon = {<RemoveIcon style={{ color:"rgb(90,90,90)"}}></RemoveIcon>} backgroundColor='white' size={50}
+                            onClick={(e)=> {
+                                console.log('remove version button clicked');
+                                onDelete(e, false);
+                            }}/> : <></>
+                        }
                         <ChildButton icon = {<ClearAllIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
                         onClick={(e)=> {
                             console.log('remove recipe button clicked');
@@ -161,7 +165,7 @@ function RecipeDetail() {
                     {procedure}
                 </div>
             </div>
-        </>
+        </Slide>
     );
 }
 
