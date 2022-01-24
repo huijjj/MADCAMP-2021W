@@ -156,7 +156,7 @@ export default function Home() {
                 mainButtonStyles={{background : "#BF7D7C", fontSize : "10px"} /*mainButtonStyles*/}
                 // actionButtonStyles={actionButtonStyles}
                 // style={style}
-                icon={"ADD"}
+                icon={"+"}
                 // event={event}
                 alwaysShowTitle={true}
                 onClick={(e) => {

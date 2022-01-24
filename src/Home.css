@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -9,7 +9,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#c2e59c, #64b3f4);
+  background: linear-gradient(#000000, #a9a9a9);
 }
 
 .search {
@@ -194,7 +194,6 @@ body {
 }
 
 .recipe_container {
-  overflow: auto;
   text-align: center;
   font-family: "Hahmlet", serif;
 }

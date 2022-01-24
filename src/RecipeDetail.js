@@ -9,6 +9,16 @@ import './RecipeDetail.css';
 import 'antd/dist/antd.css'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
+import {FloatingMenu, MainButton, ChildButton,} from 'react-floating-button-menu';
+
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ClearAllIcon from '@mui/icons-material/ClearAll';
+import RemoveIcon from '@mui/icons-material/Remove';
+import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
+import ModeIcon from '@mui/icons-material/Mode';
+
 function RecipeDetail() {
     const API_BASE = "http://192.249.18.176:443";
 
@@ -30,6 +40,7 @@ function RecipeDetail() {
     const [version, setVersion] = useState(versions.length);
     const [dropContent, setDropContent] = useState();
     const [prev, setPrev] = useState();
+    const [isOpen, setisOpen] = useState(false);
 
 
     function onVersionClicked({ key }){
@@ -89,7 +100,6 @@ function RecipeDetail() {
     return(
         <>
             <KeyboardBackspaceIcon onClick={() => { nav(-1); }}/>
-            
             <div className='recipebody'>
                 <div className='recipemain'>{title}</div>
                 <div className='versionbutton'>
@@ -97,20 +107,20 @@ function RecipeDetail() {
                         <Button>ver. {version}<DownOutlined /></Button>
                     </Dropdown>
                 </div>
-                <button className='gotochart' onClick={() => {
+                <div className='gotochart' onClick={() => {
                     // console.log(versions);
                     nav(`/${owner}/${_id}/chart`, {state: {versions: versions}});
-                }}>chart</button>
-                <button onClick={(e) => onDelete(e, true)}>
+                }}>차트 보기</div>
+                <div className="delete_all" onClick={(e) => onDelete(e, true)}>
                     레시피 전체 삭제
-                </button>
+                </div>
                 {
                     versions.length !== 1 && 
-                    <button onClick={(e) => onDelete(e, false)}>
+                    <div className = "delete_this" onClick={(e) => onDelete(e, false)}>
                         이 버전만 삭제
-                    </button>
+                    </div>
                 }
-                <button onClick={(e) => {
+                <div className="add_version" onClick={(e) => {
                     e.preventDefault();
                     nav(`/recipe/add/${owner}`, { state: { 
                         img: img,
@@ -121,22 +131,49 @@ function RecipeDetail() {
                      }});
                 }}>
                     버전 추가
-                </button>
-            </div>
-            <div className='upstructure'>
-                <div className='picture'>사진</div>
-                <div>{
-                    img ? <img src={`${API_BASE}/image/${img}`}/> : <></>
-                }</div>
-                <div className='memobody'>
-                    <div className='memomain'>MEMO</div>
-                    <div className='memotext'>{memo}</div>
                 </div>
             </div>
-            <div className='ingredientbody'>
-                {ingredientList}
+
+            <div className = "detail_body">
+                <FloatingMenu className="floating_menu_button" slideSpeed={500} direction='down' spacing={20} isOpen={isOpen}>
+                    <MainButton className= "menu_button" iconResting={<MenuIcon></MenuIcon>} iconActive={<CloseIcon></CloseIcon>} backgroundColor='black'
+                    onClick={() => { if(isOpen==false) {setisOpen(true)} else {setisOpen(false)}}} size={56}/>
+                    <ChildButton  icon = {<StackedLineChartIcon style={{ color:"rgb(90,90,90)"}}/>}  backgroundColor='white' size={50}
+                    onClick={()=> {console.log('first button clicked')}}/>
+                    <ChildButton icon = {<RemoveIcon style={{ color:"rgb(90,90,90)"}}></RemoveIcon>} backgroundColor='white' size={50}
+                    onClick={()=> {console.log('second button clicked')}}/>
+                    <ChildButton icon = {<ClearAllIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
+                    onClick={()=> {console.log('3rd button clicked')}}/>
+                    <ChildButton icon = {<ModeIcon style={{color:"rgb(90,90,90)"}}/>} backgroundColor='white' size={50}
+                    onClick={()=> {console.log('4th button clicked')}}/>
+                </FloatingMenu>
+                <div className='recipebody'>
+                    <div className='recipemain'>{title}</div>
+                    <div className='versionbutton'>
+                        <Dropdown overlay={dropContent}>
+                            <Button>ver. {version}<DownOutlined /></Button>
+                        </Dropdown>
+                    </div>
+
+                </div>
+                <div className='upstructure'>
+                    <div>{
+                        img ? <img id = "inserted_image" width={250} height={250} src={`${API_BASE}/image/${img}`} alt="img"/> : <div className='picture'>사진</div>
+                    }</div>
+                    <div className='memobody'>
+                        <div className='memomain'>MEMO</div>
+                        <div className='memotext'>{memo}</div>
+                    </div>
+                </div>
+                <div className = "ingredient_wrapper">
+                    <div className='ingredientbody'>
+                        {ingredientList}
+                    </div>
+                </div>
+                <div className = "procedure_wrapper">
+                    {procedure}
+                </div>
             </div>
-            {procedure}
         </>
     );
 }
