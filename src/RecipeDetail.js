@@ -40,7 +40,7 @@ function RecipeDetail() {
             if(window.confirm("레시피 전체 삭제")) {
                 axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
                     window.alert("삭제 완료");
-                    nav(`/home/${owner}`);
+                    nav(`/home/${owner}`, {state: {nickname: owner}});
                 }).catch(console.log);
             }
         }
