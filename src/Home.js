@@ -84,7 +84,7 @@ export default function Home() {
                                 <div className="recipe_body">
                                     <div>{
                                         val.img 
-                                            ? <img style={{ width: "200px", height: "200px", borderRadius: "20px", border: "1px solid black"}} src={`${API_BASE}/image/${val.img}`}/>
+                                            ? <img style={{ width: "200px", height: "200px", borderRadius: "20px"}} src={`${API_BASE}/image/${val.img}`}/>
                                             : <div style={{ width: "200px", height: "200px" }}></div>
                                     }</div>
 
@@ -125,11 +125,11 @@ export default function Home() {
             <Slide direction="down" in={show} mountOnEnter unmountOnExit>
                 <div className = "title_bar">
                     <div className="infobody">
-                        <div className = "title">김민채의 요리보고 조리보고</div>
+                        <div className = "title">김민채의<br/>요리보고<br/>조리보고</div>
                         <div className="infobox">
-                            <div className = "say_hi">{nickname}님 안녕하세요 :)</div>
+                            <div className = "say_hi">{nickname}님 방가방가 ~</div>
                             <div className="logouticon">
-                                <LogoutIcon sx={{color: "white"}} onClick={onClickHandler} />
+                                <LogoutIcon sx={{color: "rgb(90,90,90)"}} onClick={onClickHandler} />
                             </div>
                         </div>
                     </div>
@@ -137,8 +137,8 @@ export default function Home() {
             </Slide>
             <Swiper 
                 slidesPerView="auto" 
-                slidesOffsetBefore = {50} 
-                slidesOffsetAfter = {50} 
+                slidesOffsetBefore = {70} 
+                slidesOffsetAfter = {70} 
                 centeredSlides={false} 
                 spaceBetween={50} 
                 grabCursor={true} 

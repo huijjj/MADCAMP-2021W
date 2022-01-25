@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
 
 .add_body {
-  background: linear-gradient(
-    120deg,
-    rgb(233, 198, 123) 0%,
-    rgb(255, 80, 133) 100%
-  );
   font-family: "Hahmlet", serif;
 }
 .container {
@@ -24,7 +19,6 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 30px;
-
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);

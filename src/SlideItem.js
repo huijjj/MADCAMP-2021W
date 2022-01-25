@@ -7,10 +7,11 @@ class SlideItem extends Component {
         
         return (
             <div class = "slide_item">
+                                <p class = "favorite_recipe_title">{this.props.title}</p>
                 {
-                    this.props.img ? <img className="favorite_image" style={{ width: "150px", height: "150px" }} src={`${API_BASE}/image/${this.props.img}`} /> : <></>
+                    this.props.img ? <img className="favorite_image" style={{ width: "170px", height: "170px" }} src={`${API_BASE}/image/${this.props.img}`} /> : <></>
                 }
-                <p class = "favorite_recipe_title">{this.props.title}</p>
+
             </div>
         );
     }
