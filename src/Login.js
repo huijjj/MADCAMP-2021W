@@ -30,8 +30,8 @@ function Login() {
     }
     return (
     <div className='mainbackground'>
-        <div className='domainstructure'>
-            <div className='domain'>로그인</div>
+        <div style={{width: "35%", height:"40%"}} className='domainstructure'>
+            <div className='domain' style={{paddingTop: "2%"}}>로그인</div>
             <div className='loginbody'>
                 <form onSubmit={handleClick}>
                     <div className='loginparent'>
@@ -46,7 +46,7 @@ function Login() {
                         <button className='loginbutton' type="submit">시작</button>
                     </div>
                 </form>
-                <div className='registerlink'><a href="/register">아이디가 없으신가요?</a></div>
+                <div className='registerlink' style={{marginTop: "2%"}}><a href="/register">아이디가 없으신가요?</a></div>
             </div>
         </div>
     </div>
