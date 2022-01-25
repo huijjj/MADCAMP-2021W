@@ -13,7 +13,7 @@
   /* padding-bottom: 80px; */
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .loginchild {
@@ -26,7 +26,7 @@
 .loginbutton {
   font-family: "Hahmlet", serif;
   font-size: 1.25rem;
-  height: 2.4cm;
+  /* height: 2.4cm; */
   width: 2cm;
   border-radius: 5px;
   color: white;

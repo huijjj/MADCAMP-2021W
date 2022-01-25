@@ -10,9 +10,7 @@
 
 .registerparent {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
 }
 
 .registerchild {
@@ -36,10 +34,8 @@
 }
 
 .registerbutton {
-  height: 5cm;
   background-color: #0d3d68;
   color: white;
   border-radius: 5px;
-  
 }
 
