@@ -13,8 +13,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80vw;
-  height: 80vh;
+  width: 70%;
+  height: 80%;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -24,6 +24,11 @@
   border-radius: 19px;
   -webkit-border-radius: 19px;
   color: rgba(255, 255, 255, 0.898);
+  justify-content: space-around;
+  -webkit-user-select:none;
+  -moz-user-select:none; 
+  -ms-user-select:none; 
+  user-select:none;
 }
 
 .domain {
@@ -32,7 +37,7 @@
   align-items: center;
   font-family: "Hahmlet", serif;
   font-size: 80px;
-  padding-top: 150px;
+  /* padding-top: 5vh; */
   color: black;
   width: 70vw;
 }
@@ -40,11 +45,19 @@
 .loginlink {
   font-family: "Hahmlet", serif;
   font-size: 20px;
-  padding-top: 300px;
+  /* padding-top: 300px; */
 }
 
 .registerlink {
   font-family: "Hahmlet", serif;
   font-size: 20px;
   padding-top: 10px;
+}
+
+.titleBanner {
+  -webkit-user-select:none;
+  -moz-user-select:none; 
+  -ms-user-select:none; 
+  user-select:none;
+  -webkit-user-drag: none;
 }
