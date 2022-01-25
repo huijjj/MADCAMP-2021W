@@ -20,11 +20,23 @@ import AddIcon from '@mui/icons-material/Add';
 import Slide from '@mui/material/Slide';
 
 
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import DialogActions from '@mui/material/DialogActions';
+
+
 const API_BASE = "http://192.249.18.176:443";
 
 // install Swiper modules 
 SwiperCore.use([Pagination]);
 SwiperCore.use([Scrollbar]);
+
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
 export default function Home() {
 	const nav = useNavigate();
@@ -39,6 +51,9 @@ export default function Home() {
     const [ show, setShow ] = useState(false);
   	// const [ recipesLoading, setRecipesLoading ] = useState(false);
   	const [ favoriteRecipeList, setFavoriteRecipeList ] = useState([]);
+
+
+    const [ dialog, setDialog ] = useState(false);
 
     useEffect(()=> {
 		// get every recipe of given userId
@@ -111,13 +126,14 @@ export default function Home() {
     }, [searchTerm]);
   
     const onClickHandler = () => {
-        if(window.confirm('로그아웃 하시겠습니까?')){
-            alert('로그아웃 완료!');
-            setShow(false);
-            setTimeout(() => {
-                nav(`/login`);
-            }, 100);
-        }
+        setDialog(true);
+        // if(window.confirm('로그아웃 하시겠습니까?')){
+        //     alert('로그아웃 완료!');
+        //     setShow(false);
+        //     setTimeout(() => {
+        //         nav(`/login`);
+        //     }, 100);
+        // }
     }
 
     return (
@@ -180,6 +196,30 @@ export default function Home() {
             <div className = "recipe_container"> 
                 {recipeList}
             </div>
+
+            <Dialog
+                open={dialog}
+                TransitionComponent={Transition}
+                onClose={() => setShow(false)}>
+            <DialogTitle>로그아웃 하시겠습니까?</DialogTitle>
+            <DialogActions>
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    setDialog(false);
+                }}>
+                    취소
+                </Button>
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    setShow(false);
+                    setTimeout(() => {
+                        nav(`/login`);
+                    }, 100);
+                }}>
+                    확인
+                </Button>
+            </DialogActions>
+        </Dialog>
         </>
     );
 }
