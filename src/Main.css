@@ -7,6 +7,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image:  
+    url('/public/images/eggs.png'), 
+    url('/public/images/doughnuts.png'),
+    url('/public/images/strawberry.png'),
+    url('/public/images/hamburgers.png');
 }
 
 .domainstructure {

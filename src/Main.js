@@ -6,7 +6,7 @@ function Main() {
     <div className='mainbackground'>
         <div className='domainstructure'>
             <div className='domain'>
-                <img className='titleBanner' style={{ width:"80%"}} src={'/image/banner.png'}/>
+                <img className='titleBanner' style={{ width:"80%"}} src={'/images/banner.png'}/>
             </div>
             <div>
                 <div className='loginlink'><a href='/login'>기존 회원이신가요?</a></div>
