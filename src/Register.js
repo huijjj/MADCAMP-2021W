@@ -29,7 +29,7 @@ function Register() {
         }
   }
   return (
-    <div>
+    <div className='mainbackground'>
         <div className='domain'>회원가입</div>
         <div className='registerbody'>
             <form onSubmit={handleClick}>
