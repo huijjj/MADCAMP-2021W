@@ -31,8 +31,8 @@ export default function RecipeAdd() {
             console.log("edit");
             console.log(loc.state);
 
-            titleRef.current.value = loc.state.title;
-            recipememoRef.current.value = loc.state.prev.memo;
+            titleRef.current && (titleRef.current.value = loc.state.title);
+            recipememoRef.current && (recipememoRef.current.value = loc.state.prev.memo);
             setImg(loc.state.img ? loc.state.img : "");
             setButtonClicked(loc.state.favorite);
             setIngredients(loc.state.prev.ingredients);
