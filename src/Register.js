@@ -31,7 +31,7 @@ function Register() {
   return (
     <div className='mainbackground'>
         <div style={{width: "35%", height:"45%"}} className='domainstructure'>
-            <div className='domain'>회원가입</div>
+            <div className='registerdomain'>회원가입</div>
             <div className='registerbody'>
                 <form onSubmit={handleClick}>
                     <div className='registerparent'>

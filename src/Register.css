@@ -39,3 +39,14 @@
   border-radius: 5px;
 }
 
+.registerdomain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Hahmlet", serif;
+  font-size: 60px;
+  /* padding-top: 5vh; */
+  color: black;
+  width: 70vw;
+  margin-top: 30px;
+}
