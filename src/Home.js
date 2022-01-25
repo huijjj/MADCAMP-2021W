@@ -17,9 +17,8 @@ import { Fab } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddIcon from '@mui/icons-material/Add';
+
 import Slide from '@mui/material/Slide';
-
-
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
@@ -201,25 +200,25 @@ export default function Home() {
                 open={dialog}
                 TransitionComponent={Transition}
                 onClose={() => setShow(false)}>
-            <DialogTitle>로그아웃 하시겠습니까?</DialogTitle>
-            <DialogActions>
-                <Button onClick={(e) => {
-                    e.preventDefault();
-                    setDialog(false);
-                }}>
-                    취소
-                </Button>
-                <Button onClick={(e) => {
-                    e.preventDefault();
-                    setShow(false);
-                    setTimeout(() => {
-                        nav(`/login`);
-                    }, 100);
-                }}>
-                    확인
-                </Button>
-            </DialogActions>
-        </Dialog>
+                <DialogTitle>로그아웃 하시겠습니까?</DialogTitle>
+                <DialogActions>
+                    <Button onClick={(e) => {
+                        e.preventDefault();
+                        setDialog(false);
+                    }}>
+                        취소
+                    </Button>
+                    <Button onClick={(e) => {
+                        e.preventDefault();
+                        setShow(false);
+                        setTimeout(() => {
+                            nav(`/login`);
+                        }, 100);
+                    }}>
+                        확인
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </>
     );
 }

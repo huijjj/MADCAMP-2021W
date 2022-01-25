@@ -19,6 +19,14 @@ import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
 import ModeIcon from '@mui/icons-material/Mode';
 
 import Slide from '@mui/material/Slide';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogActions from '@mui/material/DialogActions';
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function RecipeDetail() {
     const API_BASE = "http://192.249.18.176:443";
@@ -43,7 +51,9 @@ function RecipeDetail() {
     const [prev, setPrev] = useState();
     const [isOpen, setisOpen] = useState(false);
     const [show, setShow] = useState(false);
-
+    const [dialog, setDialog] = useState(false);
+    const [dialogTitle, setDialogTitle] = useState("");
+    const [deleteAllState, setDeleteAllState] = useState(true);
 
     function onVersionClicked({ key }){
         setVersion(Number(key));
@@ -51,25 +61,30 @@ function RecipeDetail() {
 
     const onDelete = (e, deleteAll) => {
         e.preventDefault();
+        setDeleteAllState(deleteAll);
         if(deleteAll) {
-            if(window.confirm("레시피 전체 삭제")) {
-                axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
-                    window.alert("삭제 완료");
-                    setShow(false);
-                    setTimeout(() => nav(`/home/${owner}`, {state: {nickname: nickname}}), 400);
-                }).catch(console.log);
-            }
+            setDialogTitle('이 레시피를 삭제하시겠습니까?');
+            setDialog(true);
+            // if(window.confirm("레시피 전체 삭제")) {
+            //     axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
+            //         window.alert("삭제 완료");
+            //         setShow(false);
+            //         setTimeout(() => nav(`/home/${owner}`, {state: {nickname: nickname}}), 400);
+            //     }).catch(console.log);
+            // }
         }
         else {
-            if(window.confirm("이 버전을 삭제")) {
-                axios.delete(`${API_BASE}/recipe/version/${_id}/${versions[version - 1].id}`).then(res => {
-                    window.alert("삭제 완료");
-                    // nav(`/home/${owner}`);
-                    console.log(res.data);
-                    setVersions(res.data.versions);
-                    setVersion(res.data.versions.length);
-                }).catch(console.log);
-            }
+            setDialogTitle('이 버전을 삭제하시겠습니까?');
+            setDialog(true);
+            // if(window.confirm("이 버전을 삭제")) {
+            //     axios.delete(`${API_BASE}/recipe/version/${_id}/${versions[version - 1].id}`).then(res => {
+            //         window.alert("삭제 완료");
+            //         // nav(`/home/${owner}`);
+            //         console.log(res.data);
+            //         setVersions(res.data.versions);
+            //         setVersion(res.data.versions.length);
+            //     }).catch(console.log);
+            // }
         }
     };
   
@@ -102,6 +117,7 @@ function RecipeDetail() {
     }, [version]);
     
     return(
+        <>        
         <Slide direction="up" in={show} mountOnEnter unmountOnExit>
             <div className = "detail_body">
                 <div className= "buttons" style={{ display: "flex" }}>
@@ -172,6 +188,48 @@ function RecipeDetail() {
                 </div>
             </div>
         </Slide>
+
+                
+        <Dialog
+            open={dialog}
+            TransitionComponent={Transition}
+            onClose={() => setShow(false)}>
+            <DialogTitle>{dialogTitle}</DialogTitle>
+            <DialogActions>
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    setDialog(false);
+                }}>
+                    취소
+                </Button>
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    if(deleteAllState) {
+                        axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
+                            setDialog(false);
+                            setTimeout(
+                                () => {
+                                    setShow(false);
+                                    setTimeout(() => nav(`/home/${owner}`, {state: {nickname: nickname}}), 400);
+                                }, 100
+                            );
+                        }).catch(console.log);
+                    } else {
+                        axios.delete(`${API_BASE}/recipe/version/${_id}/${versions[version - 1].id}`).then(res => {
+                            // window.alert("삭제 완료");
+                            // nav(`/home/${owner}`);
+                            console.log(res.data);
+                            setDialog(false);
+                            setVersions(res.data.versions);
+                            setVersion(res.data.versions.length);
+                        }).catch(console.log);
+                    }
+                }}>
+                    확인
+                </Button>
+            </DialogActions>
+        </Dialog>
+        </>
     );
 }
 
