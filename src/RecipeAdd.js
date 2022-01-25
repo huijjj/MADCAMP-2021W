@@ -138,7 +138,7 @@ export default function RecipeAdd() {
                         </div>
                         <div className = "title_memo">
                             <div className = "title_favorite" style={{ display: "flex"}}>
-                                <input id = "input_title" placeholder="제목을 입력하세요" ref={titleRef} value={loc.state?.title ? loc.state?.title : ""}></input>
+                                <input id = "input_title" placeholder="제목을 입력하세요" ref={titleRef} defaultValue={loc.state?.title ? loc.state?.title : ""}></input>
                                 {/* <input type="checkbox" ref={favRef}></input> */}
                                 <button id = "is_favorite" style = {isButtonClicked? { fontWeight: "900" ,color: 'blue'} : { color:'black'}} onClick = {() => {
                                     if(isButtonClicked == false) {
@@ -154,7 +154,7 @@ export default function RecipeAdd() {
                             </div>
                             <div className = "memo_container">
                                 <span id = "text_MEMO">메모</span>
-                                <textarea id= "input_memo" placeholder="메모를 입력하세요" ref={recipememoRef} value={loc.state?.prev.memo ? loc.state?.prev.memo : ""}></textarea>
+                                <textarea id= "input_memo" placeholder="메모를 입력하세요" ref={recipememoRef} defaultValue={loc.state?.prev?.memo ? loc.state?.prev?.memo : ""}></textarea>
                             </div>
                         </div>
                     </div>
