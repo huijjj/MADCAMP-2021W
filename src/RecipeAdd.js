@@ -207,7 +207,7 @@ export default function RecipeAdd() {
                             }}>+</div>
                         </div>
                     </div>
-                    <div id = "add_button" onClick={onSubmit}>Add recipe</div>
+                    <div id = "add_button" onClick={onSubmit}>레시피 추가</div>
                 </div>
             </div>
         </Slide>
