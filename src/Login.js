@@ -7,7 +7,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
-import { SettingsPhoneTwoTone } from '@material-ui/icons';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -78,7 +77,7 @@ function Login() {
         <Dialog
             open={show}
             TransitionComponent={Transition}
-            onClose={() => setLogin(false)}>
+            onClose={() => setShow(false)}>
             <DialogTitle>{title}</DialogTitle>
             <DialogActions>
                 <Button onClick={(e) => {
