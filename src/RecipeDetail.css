@@ -98,7 +98,7 @@ body {
 .memotext {
   text-align: left;
   font-family: "Hahmlet", serif;
-  font-size: 15px;
+  font-size: 20px;
   color: rgb(90, 90, 90);
   margin: 0 20px 10px 20px;
 }
@@ -291,10 +291,11 @@ body {
   position: absolute;
 }
 
-.inserted_image {
+#inserted_image {
   width: 250px;
   height: 250px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .gotochart {
