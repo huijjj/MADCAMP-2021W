@@ -113,8 +113,8 @@ export default function RecipeAdd() {
         <Slide direction="up" in={show} mountOnEnter unmountOnExit>
             <div className = "add_body">
                 <div className = "container">
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                        <KeyboardBackspaceIcon sx={{ color: "rgb(255, 255, 255)" }} onClick={() => { 
+                    <div className = "Add_text_box" style={{display: "flex", alignItems: "center" }}>
+                        <KeyboardBackspaceIcon sx={{ color: "rgb(80, 80, 80)" }} onClick={() => { 
                             setShow(false);
                             setTimeout(() => nav(-1), 200);
                         }}/>
@@ -124,7 +124,7 @@ export default function RecipeAdd() {
                         <div id = "add_image" className="image_add_container">
                             {
                                 img === "" ? <></>
-                                :<img src={`${API_BASE}/image/${img}`} style={{ width: "230px", height: "230px" }}/>
+                                :<img id="added_image" src={`${API_BASE}/image/${img}`} style={{ width: "282px", height: "282px" }}/>
                             }
                             <ImageUploader
                                 id="image_uploader"
@@ -207,7 +207,7 @@ export default function RecipeAdd() {
                             }}>+</div>
                         </div>
                     </div>
-                    <div id = "add_button" onClick={onSubmit}>Add recipe</div>
+                    <div id = "add_button" onClick={onSubmit}>레시피 추가하기</div>
                 </div>
             </div>
         </Slide>

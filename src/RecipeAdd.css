@@ -36,7 +36,7 @@
   }
   
   .container_text {
-    color:white;
+    color:rgb(95, 95, 95);
     font-size: 40px;
     font-weight: bold;
     width: fit-content;
@@ -262,7 +262,7 @@ color: rgba(255, 255, 255, 0.6);
     font-weight: 700;
     font-size: 16px;
     color: white;
-    background:rgb(122, 98, 185);
+    background:rgb(72, 91, 149);
     
     /* background-color: rgb(255, 157, 157);
     box-shadow: rgb(190, 104, 104) 12px 12px 24px 0px inset, rgb(212, 170, 170) -12px -12px 24px 0px inset;
@@ -297,9 +297,16 @@ color: rgba(255, 255, 255, 0.6);
     width: 700px;
     
   }
+
+  #added_image {
+      position:absolute;
+      border-radius: 10px;
+      z-index: 10;
+      transform: translateX(-1.5px);
+  }
   
   .procedure_index {
-    background: linear-gradient(120deg, rgb(142, 114, 255) 0%, rgb(255, 141, 141) 100%);
+    background: linear-gradient(120deg, rgb(114, 116, 255) 0%, rgb(141, 171, 255) 100%);
     /* border-radius: 50%; */
     border-radius: 10px;
     margin-right: 20px;
@@ -339,14 +346,19 @@ color: rgba(255, 255, 255, 0.6);
     border: none;
     width: 400px;
   }
+
+  .Add_text_box {
+      margin-bottom: 30px;
+  }
   
   #add_button {
     color: white;
+    font-size: 20px;
     margin-top: 70px;
-    margin-left: 380px;
-    width: 150px;
+    margin-left: 340px;
+    width: 200px;
     padding: 10px;
-    background: rgb(98, 98, 98);
+    background: linear-gradient(30deg, rgb(72, 91, 149) 0%, rgb(118, 144, 190) 100%);
     border-radius: 10px;
   }
 
