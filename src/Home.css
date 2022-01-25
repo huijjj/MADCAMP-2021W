@@ -92,11 +92,11 @@ body {
 
 .swiper-slide {
   box-shadow: 0px 5px 10px -5px;
-  border-radius: 30px;
+  border-radius: 50px;
   width: 400px !important;
   text-align: center;
   font-size: 18px;
-    background: #A1ABCC;
+    background: #EFF4FF;
   /* background: linear-gradient(-180deg, #ffe6e6 0%, #ffdad3 100%); */
 
   /* Center slide text vertically */
@@ -123,7 +123,7 @@ body {
 
 .slide_item {
   width: 400px;
-  height: 250px;
+  height: 270px;
   color: white;
 }
 
@@ -132,7 +132,7 @@ body {
   width: 100%;
   height: fit-content + 50px;
   padding-bottom: 100px;
-  margin-top: -110px;
+  margin-top: -130px;
 }
 
 .swiper-wrapper {
@@ -142,20 +142,25 @@ body {
 }
 
 .title {
-  color: white;
-  font-size: 40px;
-  padding-left: 40px;
-  margin-top: 40px;
-  margin-left: 30px;
+  color: rgb(85, 85, 85);
+  font-size: 33px;
+  font-weight: 700;
+  line-height:40px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 3px;
+  margin-top: 60px;
+  margin-left: 80px;
+  border: 3px solid rgb(83, 83, 83);
 }
 
 .title_bar {
   font-family: "Hahmlet", serif;
-  background: #616d97;
+  background: #B5C4EA;
   /* background: linear-gradient(180deg, #A1ABCC 0%, #d7e3ff 100%); */
   /* box-shadow: 0px 1px 30px rgb(103, 103, 103); */
   width: 100%;
-  height: 250px;
+  height: 350px;
   /* border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px; */
 }
@@ -175,7 +180,7 @@ body {
   margin-top: 30px;
 }
 .say_hi {
-  color: white;
+  color: rgb(90, 90, 90);
   font-size: 20px;
   padding-top: 20px;
 }
@@ -208,20 +213,24 @@ body {
 
 .recipe {
   /* background: linear-gradient(180deg, #3E4E80 0%, rgb(20, 33, 79) 100% ); */
-  background: rgb(183, 192, 223);
+  background: #8AAAEE;
   margin: 30px 10% 30px 10%;
-  width: 1000px;
+  width: 900px;
   height: 300px;
   border-radius: 70px;
   display: inline-block;
+  box-shadow: 0px 5px 15px rgba(58, 58, 58, 0.459);
   
 }
 
 .recipe_title {
   color: white;
-  margin-top: 80px;
+  margin-top: 0px;
   margin-bottom: 10px;
-  font-size: 25px;
+  font-size: 30px;
+  width:fit-content;
+  text-align: center;
+  float: left;
 }
 
 .recipe_body {
@@ -245,29 +254,38 @@ body {
 .recipe_info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   width: 500px;
   margin-left: 50px;
 }
 .recipe_ingredients {
   display: flex;
-  height: 100px;
-  justify-content: center;
+  height: fit-content;
+
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  width: 400px;
 }
 
 .ingredient {
   color: white;
   height: fit-content;
+  font-size: 18px;
 }
 
 .favorite_recipe_title {
   margin-top: 20px;
-  font-size: 25px;
+  margin-bottom: -0.5px;
+
+  font-size: 28px;
+  font-weight: 700;
+  color:rgb(104, 104, 104);
 }
 
 .favorite_image {
-  margin-left: 125px;
-  margin-top: 20px;
-  border-radius: 10px;
+  margin-left: 117px;
+  margin-top: 10px;
+  border-radius: 50%;
+
 }

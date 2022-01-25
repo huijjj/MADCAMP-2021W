@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import './RecipeChart.css';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import Slide from '@mui/material/Slide';
 
 function RecipeChart() {
     const API_BASE = "http://192.249.18.176:443";
@@ -18,7 +17,6 @@ function RecipeChart() {
     const [ingredientList, setIngredientList] = useState([]);
     const [chartOption, setChartOption] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [show, setShow] = useState(false);
 
     useEffect(() => {
         Promise.all(versions.map(e => axios.get(`${API_BASE}/recipe/version/${e.id}`)))
@@ -28,8 +26,8 @@ function RecipeChart() {
                     return el.data.ingredients;
                 }))
                 setLoading(true);
-                setShow(true);
-            }).catch(console.log);
+            })
+            .catch(console.log);
     }, []);
 
     useEffect(() => {
@@ -64,16 +62,11 @@ function RecipeChart() {
                 state = {
                     options: {
                         chart: {
-                            id: `${uniqueName[i]}`,
-                            toolbar: {show: false},
-                            zoom: {
-                                enabled: false
-                            }
+                            id: `${uniqueName[i]}`
                         },
                         xaxis: {
                             categories: versions.map((_, i) => "ver. " + (i + 1))
-                        },
-                        colors: ['#3E4E80'],
+                        }
                     },
                     series: [{
                     name: `${uniqueName[i]}`,
@@ -89,42 +82,33 @@ function RecipeChart() {
     }, [ingredientList], [loading])
 
     return (
-        <Slide direction="up" in={show} mountOnEnter unmountOnExit>
-            <div className = "graph_container">
-                <div className = "graph_content">
-                <KeyboardBackspaceIcon id="graph_back_button" onClick={(e) => { 
-                    e.preventDefault();
-                    setShow(false);
-                    setTimeout(() => {
-                        nav(-1); 
-                    }, 200);
-                }}/>
-                <div className = "graph_title">버전 별 재료 변화</div>
-                <div>
-                    {
-                        chartOption &&
-                        chartOption.map((e, i) => 
-                            <div className='chartbody' key={i}>
-                                <Chart
-                                    fill={e.colors}
-                                    options={e.options}
-                                    series={e.series}
-                                    type="line"
-                                    width="700"/>
-                                <div className='chartname'>{`${e.options.chart.id}의 version에 따른 재료량 추이 그래프`}</div>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
-                            </div>
-                        )
-                    }
-                </div>
-                </div>
+        <div className = "graph_container">
+            <div className = "graph_content">
+            <KeyboardBackspaceIcon id="graph_back_button" onClick={() => { nav(-1); }}/>
+            <div className = "graph_title">버전 별 재료 변화</div>
+            <div>
+                {
+                    chartOption &&
+                    chartOption.map((e, i) => 
+                        <div className='chartbody' key={i}>
+                            <Chart
+                                options={e.options}
+                                series={e.series}
+                                type="line"
+                                width="700"/>
+                            <div className='chartname'>{`${e.options.chart.id}의 version에 따른 재료량 추이 그래프`}</div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                    )
+                }
             </div>
-        </Slide>
+            </div>
+        </div>
     );
 }
 
