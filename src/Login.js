@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-function Login( {setUserId, setUserNickname} ) {
+function Login() {
     const nav = useNavigate();
     function handleClick(e) {
         e.preventDefault();

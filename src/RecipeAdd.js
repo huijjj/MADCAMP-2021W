@@ -31,8 +31,8 @@ export default function RecipeAdd() {
             console.log("edit");
             console.log(loc.state);
 
-            titleRef.current.value = loc.state.title;
-            recipememoRef.current.value = loc.state.prev.memo;
+            // titleRef.current && (titleRef.current.value = loc.state.title);
+            // recipememoRef.current && (recipememoRef.current.value = loc.state.prev.memo);
             setImg(loc.state.img ? loc.state.img : "");
             setButtonClicked(loc.state.favorite);
             setIngredients(loc.state.prev.ingredients);
@@ -124,7 +124,7 @@ export default function RecipeAdd() {
                         <div id = "add_image" className="image_add_container">
                             {
                                 img === "" ? <></>
-                                :<img id="added_image" src={`${API_BASE}/image/${img}`} style={{ width: "282px", height: "282px" }}/>
+                                :<img id="added_image" src={`${API_BASE}/image/${img}`} style={{ width: "280px", height: "280px" }}/>
                             }
                             <ImageUploader
                                 id="image_uploader"
@@ -138,7 +138,7 @@ export default function RecipeAdd() {
                         </div>
                         <div className = "title_memo">
                             <div className = "title_favorite" style={{ display: "flex"}}>
-                                <input id = "input_title" placeholder="제목을 입력하세요" ref={titleRef}></input>
+                                <input id = "input_title" placeholder="제목을 입력하세요" ref={titleRef} defaultValue={loc.state?.title ? loc.state?.title : ""}></input>
                                 {/* <input type="checkbox" ref={favRef}></input> */}
                                 <button id = "is_favorite" style = {isButtonClicked? { fontWeight: "900" ,color: 'blue'} : { color:'black'}} onClick = {() => {
                                     if(isButtonClicked == false) {
@@ -154,7 +154,7 @@ export default function RecipeAdd() {
                             </div>
                             <div className = "memo_container">
                                 <span id = "text_MEMO">메모</span>
-                                <textarea id= "input_memo"placeholder="메모를 입력하세요" ref={recipememoRef}></textarea>
+                                <textarea id= "input_memo" placeholder="메모를 입력하세요" ref={recipememoRef} defaultValue={loc.state?.prev?.memo ? loc.state?.prev?.memo : ""}></textarea>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@ export default function RecipeAdd() {
                             }}>+</div>
                         </div>
                     </div>
-                    <div id = "add_button" onClick={onSubmit}>레시피 추가하기</div>
+                    <div id = "add_button" onClick={onSubmit}>레시피 추가</div>
                 </div>
             </div>
         </Slide>
