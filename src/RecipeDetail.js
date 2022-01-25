@@ -22,7 +22,7 @@ import Slide from '@mui/material/Slide';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
-
+import * as Btn from '@mui/material/Button';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -196,13 +196,13 @@ function RecipeDetail() {
             onClose={() => setShow(false)}>
             <DialogTitle>{dialogTitle}</DialogTitle>
             <DialogActions>
-                <Button onClick={(e) => {
+                <Btn onClick={(e) => {
                     e.preventDefault();
                     setDialog(false);
                 }}>
                     취소
-                </Button>
-                <Button onClick={(e) => {
+                </Btn>
+                <Btn onClick={(e) => {
                     e.preventDefault();
                     if(deleteAllState) {
                         axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {
@@ -226,7 +226,7 @@ function RecipeDetail() {
                     }
                 }}>
                     확인
-                </Button>
+                </Btn>
             </DialogActions>
         </Dialog>
         </>
