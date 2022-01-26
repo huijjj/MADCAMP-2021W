@@ -59,16 +59,16 @@ function Register() {
                     <div className='registerparent'>
                         <div className='registerchild'> 
                             <div>
-                                <input  autocomplete="off" className='inputid' name="id" type = "text"  placeholder='Enter User ID' required/>
+                                <input  autoComplete="off" className='inputid' name="id" type = "text"  placeholder='Enter User ID' required/>
                             </div>
                             <div>
-                                <input  autocomplete="off" className='inputid' name="pw" type = "password" placeholder='Enter Password' required/>
+                                <input  autoComplete="off" className='inputid' name="pw" type = "password" placeholder='Enter Password' required/>
                             </div>
                             <div>
-                                <input  autocomplete="off" className='inputid' name="rpw" type = "password" placeholder='Enter Password Again' required/>
+                                <input  autoComplete="off" className='inputid' name="rpw" type = "password" placeholder='Enter Password Again' required/>
                             </div>
                             <div>
-                                <input  autocomplete="off" className='inputpw' name="nickname" type = "text" placeholder='Enter User Nickname' required/>
+                                <input  autoComplete="off" className='inputpw' name="nickname" type = "text" placeholder='Enter User Nickname' required/>
                             </div>
                         </div>
                         <button className = "registerbutton" type='submit' >회원가입</button>

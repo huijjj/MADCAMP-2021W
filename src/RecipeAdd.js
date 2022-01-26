@@ -161,7 +161,7 @@ export default function RecipeAdd() {
                         </div>
                         <div className = "title_memo">
                             <div className = "title_favorite" style={{ display: "flex"}}>
-                                <input  autocomplete="off" id = "input_title" placeholder="제목을 입력하세요" ref={titleRef} defaultValue={loc.state?.title ? loc.state?.title : ""}></input>
+                                <input  autoComplete="off" id = "input_title" placeholder="제목을 입력하세요" ref={titleRef} defaultValue={loc.state?.title ? loc.state?.title : ""}></input>
                                 {/* <input type="checkbox" ref={favRef}></input> */}
                                 <button id = "is_favorite" style = {isButtonClicked? { color: '#ff7373'} : { color:'rgb(90,90,90)'}} onClick = {() => {
                                     if(isButtonClicked == false) {
@@ -187,8 +187,8 @@ export default function RecipeAdd() {
                         <div id = "text_INGREDIENTS">재료</div>
                         <div className = "input_wrapper" style={{ display: "flex", flexDirection: "column" , justifyContent: "center"/*,alignItems: "center" */}}>
                             <div className = "input_name_amount">
-                                <input  autocomplete="off" id="input_ingredient_name" placeholder="재료 이름" ref={ingredientNameRef}></input>
-                                <input  autocomplete="off" id="input_ingredient_amount" type="number" placeholder="중량 (g)" ref={ingredientAmountRef}></input>
+                                <input  autoComplete="off" id="input_ingredient_name" placeholder="재료 이름" ref={ingredientNameRef}></input>
+                                <input  autoComplete="off" id="input_ingredient_amount" type="number" placeholder="중량 (g)" ref={ingredientAmountRef}></input>
                                 <div id="ingredient_add_button" style={{ fontSize: "1.5rem", height: "fit-content"}} onClick={(e) => {
                                     e.preventDefault();
                                     if(ingredientAmountRef.current.value && ingredientNameRef.current.value) {
@@ -220,7 +220,7 @@ export default function RecipeAdd() {
                             </div>)
                         }</div>
                         <div id = "input_procedures" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <input  autocomplete="off" id = "input_procedure_text" placeholder="다음 과정을 입력하세요" ref={procedureRef}></input>
+                            <input  autoComplete="off" id = "input_procedure_text" placeholder="다음 과정을 입력하세요" ref={procedureRef}></input>
                             <div id = "procedure_add_button" style={{ fontSize: "1.5rem" }} onClick={(e) => {
                                 e.preventDefault();
                                 if(procedureRef.current.value) {
