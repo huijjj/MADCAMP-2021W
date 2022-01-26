@@ -87,7 +87,6 @@ body {
 
 .swiper {
   width: 100%;
-  height: 100%;
 }
 
 .swiper-slide {
@@ -139,6 +138,7 @@ body {
   font-family: "Hahmlet", serif;
   width: 100%;
   padding-bottom: 8px;
+  margin-bottom:60px;
 }
 
 .title {
@@ -206,9 +206,17 @@ body {
   background: #5a5a5a !important ;
 }
 
+.swiper-pagination {
+  z-index: 20 !important;
+}
+
 .recipe_container {
   text-align: center;
   font-family: "Hahmlet", serif;
+}
+
+.swiper-pagination-lock {
+  display:block !important;
 }
 
 .recipe {

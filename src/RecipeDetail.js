@@ -164,7 +164,7 @@ function RecipeDetail() {
                     <div className='recipemain'>{title}</div>
                     <div className='versionbutton'>
                         <Dropdown overlay={dropContent}>
-                            <Button>ver. {version}<DownOutlined /></Button>
+                            <Button style = {{color:'rgb(90,90,90)', marginTop:'5px'}}>ver. {version}<DownOutlined /></Button>
                         </Dropdown>
                     </div>
 
