@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import './RecipeChart.css';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { rgbToHex } from '@material-ui/core';
 
 function RecipeChart() {
     const API_BASE = "http://192.249.18.176:443";
@@ -62,16 +63,22 @@ function RecipeChart() {
                 state = {
                     options: {
                         chart: {
-                            id: `${uniqueName[i]}`
+                            id: `${uniqueName[i]}`,
+                            toolbar: {show: false},
+                            zoom: {
+                                enabled: false
+                            },
+                            fontFamily: "Hahmlet"
                         },
                         xaxis: {
                             categories: versions.map((_, i) => "ver. " + (i + 1))
-                        }
+                        },
+                        colors: ['#3E4E80']
                     },
                     series: [{
-                    name: `${uniqueName[i]}`,
-                    data: ingredientAmount[i]
-                    }]
+                        name: `${uniqueName[i]}`,
+                        data: ingredientAmount[i]
+                    }],
                 }
                 // console.log(state.options.chart.id);
                 chartOption.push(state);
@@ -85,7 +92,7 @@ function RecipeChart() {
         <div className = "graph_container">
             <div className = "graph_content">
             <KeyboardBackspaceIcon id="graph_back_button" onClick={() => { nav(-1); }}/>
-            <div className = "graph_title">버전 별 재료 변화</div>
+            <div className = "graph_title">버전별 재료 변화</div>
             <div>
                 {
                     chartOption &&
@@ -96,7 +103,7 @@ function RecipeChart() {
                                 series={e.series}
                                 type="line"
                                 width="700"/>
-                            <div className='chartname'>{`${e.options.chart.id}의 version에 따른 재료량 추이 그래프`}</div>
+                            <div className='chartname' style={{color: "rgb(90, 90, 90)"}}>{`${e.options.chart.id}`}</div>
                             <br/>
                             <br/>
                             <br/>

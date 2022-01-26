@@ -40,7 +40,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function Home() {
 	const nav = useNavigate();
     const loc = useLocation();
-    let nickname = loc.state.nickname;
+    // let nickname = loc.state.nickname;
     
     const { userId } = useParams();
 	// const [ recipes, setRecipes ] = useState([]);
@@ -53,6 +53,11 @@ export default function Home() {
 
 
     const [ dialog, setDialog ] = useState(false);
+    const [ nickname, setNickname ] = useState("");
+
+    useEffect(() => {
+        axios.get(`${API_BASE}/user/${userId}`).then(res => setNickname(res.data));   
+    }, []);
 
     useEffect(()=> {
 		// get every recipe of given userId
@@ -197,18 +202,23 @@ export default function Home() {
             </div>
 
             <Dialog
+                style = {{fontFamily:"Hahmlet"}}
                 open={dialog}
                 TransitionComponent={Transition}
-                onClose={() => setShow(false)}>
-                <DialogTitle>로그아웃 하시겠습니까?</DialogTitle>
+                onClose={() => setDialog(false)}>
+                <DialogTitle style ={{fontFamily:"Hahmlet"}}>로그아웃 하시겠습니까?</DialogTitle>
                 <DialogActions>
-                    <Button onClick={(e) => {
+                    <Button 
+                        style = {{fontFamily:"Hahmlet"}}
+                        onClick={(e) => {
                         e.preventDefault();
                         setDialog(false);
                     }}>
                         취소
                     </Button>
-                    <Button onClick={(e) => {
+                    <Button 
+                        style = {{fontFamily:"Hahmlet"}}
+                        onClick={(e) => {
                         e.preventDefault();
                         setShow(false);
                         setTimeout(() => {

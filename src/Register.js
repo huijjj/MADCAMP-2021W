@@ -78,12 +78,15 @@ function Register() {
             </div>
         </div>
         <Dialog
+            style = {{fontFamily:"Hahmlet"}}
             open={show}
             TransitionComponent={Transition}
             onClose={() => setShow(false)}>
-            <DialogTitle>{title}</DialogTitle>
+            <DialogTitle  style = {{fontFamily:"Hahmlet"}}>{title}</DialogTitle>
             <DialogActions>
-                <Button onClick={(e) => {
+                <Button 
+                    style = {{fontFamily:"Hahmlet"}}
+                    onClick={(e) => {
                     e.preventDefault();
                     if(success) {
                         nav("/login");

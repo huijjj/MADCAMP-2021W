@@ -191,18 +191,19 @@ function RecipeDetail() {
 
                 
         <Dialog
+            style = {{fontFamily:"Hahmlet"}}
             open={dialog}
             TransitionComponent={Transition}
-            onClose={() => setShow(false)}>
-            <DialogTitle>{dialogTitle}</DialogTitle>
+            onClose={() => setDialog(false)}>
+            <DialogTitle  style = {{fontFamily:"Hahmlet"}} >{dialogTitle}</DialogTitle>
             <DialogActions>
-                <Button onClick={(e) => {
+                <Button  style = {{fontFamily:"Hahmlet"}} onClick={(e) => {
                     e.preventDefault();
                     setDialog(false);
                 }}>
                     취소
                 </Button>
-                <Button onClick={(e) => {
+                <Button  style = {{fontFamily:"Hahmlet"}} onClick={(e) => {
                     e.preventDefault();
                     if(deleteAllState) {
                         axios.delete(`${API_BASE}/recipe/${_id}`).then(_ => {

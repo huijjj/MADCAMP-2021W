@@ -33,6 +33,8 @@ export default function RecipeAdd() {
     const recipememoRef = useRef();
     const [ dialog, setDialog ] = useState(false);
     const [ versions, setVersions ] = useState([]);
+    const [ dialogTitle, setDialogTitle ] = useState("");
+    const [ next, setNext ] = useState(false);
 
     const nav = useNavigate();
     const loc = useLocation();
@@ -69,6 +71,7 @@ export default function RecipeAdd() {
                 }).then(res => {
                     console.log(res.data);
                     // window.alert("저장 완료");
+                    setDialogTitle("저장에 성공했습니다.");
                     setVersions(res.data.versions);
                     setDialog(true);
                     // nav(`/${userId}/${loc.state.id}`, {state: {favorite: isButtonClicked, owner: userId, title: titleRef.current.value, versions: res.data.versions, img: img, nickname: loc.state.nickname}});
@@ -89,16 +92,20 @@ export default function RecipeAdd() {
                 }).then(res => {
                     console.log(res.data);
                     // window.alert("저장 완료");
+                    setDialogTitle("저장에 성공했습니다.");
                     setDialog(true);
                     // nav(`/home/${userId}`, {state: {nickname: loc.state.nickname}});
                 }).catch(err => {
                     console.log(err);
-                    window.alert("실패");
+                    // window.alert("실패");
+                    setDialogTitle("저장에 실해했습니다.");
                 });
             }
         }
         else {
-            window.alert("제목 입력");
+            // window.alert("제목 입력");
+            setDialogTitle("제목을 입력해주세요.");
+            setDialog(true);
         }
     }
 
@@ -227,18 +234,23 @@ export default function RecipeAdd() {
                 </div>
             </Slide>
             <Dialog
+                style = {{fontFamily:"Hahmlet"}}
                 open={dialog}
                 TransitionComponent={Transition}
-                onClose={() => setShow(false)}>
-                <DialogTitle>저장되었습니다.</DialogTitle>
+                onClose={() => setDialog(false)}>
+                <DialogTitle  style = {{fontFamily:"Hahmlet"}} >{dialogTitle}</DialogTitle>
                 <DialogActions>
-                    <Button onClick={(e) => {
+                    <Button 
+                        style = {{fontFamily:"Hahmlet"}}
+                        onClick={(e) => {
                         e.preventDefault();
                         setDialog(false);
-                        if(loc.state.prev) {
-                            nav(`/${userId}/${loc.state.id}`, {state: {favorite: isButtonClicked, owner: userId, title: titleRef.current.value, versions: versions, img: img, nickname: loc.state.nickname}});
-                        } else {
-                            nav(`/home/${userId}`, {state: {nickname: loc.state.nickname}});
+                        if(next) {
+                            if(loc.state.prev) {
+                                nav(`/${userId}/${loc.state.id}`, {state: {favorite: isButtonClicked, owner: userId, title: titleRef.current.value, versions: versions, img: img, nickname: loc.state.nickname}});
+                            } else {
+                                nav(`/home/${userId}`, {state: {nickname: loc.state.nickname}});
+                            }
                         }
                     }}>
                         확인
