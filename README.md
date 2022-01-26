@@ -7,7 +7,7 @@
 
 |main|login|register|
 |--|--|--|
-|<img src="" />|<img src="" />|<img src="" />|
+|<img src="https://user-images.githubusercontent.com/96764875/151125184-7c7eafd0-5262-452b-a0a3-8537d341a1d9.gif" />|<img src="https://user-images.githubusercontent.com/96764875/151126733-d796b097-2cf6-424d-a788-3a352a8393e9.gif" />|<img src="https://user-images.githubusercontent.com/96764875/151126489-3deaf822-f7ea-4c99-bac5-7d99a77263d5.gif" />|
 
 - 처음 링크에 접속하였을 때 화면입니다.
   - 요리를 시작하는 사람들을 위해 자신만의 레시피를 저장할 수 있는 사이트를 구현하였습니다.
@@ -24,9 +24,9 @@
 ---
 ## 기능 소개
 
-|home|research|add|
+|home|search|add|
 |--|--|--|
-|<img src="" />|<img src="" />|<img src="" />|
+|<img src="https://user-images.githubusercontent.com/63199133/151129931-f130cd39-b518-4baf-9d7f-fcd24437e402.png" />|<img src="https://user-images.githubusercontent.com/96764875/151127240-e71c7c7e-e59b-408e-9743-2b614719229b.gif" />|<img src="" />|
 
 - 로그인이 성공한 후의 화면입니다. url로 사용자의 ID를 받기 때문에 아이디 별로 고유의 웹사이트를 띄우게 됩니다.
   - 우측 상단에는 회원가입에서 설정한 Nickname으로 사용자를 반겨줍니다. 또한 옆의 로그아웃 버튼을 통해 다른 사용자로 로그인할 수 있습니다.
@@ -46,7 +46,7 @@
 ## 레시피 세부사항 소개
 |detail|chart|add version|
 |--|--|--|
-|<img src="" />|<img src="" />|<img src="" />|
+|<img src="" />|<img src="https://user-images.githubusercontent.com/96764875/151129907-a64dbc91-d072-4b94-9589-5ae4eef415e8.gif" />|<img src="" />|
 
 - add 버튼으로 추가한 레시피들을 확인할 수 있는 화면입니다.
   - 홈 화면에서 볼 수 있는 레시피들을 클릭할 경우 detail 화면으로 넘어와 저장해놓은 요리 이름, 메모, 재료, 과정을 볼 수 있습니다.
