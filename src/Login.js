@@ -63,10 +63,10 @@ function Login() {
                     <div className='loginparent'>
                         <div className='loginchild'> 
                             <div>
-                                <input className='inputid' name="id" type = "text"  placeholder='Enter User ID' required/>
+                                <input  autocomplete="off" className='inputid' name="id" type = "text"  placeholder='Enter User ID' required/>
                             </div>
                             <div>
-                                <input className='inputpw' name="pw" type = "password" placeholder='Enter Password' required/>
+                                <input  autocomplete="off" className='inputpw' name="pw" type = "password" placeholder='Enter Password' required/>
                             </div>
                         </div>
                         <button className='loginbutton' type="submit">시작</button>

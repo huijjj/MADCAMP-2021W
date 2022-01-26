@@ -169,6 +169,7 @@ export default function Home() {
             <div className = "search">
                 <div>
                     <input
+                        autocomplete="off"
                         className="searchInput"
                         type = 'text'
                         placeholder = '🥐  🥨  🍞  🥯  🥞  🧇'
