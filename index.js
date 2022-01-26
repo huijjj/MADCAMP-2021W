@@ -79,6 +79,24 @@ app.post('/register', async (req, res) => {
   }
 });
 
+/* get nickname of user
+params: {
+  userId: String
+}
+sends nick name if successful */
+app.get('/user/:userId', async (req, res) => {
+  console.log(`GET /user/${req.params.userId}`);
+
+  try {
+    const tar = await Users.find({ id: req.params.userId });
+    console.log(tar);
+    res.status(200).json(tar[0].nickname);
+  } 
+  catch(err) {
+    res.status(400).send({ status: "fail" });
+  }
+});
+
 
 /* get all recipe 
 send all recipes in db with status 400, if successful 
