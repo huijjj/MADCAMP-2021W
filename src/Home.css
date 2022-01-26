@@ -215,10 +215,6 @@ body {
   font-family: "Hahmlet", serif;
 }
 
-.swiper-pagination-lock {
-  display:block !important;
-}
-
 .recipe {
   /* background: linear-gradient(180deg, #3E4E80 0%, rgb(20, 33, 79) 100% ); */
   background: #8AAAEE;
