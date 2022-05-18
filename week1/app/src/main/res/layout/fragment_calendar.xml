@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.calendar.CalendarFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tree"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/deco_button_24"
+                    android:layout_width="112dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/deco_24"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/deco_button_10"
+                    android:layout_width="76dp"
+                    android:layout_height="92dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/deco_10"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:layout_marginRight="20dp"/>
+
+                <ImageButton
+                    android:id="@+id/deco_button_13"
+                    android:layout_width="76dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/deco_13"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                    android:id="@+id/deco_button_4"
+                    android:layout_width="76dp"
+                    android:layout_height="92dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/deco_4"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:layout_marginRight="10dp"/>
+                    <ImageButton
+                        android:id="@+id/deco_button_18"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_18"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_22"
+                        android:layout_width="76dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_22"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_1"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_7"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_7"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+
+                SpeakableTextPresentCheck
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_9"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_9"
+                        android:layout_marginRight="20dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_12"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_12"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_17"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_17"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_3"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_3"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_20"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_20"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_8"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_8"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_15"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_15"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/deco_button_11"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_11"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_19"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/deco_19"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/deco_button_16"
+                        android:layout_width="75dp"
+                        android:layout_height="65dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/deco_16"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_23"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_23"
+                        android:layout_marginLeft="10dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/deco_button_14"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_14"
+                        android:layout_marginRight="20dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_5"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_5"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <ImageButton
+                        android:id="@+id/deco_button_6"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_6"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/deco_button_21"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_21"
+                        android:layout_marginLeft="0dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/deco_button_2"
+                        android:layout_width="80dp"
+                        android:layout_height="75dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/deco_2"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/bottom_snow"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:snowflakeAlphaMax="255"
+        app:snowflakeAlphaMin="70"
+        app:snowflakeAngleMax="5"
+        app:snowflakeSizeMax="10dp"
+        app:snowflakeSizeMin="2dp"
+        app:snowflakeSpeedMax="6"
+        app:snowflakeSpeedMin="1"
+        app:snowflakesAlreadyFalling="false"
+        app:snowflakesFadingEnabled="false"
+        app:snowflakesNum="150" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:paddingTop="20dp"-->
+    <!--                android:paddingRight="40dp"-->
+    <!--                android:gravity="right">-->
+
+    <!--                <ImageButton-->
+    <!--                    android:id="@+id/muteButton"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:background="@android:color/transparent"-->
+    <!--                    android:padding="10dp"-->
+    <!--                    android:src="@drawable/ic_baseline_volume_off_24" />-->
+    <!--            </LinearLayout>-->

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/activity_add_number.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/activity_photo.xml" value="0.1828125" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/fragment_gallery.xml" value="0.1828125" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/fragment_home.xml" value="0.152" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/gallery_item.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/list_item.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/modal_popup.xml" value="0.1828125" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/photo_detail.xml" value="0.1828125" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/photo_detail_item.xml" value="0.1828125" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/photo_item.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/layout/user_item.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/gmwhd/AndroidStudioProjects/temp2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.31666666666666665" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/drawable/ic_baseline_volume_off_24.xml" value="0.328125" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.31666666666666665" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.31666666666666665" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_add_number.xml" value="0.2625" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_photo.xml" value="0.17806484295845998" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_start.xml" value="0.17806484295845998" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_surprise.xml" value="0.34646739130434784" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_surprise_sad.xml" value="0.264" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/activity_user_contact_edit.xml" value="0.2953125" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/contact_list_item.xml" value="0.1921875" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/contact_user_item.xml" value="0.353713768115942" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_calendar.xml" value="0.264" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_contact.xml" value="0.1921875" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_dashboard.xml" value="0.33489583333333334" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_gallery.xml" value="0.1921875" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_home.xml" value="0.33489583333333334" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/fragment_notifications.xml" value="0.296875" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/gallery_list_item.xml" value="0.32760416666666664" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/layout/modal_popup.xml" value="0.25833333333333336" />
+        <entry key="..\:/madcamp_week1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.30052083333333335" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
