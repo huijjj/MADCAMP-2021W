@@ -1,0 +1,52 @@
+
+.registerbody {
+  display: flex;
+  height: 50vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.registerparent {
+  display: flex;
+  justify-content: center;
+}
+
+.registerchild {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputrpw {
+  margin-top: 5px;
+  margin-right: 5px;
+  height: 1cm;
+  border-radius: 5px;
+}
+.inputnickname {
+  margin-top: 5px;
+  margin-right: 5px;
+  height: 1cm;
+  border-radius: 5px;
+}
+
+.registerbutton {
+  background-color: #0d3d68;
+  color: white;
+  border-radius: 5px;
+}
+
+.registerdomain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Hahmlet", serif;
+  font-size: 60px;
+  /* padding-top: 5vh; */
+  color: black;
+  width: 70vw;
+  margin-top: 30px;
+}

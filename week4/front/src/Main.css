@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
+
+@keyframes rain_effect {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  } 
+  50% {
+    background-position: -500px -1000px, 500px 500px, 0px 1000px, 250px -500px, -1000px 0px; 
+  } 
+  100% {
+    background-position: -1000px -2000px, 1000px 1000px, 0px 2000px, 500px -1000px, -2000px 0px; 
+  }
+} 
+
+@-moz-keyframes rain_effect { 
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  } 
+  50% {
+    background-position: -500px -1000px, 500px 500px, 0px 1000px, 250px -500px, -1000px 0px; 
+  } 
+  100% {
+    background-position: -1000px -2000px, 1000px 1000px, 0px 2000px, 500px -1000px, -2000px 0px; 
+  }
+} 
+
+@-webkit-keyframes rain_effect { 
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  } 
+  50% {
+    background-position: -500px -1000px, 500px 500px, 0px 1000px, 250px -500px, -1000px 0px; 
+  } 
+  100% {
+    background-position: -1000px -2000px, 1000px 1000px, 0px 2000px, 500px -1000px, -2000px 0px; 
+  }
+} 
+
+@-ms-keyframes rain_effect { 
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  } 
+  50% {
+    background-position: -500px -1000px, 500px 500px, 0px 1000px, 250px -500px, -1000px 0px; 
+  } 
+  100% {
+    background-position: -1000px -2000px, 1000px 1000px, 0px 2000px, 500px -1000px, -2000px 0px; 
+  }
+}
+
+.mainbackground {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image:  
+    url('/public/images/eggs.png'), 
+    url('/public/images/doughnuts.png'),
+    url('/public/images/strawberry.png'),
+    url('/public/images/spinachs.png'),
+    url('/public/images/drinks.png'),
+    url('/public/images/hamburgers.png');
+  animation: rain_effect 40s linear infinite; 
+  -webkit-animation: rain_effect 40s linear infinite; 
+  -moz-animation: rain_effect 40s linear infinite; 
+  -ms-animation: rain_effect 40s linear infinite;
+}
+
+.domainstructure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+  -webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+  border-radius: 19px;
+  -webkit-border-radius: 19px;
+  color: rgba(255, 255, 255, 0.898);
+  justify-content: space-around;
+  -webkit-user-select:none;
+  -moz-user-select:none; 
+  -ms-user-select:none; 
+  user-select:none;
+}
+
+.domain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Hahmlet", serif;
+  font-size: 60px;
+  /* padding-top: 5vh; */
+  color: black;
+  width: 70vw;
+}
+
+.loginlink {
+  font-family: "Hahmlet", serif;
+  font-size: 1rem;
+  /* padding-top: 300px; */
+}
+
+.registerlink {
+  font-family: "Hahmlet", serif;
+  font-size: 1rem;
+  padding-top: 10px;
+}
+
+.titleBanner {
+  -webkit-user-select:none;
+  -moz-user-select:none; 
+  -ms-user-select:none; 
+  user-select:none;
+  -webkit-user-drag: none;
+}
+
+a:link {
+  color: rgb(90, 90, 90);
+}
+a:visited {
+  color: rgb(90, 90, 90);
+}

@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&display=swap");
+
+.chartbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartname {
+  font-family: "Hahmlet", serif;
+}
+.graph_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph_content {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  width: 1000px;
+
+  background-color: rgba(255, 255, 255, 0.25);
+backdrop-filter: blur(6px);
+-webkit-backdrop-filter: blur(6px);
+border: 1px solid rgba(255, 255, 255, 0.18);
+box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+-webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+border-radius: 50px;
+-webkit-border-radius: 50px;
+color: rgba(255, 255, 255, 0.75);
+
+}
+.graph_title {
+  color : rgb(90,90,90);
+  font-size: 30px;
+  margin: 10px;
+  margin-top:30px;
+}
+
+#graph_back_button {
+  color: rgb(90,90,90);
+  position:absolute;
+  font-size: 40px;
+  transform: translate(-450px, 30px);
+  
+}
+
+.apexcharts-tooltip {
+  color: rgb(90,90,90);
+  /* color: orange; */
+}
+
+#root {
+  font-family: "Hahmlet", serif;
+}
