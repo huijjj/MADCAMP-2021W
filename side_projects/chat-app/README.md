@@ -1,13 +1,16 @@
 # chat-app
-chatting app using node and socket.io
+Simple chatting app using node and socket.io
 
-## Client
+Change the IP at /client/src/App.js line 10 to your IP before running the codes.
+
+## Simple setup
+### Client
 ```
 cd ./client
 npm start
 ```
 
-## Server
+### Server
 ```
 cd ./server
 node app.js

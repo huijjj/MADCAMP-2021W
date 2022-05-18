@@ -3,7 +3,7 @@
 1. Week1 project - [Present of Santa(산타의 선물)](#week1---산타의-선물present-of-santa)
 2. Week2 project - [Ghost Gomoku King(고스트 오목왕)](#week2---고스트-오목왕-ghost-gomoku-king)
 3. Week3 project - [DRUNKEN FRAM(꽐라 농장)](#week3---drunken-farm-꽐라-농장)
-4. Week4 project - [Minchae's Cookbook(김민채의 요리보고 조리보고)](#김민채-그녀의-요리가-시작된다)
+4. Week4 project - [Minchae's Cookbook(김민채의 요리보고 조리보고)](#week4---minchaes-cookbook-김민채의-요리보고-조리보고)
 5. Side project1 - [What is Your Name](#sideproject1---2021w-몰입캠프-3분반-이름-맞추기)
 6. Side project2 - [Chat APP](#sideproject2---chat-app)
 
