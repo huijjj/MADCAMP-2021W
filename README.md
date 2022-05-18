@@ -1,13 +1,13 @@
 # MADCAMP 2021W
 
-1. Week1 project - [Present of Santa(산타의 선물)](#산타의-선물present-of-santa)
-2. Week2 project - [Ghost Gomoku King(고스트 오목왕)](#고스트-오목왕-ghost-gomoku-king)
-3. Week3 project - [DRUNKEN FRAM(꽐라 농장)](#drunken-farm-꽐라-농장)
+1. Week1 project - [Present of Santa(산타의 선물)](#week1---산타의-선물present-of-santa)
+2. Week2 project - [Ghost Gomoku King(고스트 오목왕)](#week2---고스트-오목왕-ghost-gomoku-king)
+3. Week3 project - [DRUNKEN FRAM(꽐라 농장)](#week3---drunken-farm-꽐라-농장)
 4. Week4 project - [Minchae's Cookbook(김민채의 요리보고 조리보고)](#김민채-그녀의-요리가-시작된다)
-5. Side project1 - [What is Your Name](#2021w-몰입캠프-3분반-이름-맞추기)
-6. Side project2 - [Chat APP](#chat-app)
+5. Side project1 - [What is Your Name](#sideproject1---2021w-몰입캠프-3분반-이름-맞추기)
+6. Side project2 - [Chat APP](#sideproject2---chat-app)
 
-## Teamates
+# Contributors
 
 * Week1
     * Minhee KIM(<a href="https://github.com/minizzang">minizzang</a>): minizzang@kaist.ac.kr
@@ -31,9 +31,9 @@
     * Junyeong CHOI(<a href="https://github.com/DDoubleA">DDoubleA</a>): ace9804@unist.ac.kr - (week4 VM donor)
     * Mingyeol KIM(<a href="https://github.com/KimMingyeol">KimMingyeol</a>): kmg1902@postech.ac.kr - (roommate at SARANG131)
 
-## Project deatails
+# Project deatails
 
-### 산타의 선물(Present of Santa)
+## Week1 - 산타의 선물(Present of Santa)
 
 We made an single activity application with 3 tabs with Kotlin and android studio for the first week common project.
 3 tabs are like below.
@@ -51,7 +51,7 @@ We made an single activity application with 3 tabs with Kotlin and android studi
   <img width="20%" src="https://user-images.githubusercontent.com/64083281/147923580-bf94fa43-a64d-4c2d-a444-f7f30b380d88.gif" />
 </p>
 
-#### Tab 1. Contacts (연락처)
+### Tab 1. Contacts (연락처)
 ***
 To meet the projects requirements, our first tab is contacts. This tab is implemented with fragment and recycler view for efficient screen rendering.
 Contacts shown are read from assets/contacts.json using asset manager and inserted in to list by recycler view's adapter.
@@ -71,7 +71,7 @@ Please refer to src/main/java/ui/contact and src/main/res/layout/fragment_contac
   <img width="20%" src="https://user-images.githubusercontent.com/64083281/147923890-ac9e4d1a-91c5-4bff-9034-1aa6f21afff3.gif" />
 </p>
 
-#### Tab 2. Gallery (갤러리)
+### Tab 2. Gallery (갤러리)
 ***
 Our second tabs is gallery, this tab show photos in src/main/drawable. Like contacts tab, this tab uses fragment and recycler view. 
 For efficient loading and orienting of image file we used Glide library when creating list item in adapter. 
@@ -90,7 +90,7 @@ Please refer to src/main/java/ui/gallery and src/main/res/layout/fragment_galler
   <img width="20%" src="https://user-images.githubusercontent.com/64083281/147918348-2e78581e-ddfc-4be6-b43c-3db599517be0.gif" />
 </p>
 
-#### Tab 3. Advent calendar(이벤트 달력)
+### Tab 3. Advent calendar(이벤트 달력)
 ***
 Last but not least, out final third tab is advent calendar!
 An Advent calendar is a special calendar used to count the days of Advent in anticipation of Christmas.
@@ -135,13 +135,13 @@ Santa Claus is coming to town
   <img width="20%" src="https://user-images.githubusercontent.com/64083281/147918804-d5541c9d-3351-426f-9702-98702958f285.gif" />
 </p>
 
-#### Credit
+### Credit
 + Minhee Kim(minizzang): minizzang@kaist.ac.kr
 + Huijong Jeong(huijjj): hui0213@postech.ac.kr
 
 ****** 
 
-### 고스트 오목왕 (Ghost Gomoku King)
+## Week2 - 고스트 오목왕 (Ghost Gomoku King)
 몰입캠프 2주차 과제로 실시간 오목 게임을 만들었습니다.
 안드로이드 스튜디오와 코틀린을 사용하여 사용자 응용프로그램을 만들었으며, Node.js와 express를 사용하여 서버를 구축하였습니다.
 추가적으로, 실시간 통신과 데이터 저장을 위해 socket.io와 MySQL을 사용하였으며, 사용자 로그인을 위해 카카오 SDK를 사용하였습니다.
@@ -152,7 +152,7 @@ We used android studio and Kotlin for making client application, and Node.js and
 MySQL and socket.io are additionally used for real time communication and storing data.
 Kakao SDK is used for user log-in.
 
-### Credit
+## Credit
 + 박도윤(victoria0406): victoria0406@kaist.ac.kr
 + 정희종(huijjj): hui0213@postech.ac.kr
 
@@ -160,7 +160,7 @@ Kakao SDK is used for user log-in.
 <p align="center"><em>지금, 치타가 달리기 시작했다.</em></p>
 <p align="center"><em>At the moment, the cheetah is on it's way.</em></p>
 
-### Front-End (android studio, Kotlin)
+## Front-End (android studio, Kotlin)
 사용자 응용 프로그램은 크게 3개의 화면으로 구성되어 있으며 구성은 아래와 같습니다.
 
 
@@ -171,7 +171,7 @@ Client application is consisted of following 3 activities.
 + 대기 화면 (Waiting page)
 + 게임 화면 (Game page)
 
-#### 로그인 화면 (Log-in page)
+### 로그인 화면 (Log-in page)
 <p align="center">
     <img width="30%" src="https://user-images.githubusercontent.com/81007362/148932226-ee8578b1-caeb-4166-8688-7d4fb4250183.gif"/>
 </p>
@@ -180,7 +180,7 @@ Client application is consisted of following 3 activities.
 
 You can log in using your kakao account. This is done by API provieded by kakao SDK.
 
-#### 로비 화면 (Lobby page)
+### 로비 화면 (Lobby page)
 <p align="center">
     <img width="30%" src="https://user-images.githubusercontent.com/81007362/148932234-b15b7aec-0f13-4dfd-a6ea-c156e18eda84.gif"/>
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900089-8115122c-c1f3-4ba6-9aed-77969a907ede.gif"/>
@@ -201,7 +201,7 @@ You can see the top 3 rankers at the bottom-side of the page according to win ra
 User data and Ranking data is fetched from the server using http GET request, and room list is fetch by socket communication.
 You can log out via log out button at the bottom of the side view.
 
-#### 대기 화면 (Waiting page)
+### 대기 화면 (Waiting page)
 <p align="center">
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148902084-99e9fdcd-4a11-44b1-a36f-ab572730d48f.gif" />
 </p>
@@ -214,7 +214,7 @@ After creating a room, you have to wait in this page until the opponent joins. F
 without any additional ready logic. You should keep on your toe since you have no idea when will the opponent join. To help you to maintain your intention magnificent background music is played.
 This music is from japanese animation *Hikaru's Go*.
 
-#### 게임 화면 (Game page)
+### 게임 화면 (Game page)
 <p align="center">
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148900924-dea911e4-08b4-4878-b381-5c7a264b8dd6.gif" />
     <img width="30%" src="https://user-images.githubusercontent.com/64083281/148901737-2d631c7d-234c-4db4-b1ce-52aba2944529.gif" />
@@ -233,7 +233,7 @@ Since distracting opponent with deft eloquence is part of the strategy in gomoku
 Setting stone and Chatting function is implemented via socket.io.
 There exists a magical secret sentence that you can send via chat and win in any situation. Try it out! 
 
-### Back-End (Node.js, express, MySQL, http, socket.io)
+## Back-End (Node.js, express, MySQL, http, socket.io)
 Node.js 환경 위에서 express로 서버를 구축하였으며 클라이언트와의 통신을 위해 http와 socket.io를 사용합니다. 유저 정보 저장을 위한 데이터베이스로는 MySQL을 사용합니다.
 자세한 설명은 아래의 코드와 주석을 참고 바랍니다.
 
@@ -244,7 +244,7 @@ please refer to comments and code below for detailed infromation.
 
 Whole code is at the following repository.
 
-https://github.com/huijjj/madcamp_week2_back
+https://github.com/huijjj/MADCAMP-2021W/tree/master/week2/server
 
 ```
 const express = require('express');
@@ -440,7 +440,7 @@ http.listen(PORT, () => {
 
 ******
 
-### DRUNKEN FARM (꽐라 농장)
+## Week3 - DRUNKEN FARM (꽐라 농장)
 
 <div>
   <img width="33%" src="https://user-images.githubusercontent.com/64083281/149874704-27812e65-86e1-4848-9b1e-249e3d6d02f0.gif" />
@@ -460,21 +460,21 @@ http.listen(PORT, () => {
 <p align="center"><em>그들을 무사히 창업 휴학의 유혹과 급성 알콜 중독으로부터 지켜내어 무사히 졸업을 시켜보자!</em></p>
 
 
-### Credit
+## Credit
 + Giyeong KIM(<a href="https://github.com/ddungiii">ddungiii</a>): ggcc503@kaist.ac.kr
 + Huijong JEONG(<a href="https://github.com/huijjj">huijjj</a>): hyojadong_bulhyoja@kaist.ac.kr
 + Seungjae LIM(<a href="https://github.com/SeungjaeLim">seungjaelim</a>): seungjaelim@kaist.ac.kr
 
 ******
 
-### 김민채, 그녀의 요리가 시작된다..!
+## 김민채, 그녀의 요리가 시작된다..!
 
-사이트 주소 : http://192.249.18.176/
+사이트 주소 : http://192.249.18.176/ (no longer available)
 
 <img width="100%" src="https://user-images.githubusercontent.com/64083281/150281161-e6b3f787-b1a5-4edf-b49d-9fed4cf73c18.gif" />
 
 ---
-#### 김민채의 요리보고 조리보고
+## Week4 - Minchae's Cookbook (김민채의 요리보고 조리보고)
 
 |main|
 |--|
@@ -501,7 +501,7 @@ http.listen(PORT, () => {
   - Nickname의 경우 홈 화면에서 Nickname을 통해 사용자를 환영하는 문구를 볼 수 있습니다.
 
 ---
-#### 기능 소개
+### 기능 소개
 
 |home|
 |--|
@@ -530,7 +530,7 @@ http.listen(PORT, () => {
   - 이들을 다시 삭제하고 싶다면 생성된 아이템을 클릭하면 곧바로 삭제가 가능합니다.
 
 ---
-#### 레시피 세부사항 소개
+### 레시피 세부사항 소개
 |detail|
 |--|
 |<img src="https://user-images.githubusercontent.com/96764875/151156448-36775408-9bd4-4c90-961b-5ceec45e6ce0.gif" />|
@@ -556,7 +556,7 @@ http.listen(PORT, () => {
 - 펜 모양의 버튼을 클릭할 경우 이 레시피의 다음 버전을 추가할 수 있습니다.
 
 ---
-#### Credit
+### Credit
 
 + 강준서(<a href="https://github.com/junseooo">junseooo</a>): pointjunseo@dgist.ac.kr
 + 김민채(<a href="https://github.com/passa021">passa021</a>): passa021@korea.ac.kr
@@ -564,26 +564,26 @@ http.listen(PORT, () => {
 
 ******
 
-### 2021W 몰입캠프 3분반 이름 맞추기
+## sideproject1 - 2021W 몰입캠프 3분반 이름 맞추기
 
 <a href="https://huijjj.github.io/what-is-your-name/">3분반 친구들의 이름을 외워 보아요</a>
 
 ******
 
-### chat-app
+## sideproject2 - chat-app
 Simple chatting app using node and socket.io
 
 Change the IP at /client/src/App.js line 10 to your IP before running the codes.
 
-#### Simple setup
+### Simple setup
 
-##### Client
+#### Client
 ```
 cd ./client
 npm start
 ```
 
-##### Server
+#### Server
 ```
 cd ./server
 node app.js
