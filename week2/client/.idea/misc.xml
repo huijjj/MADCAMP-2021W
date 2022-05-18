@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/activity_main_room.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/activity_waiting_room.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/app_bar_main_room.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/char_op.xml" value="0.1546875" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/chat_me.xml" value="0.2" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/content_main_room.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/fragment_gallery.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/fragment_home.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/fragment_slideshow.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/nav_header_main_room.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/room_element.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/user_info.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/layout/winner_popup.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/menu/activity_main_drawer.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/gmwhd/StudioProjects/madcamp_weak2/app/src/main/res/menu/main_room.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_login2.xml" value="0.12135416666666667" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_main_room.xml" value="0.33" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/activity_waiting_room.xml" value="0.25" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/app_bar_main_room.xml" value="0.18" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/content_main_room.xml" value="0.33" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/fragment_gallery.xml" value="0.16271442986881937" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/fragment_item.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/fragment_item_list.xml" value="0.18" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/fragment_slideshow.xml" value="0.13854166666666667" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/nav_header_main_room.xml" value="0.45577211394302847" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/room_element.xml" value="0.22" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/user_info.xml" value="0.22" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/waiting_room.xml" value="0.33" />
+        <entry key="..\:/Users/samsung/madcamp/Ohmok/app/src/main/res/layout/winner_popup.xml" value="0.21" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
