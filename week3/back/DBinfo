@@ -1,0 +1,50 @@
++-----------------------+
+| Tables_in_DRUNKENFARM |
++-----------------------+
+| Animal                |
+| Item                  |
+| User                  |
++-----------------------+
+
+User
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | varchar(45) | YES  |     | NULL    |       |
+| nick          | varchar(45) | YES  |     | NULL    |       |
+| tier          | int(11)     | YES  |     | NULL    |       |
+| graduateCount | int(11)     | YES  |     | NULL    |       |
+| pwd           | varchar(45) | YES  |     | NULL    |       |
+| Money         | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+Animal
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | varchar(45) | YES  |     | NULL    |       |
+| name           | varchar(45) | YES  |     | NULL    |       |
+| type           | varchar(45) | YES  |     | NULL    |       |
+| sex            | varchar(45) | YES  |     | NULL    |       |
+| owner          | varchar(45) | YES  |     | NULL    |       |
+| adventureCount | int(11)     | YES  |     | NULL    |       |
+| itemCount      | int(11)     | YES  |     | NULL    |       |
+| geee           | int(11)     | YES  |     | NULL    |       |
+| duck           | int(11)     | YES  |     | NULL    |       |
+| chae           | int(11)     | YES  |     | NULL    |       |
+| isAbandoned    | int(11)     | YES  |     | NULL    |       |
+| X              | int(11)     | YES  |     | NULL    |       |
+| Y              | int(11)     | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+
+Item
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(45) | YES  |     | NULL    |       |
+| type  | varchar(45) | YES  |     | NULL    |       |
+| owner | varchar(45) | YES  |     | NULL    |       |
+| geee  | int(11)     | YES  |     | NULL    |       |
+| duck  | int(11)     | YES  |     | NULL    |       |
+| chae  | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
