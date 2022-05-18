@@ -33,7 +33,7 @@
 
 # Project deatails
 
-## Week1 - 산타의 선물(Present of Santa)
+# Week1 - 산타의 선물(Present of Santa)
 
 We made an single activity application with 3 tabs with Kotlin and android studio for the first week common project.
 3 tabs are like below.
@@ -141,7 +141,7 @@ Santa Claus is coming to town
 
 ****** 
 
-## Week2 - 고스트 오목왕 (Ghost Gomoku King)
+# Week2 - 고스트 오목왕 (Ghost Gomoku King)
 몰입캠프 2주차 과제로 실시간 오목 게임을 만들었습니다.
 안드로이드 스튜디오와 코틀린을 사용하여 사용자 응용프로그램을 만들었으며, Node.js와 express를 사용하여 서버를 구축하였습니다.
 추가적으로, 실시간 통신과 데이터 저장을 위해 socket.io와 MySQL을 사용하였으며, 사용자 로그인을 위해 카카오 SDK를 사용하였습니다.
@@ -440,7 +440,7 @@ http.listen(PORT, () => {
 
 ******
 
-## Week3 - DRUNKEN FARM (꽐라 농장)
+# Week3 - DRUNKEN FARM (꽐라 농장)
 
 <div>
    <p align="center">
@@ -469,14 +469,13 @@ http.listen(PORT, () => {
 
 ******
 
-## 김민채, 그녀의 요리가 시작된다..!
+# 김민채, 그녀의 요리가 시작된다..!
 
 사이트 주소 : http://192.249.18.176/ (no longer available)
 
 <img width="100%" src="https://user-images.githubusercontent.com/64083281/150281161-e6b3f787-b1a5-4edf-b49d-9fed4cf73c18.gif" />
 
----
-## Week4 - Minchae's Cookbook (김민채의 요리보고 조리보고)
+# Week4 - Minchae's Cookbook (김민채의 요리보고 조리보고)
 
 |main|
 |--|
@@ -566,13 +565,13 @@ http.listen(PORT, () => {
 
 ******
 
-## sideproject1 - 2021W 몰입캠프 3분반 이름 맞추기
+# sideproject1 - 2021W 몰입캠프 3분반 이름 맞추기
 
 <a href="https://huijjj.github.io/what-is-your-name/">3분반 친구들의 이름을 외워 보아요</a>
 
 ******
 
-## sideproject2 - chat-app
+# sideproject2 - chat-app
 Simple chatting app using node and socket.io
 
 Change the IP at /client/src/App.js line 10 to your IP before running the codes.
