@@ -1,0 +1,49 @@
+.MyFarm {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/background_farm.png");
+  background-size: cover;
+}
+
+.HomeButton {
+  position: fixed;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.MyFarmMenu {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+  flex-direction: row-reverse;
+  padding-bottom: 1rem;
+}
+
+.MyFarmAnimal {
+  margin-right: 2rem;
+}
+
+.MyFarmItem {
+  margin-right: 1rem;
+}
+
+.MyFarmEmpty {
+  margin: 3.5rem 1rem 1rem 1rem;
+}
+
+.MyFarmAnimalListItem:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#c2e59c, #64b3f4);
+}

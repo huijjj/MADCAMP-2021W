@@ -1,0 +1,36 @@
+.FuneralBack {
+  background-color: black;
+  background-size: cover;
+}
+
+.Funeral {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FuneralTitle {
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+}
+
+#FuneralPortrait {
+  background-image: url("../../public/images/portrait.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  padding-bottom: 3rem;
+}
+
+.FuneralBody {
+  color: white;
+  font-size: 2rem;
+  
+  padding-bottom: 2rem
+}

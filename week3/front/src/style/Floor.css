@@ -1,0 +1,58 @@
+ .Floor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FloorHeader {
+  font-family: "paybooc";
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 3rem;
+  height: 5%;
+  position: absolute;
+  top: 0px;
+}
+
+
+.FloorCard {
+  margin-top: 2rem;
+}
+
+.FloorLeft {
+  width: 50%;
+  height: 100%;
+  background-image: url("../../public/images/floorLeft0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.FloorLeft:hover {
+  background-image: url("../../public/images/floorLeft1.jpg");
+}
+
+.FloorRight {
+  width: 50%;
+  height: 100%;
+  background-image: url("../../public/images/floorRight0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.FloorRight:hover {
+  background-image: url("../../public/images/floorRight1.jpg");
+}
+
+.FloorStamina {
+  color: white;
+  font-size: 1rem;
+  font-weight: normal;
+}

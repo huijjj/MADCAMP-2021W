@@ -1,0 +1,62 @@
+.Auth {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url("../../public/images/정희종3.png");
+}
+
+.Background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  padding: 3rem;
+  border-radius: 4rem;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.Title {
+  font-family: "paybooc";
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.LoginForm {
+  font-family: "paybooc";
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.LoginFormInput {
+  font-family: "paybooc";
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+}
+
+.LoginFormInputId {
+  font-family: "paybooc";
+  margin-bottom: 0.2rem;
+}
+
+.RegisterButton {
+  font-family: "paybooc";
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+}
+
+.SubmitButton {
+  font-family: "paybooc";
+  border-radius: 0.3rem;
+  border: none;
+  background-color: rgb(255, 192, 203);
+  width: 12%;
+}

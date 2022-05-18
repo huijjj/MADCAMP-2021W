@@ -1,0 +1,53 @@
+.AdventureFinal {
+  background-image: url("../../public/images/background_sky.png");
+  background-size: cover;
+}
+
+.AdventureFinalBackground {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.FinalTitle {
+  font-family: "paybooc";
+  font-size: 4rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+
+  padding-top: 4rem;
+}
+
+.FinalImage{
+  z-index: 0;
+  display: flex;
+  align-items: flex-start;
+
+  padding-bottom: 2rem;
+}
+
+.FinalSpeechBubble {
+  background-image: url("../../public/images/chatbox.png");
+  background-size: 450px 280px;
+
+  width: 450px;
+  height: 280px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FinalQuiz {
+  padding-left: 45px;
+  padding-right: 50px;
+  padding-bottom: 35px;
+}
+
+.FinalInput {
+  padding-top: 20px;
+}

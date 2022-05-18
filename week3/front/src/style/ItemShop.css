@@ -1,0 +1,58 @@
+.ItemShop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../public/images/itemshopBackground.png");
+  background-size: cover;
+}
+
+.itemshopBackground {
+  position: absolute;
+  left: 40%;
+  top: 17%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255);
+}
+.itemshopLayout {
+  align-items: center;
+  justify-content: center;
+}
+.itemstatus {
+  margin-right: 1.5rem;
+}
+
+.haveMoney {
+  position: absolute;
+  left: 78%;
+  top: -5%;
+  width: 10%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row; 
+  padding: 4rem;
+  background-image: url("../../public/images/moneyBarItem.png");
+  background-size: cover;
+}
+.moneyInfoItem {
+  font-family: "paybooc";
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 5.0rem;
+  margin-right: 0.5rem;
+}
+
+.ItemShopItemItem {
+  width: 100%;
+}
+.ItemShopItemItem:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2rem;
+}

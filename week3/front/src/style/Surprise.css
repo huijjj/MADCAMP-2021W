@@ -1,0 +1,62 @@
+.SurpriseBack {
+  background-image: url("/public/images/surprise_background.jpeg");
+  background-size: cover;
+}
+
+.Surprise {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* .SurpriseCard {
+  width: fit-content;
+  height: fit-content;
+  margin: 3rem;
+  
+  background-color: rgba(255, 255, 255, 0.7);
+  background-size: cover;
+
+  align-self: center;
+} */
+
+.SurpriseCard {
+  display: flex;
+  width:fit-content;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  border-radius: 1rem;
+  
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.7);
+  background-size: cover;
+}
+
+.SurpriseTitle {
+  font-family: "paybooc";
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  padding-bottom: 5rem;
+}
+
+.SurpriseContent {
+  font-family: "paybooc";
+  font-size: 2rem;
+  color: black;
+  padding-bottom: 4rem;
+}
+
+.SurpriseWater {
+  width: 10rem;
+  height: 20rem;
+}
